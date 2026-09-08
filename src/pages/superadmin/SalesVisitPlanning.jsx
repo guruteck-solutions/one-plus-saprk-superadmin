@@ -481,7 +481,7 @@ function SalesVisitPlanning() {
 
       alert(
         error.response?.data?.message ||
-          "Unable to save visit."
+        "Unable to save visit."
       );
     } finally {
       setLoading(false);
@@ -507,7 +507,7 @@ function SalesVisitPlanning() {
 
       alert(
         error.response?.data?.message ||
-          "Unable to fetch visit."
+        "Unable to fetch visit."
       );
     }
 
@@ -543,7 +543,7 @@ function SalesVisitPlanning() {
 
       alert(
         error.response?.data?.message ||
-          "Unable to delete visit."
+        "Unable to delete visit."
       );
     } finally {
       setLoading(false);
@@ -581,7 +581,7 @@ function SalesVisitPlanning() {
 
       alert(
         error.response?.data?.message ||
-          "Unable to update visit status."
+        "Unable to update visit status."
       );
     } finally {
       setLoading(false);
@@ -624,7 +624,7 @@ function SalesVisitPlanning() {
 
           alert(
             error.response?.data?.message ||
-              "Unable to update GPS location."
+            "Unable to update GPS location."
           );
         } finally {
           setLoading(false);
@@ -757,7 +757,7 @@ function SalesVisitPlanning() {
 
       alert(
         error.response?.data?.message ||
-          "Unable to save beat."
+        "Unable to save beat."
       );
     } finally {
       setLoading(false);
@@ -791,7 +791,7 @@ function SalesVisitPlanning() {
 
       alert(
         error.response?.data?.message ||
-          "Unable to delete beat."
+        "Unable to delete beat."
       );
     }
   };
@@ -870,7 +870,7 @@ function SalesVisitPlanning() {
 
       alert(
         error.response?.data?.message ||
-          "Unable to save territory."
+        "Unable to save territory."
       );
     } finally {
       setLoading(false);
@@ -909,7 +909,7 @@ function SalesVisitPlanning() {
 
       alert(
         error.response?.data?.message ||
-          "Unable to delete territory."
+        "Unable to delete territory."
       );
     } finally {
       setLoading(false);
@@ -996,7 +996,7 @@ function SalesVisitPlanning() {
 
       alert(
         error.response?.data?.message ||
-          "Unable to save route."
+        "Unable to save route."
       );
     } finally {
       setLoading(false);
@@ -1033,7 +1033,7 @@ function SalesVisitPlanning() {
 
       alert(
         error.response?.data?.message ||
-          "Unable to delete route."
+        "Unable to delete route."
       );
     } finally {
       setLoading(false);
@@ -1096,7 +1096,7 @@ function SalesVisitPlanning() {
 
       alert(
         error.response?.data?.message ||
-          "Unable to assign route."
+        "Unable to assign route."
       );
     } finally {
       setLoading(false);
@@ -1778,21 +1778,20 @@ function SalesVisitPlanning() {
                               VIS-
                               {String(
                                 (currentPage - 1) *
-                                  pageSize +
-                                  index +
-                                  1
+                                pageSize +
+                                index +
+                                1
                               ).padStart(4, "0")}
                             </strong>
                           </td>
 
                           <td>
                             <span
-                              className={`type-badge ${
-                                visit.visitType ===
+                              className={`type-badge ${visit.visitType ===
                                 "PAINTER"
-                                  ? "painter"
-                                  : "dealer"
-                              }`}
+                                ? "painter"
+                                : "dealer"
+                                }`}
                             >
                               {getTypeLabel(
                                 visit.visitType
@@ -1939,74 +1938,74 @@ function SalesVisitPlanning() {
 
                                 {openActionId ===
                                   visit._id && (
-                                  <div className="more-menu">
+                                    <div className="more-menu">
 
-                                    <button
-                                      onClick={() =>
-                                        handleViewVisit(
-                                          visit
-                                        )
-                                      }
-                                    >
-                                      <Eye size={15} />
-                                      View
-                                    </button>
+                                      <button
+                                        onClick={() =>
+                                          handleViewVisit(
+                                            visit
+                                          )
+                                        }
+                                      >
+                                        <Eye size={15} />
+                                        View
+                                      </button>
 
-                                    <button
-                                      onClick={() =>
-                                        openEditVisit(
-                                          visit
-                                        )
-                                      }
-                                    >
-                                      <Pencil
-                                        size={15}
-                                      />
-                                      Edit
-                                    </button>
+                                      <button
+                                        onClick={() =>
+                                          openEditVisit(
+                                            visit
+                                          )
+                                        }
+                                      >
+                                        <Pencil
+                                          size={15}
+                                        />
+                                        Edit
+                                      </button>
 
-                                    <button
-                                      onClick={() =>
-                                        openAssignRoute(
-                                          visit
-                                        )
-                                      }
-                                    >
-                                      <RouteIcon
-                                        size={15}
-                                      />
-                                      Assign Route
-                                    </button>
+                                      <button
+                                        onClick={() =>
+                                          openAssignRoute(
+                                            visit
+                                          )
+                                        }
+                                      >
+                                        <RouteIcon
+                                          size={15}
+                                        />
+                                        Assign Route
+                                      </button>
 
-                                    <button
-                                      onClick={() =>
-                                        handleGPSUpdate(
-                                          visit
-                                        )
-                                      }
-                                    >
-                                      <MapPin
-                                        size={15}
-                                      />
-                                      GPS Tracking
-                                    </button>
+                                      <button
+                                        onClick={() =>
+                                          handleGPSUpdate(
+                                            visit
+                                          )
+                                        }
+                                      >
+                                        <MapPin
+                                          size={15}
+                                        />
+                                        GPS Tracking
+                                      </button>
 
-                                    <button
-                                      className="danger-option"
-                                      onClick={() =>
-                                        handleDeleteVisit(
-                                          visit
-                                        )
-                                      }
-                                    >
-                                      <Trash2
-                                        size={15}
-                                      />
-                                      Delete
-                                    </button>
+                                      <button
+                                        className="danger-option"
+                                        onClick={() =>
+                                          handleDeleteVisit(
+                                            visit
+                                          )
+                                        }
+                                      >
+                                        <Trash2
+                                          size={15}
+                                        />
+                                        Delete
+                                      </button>
 
-                                  </div>
-                                )}
+                                    </div>
+                                  )}
 
                               </div>
 
@@ -2033,8 +2032,8 @@ function SalesVisitPlanning() {
                 {filteredVisits.length === 0
                   ? 0
                   : (currentPage - 1) *
-                      pageSize +
-                    1}{" "}
+                  pageSize +
+                  1}{" "}
                 to{" "}
                 {Math.min(
                   currentPage * pageSize,
@@ -2201,20 +2200,17 @@ function SalesVisitPlanning() {
                       key={`${item.day}-${index}`}
                       className={`
                         calendar-day
-                        ${
-                          !item.current
-                            ? "muted"
-                            : ""
+                        ${!item.current
+                          ? "muted"
+                          : ""
                         }
-                        ${
-                          selectedDate === date
-                            ? "selected"
-                            : ""
+                        ${selectedDate === date
+                          ? "selected"
+                          : ""
                         }
-                        ${
-                          hasVisit
-                            ? "has-visit"
-                            : ""
+                        ${hasVisit
+                          ? "has-visit"
+                          : ""
                         }
                       `}
                       onClick={() =>
@@ -2294,15 +2290,14 @@ function SalesVisitPlanning() {
                       </div>
 
                       <span
-                        className={`field-status ${
-                          visit.visitStatus ===
+                        className={`field-status ${visit.visitStatus ===
                           "COMPLETED"
-                            ? "completed"
-                            : visit.visitStatus ===
-                              "CANCELLED"
+                          ? "completed"
+                          : visit.visitStatus ===
+                            "CANCELLED"
                             ? "offline"
                             : "route"
-                        }`}
+                          }`}
                       >
                         {getStatusLabel(
                           visit.visitStatus
@@ -2431,7 +2426,7 @@ function SalesVisitPlanning() {
                 <input
                   name="customerName"
                   value={visitForm.customerName}
-                  onChange={handleVisitChange}
+                  onChange={(e) => /^[A-Za-z\s]*$/.test(e.target.value) && handleVisitChange(e)}
                   placeholder="Enter customer name"
                   required
                 />
@@ -2450,7 +2445,7 @@ function SalesVisitPlanning() {
                 <input
                   name="customerMobile"
                   value={visitForm.customerMobile}
-                  onChange={handleVisitChange}
+                  onChange={(e) => /^\d{0,10}$/.test(e.target.value) && handleVisitChange(e)}
                   placeholder="Enter mobile number"
                 />
               </FormField>
@@ -2548,7 +2543,7 @@ function SalesVisitPlanning() {
                 <input
                   name="assignedTo"
                   value={visitForm.assignedTo}
-                  onChange={handleVisitChange}
+                  onChange={(e) => /^[A-Za-z\s]*$/.test(e.target.value) && handleVisitChange(e)}
                   placeholder="Sales user"
                 />
               </FormField>
@@ -3430,8 +3425,8 @@ function DetailItem({
       <span>{label}</span>
       <strong>
         {value === null ||
-        value === undefined ||
-        value === ""
+          value === undefined ||
+          value === ""
           ? "-"
           : value}
       </strong>

@@ -1674,7 +1674,7 @@ const ApprovalWorkflow = () => {
                                         type="text"
                                         name="requestedBy"
                                         value={formData.requestedBy}
-                                        onChange={handleFormChange}
+                                        onChange={(e) => /^[A-Za-z\s]*$/.test(e.target.value) && handleFormChange(e)}
                                         placeholder="Enter requester name"
                                         required
                                     />
@@ -2096,7 +2096,7 @@ const ApprovalWorkflow = () => {
                                         type="text"
                                         name="requestedBy"
                                         value={formData.requestedBy}
-                                        onChange={handleFormChange}
+                                        onChange={(e) => /^[A-Za-z\s]*$/.test(e.target.value) && handleFormChange(e)}
                                         placeholder="Enter requester name"
                                         required
                                     />

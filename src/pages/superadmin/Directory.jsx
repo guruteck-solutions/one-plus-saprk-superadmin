@@ -692,11 +692,10 @@ const Directory = () => {
 
                     <td>
                       <span
-                        className={`status-badge ${
-                          contact.status === "ACTIVE"
-                            ? "status-active"
-                            : "status-inactive"
-                        }`}
+                        className={`status-badge ${contact.status === "ACTIVE"
+                          ? "status-active"
+                          : "status-inactive"
+                          }`}
                       >
                         {contact.status === "ACTIVE"
                           ? "Active"
@@ -976,7 +975,6 @@ const Directory = () => {
             >
 
               <div className="form-field">
-
                 <label>
                   Name <span>*</span>
                 </label>
@@ -986,14 +984,13 @@ const Directory = () => {
                   name="name"
                   placeholder="Enter name"
                   value={formData.name}
-                  onChange={handleChange}
+                  onChange={(e) => /^[A-Za-z\s]*$/.test(e.target.value) && handleChange(e)}
                   required
                 />
 
               </div>
 
               <div className="form-field">
-
                 <label>
                   Mobile Number <span>*</span>
                 </label>
@@ -1003,14 +1000,13 @@ const Directory = () => {
                   name="mobile"
                   placeholder="Enter mobile number"
                   value={formData.mobile}
-                  onChange={handleChange}
+                  onChange={(e) => /^\d{0,10}$/.test(e.target.value) && handleChange(e)}
                   required
                 />
 
               </div>
 
               <div className="form-field">
-
                 <label>City</label>
 
                 <input
@@ -1018,7 +1014,7 @@ const Directory = () => {
                   name="city"
                   placeholder="Enter city"
                   value={formData.city}
-                  onChange={handleChange}
+                  onChange={(e) => /^[A-Za-z\s]*$/.test(e.target.value) && handleChange(e)}
                 />
 
               </div>

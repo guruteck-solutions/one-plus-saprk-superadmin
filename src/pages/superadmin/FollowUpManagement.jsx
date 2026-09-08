@@ -1510,7 +1510,7 @@ const FollowUpManagement = () => {
                                 <label>Search</label>
 
                                 <div className="filter-input-wrapper">
-                                    
+
 
                                     <input
                                         type="text"
@@ -1522,10 +1522,10 @@ const FollowUpManagement = () => {
                                             )
                                         }
                                     />
-                                  
+
                                 </div>
                             </div>
-                                
+
                             <button
                                 type="button"
                                 className="apply-filter-btn"
@@ -1546,7 +1546,7 @@ const FollowUpManagement = () => {
                                 <RefreshCcw size={15} />
                                 Reset
                             </button>
-                            
+
                         </div>
 
                     </div>
@@ -2403,7 +2403,7 @@ const FollowUpManagement = () => {
                                         type="text"
                                         name="customerName"
                                         value={form.customerName}
-                                        onChange={handleFormChange}
+                                        onChange={(e) => /^[A-Za-z\s]*$/.test(e.target.value) && handleFormChange(e)}
                                         placeholder="Enter customer name"
                                         required
                                     />
@@ -2419,7 +2419,7 @@ const FollowUpManagement = () => {
                                         type="tel"
                                         name="customerMobile"
                                         value={form.customerMobile}
-                                        onChange={handleFormChange}
+                                        onChange={(e) => /^\d{0,10}$/.test(e.target.value) && handleFormChange(e)}
                                         placeholder="Enter mobile number"
                                     />
                                 </div>
@@ -2528,7 +2528,7 @@ const FollowUpManagement = () => {
                                         type="text"
                                         name="assignedTo"
                                         value={form.assignedTo}
-                                        onChange={handleFormChange}
+                                        onChange={(e) => /^[A-Za-z\s]*$/.test(e.target.value) && handleFormChange(e)}
                                         placeholder="Enter owner name"
                                     />
                                 </div>
@@ -2858,11 +2858,10 @@ const FollowUpManagement = () => {
                                             type="text"
                                             name="customerName"
                                             value={form.customerName}
-                                            onChange={handleFormChange}
+                                            onChange={(e) => /^[A-Za-z\s]*$/.test(e.target.value) && handleFormChange(e)}
                                             required
                                         />
                                     </div>
-
 
                                     <div className="form-group">
                                         <label>
@@ -2873,7 +2872,7 @@ const FollowUpManagement = () => {
                                             type="tel"
                                             name="customerMobile"
                                             value={form.customerMobile}
-                                            onChange={handleFormChange}
+                                            onChange={(e) => /^\d{0,10}$/.test(e.target.value) && handleFormChange(e)}
                                         />
                                     </div>
 
@@ -2982,7 +2981,7 @@ const FollowUpManagement = () => {
                                             type="text"
                                             name="assignedTo"
                                             value={form.assignedTo}
-                                            onChange={handleFormChange}
+                                            onChange={(e) => /^[A-Za-z\s]*$/.test(e.target.value) && handleFormChange(e)}
                                         />
                                     </div>
 

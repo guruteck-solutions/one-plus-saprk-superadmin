@@ -841,7 +841,7 @@ const BankPaymentSheet = () => {
                                 onChange={handleGenerateChange}
                             />
 
-                          
+
                         </div>
                     </div>
 
@@ -1438,7 +1438,7 @@ const BankPaymentSheet = () => {
                                         name="accountNumber"
                                         placeholder="Enter account number"
                                         value={addForm.accountNumber}
-                                        onChange={handleAddChange}
+                                        onChange={(e) => /^\d*$/.test(e.target.value) && handleAddChange(e)}
                                     />
                                 </div>
 
@@ -1449,7 +1449,13 @@ const BankPaymentSheet = () => {
                                         name="ifscCode"
                                         placeholder="Enter IFSC code"
                                         value={addForm.ifscCode}
-                                        onChange={handleAddChange}
+                                        onChange={(e) => {
+                                            const value = e.target.value.toUpperCase();
+                                            if (/^[A-Z]{0,4}0?[A-Z0-9]{0,6}$/.test(value)) {
+                                                handleAddChange({ target: { name: "ifscCode", value } });
+                                            }
+                                        }}
+                                        maxLength={11}
                                     />
                                 </div>
 
@@ -1865,33 +1871,35 @@ const BankPaymentSheet = () => {
                                     />
                                 </div>
 
-                                <div className="bank-form-group">
-                                    <label>
-                                        Account Number
-                                    </label>
+                               <div className="bank-form-group">
+    <label>
+        Account Number
+    </label>
 
-                                    <input
-                                        type="text"
-                                        name="accountNumber"
-                                        value={
-                                            editForm.accountNumber
-                                        }
-                                        onChange={handleEditChange}
-                                    />
-                                </div>
+    <input
+        type="text"
+        name="accountNumber"
+        value={editForm.accountNumber}
+        onChange={(e) => /^\d*$/.test(e.target.value) && handleEditChange(e)}
+    />
+</div>
 
                                 <div className="bank-form-group">
-                                    <label>IFSC Code</label>
+    <label>IFSC Code</label>
 
-                                    <input
-                                        type="text"
-                                        name="ifscCode"
-                                        value={
-                                            editForm.ifscCode
-                                        }
-                                        onChange={handleEditChange}
-                                    />
-                                </div>
+    <input
+        type="text"
+        name="ifscCode"
+        value={editForm.ifscCode}
+        onChange={(e) => {
+            const value = e.target.value.toUpperCase();
+            if (/^[A-Z]{0,4}0?[A-Z0-9]{0,6}$/.test(value)) {
+                handleEditChange({ target: { name: "ifscCode", value } });
+            }
+        }}
+        maxLength={11}
+    />
+</div>
 
                                 <div className="bank-form-group">
                                     <label>Amount (₹)</label>
