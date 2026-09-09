@@ -59,6 +59,12 @@ const RewardDashboard = () => {
     const [showAddPointsModal, setShowAddPointsModal] = useState(false);
     const [showCashRewardModal, setShowCashRewardModal] = useState(false);
 
+    const [rewardUsers, setRewardUsers] = useState([]);
+    const [usersLoading, setUsersLoading] = useState(false);
+
+    const [addPointsUserType, setAddPointsUserType] = useState("DEALER");
+    const [addCashUserType, setAddCashUserType] = useState("DEALER");
+
     /* ========================= FETCH DASHBOARD ========================= */
 
     const fetchDashboard = async () => {
@@ -81,8 +87,37 @@ const RewardDashboard = () => {
         }
     };
 
+    const fetchRewardUsers = async () => {
+        try {
+            setUsersLoading(true);
+
+            const token = localStorage.getItem("token");
+
+            const response = await axios.get(
+                `${API_BASE_URL}/api/users`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }
+            );
+
+            if (response.data?.success) {
+                setRewardUsers(response.data.users || []);
+            }
+        } catch (error) {
+            console.error(
+                "Reward users fetch error:",
+                error.response?.data || error.message
+            );
+        } finally {
+            setUsersLoading(false);
+        }
+    };
+
     useEffect(() => {
         fetchDashboard();
+        fetchRewardUsers();
     }, []);
 
     /* ========================= HELPERS ========================= */
@@ -105,20 +140,10 @@ const RewardDashboard = () => {
 
     /* ========================= FILTER OPTIONS ========================= */
 
-    const users = useMemo(() => {
-        const uniqueUsers = [];
-
-        dashboardData.transactions.forEach((item) => {
-            if (item.user?._id && !uniqueUsers.some((u) => u.id === item.user._id)) {
-                uniqueUsers.push({
-                    id: item.user._id,
-                    name: item.user.name || "Unknown User",
-                });
-            }
-        });
-
-        return uniqueUsers;
-    }, [dashboardData.transactions]);
+    const filterUsers = useMemo(() => {
+        if (userType === "All") return rewardUsers;
+        return rewardUsers.filter((user) => user.role === userType);
+    }, [rewardUsers, userType]);
 
     /* ========================= FILTER TRANSACTIONS ========================= */
 
@@ -265,16 +290,53 @@ const RewardDashboard = () => {
         try {
             setLoading(true);
 
-            await axios.put(`${API_BASE_URL}/api/rewards/transactions/${editTransaction._id}`, {
+            const payload = {
+                userId:
+                    editTransaction.userId ||
+                    editTransaction.user?._id ||
+                    undefined,
+
+                userType: editTransaction.userType,
+
+                points:
+                    editTransaction.points !== undefined &&
+                        editTransaction.points !== null &&
+                        editTransaction.points !== ""
+                        ? Number(editTransaction.points)
+                        : 0,
+
+                cashAmount:
+                    editTransaction.cashAmount !== undefined &&
+                        editTransaction.cashAmount !== null &&
+                        editTransaction.cashAmount !== ""
+                        ? Number(editTransaction.cashAmount)
+                        : 0,
+
                 status: editTransaction.status,
-                description: editTransaction.description,
-                reference: editTransaction.reference,
-            });
+                description: editTransaction.description || "",
+                reference: editTransaction.reference || "",
+            };
+
+            await axios.put(
+                `${API_BASE_URL}/api/rewards/transactions/${editTransaction._id}`,
+                payload
+            );
+
+            alert("Reward transaction updated successfully");
 
             setEditTransaction(null);
+
             await fetchDashboard();
         } catch (error) {
-            console.error("Update reward transaction error:", error.response?.data || error.message);
+            console.error(
+                "Update reward transaction error:",
+                error.response?.data || error.message
+            );
+
+            alert(
+                error.response?.data?.message ||
+                "Failed to update reward transaction"
+            );
         } finally {
             setLoading(false);
         }
@@ -439,8 +501,8 @@ const RewardDashboard = () => {
                             <label>User</label>
                             <select value={selectedUser} onChange={(e) => setSelectedUser(e.target.value)}>
                                 <option value="All Users">All Users</option>
-                                {users.map((user) => (
-                                    <option key={user.id} value={user.id}>
+                                {filterUsers.map((user) => (
+                                    <option key={user._id} value={user._id}>
                                         {user.name}
                                     </option>
                                 ))}
@@ -584,13 +646,13 @@ const RewardDashboard = () => {
                                 <tbody>
                                     {loading ? (
                                         <tr>
-                                            <td colSpan="10" className="empty-cell">
+                                            <td colSpan="11" className="empty-cell">
                                                 Loading...
                                             </td>
                                         </tr>
                                     ) : filteredTransactions.length === 0 ? (
                                         <tr>
-                                            <td colSpan="10" className="empty-cell">
+                                            <td colSpan="11" className="empty-cell">
                                                 No reward transactions found
                                             </td>
                                         </tr>
@@ -606,7 +668,7 @@ const RewardDashboard = () => {
                                                 </td>
 
                                                 <td>
-                                                    <strong>{item.reference || item._id?.slice(-8) || "-"}</strong>
+                                                    <strong>{item.transactionId || item.txnId || item._id?.slice(-8) || "-"}</strong>
                                                 </td>
 
                                                 <td>
@@ -665,7 +727,15 @@ const RewardDashboard = () => {
                                                         <button title="View" onClick={() => setViewTransaction(item)}>
                                                             <Eye size={17} />
                                                         </button>
-                                                        <button title="Edit" onClick={() => setEditTransaction({ ...item })}>
+                                                        <button
+                                                            title="Edit"
+                                                            onClick={() =>
+                                                                setEditTransaction({
+                                                                    ...item,
+                                                                    editMode: Number(item.cashAmount || 0) > 0 ? "CASH" : "POINTS",
+                                                                })
+                                                            }
+                                                        >
                                                             <Pencil size={17} />
                                                         </button>
                                                         <button
@@ -908,13 +978,10 @@ const RewardDashboard = () => {
                                 <strong>{viewTransaction.status}</strong>
                             </div>
                             <div className="detail-row">
-                                <span>Description</span>
+                                <span>Remark</span>
                                 <strong>{viewTransaction.description || "-"}</strong>
                             </div>
-                            <div className="detail-row">
-                                <span>Reference</span>
-                                <strong>{viewTransaction.reference || "-"}</strong>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -922,59 +989,199 @@ const RewardDashboard = () => {
 
             {/* EDIT MODAL */}
             {editTransaction && (
-                <div className="reward-modal-overlay" onClick={() => setEditTransaction(null)}>
-                    <div className="reward-modal" onClick={(e) => e.stopPropagation()}>
+                <div
+                    className="reward-modal-overlay"
+                    onClick={() => setEditTransaction(null)}
+                >
+                    <div
+                        className="reward-modal"
+                        onClick={(e) => e.stopPropagation()}
+                    >
                         <div className="modal-header">
                             <h3>Edit Reward Transaction</h3>
-                            <button onClick={() => setEditTransaction(null)}>
+
+                            <button
+                                type="button"
+                                onClick={() => setEditTransaction(null)}
+                            >
                                 <X size={18} />
                             </button>
                         </div>
 
                         <div className="modal-body">
+
+                            {/* USER TYPE */}
                             <div className="modal-field">
-                                <label>Status</label>
+                                <label>User Type</label>
+
                                 <select
-                                    value={editTransaction.status || ""}
-                                    onChange={(e) => setEditTransaction({ ...editTransaction, status: e.target.value })}
+                                    value={editTransaction.userType || ""}
+                                    onChange={(e) =>
+                                        setEditTransaction({
+                                            ...editTransaction,
+                                            userType: e.target.value,
+                                            userId: ""
+                                        })
+                                    }
                                 >
-                                    <option value="COMPLETED">Completed</option>
-                                    <option value="PENDING">Pending</option>
-                                    <option value="APPROVED">Approved</option>
-                                    <option value="REJECTED">Rejected</option>
+                                    <option value="">Select User Type</option>
+                                    <option value="DEALER">Dealer</option>
+                                    <option value="PAINTER">Painter</option>
                                 </select>
                             </div>
 
+                            {/* SELECT USER */}
                             <div className="modal-field">
-                                <label>Description</label>
+                                <label>Select User</label>
+
+                                <select
+                                    value={
+                                        editTransaction.user?._id ||
+                                        editTransaction.userId ||
+                                        ""
+                                    }
+                                    onChange={(e) =>
+                                        setEditTransaction({
+                                            ...editTransaction,
+                                            userId: e.target.value
+                                        })
+                                    }
+                                    disabled={usersLoading}
+                                >
+                                    <option value="">
+                                        {usersLoading
+                                            ? "Loading users..."
+                                            : "Select User"}
+                                    </option>
+
+                                    {rewardUsers
+                                        .filter(
+                                            (user) =>
+                                                user.role?.toUpperCase() ===
+                                                editTransaction.userType?.toUpperCase()
+                                        )
+                                        .map((user) => (
+                                            <option
+                                                key={user._id}
+                                                value={user._id}
+                                            >
+                                                {user.name}
+                                            </option>
+                                        ))}
+                                </select>
+                            </div>
+
+                            {/* POINTS FIELD */}
+                            {/* POINTS FIELD */}
+                            {editTransaction.editMode === "POINTS" && (
+                                <div className="modal-field">
+                                    <label>Points</label>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        value={editTransaction.points ?? ""}
+                                        onChange={(e) =>
+                                            setEditTransaction({
+                                                ...editTransaction,
+                                                points: e.target.value,
+                                            })
+                                        }
+                                    />
+                                </div>
+                            )}
+
+                            {/* CASH AMOUNT FIELD */}
+                            {editTransaction.editMode === "CASH" && (
+                                <div className="modal-field">
+                                    <label>Cash Amount (₹)</label>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        value={editTransaction.cashAmount ?? ""}
+                                        onChange={(e) =>
+                                            setEditTransaction({
+                                                ...editTransaction,
+                                                cashAmount: e.target.value,
+                                            })
+                                        }
+                                    />
+                                </div>
+                            )}
+
+                            {/* STATUS */}
+                            <div className="modal-field">
+                                <label>Status</label>
+
+                                <select
+                                    value={editTransaction.status || ""}
+                                    onChange={(e) =>
+                                        setEditTransaction({
+                                            ...editTransaction,
+                                            status: e.target.value
+                                        })
+                                    }
+                                >
+                                    <option value="">Select Status</option>
+
+                                    <option value="COMPLETED">
+                                        Completed
+                                    </option>
+
+                                    <option value="PENDING">
+                                        Pending
+                                    </option>
+
+                                    <option value="APPROVED">
+                                        Approved
+                                    </option>
+
+                                    <option value="REJECTED">
+                                        Rejected
+                                    </option>
+                                </select>
+                            </div>
+
+                            {/* REMARK */}
+                            <div className="modal-field">
+                                <label>Remark</label>
+
                                 <textarea
                                     value={editTransaction.description || ""}
+                                    placeholder="Enter remark"
                                     onChange={(e) =>
-                                        setEditTransaction({ ...editTransaction, description: e.target.value })
+                                        setEditTransaction({
+                                            ...editTransaction,
+                                            description: e.target.value
+                                        })
                                     }
                                 />
                             </div>
 
-                            <div className="modal-field">
-                                <label>Reference</label>
-                                <input
-                                    type="text"
-                                    value={editTransaction.reference || ""}
-                                    onChange={(e) =>
-                                        setEditTransaction({ ...editTransaction, reference: e.target.value })
-                                    }
-                                />
-                            </div>
                         </div>
 
                         <div className="modal-footer">
-                            <button className="modal-cancel-btn" onClick={() => setEditTransaction(null)}>
+
+                            <button
+                                type="button"
+                                className="modal-cancel-btn"
+                                onClick={() => setEditTransaction(null)}
+                            >
                                 Cancel
                             </button>
-                            <button className="modal-save-btn" onClick={handleEditSave} disabled={loading}>
+
+                            <button
+                                type="button"
+                                className="modal-save-btn"
+                                onClick={handleEditSave}
+                                disabled={loading}
+                            >
                                 <Save size={15} />
-                                {loading ? "Saving..." : "Save Changes"}
+
+                                {loading
+                                    ? "Saving..."
+                                    : "Save Changes"}
                             </button>
+
                         </div>
                     </div>
                 </div>
@@ -1003,6 +1210,7 @@ const RewardDashboard = () => {
                                         userType: e.target.userType.value,
                                         points: Number(e.target.points.value),
                                         description: e.target.description.value,
+                                        status: e.target.status.value,
                                         reference: e.target.reference.value,
                                     });
 
@@ -1021,7 +1229,15 @@ const RewardDashboard = () => {
                         >
                             <div className="reward-form-group">
                                 <label>User Type</label>
-                                <select name="userType" required>
+
+                                <select
+                                    name="userType"
+                                    value={addPointsUserType}
+                                    onChange={(e) => {
+                                        setAddPointsUserType(e.target.value);
+                                    }}
+                                    required
+                                >
                                     <option value="DEALER">Dealer</option>
                                     <option value="PAINTER">Painter</option>
                                 </select>
@@ -1029,13 +1245,23 @@ const RewardDashboard = () => {
 
                             <div className="reward-form-group">
                                 <label>Select User</label>
-                                <select name="user" required>
-                                    <option value="">Select User</option>
-                                    {users.map((user) => (
-                                        <option key={user.id} value={user.id}>
-                                            {user.name}
-                                        </option>
-                                    ))}
+
+                                <select
+                                    name="user"
+                                    required
+                                    disabled={usersLoading}
+                                >
+                                    <option value="">
+                                        {usersLoading ? "Loading users..." : "Select User"}
+                                    </option>
+
+                                    {rewardUsers
+                                        .filter((user) => user.role === addPointsUserType)
+                                        .map((user) => (
+                                            <option key={user._id} value={user._id}>
+                                                {user.name}
+                                            </option>
+                                        ))}
                                 </select>
                             </div>
 
@@ -1045,14 +1271,20 @@ const RewardDashboard = () => {
                             </div>
 
                             <div className="reward-form-group">
-                                <label>Description</label>
-                                <input type="text" name="description" placeholder="Enter description" required />
+                                <label>Remark</label>
+                                <input type="text" name="description" placeholder="Enter remark" required />
                             </div>
 
                             <div className="reward-form-group">
-                                <label>Reference</label>
-                                <input type="text" name="reference" placeholder="Enter reference" />
+                                <label>Status</label>
+                                <select name="status" defaultValue="COMPLETED" required>
+                                    <option value="PENDING">Pending</option>
+                                    <option value="COMPLETED">Completed</option>
+                                    <option value="FAILED">Failed</option>
+                                </select>
                             </div>
+
+
 
                             <div className="reward-modal-actions">
                                 <button
@@ -1094,6 +1326,7 @@ const RewardDashboard = () => {
                                         userType: e.target.userType.value,
                                         cashAmount: Number(e.target.cashAmount.value),
                                         description: e.target.description.value,
+                                        status: e.target.status.value,
                                         reference: e.target.reference.value,
                                     });
 
@@ -1112,7 +1345,12 @@ const RewardDashboard = () => {
                         >
                             <div className="reward-form-group">
                                 <label>User Type</label>
-                                <select name="userType" required>
+                                <select
+                                    name="userType"
+                                    value={addCashUserType}
+                                    onChange={(e) => setAddCashUserType(e.target.value)}
+                                    required
+                                >
                                     <option value="DEALER">Dealer</option>
                                     <option value="PAINTER">Painter</option>
                                 </select>
@@ -1120,13 +1358,17 @@ const RewardDashboard = () => {
 
                             <div className="reward-form-group">
                                 <label>Select User</label>
-                                <select name="user" required>
-                                    <option value="">Select User</option>
-                                    {users.map((user) => (
-                                        <option key={user.id} value={user.id}>
-                                            {user.name}
-                                        </option>
-                                    ))}
+                                <select name="user" required disabled={usersLoading}>
+                                    <option value="">
+                                        {usersLoading ? "Loading users..." : "Select User"}
+                                    </option>
+                                    {rewardUsers
+                                        .filter((user) => user.role === addCashUserType)
+                                        .map((user) => (
+                                            <option key={user._id} value={user._id}>
+                                                {user.name}
+                                            </option>
+                                        ))}
                                 </select>
                             </div>
 
@@ -1136,14 +1378,20 @@ const RewardDashboard = () => {
                             </div>
 
                             <div className="reward-form-group">
-                                <label>Description</label>
-                                <input type="text" name="description" placeholder="Enter description" required />
+                                <label>Remark</label>
+                                <input type="text" name="description" placeholder="Enter remark" required />
                             </div>
 
                             <div className="reward-form-group">
-                                <label>Reference</label>
-                                <input type="text" name="reference" placeholder="Enter reference" />
+                                <label>Status</label>
+                                <select name="status" defaultValue="COMPLETED" required>
+                                    <option value="PENDING">Pending</option>
+                                    <option value="COMPLETED">Completed</option>
+                                    <option value="FAILED">Failed</option>
+                                </select>
                             </div>
+
+
 
                             <div className="reward-modal-actions">
                                 <button

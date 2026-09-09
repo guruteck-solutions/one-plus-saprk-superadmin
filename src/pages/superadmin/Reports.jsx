@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import {
   FileText,
@@ -21,11 +21,13 @@ import {
   UserRound,
   FileDown,
   Plus,
+  Upload,
 } from "lucide-react";
 
 import "../../css/reports.css";
 
 const API_BASE_URL = "http://localhost:5000/api/reports";
+const REPORT_SERVER_URL = "http://localhost:5000";
 
 const Reports = () => {
 
@@ -42,6 +44,8 @@ const Reports = () => {
   // const [showViewModal, setShowViewModal] = useState(false);
 
   const [showAddReportModal, setShowAddReportModal] = useState(false);
+  const [reportFile, setReportFile] = useState(null);
+  const reportFileInputRef = useRef(null);
 
   const [addReportForm, setAddReportForm] = useState({
     reportName: "",
@@ -77,6 +81,19 @@ const Reports = () => {
 
   const [selectedScheduled, setSelectedScheduled] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
+
+  const [showAddScheduledModal, setShowAddScheduledModal] =
+    useState(false);
+
+  const [scheduleForm, setScheduleForm] = useState({
+    reportName: "",
+    category: "",
+    schedule: "",
+    nextRun: "",
+    format: "PDF",
+    recipients: "",
+    status: "ACTIVE",
+  });
 
   const [editForm, setEditForm] = useState({
     reportName: "",
@@ -316,6 +333,112 @@ const Reports = () => {
       ...prev,
       [name]: value,
     }));
+
+    if (name === "format" && reportFile) {
+      const extension = reportFile.name
+        .substring(reportFile.name.lastIndexOf("."))
+        .toLowerCase();
+
+      const allowedExtensions = {
+        PDF: [".pdf"],
+        EXCEL: [".xlsx", ".xls"],
+        CSV: [".csv"],
+      };
+
+      if (!allowedExtensions[value]?.includes(extension)) {
+        setReportFile(null);
+        if (reportFileInputRef.current) {
+          reportFileInputRef.current.value = "";
+        }
+      }
+    }
+  };
+  const handleCreateScheduled = async (e) => {
+    e.preventDefault();
+
+    try {
+      const payload = {
+        reportName: scheduleForm.reportName,
+        category: scheduleForm.category,
+        schedule: scheduleForm.schedule,
+        nextRun: scheduleForm.nextRun
+          ? new Date(scheduleForm.nextRun).toISOString()
+          : null,
+        format: scheduleForm.format,
+        recipients: scheduleForm.recipients
+          .split(",")
+          .map((email) => email.trim())
+          .filter(Boolean),
+        status: scheduleForm.status,
+      };
+
+      const response = await axios.post(
+        `${API_BASE_URL}/scheduled`,
+        payload
+      );
+
+      if (response.data.success) {
+        setShowAddScheduledModal(false);
+
+        setScheduleForm({
+          reportName: "",
+          category: "",
+          schedule: "",
+          nextRun: "",
+          format: "PDF",
+          recipients: "",
+          status: "ACTIVE",
+        });
+
+        fetchScheduledReports();
+        fetchDashboard();
+      }
+    } catch (error) {
+      console.error(
+        "Create scheduled report error:",
+        error
+      );
+
+      alert(
+        error.response?.data?.message ||
+        "Unable to create scheduled report."
+      );
+    }
+  };
+
+  const handleReportFileChange = (e) => {
+    const file = e.target.files?.[0];
+
+    if (!file) {
+      setReportFile(null);
+      return;
+    }
+
+    const allowedExtensions = {
+      PDF: [".pdf"],
+      EXCEL: [".xlsx", ".xls"],
+      CSV: [".csv"],
+    };
+
+    const extension = file.name
+      .substring(file.name.lastIndexOf("."))
+      .toLowerCase();
+
+    if (!allowedExtensions[addReportForm.format]?.includes(extension)) {
+      alert(`Please select a ${addReportForm.format} file.`);
+      e.target.value = "";
+      setReportFile(null);
+      return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      alert("File size must be 10 MB or less.");
+      e.target.value = "";
+      setReportFile(null);
+      return;
+    }
+
+    setReportFile(file);
   };
 
   const openAddReportModal = () => {
@@ -327,6 +450,11 @@ const Reports = () => {
       startDate: "",
       endDate: "",
     });
+    setReportFile(null);
+
+    if (reportFileInputRef.current) {
+      reportFileInputRef.current.value = "";
+    }
 
     setShowAddReportModal(true);
   };
@@ -353,23 +481,25 @@ const Reports = () => {
       return;
     }
 
+    if (!reportFile) {
+      alert("Please upload the report file.");
+      return;
+    }
+
     try {
       setLoading(true);
 
-      const payload = {
-        reportName: addReportForm.reportName.trim(),
-        category: addReportForm.category,
-        reportType: addReportForm.reportType.trim(),
-        format: addReportForm.format,
-        startDate: addReportForm.startDate || null,
-        endDate: addReportForm.endDate || null,
-        generatedBy: "Admin",
-      };
+      const formData = new FormData();
+      formData.append("reportName", addReportForm.reportName.trim());
+      formData.append("category", addReportForm.category);
+      formData.append("reportType", addReportForm.reportType.trim());
+      formData.append("format", addReportForm.format);
+      formData.append("startDate", addReportForm.startDate || "");
+      formData.append("endDate", addReportForm.endDate || "");
+      formData.append("generatedBy", "Admin");
+      formData.append("reportFile", reportFile);
 
-      const response = await axios.post(
-        API_BASE_URL,
-        payload
-      );
+      const response = await axios.post(API_BASE_URL, formData);
 
       if (!response.data.success) {
         throw new Error(
@@ -387,6 +517,10 @@ const Reports = () => {
         startDate: "",
         endDate: "",
       });
+      setReportFile(null);
+      if (reportFileInputRef.current) {
+        reportFileInputRef.current.value = "";
+      }
 
       await Promise.all([
         fetchDashboard(),
@@ -414,6 +548,39 @@ const Reports = () => {
   const handleEditReportChange = (e) => {
     const { name, value } = e.target;
     setEditReport((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this report?"
+    );
+
+    if (!confirmed) return;
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/reports/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to delete report");
+      }
+
+      // Remove deleted report from current table
+      setReports((prevReports) =>
+        prevReports.filter((report) => report._id !== id)
+      );
+
+      // Refresh dashboard count
+      fetchDashboard();
+
+      alert("Report deleted successfully");
+    } catch (error) {
+      console.error("Delete report error:", error);
+      alert(error.message || "Failed to delete report");
+    }
   };
 
   const openEditReportModal = (report) => {
@@ -498,7 +665,23 @@ const Reports = () => {
 
 
   // EDIT SCHEDULED REPORT
+  // =========================
+  // ADD SCHEDULED REPORT
+  // =========================
 
+  const handleAddScheduledReport = () => {
+    setScheduleForm({
+      reportName: "",
+      category: "",
+      schedule: "",
+      nextRun: "",
+      format: "PDF",
+      recipients: "",
+      status: "ACTIVE",
+    });
+
+    setShowAddScheduledModal(true);
+  };
 
   const handleEditScheduled = (scheduledReport) => {
     setSelectedScheduled(scheduledReport);
@@ -699,6 +882,21 @@ const Reports = () => {
   };
 
 
+  // OPEN UPLOADED REPORT FILE
+
+  const handleOpenReportFile = (report) => {
+    if (!report?.filePath) {
+      alert("Report file is not available.");
+      return;
+    }
+
+    const fileUrl = report.filePath.startsWith("http")
+      ? report.filePath
+      : `${REPORT_SERVER_URL}/${report.filePath.replace(/^\/+/, "")}`;
+
+    window.open(fileUrl, "_blank", "noopener,noreferrer");
+  };
+
   // JSX
 
 
@@ -735,6 +933,15 @@ const Reports = () => {
         >
           <Plus size={17} />
           Add Report
+        </button>
+
+        <button
+          type="button"
+          className="export-data-btn"
+          onClick={handleAddScheduledReport}
+        >
+          <Plus size={16} />
+          Add Schedule Report
         </button>
 
       </div>
@@ -1054,17 +1261,38 @@ const Reports = () => {
                       </td>
 
                       <td>
-                        <span
-                          className={`format-badge ${report.format?.toLowerCase()
-                            }`}
-                        >
-                          {report.format}
-                        </span>
+                        {report.format === "PDF" ? (
+                          <button
+                            type="button"
+                            className="format-badge pdf pdf-clickable"
+                            onClick={() => handleOpenReportFile(report)}
+                            title="Open PDF"
+                          >
+                            {report.format}
+                          </button>
+                        ) : (
+                          <span
+                            className={`format-badge ${report.format?.toLowerCase()}`}
+                          >
+                            {report.format}
+                          </span>
+                        )}
                       </td>
 
                       <td>
 
                         <div className="report-actions">
+
+                          <button
+                            title="View"
+                            onClick={() =>
+                              handleViewReport(
+                                report._id
+                              )
+                            }
+                          >
+                            <Eye size={16} />
+                          </button>
 
                           <button
                             title="Download"
@@ -1084,18 +1312,17 @@ const Reports = () => {
                             <Pencil size={16} />
                           </button>
 
-                          <button
-                            title="View"
-                            onClick={() =>
-                              handleViewReport(
-                                report._id
-                              )
-                            }
-                          >
-                            <Eye size={16} />
-                          </button>
 
                           <button
+                            type="button"
+                            className="row-icon-btn"
+                            title="Delete Report"
+                            onClick={() => handleDelete(report._id)}
+                          >
+                            <Trash2 size={16} />
+                          </button>
+
+                          {/* <button
                             title="More"
                             onClick={() =>
                               handleViewReport(
@@ -1104,7 +1331,7 @@ const Reports = () => {
                             }
                           >
                             <MoreVertical size={16} />
-                          </button>
+                          </button> */}
 
                         </div>
 
@@ -1407,6 +1634,50 @@ const Reports = () => {
                 </div>
 
 
+                {/* REPORT FILE */}
+                <div className="form-group full-width">
+
+                  <label>Upload Report File *</label>
+
+                  <div className="report-file-upload">
+                    <input
+                      ref={reportFileInputRef}
+                      id="reportFile"
+                      type="file"
+                      accept={
+                        addReportForm.format === "PDF"
+                          ? ".pdf"
+                          : addReportForm.format === "EXCEL"
+                            ? ".xlsx,.xls"
+                            : ".csv"
+                      }
+                      onChange={handleReportFileChange}
+                      required
+                    />
+
+                    <label
+                      htmlFor="reportFile"
+                      className="report-file-upload-btn"
+                    >
+                      <Upload size={16} />
+                      Choose File
+                    </label>
+
+                    <span className="report-file-name">
+                      {reportFile?.name || "No file selected"}
+                    </span>
+                  </div>
+
+                  <small className="report-file-help">
+                    {addReportForm.format === "PDF"
+                      ? "PDF file only"
+                      : addReportForm.format === "EXCEL"
+                        ? "Excel file only (.xlsx or .xls)"
+                        : "CSV file only"} — Maximum 10 MB
+                  </small>
+
+                </div>
+
                 {/* FORMAT */}
                 <div className="form-group">
 
@@ -1520,11 +1791,6 @@ const Reports = () => {
                     <option value="CSV">CSV</option>
                   </select>
                 </div>
-              </div>
-
-              <div className="add-report-info">
-                <Pencil size={17} />
-                <span>Update the report details and save your changes.</span>
               </div>
 
               <div className="modal-footer">
@@ -1882,6 +2148,220 @@ const Reports = () => {
 
         </div>
 
+      )}
+
+      {/* ================= ADD SCHEDULED REPORT MODAL ================= */}
+
+      {showAddScheduledModal && (
+        <div
+          className="report-modal-overlay"
+          onClick={() => setShowAddScheduledModal(false)}
+        >
+          <div
+            className="report-modal scheduled-edit-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="modal-header">
+              <div>
+                <h3>Add Schedule Report</h3>
+                <p>
+                  Create a new scheduled report
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() =>
+                  setShowAddScheduledModal(false)
+                }
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <form
+              onSubmit={handleCreateScheduled}
+              className="scheduled-edit-form"
+            >
+              <div className="form-group">
+                <label>Report Name</label>
+
+                <input
+                  type="text"
+                  value={scheduleForm.reportName}
+                  onChange={(e) =>
+                    setScheduleForm({
+                      ...scheduleForm,
+                      reportName: e.target.value,
+                    })
+                  }
+                  placeholder="Enter report name"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Category</label>
+
+                <select
+                  value={scheduleForm.category}
+                  onChange={(e) =>
+                    setScheduleForm({
+                      ...scheduleForm,
+                      category: e.target.value,
+                    })
+                  }
+                  required
+                >
+                  <option value="">
+                    Select Category
+                  </option>
+
+                  <option value="SALES">
+                    SALES
+                  </option>
+
+                  <option value="FINANCE">
+                    FINANCE
+                  </option>
+
+                  <option value="INVENTORY">
+                    INVENTORY
+                  </option>
+
+                  <option value="SCHEME_REWARDS">
+                    SCHEME & REWARDS
+                  </option>
+
+                  <option value="CUSTOMER">
+                    CUSTOMER
+                  </option>
+
+                  <option value="USER_ACTIVITY">
+                    USER & ACTIVITY
+                  </option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label>Schedule</label>
+
+                <input
+                  type="text"
+                  value={scheduleForm.schedule}
+                  onChange={(e) =>
+                    setScheduleForm({
+                      ...scheduleForm,
+                      schedule: e.target.value,
+                    })
+                  }
+                  placeholder="e.g. Daily at 09:00 AM"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Next Run</label>
+
+                <input
+                  type="datetime-local"
+                  value={scheduleForm.nextRun}
+                  onChange={(e) =>
+                    setScheduleForm({
+                      ...scheduleForm,
+                      nextRun: e.target.value,
+                    })
+                  }
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Format</label>
+
+                <select
+                  value={scheduleForm.format}
+                  onChange={(e) =>
+                    setScheduleForm({
+                      ...scheduleForm,
+                      format: e.target.value,
+                    })
+                  }
+                >
+                  <option value="PDF">
+                    PDF
+                  </option>
+
+                  <option value="EXCEL">
+                    Excel
+                  </option>
+
+                  <option value="CSV">
+                    CSV
+                  </option>
+                </select>
+              </div>
+
+              <div className="form-group">
+                <label>Recipients</label>
+
+                <input
+                  type="text"
+                  value={scheduleForm.recipients}
+                  onChange={(e) =>
+                    setScheduleForm({
+                      ...scheduleForm,
+                      recipients: e.target.value,
+                    })
+                  }
+                  placeholder="email1@example.com, email2@example.com"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Status</label>
+
+                <select
+                  value={scheduleForm.status}
+                  onChange={(e) =>
+                    setScheduleForm({
+                      ...scheduleForm,
+                      status: e.target.value,
+                    })
+                  }
+                >
+                  <option value="ACTIVE">
+                    ACTIVE
+                  </option>
+
+                  <option value="PAUSED">
+                    PAUSED
+                  </option>
+                </select>
+              </div>
+
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="modal-close-btn"
+                  onClick={() =>
+                    setShowAddScheduledModal(false)
+                  }
+                >
+                  Cancel
+                </button>
+
+                <button
+                  type="submit"
+                  className="modal-save-btn"
+                >
+                  Add Schedule Report
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       )}
     </div>
   );

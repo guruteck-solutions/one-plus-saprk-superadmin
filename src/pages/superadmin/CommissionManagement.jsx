@@ -40,21 +40,20 @@ const STATUS_OPTIONS = [
     "CANCELLED",
 ];
 
-const SALE_TYPES = ["CASH", "CREDIT"];
-
 const emptyForm = {
-    invoiceNumber: "",
-    customer: "",
-    store: "",
+    user: "",
+    userType: "",
+    branch: "",
     territory: "",
-    salesExecutive: "",
-    saleDate: "",
-    invoiceValue: "",
+    schemeSource: "",
+    salesAmount: "",
     rewardPoints: "",
-    saleType: "CASH",
+    cashReward: "",
+    commissionPercentage: "",
+    penalty: "",
+    netPayable: "",
+    status: "PENDING_CALCULATION",
     paymentDate: "",
-    paymentStatus: "PENDING",
-    commissionStatus: "PENDING_CALCULATION",
 };
 
 const formatMoney = (value) => {
@@ -112,118 +111,16 @@ const getStatusClass = (status) => {
     return "pending";
 };
 
-const getCommissionPercentage = (commission) => {
-    if (commission?.commissionPercentage !== undefined) {
-        return Number(commission.commissionPercentage || 0);
-    }
-
-    if (commission?.commissionPercent !== undefined) {
-        return Number(commission.commissionPercent || 0);
-    }
-
-    if (commission?.commissionRate !== undefined) {
-        return Number(commission.commissionRate || 0);
-    }
-
-    return 0;
-};
-
-const getCommissionAmount = (commission) => {
-    return Number(
-        commission?.commissionAmount ??
-        commission?.commission ??
-        commission?.cashReward ??
-        0
-    );
-};
-
-const getPenaltyAmount = (commission) => {
-    return Number(
-        commission?.penaltyAmount ??
-        commission?.penalty ??
-        0
-    );
-};
-
-const getNetCommission = (commission) => {
-    return Number(
-        commission?.netCommission ??
-        commission?.netPayable ??
-        getCommissionAmount(commission) - getPenaltyAmount(commission)
-    );
-};
-
-const getInvoiceValue = (commission) => {
-    return Number(
-        commission?.invoiceValue ??
-        commission?.salesAmount ??
-        commission?.saleAmount ??
-        0
-    );
-};
-
-const getPaymentStatus = (commission) => {
-    return String(
-        commission?.paymentStatus ||
-        commission?.payment_status ||
-        "PENDING"
-    ).toUpperCase();
-};
-
-const getSaleType = (commission) => {
-    return String(
-        commission?.saleType ||
-        commission?.incentiveType ||
-        "CASH"
-    ).toUpperCase();
-};
-
-const getRecoveryDays = (commission) => {
-    if (commission?.recoveryDays !== undefined) {
-        return Number(commission.recoveryDays || 0);
-    }
-
-    if (!commission?.saleDate || !commission?.paymentDate) {
-        return 0;
-    }
-
-    const start = new Date(commission.saleDate);
-    const end = new Date(commission.paymentDate);
-
-    const difference = end.getTime() - start.getTime();
-
-    if (difference <= 0) return 0;
-
-    return Math.floor(difference / (1000 * 60 * 60 * 24));
-};
-
 const getUserName = (commission) => {
-    if (typeof commission?.salesExecutive === "string") {
-        return commission.salesExecutive;
-    }
-
-    if (commission?.salesExecutive?.name) {
-        return commission.salesExecutive.name;
-    }
-
-    if (commission?.employee?.name) {
-        return commission.employee.name;
-    }
-
-    return "—";
+    return commission?.user || "—";
 };
 
 const getUserType = (commission) => {
-    return (
-        commission?.userType ||
-        commission?.employeeType ||
-        commission?.designation ||
-        "Employee"
-    );
+    return commission?.userType || "—";
 };
 
 const getBranch = (commission) => {
-    return commission?.branch || commission?.store || "—";
+    return commission?.branch || "—";
 };
 
 const getTerritory = (commission) => {
@@ -231,13 +128,31 @@ const getTerritory = (commission) => {
 };
 
 const getSchemeSource = (commission) => {
-    return (
-        commission?.schemeSource ||
-        commission?.source ||
-        commission?.scheme ||
-        commission?.incentiveType ||
-        "Commission"
-    );
+    return commission?.schemeSource || "—";
+};
+
+const getSalesAmount = (commission) => {
+    return Number(commission?.salesAmount || 0);
+};
+
+const getRewardPoints = (commission) => {
+    return Number(commission?.rewardPoints || 0);
+};
+
+const getCashReward = (commission) => {
+    return Number(commission?.cashReward || 0);
+};
+
+const getCommissionPercentage = (commission) => {
+    return Number(commission?.commissionPercentage || 0);
+};
+
+const getPenaltyAmount = (commission) => {
+    return Number(commission?.penalty || 0);
+};
+
+const getNetPayable = (commission) => {
+    return Number(commission?.netPayable || 0);
 };
 
 const getDateMonth = (date) => {
@@ -402,17 +317,26 @@ export default function CommissionManagement() {
             setSaving(true);
 
             const payload = {
-                invoiceNumber: form.invoiceNumber,
-                customer: form.customer,
-                store: form.store,
-                territory: form.territory,
-                salesExecutive: form.salesExecutive,
-                saleDate: form.saleDate,
-                invoiceValue: Number(form.invoiceValue),
-                rewardPoints: form.rewardPoints === "" ? 0 : Number(form.rewardPoints),
-                saleType: form.saleType,
+                user: form.user.trim(),
+                userType: form.userType.trim(),
+                branch: form.branch.trim(),
+                territory: form.territory.trim(),
+                schemeSource: form.schemeSource.trim(),
+                salesAmount: Number(form.salesAmount),
+                rewardPoints:
+                    form.rewardPoints === "" ? 0 : Number(form.rewardPoints),
+                cashReward:
+                    form.cashReward === "" ? 0 : Number(form.cashReward),
+                commissionPercentage:
+                    form.commissionPercentage === ""
+                        ? 0
+                        : Number(form.commissionPercentage),
+                penalty:
+                    form.penalty === "" ? 0 : Number(form.penalty),
+                netPayable:
+                    form.netPayable === "" ? 0 : Number(form.netPayable),
+                status: form.status,
                 paymentDate: form.paymentDate || null,
-                paymentStatus: form.paymentStatus,
             };
 
             const response = await fetch(API_URL, {
@@ -433,7 +357,6 @@ export default function CommissionManagement() {
 
             setShowAddModal(false);
             setForm(emptyForm);
-
             await fetchCommissions();
         } catch (error) {
             console.error("Create commission error:", error);
@@ -452,17 +375,26 @@ export default function CommissionManagement() {
             setSaving(true);
 
             const payload = {
-                invoiceNumber: form.invoiceNumber,
-                customer: form.customer,
-                store: form.store,
-                territory: form.territory,
-                salesExecutive: form.salesExecutive,
-                saleDate: form.saleDate,
-                invoiceValue: Number(form.invoiceValue),
-                rewardPoints: form.rewardPoints === "" ? 0 : Number(form.rewardPoints),
-                saleType: form.saleType,
+                user: form.user.trim(),
+                userType: form.userType.trim(),
+                branch: form.branch.trim(),
+                territory: form.territory.trim(),
+                schemeSource: form.schemeSource.trim(),
+                salesAmount: Number(form.salesAmount),
+                rewardPoints:
+                    form.rewardPoints === "" ? 0 : Number(form.rewardPoints),
+                cashReward:
+                    form.cashReward === "" ? 0 : Number(form.cashReward),
+                commissionPercentage:
+                    form.commissionPercentage === ""
+                        ? 0
+                        : Number(form.commissionPercentage),
+                penalty:
+                    form.penalty === "" ? 0 : Number(form.penalty),
+                netPayable:
+                    form.netPayable === "" ? 0 : Number(form.netPayable),
+                status: form.status,
                 paymentDate: form.paymentDate || null,
-                paymentStatus: form.paymentStatus,
             };
 
             const response = await fetch(
@@ -487,7 +419,6 @@ export default function CommissionManagement() {
             setShowEditModal(false);
             setSelectedCommission(null);
             setForm(emptyForm);
-
             await fetchCommissions();
         } catch (error) {
             console.error("Update commission error:", error);
@@ -501,7 +432,7 @@ export default function CommissionManagement() {
         if (!commission?._id) return;
 
         const confirmed = window.confirm(
-            `Delete commission ${commission.invoiceNumber || ""}?`
+            `Delete commission for ${getUserName(commission)}?`
         );
 
         if (!confirmed) return;
@@ -541,7 +472,7 @@ export default function CommissionManagement() {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        commissionStatus: newStatus,
+                        status: newStatus,
                     }),
                 }
             );
@@ -570,28 +501,23 @@ export default function CommissionManagement() {
         setSelectedCommission(commission);
 
         setForm({
-            invoiceNumber: commission?.invoiceNumber || "",
-            customer: commission?.customer || "",
-            store: commission?.store || "",
+            user: commission?.user || "",
+            userType: commission?.userType || "",
+            branch: commission?.branch || "",
             territory: commission?.territory || "",
-            salesExecutive:
-                typeof commission?.salesExecutive === "string"
-                    ? commission.salesExecutive
-                    : commission?.salesExecutive?.name || "",
-            saleDate: commission?.saleDate
-                ? new Date(commission.saleDate)
-                    .toISOString()
-                    .split("T")[0]
-                : "",
-            invoiceValue: getInvoiceValue(commission),
+            schemeSource: commission?.schemeSource || "",
+            salesAmount: commission?.salesAmount ?? "",
             rewardPoints: commission?.rewardPoints ?? "",
-            saleType: getSaleType(commission),
+            cashReward: commission?.cashReward ?? "",
+            commissionPercentage: commission?.commissionPercentage ?? "",
+            penalty: commission?.penalty ?? "",
+            netPayable: commission?.netPayable ?? "",
+            status: normalizeStatus(commission?.status),
             paymentDate: commission?.paymentDate
                 ? new Date(commission.paymentDate)
                     .toISOString()
                     .split("T")[0]
                 : "",
-            paymentStatus: getPaymentStatus(commission),
         });
 
         setShowEditModal(true);
@@ -603,44 +529,31 @@ export default function CommissionManagement() {
 
             const matchesSearch =
                 !searchText ||
-                String(commission?.invoiceNumber || "")
-                    .toLowerCase()
-                    .includes(searchText) ||
-                String(commission?.customer || "")
-                    .toLowerCase()
-                    .includes(searchText) ||
-                getUserName(commission)
-                    .toLowerCase()
-                    .includes(searchText) ||
-                getBranch(commission)
-                    .toLowerCase()
-                    .includes(searchText);
+                getUserName(commission).toLowerCase().includes(searchText) ||
+                getUserType(commission).toLowerCase().includes(searchText) ||
+                getBranch(commission).toLowerCase().includes(searchText) ||
+                getTerritory(commission).toLowerCase().includes(searchText) ||
+                getSchemeSource(commission).toLowerCase().includes(searchText);
 
             const matchesIncentiveType =
                 !incentiveType ||
-                getSaleType(commission) === incentiveType;
+                getSchemeSource(commission) === incentiveType;
 
             const matchesUserType =
-                !userType ||
-                getUserType(commission) === userType;
+                !userType || getUserType(commission) === userType;
 
             const matchesTerritory =
-                !territory ||
-                getTerritory(commission) === territory;
+                !territory || getTerritory(commission) === territory;
 
             const matchesBranch =
-                !branch ||
-                getBranch(commission) === branch;
+                !branch || getBranch(commission) === branch;
 
             const matchesStatus =
-                !status ||
-                normalizeStatus(
-                    commission?.commissionStatus || commission?.status
-                ) === status;
+                !status || normalizeStatus(commission?.status) === status;
 
             const matchesDate =
                 !dateRange ||
-                getDateMonth(commission?.saleDate) === dateRange;
+                getDateMonth(commission?.paymentDate) === dateRange;
 
             return (
                 matchesSearch &&
@@ -694,13 +607,13 @@ export default function CommissionManagement() {
         startIndex + rowsPerPage
     );
 
-    const totalInvoiceValue = commissions.reduce(
-        (sum, item) => sum + getInvoiceValue(item),
+    const totalSalesAmount = commissions.reduce(
+        (sum, item) => sum + getSalesAmount(item),
         0
     );
 
-    const totalCommission = commissions.reduce(
-        (sum, item) => sum + getCommissionAmount(item),
+    const totalCashReward = commissions.reduce(
+        (sum, item) => sum + getCashReward(item),
         0
     );
 
@@ -709,76 +622,32 @@ export default function CommissionManagement() {
         0
     );
 
-    const totalNetCommission = commissions.reduce(
-        (sum, item) => sum + getNetCommission(item),
+    const totalNetPayable = commissions.reduce(
+        (sum, item) => sum + getNetPayable(item),
         0
     );
 
     const releasedCommission = commissions
-        .filter(
-            (item) =>
-                normalizeStatus(
-                    item?.commissionStatus || item?.status
-                ) === "RELEASED"
-        )
-        .reduce(
-            (sum, item) => sum + getNetCommission(item),
-            0
-        );
+        .filter((item) => normalizeStatus(item?.status) === "RELEASED")
+        .reduce((sum, item) => sum + getNetPayable(item), 0);
 
     const pendingCommission = commissions
-        .filter((item) => {
-            const currentStatus = normalizeStatus(
-                item?.commissionStatus || item?.status
-            );
-
-            return [
-                "PENDING_CALCULATION",
-                "UNDER_VERIFICATION",
-            ].includes(currentStatus);
-        })
-        .reduce(
-            (sum, item) => sum + getNetCommission(item),
-            0
-        );
-
-    const cashSales = commissions
-        .filter((item) => getSaleType(item) === "CASH")
-        .reduce(
-            (sum, item) => sum + getInvoiceValue(item),
-            0
-        );
-
-    const creditSales = commissions
-        .filter((item) => getSaleType(item) === "CREDIT")
-        .reduce(
-            (sum, item) => sum + getInvoiceValue(item),
-            0
-        );
-
-    const delayedPayments = commissions.filter(
-        (item) => getRecoveryDays(item) > 90
-    );
-
-    const paidWithinRecovery = commissions.filter(
-        (item) =>
-            item?.paymentDate &&
-            getRecoveryDays(item) <= 90
-    );
+        .filter((item) =>
+            ["PENDING_CALCULATION", "UNDER_VERIFICATION"].includes(
+                normalizeStatus(item?.status)
+            )
+        )
+        .reduce((sum, item) => sum + getNetPayable(item), 0);
 
     const recoveryPercentage =
-        commissions.length > 0
-            ? (paidWithinRecovery.length / commissions.length) *
-            100
+        totalSalesAmount > 0
+            ? (releasedCommission / totalSalesAmount) * 100
             : 0;
 
     const statusCounts = STATUS_OPTIONS.reduce(
         (result, currentStatus) => {
             result[currentStatus] = commissions.filter(
-                (item) =>
-                    normalizeStatus(
-                        item?.commissionStatus || item?.status
-                    ) === currentStatus
+                (item) => normalizeStatus(item?.status) === currentStatus
             ).length;
 
             return result;
@@ -786,10 +655,10 @@ export default function CommissionManagement() {
         {}
     );
 
-    const departments = useMemo(() => {
+    const schemeSources = useMemo(() => {
         const values = commissions
-            .map((item) => item?.department)
-            .filter(Boolean);
+            .map((item) => getSchemeSource(item))
+            .filter((value) => value && value !== "—");
 
         return [...new Set(values)];
     }, [commissions]);
@@ -825,56 +694,41 @@ export default function CommissionManagement() {
         }
 
         const headers = [
-            "Invoice Number",
-            "Customer",
-            "Store",
+            "Name",
+            "User Type",
+            "Branch",
             "Territory",
-            "Sales Executive",
-            "Sale Date",
-            "Invoice Value",
+            "Scheme / Source",
+            "Sales Amount (₹)",
             "Reward Points",
-            "Sale Type",
+            "Cash Reward (₹)",
+            "Comm. %",
+            "Penalty (₹)",
+            "Net Payable (₹)",
+            "Status",
             "Payment Date",
-            "Recovery Days",
-            "Commission %",
-            "Commission Amount",
-            "Penalty Amount",
-            "Net Commission",
-            "Payment Status",
-            "Commission Status",
         ];
 
         const rows = filteredCommissions.map((item) => [
-            item?.invoiceNumber || "",
-            item?.customer || "",
+            getUserName(item),
+            getUserType(item),
             getBranch(item),
             getTerritory(item),
-            getUserName(item),
-            formatDate(item?.saleDate),
-            getInvoiceValue(item),
-            item?.rewardPoints ?? 0,
-            getSaleType(item),
-            formatDate(item?.paymentDate),
-            getRecoveryDays(item),
+            getSchemeSource(item),
+            getSalesAmount(item),
+            getRewardPoints(item),
+            getCashReward(item),
             getCommissionPercentage(item),
-            getCommissionAmount(item),
             getPenaltyAmount(item),
-            getNetCommission(item),
-            getPaymentStatus(item),
-            statusLabel(
-                item?.commissionStatus || item?.status
-            ),
+            getNetPayable(item),
+            statusLabel(item?.status),
+            formatDate(item?.paymentDate),
         ]);
 
-        const csv = [
-            headers,
-            ...rows,
-        ]
+        const csv = [headers, ...rows]
             .map((row) =>
                 row
-                    .map((cell) =>
-                        `"${String(cell).replace(/"/g, '""')}"`
-                    )
+                    .map((cell) => `"${String(cell).replace(/"/g, '""')}"`)
                     .join(",")
             )
             .join("\n");
@@ -884,7 +738,6 @@ export default function CommissionManagement() {
         });
 
         const url = URL.createObjectURL(blob);
-
         const link = document.createElement("a");
 
         link.href = url;
@@ -916,7 +769,7 @@ export default function CommissionManagement() {
     const handleQuickApprove = async () => {
         const pending = commissions.find((item) => {
             const currentStatus = normalizeStatus(
-                item?.commissionStatus || item?.status
+                item?.status
             );
 
             return (
@@ -937,7 +790,7 @@ export default function CommissionManagement() {
         const approved = commissions.find(
             (item) =>
                 normalizeStatus(
-                    item?.commissionStatus || item?.status
+                    item?.status
                 ) === "APPROVED"
         );
 
@@ -1014,7 +867,7 @@ export default function CommissionManagement() {
                     icon={<Wallet size={22} />}
                     iconClass="blue"
                     title="Total Incentive Payable"
-                    value={formatMoney(totalNetCommission)}
+                    value={formatMoney(totalNetPayable)}
                     subtitle="Current commission payable"
                 />
 
@@ -1055,7 +908,7 @@ export default function CommissionManagement() {
                             )
                             .reduce(
                                 (sum, item) =>
-                                    sum + getNetCommission(item),
+                                    sum + getNetPayable(item),
                                 0
                             )
                     )}
@@ -1075,7 +928,7 @@ export default function CommissionManagement() {
                             )
                             .reduce(
                                 (sum, item) =>
-                                    sum + getNetCommission(item),
+                                    sum + getNetPayable(item),
                                 0
                             )
                     )}
@@ -1095,7 +948,7 @@ export default function CommissionManagement() {
                             )
                             .reduce(
                                 (sum, item) =>
-                                    sum + getNetCommission(item),
+                                    sum + getNetPayable(item),
                                 0
                             )
                     )}
@@ -1106,7 +959,7 @@ export default function CommissionManagement() {
                     icon={<Store size={22} />}
                     iconClass="blue"
                     title="Store Commission Payable"
-                    value={formatMoney(totalNetCommission)}
+                    value={formatMoney(totalNetPayable)}
                     subtitle="Own store commission"
                 />
 
@@ -1158,7 +1011,7 @@ export default function CommissionManagement() {
                         >
                             <option value="">All Types</option>
 
-                            {SALE_TYPES.map((type) => (
+                            {schemeSources.map((type) => (
                                 <option key={type} value={type}>
                                     {type}
                                 </option>
@@ -1352,30 +1205,16 @@ export default function CommissionManagement() {
                                 </div>
 
                                 <div className="rolling-mini-row">
-                                    <span>Cash Sales</span>
+                                    <span>Total Sales</span>
                                     <strong>
-                                        {formatMoney(cashSales)}
+                                        {formatMoney(totalSalesAmount)}
                                     </strong>
                                 </div>
 
                                 <div className="rolling-mini-row">
-                                    <span>Credit Sales</span>
+                                    <span>Cash Reward</span>
                                     <strong>
-                                        {formatMoney(creditSales)}
-                                    </strong>
-                                </div>
-
-                                <div className="rolling-mini-row">
-                                    <span>Eligible Incentive</span>
-                                    <strong>
-                                        {formatMoney(totalCommission)}
-                                    </strong>
-                                </div>
-
-                                <div className="rolling-mini-row">
-                                    <span>Pending Recovery</span>
-                                    <strong>
-                                        {formatMoney(creditSales)}
+                                        {formatMoney(totalCashReward)}
                                     </strong>
                                 </div>
 
@@ -1387,9 +1226,9 @@ export default function CommissionManagement() {
                                 </div>
 
                                 <div className="rolling-mini-row net">
-                                    <span>Net Commission</span>
+                                    <span>Net Payable</span>
                                     <strong>
-                                        {formatMoney(totalNetCommission)}
+                                        {formatMoney(totalNetPayable)}
                                     </strong>
                                 </div>
                             </div>
@@ -1440,7 +1279,7 @@ export default function CommissionManagement() {
                                 <thead>
                                     <tr>
                                         <th>Sr. No.</th>
-                                        <th>User</th>
+                                        <th>Name</th>
                                         <th>User Type</th>
                                         <th>Branch</th>
                                         <th>Territory</th>
@@ -1481,7 +1320,6 @@ export default function CommissionManagement() {
                                         paginatedCommissions.map(
                                             (commission, index) => {
                                                 const currentStatus =
-                                                    commission?.commissionStatus ||
                                                     commission?.status ||
                                                     "PENDING_CALCULATION";
 
@@ -1530,7 +1368,7 @@ export default function CommissionManagement() {
 
                                                         <td>
                                                             {formatMoney(
-                                                                getInvoiceValue(
+                                                                getSalesAmount(
                                                                     commission
                                                                 )
                                                             )}
@@ -1543,7 +1381,7 @@ export default function CommissionManagement() {
 
                                                         <td>
                                                             {formatMoney(
-                                                                getCommissionAmount(
+                                                                getCashReward(
                                                                     commission
                                                                 )
                                                             )}
@@ -1566,7 +1404,7 @@ export default function CommissionManagement() {
 
                                                         <td className="net-payable">
                                                             {formatMoney(
-                                                                getNetCommission(
+                                                                getNetPayable(
                                                                     commission
                                                                 )
                                                             )}
@@ -1993,26 +1831,22 @@ export default function CommissionManagement() {
 
                     </div>
 
-                    {/* Delayed Payment Info */}
+                    {/* Commission Summary */}
 
                     <div className="commission-side-card delayed-payment-card">
-
-                        <h3>Delayed Payments</h3>
+                        <h3>Commission Summary</h3>
 
                         <div className="delayed-payment-number">
-                            {delayedPayments.length}
+                            {commissions.length}
                         </div>
 
-                        <span>
-                            Payments pending beyond 90 days
-                        </span>
+                        <span>Total commission records</span>
 
                         <div className="delayed-payment-amount">
-                            {formatMoney(totalPenalty)}
+                            {formatMoney(totalNetPayable)}
                         </div>
 
-                        <small>Penalty amount</small>
-
+                        <small>Total net payable</small>
                     </div>
 
                 </aside>
@@ -2024,11 +1858,8 @@ export default function CommissionManagement() {
 
             {(showAddModal || showEditModal) && (
                 <div className="commission-modal-overlay">
-
                     <div className="commission-modal">
-
                         <div className="commission-modal-header">
-
                             <div>
                                 <h2>
                                     {showEditModal
@@ -2042,15 +1873,16 @@ export default function CommissionManagement() {
                             </div>
 
                             <button
+                                type="button"
                                 onClick={() => {
                                     setShowAddModal(false);
                                     setShowEditModal(false);
+                                    setSelectedCommission(null);
                                     setForm(emptyForm);
                                 }}
                             >
                                 <X size={20} />
                             </button>
-
                         </div>
 
                         <form
@@ -2060,50 +1892,42 @@ export default function CommissionManagement() {
                                     : handleAddCommission
                             }
                         >
-
                             <div className="commission-form-grid">
-
                                 <div className="commission-form-field">
-                                    <label>
-                                        Invoice Number *
-                                    </label>
-
+                                    <label>User *</label>
                                     <input
-                                        name="invoiceNumber"
-                                        value={form.invoiceNumber}
+                                        name="user"
+                                        value={form.user}
                                         onChange={handleFormChange}
                                         required
-                                        placeholder="Enter invoice number"
+                                        placeholder="Enter user name"
                                     />
                                 </div>
 
                                 <div className="commission-form-field">
-                                    <label>Customer *</label>
-
+                                    <label>User Type *</label>
                                     <input
-                                        name="customer"
-                                        value={form.customer}
-                                        onChange={(e) => /^[A-Za-z\s]*$/.test(e.target.value) && handleFormChange(e)}
+                                        name="userType"
+                                        value={form.userType}
+                                        onChange={handleFormChange}
                                         required
-                                        placeholder="Enter customer"
+                                        placeholder="e.g. Employee"
                                     />
                                 </div>
 
                                 <div className="commission-form-field">
-                                    <label>Store *</label>
-
+                                    <label>Branch *</label>
                                     <input
-                                        name="store"
-                                        value={form.store}
+                                        name="branch"
+                                        value={form.branch}
                                         onChange={handleFormChange}
                                         required
-                                        placeholder="Enter store"
+                                        placeholder="Enter branch"
                                     />
                                 </div>
 
                                 <div className="commission-form-field">
                                     <label>Territory *</label>
-
                                     <input
                                         name="territory"
                                         value={form.territory}
@@ -2114,49 +1938,36 @@ export default function CommissionManagement() {
                                 </div>
 
                                 <div className="commission-form-field">
-                                    <label>Sales Executive *</label>
-
+                                    <label>Scheme / Source *</label>
                                     <input
-                                        name="salesExecutive"
-                                        value={form.salesExecutive}
+                                        name="schemeSource"
+                                        value={form.schemeSource}
                                         onChange={handleFormChange}
                                         required
-                                        placeholder="Enter sales executive"
+                                        placeholder="Enter scheme / source"
                                     />
                                 </div>
 
                                 <div className="commission-form-field">
-                                    <label>Sale Date *</label>
-
-                                    <input
-                                        type="date"
-                                        name="saleDate"
-                                        value={form.saleDate}
-                                        onChange={handleFormChange}
-                                        required
-                                    />
-                                </div>
-
-                                <div className="commission-form-field">
-                                    <label>Invoice Value *</label>
-
+                                    <label>Sales Amount (₹) *</label>
                                     <input
                                         type="number"
                                         min="0"
-                                        name="invoiceValue"
-                                        value={form.invoiceValue}
+                                        step="0.01"
+                                        name="salesAmount"
+                                        value={form.salesAmount}
                                         onChange={handleFormChange}
                                         required
-                                        placeholder="Enter invoice value"
+                                        placeholder="Enter sales amount"
                                     />
                                 </div>
 
                                 <div className="commission-form-field">
                                     <label>Reward Points</label>
-
                                     <input
                                         type="number"
                                         min="0"
+                                        step="1"
                                         name="rewardPoints"
                                         value={form.rewardPoints}
                                         onChange={handleFormChange}
@@ -2165,27 +1976,75 @@ export default function CommissionManagement() {
                                 </div>
 
                                 <div className="commission-form-field">
-                                    <label>Sale Type *</label>
+                                    <label>Cash Reward (₹)</label>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        step="0.01"
+                                        name="cashReward"
+                                        value={form.cashReward}
+                                        onChange={handleFormChange}
+                                        placeholder="Enter cash reward"
+                                    />
+                                </div>
 
+                                <div className="commission-form-field">
+                                    <label>Comm. %</label>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        step="0.01"
+                                        name="commissionPercentage"
+                                        value={form.commissionPercentage}
+                                        onChange={handleFormChange}
+                                        placeholder="Enter commission %"
+                                    />
+                                </div>
+
+                                <div className="commission-form-field">
+                                    <label>Penalty (₹)</label>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        step="0.01"
+                                        name="penalty"
+                                        value={form.penalty}
+                                        onChange={handleFormChange}
+                                        placeholder="Enter penalty"
+                                    />
+                                </div>
+
+                                <div className="commission-form-field">
+                                    <label>Net Payable (₹)</label>
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        step="0.01"
+                                        name="netPayable"
+                                        value={form.netPayable}
+                                        onChange={handleFormChange}
+                                        placeholder="Enter net payable"
+                                    />
+                                </div>
+
+                                <div className="commission-form-field">
+                                    <label>Status *</label>
                                     <select
-                                        name="saleType"
-                                        value={form.saleType}
+                                        name="status"
+                                        value={form.status}
                                         onChange={handleFormChange}
                                         required
                                     >
-                                        <option value="CASH">
-                                            Cash Sale
-                                        </option>
-
-                                        <option value="CREDIT">
-                                            Credit Sale
-                                        </option>
+                                        {STATUS_OPTIONS.map((item) => (
+                                            <option key={item} value={item}>
+                                                {statusLabel(item)}
+                                            </option>
+                                        ))}
                                     </select>
                                 </div>
 
                                 <div className="commission-form-field">
                                     <label>Payment Date</label>
-
                                     <input
                                         type="date"
                                         name="paymentDate"
@@ -2193,73 +2052,16 @@ export default function CommissionManagement() {
                                         onChange={handleFormChange}
                                     />
                                 </div>
-
-                                <div className="commission-form-field">
-                                    <label>Payment Status</label>
-
-                                    <select
-                                        name="paymentStatus"
-                                        value={form.paymentStatus}
-                                        onChange={handleFormChange}
-                                    >
-                                        <option value="PENDING">
-                                            Pending
-                                        </option>
-
-                                        <option value="PAID">
-                                            Paid
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <div className="form-group">
-                                    <label>Commission Status</label>
-
-                                    <select
-                                        name="commissionStatus"
-                                        value={form.commissionStatus}
-                                        onChange={(e) =>
-                                            setForm((prev) => ({
-                                                ...prev,
-                                                commissionStatus: e.target.value,
-                                            }))
-                                        }
-                                    >
-                                        <option value="PENDING_CALCULATION">
-                                            Pending Calculation
-                                        </option>
-
-                                        <option value="UNDER_VERIFICATION">
-                                            Under Verification
-                                        </option>
-
-                                        <option value="APPROVED">
-                                            Approved
-                                        </option>
-
-                                        <option value="RELEASED">
-                                            Released
-                                        </option>
-
-                                        <option value="ON_HOLD">
-                                            On Hold
-                                        </option>
-
-                                        <option value="CANCELLED">
-                                            Cancelled
-                                        </option>
-                                    </select>
-                                </div>
                             </div>
 
                             <div className="commission-modal-footer">
-
                                 <button
                                     type="button"
                                     className="commission-cancel-btn"
                                     onClick={() => {
                                         setShowAddModal(false);
                                         setShowEditModal(false);
+                                        setSelectedCommission(null);
                                         setForm(emptyForm);
                                     }}
                                 >
@@ -2277,9 +2079,7 @@ export default function CommissionManagement() {
                                             ? "Update Commission"
                                             : "Add Commission"}
                                 </button>
-
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -2291,21 +2091,15 @@ export default function CommissionManagement() {
 
             {showViewModal && selectedCommission && (
                 <div className="commission-modal-overlay">
-
                     <div className="commission-modal commission-view-modal">
-
                         <div className="commission-modal-header">
-
                             <div>
                                 <h2>Commission Details</h2>
-
-                                <p>
-                                    Complete commission transaction
-                                    information
-                                </p>
+                                <p>Complete commission transaction information</p>
                             </div>
 
                             <button
+                                type="button"
                                 onClick={() => {
                                     setShowViewModal(false);
                                     setSelectedCommission(null);
@@ -2313,162 +2107,80 @@ export default function CommissionManagement() {
                             >
                                 <X size={20} />
                             </button>
-
                         </div>
 
                         <div className="commission-detail-grid">
-
                             <div>
-                                <span>Invoice Number</span>
-                                <strong>
-                                    {selectedCommission.invoiceNumber ||
-                                        "—"}
-                                </strong>
+                                <span>User</span>
+                                <strong>{getUserName(selectedCommission)}</strong>
                             </div>
 
                             <div>
-                                <span>Customer</span>
-                                <strong>
-                                    {selectedCommission.customer || "—"}
-                                </strong>
+                                <span>User Type</span>
+                                <strong>{getUserType(selectedCommission)}</strong>
                             </div>
 
                             <div>
-                                <span>Store</span>
-                                <strong>
-                                    {getBranch(selectedCommission)}
-                                </strong>
+                                <span>Branch</span>
+                                <strong>{getBranch(selectedCommission)}</strong>
                             </div>
 
                             <div>
                                 <span>Territory</span>
-                                <strong>
-                                    {getTerritory(selectedCommission)}
-                                </strong>
+                                <strong>{getTerritory(selectedCommission)}</strong>
                             </div>
 
                             <div>
-                                <span>Sales Executive</span>
-                                <strong>
-                                    {getUserName(selectedCommission)}
-                                </strong>
+                                <span>Scheme / Source</span>
+                                <strong>{getSchemeSource(selectedCommission)}</strong>
                             </div>
 
                             <div>
-                                <span>Sale Date</span>
-                                <strong>
-                                    {formatDate(
-                                        selectedCommission.saleDate
-                                    )}
-                                </strong>
-                            </div>
-
-                            <div>
-                                <span>Invoice Value</span>
-                                <strong>
-                                    {formatMoney(
-                                        getInvoiceValue(selectedCommission)
-                                    )}
-                                </strong>
+                                <span>Sales Amount</span>
+                                <strong>{formatMoney(getSalesAmount(selectedCommission))}</strong>
                             </div>
 
                             <div>
                                 <span>Reward Points</span>
+                                <strong>{getRewardPoints(selectedCommission)}</strong>
+                            </div>
+
+                            <div>
+                                <span>Cash Reward</span>
+                                <strong>{formatMoney(getCashReward(selectedCommission))}</strong>
+                            </div>
+
+                            <div>
+                                <span>Comm. %</span>
                                 <strong>
-                                    {selectedCommission?.rewardPoints ?? "—"}
+                                    {getCommissionPercentage(selectedCommission).toFixed(2)}%
                                 </strong>
                             </div>
 
                             <div>
-                                <span>Sale Type</span>
-                                <strong>
-                                    {getSaleType(selectedCommission)}
-                                </strong>
+                                <span>Penalty</span>
+                                <strong>{formatMoney(getPenaltyAmount(selectedCommission))}</strong>
+                            </div>
+
+                            <div>
+                                <span>Net Payable</span>
+                                <strong>{formatMoney(getNetPayable(selectedCommission))}</strong>
+                            </div>
+
+                            <div>
+                                <span>Status</span>
+                                <strong>{statusLabel(selectedCommission?.status)}</strong>
                             </div>
 
                             <div>
                                 <span>Payment Date</span>
-                                <strong>
-                                    {formatDate(
-                                        selectedCommission.paymentDate
-                                    )}
-                                </strong>
+                                <strong>{formatDate(selectedCommission?.paymentDate)}</strong>
                             </div>
-
-                            <div>
-                                <span>Recovery Days</span>
-                                <strong>
-                                    {getRecoveryDays(selectedCommission)}
-                                </strong>
-                            </div>
-
-                            <div>
-                                <span>Commission %</span>
-                                <strong>
-                                    {getCommissionPercentage(
-                                        selectedCommission
-                                    ).toFixed(2)}
-                                    %
-                                </strong>
-                            </div>
-
-                            <div>
-                                <span>Commission Amount</span>
-                                <strong>
-                                    {formatMoney(
-                                        getCommissionAmount(
-                                            selectedCommission
-                                        )
-                                    )}
-                                </strong>
-                            </div>
-
-                            <div>
-                                <span>Penalty Amount</span>
-                                <strong>
-                                    {formatMoney(
-                                        getPenaltyAmount(
-                                            selectedCommission
-                                        )
-                                    )}
-                                </strong>
-                            </div>
-
-                            <div>
-                                <span>Net Commission</span>
-                                <strong>
-                                    {formatMoney(
-                                        getNetCommission(
-                                            selectedCommission
-                                        )
-                                    )}
-                                </strong>
-                            </div>
-
-                            <div>
-                                <span>Payment Status</span>
-                                <strong>
-                                    {getPaymentStatus(
-                                        selectedCommission
-                                    )}
-                                </strong>
-                            </div>
-
-                            <div>
-                                <span>Commission Status</span>
-                                <strong>
-                                    {statusLabel(
-                                        selectedCommission?.commissionStatus ||
-                                        selectedCommission?.status
-                                    )}
-                                </strong>
-                            </div>
-
                         </div>
 
                         <div className="commission-modal-footer">
-
                             <button
+                                type="button"
                                 className="commission-cancel-btn"
                                 onClick={() => {
                                     setShowViewModal(false);
@@ -2479,6 +2191,7 @@ export default function CommissionManagement() {
                             </button>
 
                             <button
+                                type="button"
                                 className="commission-save-btn"
                                 onClick={() => {
                                     setShowViewModal(false);
@@ -2488,13 +2201,10 @@ export default function CommissionManagement() {
                                 <Pencil size={16} />
                                 Edit
                             </button>
-
                         </div>
-
                     </div>
                 </div>
             )}
-
         </div>
     );
 }

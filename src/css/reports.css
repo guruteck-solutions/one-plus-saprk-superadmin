@@ -766,6 +766,8 @@
   min-height: 56px;
   padding: 9px;
   border-bottom: 1px solid #edf0f4;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 
 .detail-item label {
@@ -899,5 +901,93 @@
 
   .view-all-btn {
     font-size: 7px !important;
+  }
+}
+
+/* ================= REPORT FILE UPLOAD ================= */
+
+.report-file-upload {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 42px;
+}
+
+.report-file-upload input[type="file"] {
+  display: none;
+}
+
+.report-file-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-width: 120px;
+  height: 42px;
+  padding: 0 14px;
+  background: #fff;
+  border: 1px solid #d7deea;
+  border-radius: 6px;
+  color: #344054;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.report-file-upload-btn:hover {
+  border-color: #ff6b00;
+  color: #ff6b00;
+  background: #fff8f3;
+}
+
+.report-file-name {
+  flex: 1;
+  min-width: 0;
+  color: #667085;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.report-file-help {
+  display: block;
+  margin-top: 6px;
+  color: #98a2b3;
+  font-size: 11px;
+}
+
+
+/* ================= CLICKABLE PDF ================= */
+
+.format-badge.pdf-clickable {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  transition: 0.2s ease;
+}
+
+.format-badge.pdf-clickable:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .report-file-upload {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .report-file-upload-btn {
+    width: 100%;
+  }
+
+  .report-file-name {
+    width: 100%;
   }
 }
