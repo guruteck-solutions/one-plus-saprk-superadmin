@@ -1376,7 +1376,7 @@ const FinanceDashboard = () => {
               {filteredTransactions.length} entries
             </span>
 
-            <div className="pagination-controls">
+            <div className="pagination-controlsf">
               <button
                 disabled={currentPage === 1}
                 onClick={() => setCurrentPage((prev) => Math.max(1, prev - 1))}
@@ -1400,18 +1400,6 @@ const FinanceDashboard = () => {
               >
                 <ChevronRight size={16} />
               </button>
-
-              <select
-                value={itemsPerPage}
-                onChange={(e) => {
-                  setItemsPerPage(Number(e.target.value));
-                  setCurrentPage(1);
-                }}
-              >
-                <option value={10}>10 / page</option>
-                <option value={20}>20 / page</option>
-                <option value={50}>50 / page</option>
-              </select>
             </div>
           </div>
         </div>

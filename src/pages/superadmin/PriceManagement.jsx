@@ -28,6 +28,9 @@ const PriceManagement = () => {
 
   const [products, setProducts] = useState([]);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
   const [stats, setStats] = useState({
     totalProducts: 0,
     priceLists: 0,
@@ -230,6 +233,19 @@ const PriceManagement = () => {
       setLoading(false);
     }
   };
+
+  const totalPages = Math.ceil(
+    products.length / itemsPerPage
+  );
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+
+  const endIndex = startIndex + itemsPerPage;
+
+  const paginatedProducts = products.slice(
+    startIndex,
+    endIndex
+  );
 
 
   // FETCH PRICE STATISTICS
@@ -1270,7 +1286,7 @@ const PriceManagement = () => {
                 {!loading &&
                   !error &&
                   products.length > 0 &&
-                  products.map(
+                  paginatedProducts.map(
                     (product) => {
 
                       const productId =
@@ -1529,8 +1545,58 @@ const PriceManagement = () => {
                   )}
 
               </tbody>
-
             </table>
+            <div className="price-table-footer">
+
+              <span>
+                Showing{" "}
+                {products.length === 0 ? 0 : startIndex + 1}
+                {"–"}
+                {Math.min(endIndex, products.length)} of{" "}
+                {products.length} entries
+              </span>
+
+              <div className="price-pagination">
+
+                <button
+                  disabled={currentPage === 1}
+                  onClick={() =>
+                    setCurrentPage((prev) => prev - 1)
+                  }
+                >
+                  ‹
+                </button>
+
+                {Array.from(
+                  { length: totalPages },
+                  (_, index) => index + 1
+                ).map((page) => (
+                  <button
+                    key={page}
+                    className={
+                      currentPage === page ? "active" : ""
+                    }
+                    onClick={() => setCurrentPage(page)}
+                  >
+                    {page}
+                  </button>
+                ))}
+
+                <button
+                  disabled={
+                    currentPage === totalPages ||
+                    totalPages === 0
+                  }
+                  onClick={() =>
+                    setCurrentPage((prev) => prev + 1)
+                  }
+                >
+                  ›
+                </button>
+
+              </div>
+
+            </div>
 
           </div>
 

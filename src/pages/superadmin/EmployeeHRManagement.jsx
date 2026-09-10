@@ -37,7 +37,7 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 const EMPLOYEE_API = `${API_BASE_URL}/api/hr/employees`;
 const LEAVE_API = `${API_BASE_URL}/api/leaves`;
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 10;
 
 const emptyEmployeeForm = {
     name: "",
@@ -1307,12 +1307,12 @@ const EmployeeHRManagement = () => {
 
                         {/* TABLE PAGINATION */}
 
-                        <div className="table-pagination">
+                        <div className="table-paginatione">
                             <span>
                                 Showing {startEntry} to {endEntry} of {filteredEmployees.length} entries
                             </span>
 
-                            <div className="pagination-controls">
+                            <div className="pagination-controlse">
                                 <button
                                     type="button"
                                     disabled={currentPage === 1}

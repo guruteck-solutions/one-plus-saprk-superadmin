@@ -1546,21 +1546,6 @@ export default function CommissionManagement() {
                                 >
                                     <ChevronRight size={16} />
                                 </button>
-
-                                <select
-                                    value={rowsPerPage}
-                                    onChange={(e) =>
-                                        setRowsPerPage(
-                                            Number(e.target.value)
-                                        )
-                                    }
-                                >
-                                    <option value="5">5 / page</option>
-                                    <option value="10">10 / page</option>
-                                    <option value="20">20 / page</option>
-                                    <option value="50">50 / page</option>
-                                </select>
-
                             </div>
                         </div>
                     </div>

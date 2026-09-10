@@ -1772,7 +1772,7 @@ const QRManagement = () => {
                   <ChevronRight size={15} />
                 </button>
 
-                <select
+                {/* <select
                   value={String(pageSize)}
                   onChange={(e) => {
                     setPageSize(Number(e.target.value));
@@ -1788,7 +1788,7 @@ const QRManagement = () => {
                   <option value="50">
                     50 / page
                   </option>
-                </select>
+                </select> */}
 
               </div>
             </div>

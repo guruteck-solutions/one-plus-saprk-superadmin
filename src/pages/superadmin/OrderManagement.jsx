@@ -974,7 +974,7 @@ const OrderManagement = () => {
                             of {filteredOrders.length}
                         </span>
 
-                        <div className="pagination-buttons">
+                        <div className="pagination-buttonss">
                             <button
                                 type="button"
                                 disabled={currentPage === 1}
@@ -983,9 +983,19 @@ const OrderManagement = () => {
                                 <ChevronLeft size={16} />
                             </button>
 
-                            <span>
-                                {currentPage} / {totalPages || 1}
-                            </span>
+                            {Array.from(
+                                { length: totalPages },
+                                (_, index) => index + 1
+                            ).map((page) => (
+                                <button
+                                    key={page}
+                                    type="button"
+                                    className={currentPage === page ? "active" : ""}
+                                    onClick={() => setCurrentPage(page)}
+                                >
+                                    {page}
+                                </button>
+                            ))}
 
                             <button
                                 type="button"

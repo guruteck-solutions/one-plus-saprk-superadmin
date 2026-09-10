@@ -22,6 +22,8 @@ import {
   FileDown,
   Plus,
   Upload,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 import "../../css/reports.css";
@@ -46,6 +48,11 @@ const Reports = () => {
   const [showAddReportModal, setShowAddReportModal] = useState(false);
   const [reportFile, setReportFile] = useState(null);
   const reportFileInputRef = useRef(null);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const ITEMS_PER_PAGE = 10;
+  const [scheduledCurrentPage, setScheduledCurrentPage] = useState(1);
+  const SCHEDULED_ITEMS_PER_PAGE = 10;
 
   const [addReportForm, setAddReportForm] = useState({
     reportName: "",
@@ -159,7 +166,17 @@ const Reports = () => {
     }
   };
 
+  const scheduledTotalPages = Math.ceil(
+    scheduledReports.length / SCHEDULED_ITEMS_PER_PAGE
+  );
 
+  const scheduledStartIndex =
+    (scheduledCurrentPage - 1) * SCHEDULED_ITEMS_PER_PAGE;
+
+  const paginatedScheduledReports = scheduledReports.slice(
+    scheduledStartIndex,
+    scheduledStartIndex + SCHEDULED_ITEMS_PER_PAGE
+  );
   // INITIAL LOAD
 
 
@@ -288,6 +305,18 @@ const Reports = () => {
       );
     });
   }, [reports, filters]);
+
+  const totalPages = Math.ceil(
+    filteredReports.length / ITEMS_PER_PAGE
+  );
+
+  const startIndex =
+    (currentPage - 1) * ITEMS_PER_PAGE;
+
+  const paginatedReports = filteredReports.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
 
 
   // RESET FILTERS
@@ -1238,7 +1267,7 @@ const Reports = () => {
 
                 ) : (
 
-                  filteredReports.map((report) => (
+                  paginatedReports.map((report) => (
 
                     <tr key={report._id}>
 
@@ -1347,10 +1376,56 @@ const Reports = () => {
             </table>
 
           </div>
+          <div className="pagination-row">
+            <span>
+              Showing{" "}
+              {filteredReports.length === 0 ? 0 : startIndex + 1} to{" "}
+              {Math.min(startIndex + ITEMS_PER_PAGE, filteredReports.length)} of{" "}
+              {filteredReports.length} entries
+            </span>
+
+            <div className="pagination-controlsr">
+              <button
+                disabled={currentPage === 1}
+                onClick={() =>
+                  setCurrentPage((prev) => Math.max(1, prev - 1))
+                }
+              >
+                <ChevronLeft size={16} />
+              </button>
+
+              {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+                (page) => (
+                  <button
+                    key={page}
+                    className={currentPage === page ? "active" : ""}
+                    onClick={() => setCurrentPage(page)}
+                  >
+                    {page}
+                  </button>
+                )
+              )}
+
+              <button
+                disabled={currentPage === totalPages || totalPages === 0}
+                onClick={() =>
+                  setCurrentPage((prev) =>
+                    Math.min(totalPages, prev + 1)
+                  )
+                }
+              >
+                <ChevronRight size={16} />
+              </button>
+            </div>
+          </div>
 
         </section>
 
+
+
       </div>
+
+
 
       {/* ================= SCHEDULED REPORTS ================= */}
 
@@ -1403,7 +1478,7 @@ const Reports = () => {
 
               ) : (
 
-                scheduledReports.map((report) => (
+                paginatedScheduledReports.map((report) => (
 
                   <tr key={report._id}>
 
@@ -1505,6 +1580,70 @@ const Reports = () => {
 
           </table>
 
+        </div>
+
+        <div className="scheduled-pagination">
+          <span>
+            Showing{" "}
+            {scheduledReports.length === 0
+              ? 0
+              : scheduledStartIndex + 1}{" "}
+            to{" "}
+            {Math.min(
+              scheduledStartIndex + SCHEDULED_ITEMS_PER_PAGE,
+              scheduledReports.length
+            )}{" "}
+            of {scheduledReports.length} entries
+          </span>
+
+          <div className="scheduled-pagination-controls">
+            <button
+              disabled={scheduledCurrentPage === 1}
+              onClick={() =>
+                setScheduledCurrentPage((prev) =>
+                  Math.max(1, prev - 1)
+                )
+              }
+            >
+              <ChevronLeft size={16} />
+            </button>
+
+            {Array.from(
+              { length: scheduledTotalPages },
+              (_, index) => index + 1
+            ).map((page) => (
+              <button
+                key={page}
+                className={
+                  scheduledCurrentPage === page
+                    ? "active"
+                    : ""
+                }
+                onClick={() =>
+                  setScheduledCurrentPage(page)
+                }
+              >
+                {page}
+              </button>
+            ))}
+
+            <button
+              disabled={
+                scheduledCurrentPage === scheduledTotalPages ||
+                scheduledTotalPages === 0
+              }
+              onClick={() =>
+                setScheduledCurrentPage((prev) =>
+                  Math.min(
+                    scheduledTotalPages,
+                    prev + 1
+                  )
+                )
+              }
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
         </div>
 
       </section>

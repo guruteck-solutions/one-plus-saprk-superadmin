@@ -1174,7 +1174,7 @@ const SchemeManagement = () => {
                 of {filteredSchemes.length} entries
               </span>
 
-              <div className="pagination-controls">
+              <div className="pagination-controlsc">
                 <button
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -1207,8 +1207,6 @@ const SchemeManagement = () => {
                   <ChevronRight size={16} />
                 </button>
               </div>
-
-              <span className="page-size">{itemsPerPage} / page</span>
             </div>
           </div>
         </div>

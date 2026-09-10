@@ -677,12 +677,67 @@
 }
 
 .reward-table-footer {
-  min-height: 36px;
-  padding: 7px 11px;
+  min-height: 55px;
+
+  padding: 10px 15px;
+
   display: flex;
   align-items: center;
-  color: #7c869c;
-  font-size: 8.5px;
+  justify-content: space-between;
+  gap: 15px;
+
+  flex-wrap: wrap;
+}
+
+.reward-table-footer>span {
+  color: #657087;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.reward-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.reward-pagination button {
+  min-width: 28px;
+  height: 28px;
+
+  padding: 0 7px;
+
+  color: #4f5b76;
+  background: #ffffff;
+
+  border: 1px solid #dfe4ec;
+  border-radius: 5px;
+
+  font-size: 9px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.reward-pagination button:hover:not(:disabled) {
+  color: #fff;
+  border-color: #cfc5ed;
+  background: #5b20d5;
+}
+
+.reward-pagination button.active {
+  color: #ffffff;
+  background: #5b20d5;
+  border-color: #5b20d5;
+}
+
+.reward-pagination button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 /* =========================
@@ -1443,4 +1498,29 @@
   .reward-submit-btn {
     width: 100%;
   }
+}
+
+@media (max-width: 560px) {
+
+  .reward-table-footer {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 15px;
+  }
+
+  .reward-table-footer>span {
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .reward-pagination {
+    width: 100%;
+    align-self: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
 }

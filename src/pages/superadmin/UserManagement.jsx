@@ -25,6 +25,9 @@ const UserManagement = () => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+
     const [search, setSearch] = useState("");
     const [role, setRole] = useState("All Roles");
     const [status, setStatus] = useState("All Status");
@@ -109,6 +112,17 @@ const UserManagement = () => {
             matchesDepartment
         );
     });
+
+    const totalPages = Math.ceil(filteredUsers.length / itemsPerPage);
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    const paginatedUsers = filteredUsers.slice(startIndex, endIndex);
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [search, role, status, department]);
 
     // ==========================================
     // STATS
@@ -911,7 +925,7 @@ const UserManagement = () => {
 
                             ) : (
 
-                                filteredUsers.map((user) => (
+                                paginatedUsers.map((user) => (
 
                                     <tr key={user._id}>
 
@@ -1153,31 +1167,47 @@ const UserManagement = () => {
                 <div className="users-table-footer">
 
                     <span>
-                        Showing {filteredUsers.length} of{" "}
-                        {users.length} entries
+                        Showing{" "}
+                        {filteredUsers.length === 0
+                            ? 0
+                            : startIndex + 1}
+                        {"–"}
+                        {Math.min(endIndex, filteredUsers.length)} of{" "}
+                        {filteredUsers.length} entries
                     </span>
 
                     <div className="users-pagination">
 
-                        <button disabled>
+                        <button
+                            disabled={currentPage === 1}
+                            onClick={() =>
+                                setCurrentPage((prev) => prev - 1)
+                            }
+                        >
                             ‹
                         </button>
 
-                        <button className="active">
-                            1
-                        </button>
+                        {Array.from(
+                            { length: totalPages },
+                            (_, index) => index + 1
+                        ).map((page) => (
+                            <button
+                                key={page}
+                                className={
+                                    currentPage === page ? "active" : ""
+                                }
+                                onClick={() => setCurrentPage(page)}
+                            >
+                                {page}
+                            </button>
+                        ))}
 
-                        <button>
-                            2
-                        </button>
-
-                        <button>
-                            3
-                        </button>
-
-                        <span>...</span>
-
-                        <button>
+                        <button
+                            disabled={currentPage === totalPages || totalPages === 0}
+                            onClick={() =>
+                                setCurrentPage((prev) => prev + 1)
+                            }
+                        >
                             ›
                         </button>
 
@@ -1251,9 +1281,9 @@ const UserManagement = () => {
                                         {selectedUser.profilePicture ? (
 
                                             <img
-                                                            src={`http://localhost:5000${selectedUser.profilePicture}`}
-                                                            alt={selectedUser.name}
-                                                        />
+                                                src={`http://localhost:5000${selectedUser.profilePicture}`}
+                                                alt={selectedUser.name}
+                                            />
 
                                         ) : (
 

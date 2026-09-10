@@ -54,35 +54,51 @@ const Dashboard = () => {
   const [period, setPeriod] = useState("This Week");
   const navigate = useNavigate();
 
-  const fetchDashboardStats = async (isRefresh = false) => {
-    try {
-      isRefresh ? setRefreshing(true) : setLoading(true);
-      const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/users/stats", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+ const fetchDashboardStats = async (isRefresh = false) => {
+  try {
+    isRefresh ? setRefreshing(true) : setLoading(true);
 
-      if (res.data.success) {
-        const s = res.data.stats || {};
-        setStats((prev) => ({
-          ...prev,
-          ...s,
-          kyc: { ...prev.kyc, ...(s.kyc || {}) },
-          salesOverview: s.salesOverview || [],
-          orderStatus: s.orderStatus || [],
-          topSellingProducts: s.topSellingProducts || [],
-          topDealers: s.topDealers || [],
-          recentActivities: s.recentActivities || [],
-          systemOverview: s.systemOverview || [],
-        }));
-      }
-    } catch (err) {
-      console.error("Dashboard stats error:", err?.response?.data || err);
-    } finally {
-      setLoading(false);
-      setRefreshing(false);
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      console.error("Token not found. Please login again.");
+      return;
     }
-  };
+
+    const res = await axios.get(
+      "http://localhost:5000/api/users/stats",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (res.data.success) {
+      const s = res.data.stats || {};
+
+      setStats((prev) => ({
+        ...prev,
+        ...s,
+        kyc: { ...prev.kyc, ...(s.kyc || {}) },
+        salesOverview: s.salesOverview || [],
+        orderStatus: s.orderStatus || [],
+        topSellingProducts: s.topSellingProducts || [],
+        topDealers: s.topDealers || [],
+        recentActivities: s.recentActivities || [],
+        systemOverview: s.systemOverview || [],
+      }));
+    }
+  } catch (err) {
+    console.error(
+      "Dashboard stats error:",
+      err?.response?.data || err
+    );
+  } finally {
+    setLoading(false);
+    setRefreshing(false);
+  }
+};
 
   useEffect(() => {
     fetchDashboardStats();

@@ -65,6 +65,9 @@ const RewardDashboard = () => {
     const [addPointsUserType, setAddPointsUserType] = useState("DEALER");
     const [addCashUserType, setAddCashUserType] = useState("DEALER");
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const TRANSACTIONS_PER_PAGE = 10;
+
     /* ========================= FETCH DASHBOARD ========================= */
 
     const fetchDashboard = async () => {
@@ -192,6 +195,18 @@ const RewardDashboard = () => {
             );
         });
     }, [dashboardData.transactions, search, userType, selectedUser, status, territory, fromDate, toDate]);
+
+    const totalPages = Math.ceil(
+        filteredTransactions.length / TRANSACTIONS_PER_PAGE
+    );
+
+    const startIndex =
+        (currentPage - 1) * TRANSACTIONS_PER_PAGE;
+
+    const currentTransactions = filteredTransactions.slice(
+        startIndex,
+        startIndex + TRANSACTIONS_PER_PAGE
+    );
 
     /* ========================= SELECT / RESET ========================= */
 
@@ -657,7 +672,7 @@ const RewardDashboard = () => {
                                             </td>
                                         </tr>
                                     ) : (
-                                        filteredTransactions.map((item) => (
+                                        currentTransactions.map((item) => (
                                             <tr key={item._id}>
                                                 <td>
                                                     <input
@@ -754,7 +769,56 @@ const RewardDashboard = () => {
                         </div>
 
                         <div className="reward-table-footer">
-                            Showing 1 to {filteredTransactions.length} entries
+                            <span>
+                                Showing{" "}
+                                {filteredTransactions.length === 0 ? 0 : startIndex + 1}{" "}
+                                to{" "}
+                                {Math.min(
+                                    startIndex + TRANSACTIONS_PER_PAGE,
+                                    filteredTransactions.length
+                                )}{" "}
+                                of {filteredTransactions.length} entries
+                            </span>
+
+                            <div className="reward-pagination">
+
+                                <button
+                                    type="button"
+                                    disabled={currentPage === 1}
+                                    onClick={() =>
+                                        setCurrentPage((prev) => Math.max(1, prev - 1))
+                                    }
+                                >
+                                    ‹
+                                </button>
+
+                                {Array.from(
+                                    { length: totalPages },
+                                    (_, index) => index + 1
+                                ).map((page) => (
+                                    <button
+                                        key={page}
+                                        type="button"
+                                        className={currentPage === page ? "active" : ""}
+                                        onClick={() => setCurrentPage(page)}
+                                    >
+                                        {page}
+                                    </button>
+                                ))}
+
+                                <button
+                                    type="button"
+                                    disabled={currentPage === totalPages || totalPages === 0}
+                                    onClick={() =>
+                                        setCurrentPage((prev) =>
+                                            Math.min(totalPages, prev + 1)
+                                        )
+                                    }
+                                >
+                                    ›
+                                </button>
+
+                            </div>
                         </div>
                     </div>
 
@@ -1070,8 +1134,6 @@ const RewardDashboard = () => {
                                         ))}
                                 </select>
                             </div>
-
-                            {/* POINTS FIELD */}
                             {/* POINTS FIELD */}
                             {editTransaction.editMode === "POINTS" && (
                                 <div className="modal-field">

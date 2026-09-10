@@ -19,6 +19,8 @@ import {
     Ban,
     Search,
     Trash2,
+    ChevronRight,
+    ChevronLeft,
 } from "lucide-react";
 
 import "../../css/manufacturingManagement.css";
@@ -57,11 +59,6 @@ const ManufacturingBatchManagement = () => {
 
     const [costVerification, setCostVerification] = useState(null);
 
-
-
-    // LOADING / ERROR
-
-
     const [loading, setLoading] = useState(true);
     const [statsLoading, setStatsLoading] = useState(true);
     const [detailsLoading, setDetailsLoading] = useState(false);
@@ -69,27 +66,19 @@ const ManufacturingBatchManagement = () => {
     const [error, setError] = useState("");
     const [costError, setCostError] = useState("");
 
-
-
-    // MODALS
-
-
-
     const [showCreateModal, setShowCreateModal] = useState(false);
     const [showViewModal, setShowViewModal] = useState(false);
     const [showEditModal, setShowEditModal] = useState(false);
     const [showQcModal, setShowQcModal] = useState(false);
     const [showCostModal, setShowCostModal] = useState(false);
 
-
-    // ACTION LOADING
-
     const [savingBatch, setSavingBatch] = useState(false);
     const [savingQc, setSavingQc] = useState(false);
     const [savingCost, setSavingCost] = useState(false);
     const [deletingBatch, setDeletingBatch] = useState(false);
 
-    // CREATE / EDIT BATCH FORM
+    const [currentPage, setCurrentPage] = useState(1);
+    const ITEMS_PER_PAGE = 10;
 
     const emptyBatchForm = {
         batchNumber: "",
@@ -417,6 +406,18 @@ const ManufacturingBatchManagement = () => {
                 .includes(q)
         );
     }, [batches, searchQuery]);
+
+    const totalPages = Math.ceil(
+        filteredBatches.length / ITEMS_PER_PAGE
+    );
+
+    const startIndex =
+        (currentPage - 1) * ITEMS_PER_PAGE;
+
+    const paginatedBatches = filteredBatches.slice(
+        startIndex,
+        startIndex + ITEMS_PER_PAGE
+    );
 
 
     // RESET FILTERS
@@ -2487,144 +2488,143 @@ const ManufacturingBatchManagement = () => {
                                                 </td>
                                             </tr>
                                         ) : (
-                                            filteredBatches.map(
-                                                (batch) => (
-                                                    <tr
-                                                        key={
+                                            paginatedBatches.map((batch) => (
+                                                <tr
+                                                    key={
+                                                        batch._id
+                                                    }
+                                                    onClick={() =>
+                                                        setSelectedBatch(
+                                                            batch
+                                                        )
+                                                    }
+                                                    className={
+                                                        selectedBatch?._id ===
                                                             batch._id
-                                                        }
-                                                        onClick={() =>
-                                                            setSelectedBatch(
-                                                                batch
-                                                            )
-                                                        }
-                                                        className={
-                                                            selectedBatch?._id ===
-                                                                batch._id
-                                                                ? "selected-row"
-                                                                : ""
-                                                        }
-                                                    >
-                                                        <td>
-                                                            <strong>
-                                                                {
-                                                                    batch.batchNumber
-                                                                }
-                                                            </strong>
-                                                        </td>
-
-                                                        <td>
+                                                            ? "selected-row"
+                                                            : ""
+                                                    }
+                                                >
+                                                    <td>
+                                                        <strong>
                                                             {
-                                                                batch.batchName
+                                                                batch.batchNumber
                                                             }
-                                                        </td>
+                                                        </strong>
+                                                    </td>
 
-                                                        <td>
-                                                            {
-                                                                batch.product
-                                                                    ?.productName ||
-                                                                "-"
-                                                            }
-                                                        </td>
+                                                    <td>
+                                                        {
+                                                            batch.batchName
+                                                        }
+                                                    </td>
 
-                                                        <td>
-                                                            {batch.batchDate
-                                                                ? new Date(
-                                                                    batch.batchDate
-                                                                ).toLocaleDateString(
-                                                                    "en-IN"
-                                                                )
-                                                                : "-"}
-                                                        </td>
+                                                    <td>
+                                                        {
+                                                            batch.product
+                                                                ?.productName ||
+                                                            "-"
+                                                        }
+                                                    </td>
 
-                                                        <td>
-                                                            {Number(
-                                                                batch.batchQuantity ||
-                                                                0
-                                                            ).toLocaleString(
+                                                    <td>
+                                                        {batch.batchDate
+                                                            ? new Date(
+                                                                batch.batchDate
+                                                            ).toLocaleDateString(
                                                                 "en-IN"
+                                                            )
+                                                            : "-"}
+                                                    </td>
+
+                                                    <td>
+                                                        {Number(
+                                                            batch.batchQuantity ||
+                                                            0
+                                                        ).toLocaleString(
+                                                            "en-IN"
+                                                        )}
+                                                    </td>
+
+                                                    <td>
+                                                        {batch.batchSize ===
+                                                            "CUSTOM"
+                                                            ? `${batch.customBatchSize}kg`
+                                                            : batch.batchSize}
+                                                    </td>
+
+                                                    <td>
+                                                        <span
+                                                            className={getStatusClass(
+                                                                batch.status
                                                             )}
-                                                        </td>
+                                                        >
+                                                            {batch.status}
+                                                        </span>
+                                                    </td>
 
-                                                        <td>
-                                                            {batch.batchSize ===
-                                                                "CUSTOM"
-                                                                ? `${batch.customBatchSize}kg`
-                                                                : batch.batchSize}
-                                                        </td>
+                                                    <td>
+                                                        {
+                                                            batch
+                                                                .supervisor
+                                                                ?.name ||
+                                                            "-"
+                                                        }
+                                                    </td>
 
-                                                        <td>
-                                                            <span
-                                                                className={getStatusClass(
-                                                                    batch.status
-                                                                )}
+                                                    <td>
+                                                        <div className="manufacturing-action-group">
+
+                                                            <button
+                                                                type="button"
+                                                                className="manufacturing-icon-btn"
+                                                                title="View"
+                                                                onClick={(
+                                                                    e
+                                                                ) => {
+                                                                    e.stopPropagation();
+                                                                    handleViewBatch(
+                                                                        batch._id
+                                                                    );
+                                                                }}
                                                             >
-                                                                {batch.status}
-                                                            </span>
-                                                        </td>
+                                                                <Eye
+                                                                    size={16}
+                                                                />
+                                                            </button>
 
-                                                        <td>
-                                                            {
-                                                                batch
-                                                                    .supervisor
-                                                                    ?.name ||
-                                                                "-"
-                                                            }
-                                                        </td>
+                                                            <button
+                                                                type="button"
+                                                                className="manufacturing-icon-btn"
+                                                                title="Edit"
+                                                                onClick={(
+                                                                    e
+                                                                ) => {
+                                                                    e.stopPropagation();
+                                                                    openEditBatch(
+                                                                        batch._id
+                                                                    );
+                                                                }}
+                                                            >
+                                                                <Pencil
+                                                                    size={16}
+                                                                />
+                                                            </button>
 
-                                                        <td>
-                                                            <div className="manufacturing-action-group">
+                                                            <button
+                                                                type="button"
+                                                                className="manufacturing-icon-btn"
+                                                                onClick={() => handleDeleteBatch(batch._id)}
+                                                                disabled={deletingBatch}
+                                                                title="Delete"
+                                                            >
+                                                                <Trash2 size={16} />
+                                                            </button>
 
-                                                                <button
-                                                                    type="button"
-                                                                    className="manufacturing-icon-btn"
-                                                                    title="View"
-                                                                    onClick={(
-                                                                        e
-                                                                    ) => {
-                                                                        e.stopPropagation();
-                                                                        handleViewBatch(
-                                                                            batch._id
-                                                                        );
-                                                                    }}
-                                                                >
-                                                                    <Eye
-                                                                        size={16}
-                                                                    />
-                                                                </button>
-
-                                                                <button
-                                                                    type="button"
-                                                                    className="manufacturing-icon-btn"
-                                                                    title="Edit"
-                                                                    onClick={(
-                                                                        e
-                                                                    ) => {
-                                                                        e.stopPropagation();
-                                                                        openEditBatch(
-                                                                            batch._id
-                                                                        );
-                                                                    }}
-                                                                >
-                                                                    <Pencil
-                                                                        size={16}
-                                                                    />
-                                                                </button>
-
-                                                                <button
-                                                                    type="button"
-                                                                    className="manufacturing-icon-btn"
-                                                                    onClick={() => handleDeleteBatch(batch._id)}
-                                                                    disabled={deletingBatch}
-                                                                    title="Delete"
-                                                                >
-                                                                    <Trash2 size={16} />
-                                                                </button>
-
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                )
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            )
                                             )
                                         )}
 
@@ -2632,6 +2632,64 @@ const ManufacturingBatchManagement = () => {
 
                                 </table>
 
+                            </div>
+
+                            <div className="batch-pagination">
+                                <span>
+                                    Showing{" "}
+                                    {filteredBatches.length === 0 ? 0 : startIndex + 1}{" "}
+                                    to{" "}
+                                    {Math.min(
+                                        startIndex + ITEMS_PER_PAGE,
+                                        filteredBatches.length
+                                    )}{" "}
+                                    of {filteredBatches.length} entries
+                                </span>
+
+                                <div className="batch-pagination-controls">
+                                    <button
+                                        type="button"
+                                        disabled={currentPage === 1}
+                                        onClick={() =>
+                                            setCurrentPage((prev) =>
+                                                Math.max(1, prev - 1)
+                                            )
+                                        }
+                                    >
+                                        <ChevronLeft size={16} />
+                                    </button>
+
+                                    {Array.from(
+                                        { length: totalPages },
+                                        (_, index) => index + 1
+                                    ).map((page) => (
+                                        <button
+                                            type="button"
+                                            key={page}
+                                            className={
+                                                currentPage === page ? "active" : ""
+                                            }
+                                            onClick={() => setCurrentPage(page)}
+                                        >
+                                            {page}
+                                        </button>
+                                    ))}
+
+                                    <button
+                                        type="button"
+                                        disabled={
+                                            currentPage === totalPages ||
+                                            totalPages === 0
+                                        }
+                                        onClick={() =>
+                                            setCurrentPage((prev) =>
+                                                Math.min(totalPages, prev + 1)
+                                            )
+                                        }
+                                    >
+                                        <ChevronRight size={16} />
+                                    </button>
+                                </div>
                             </div>
 
                         </div>

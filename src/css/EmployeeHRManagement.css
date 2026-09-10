@@ -1008,54 +1008,72 @@
     white-space: normal !important;
 }
 
-.table-pagination {
-    min-height: 47px;
-    padding: 7px 11px;
+.table-paginatione {
+    width: 100%;
+    min-height: 52px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+
+    border-top: 1px solid #edf0f4;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    color: #7d889c;
-    font-size: 8.5px;
+
+    gap: 15px;
+
+    color: #68738b;
+    font-size: 9px;
 }
 
-.pagination-controls {
+.pagination-controlse {
+    flex: 0 0 auto;
+    margin-left: auto;
+
     display: flex;
     align-items: center;
-    gap: 4px;
+    justify-content: flex-end;
+
+    gap: 5px;
 }
 
-.pagination-controls button {
+.pagination-controlse button {
     width: 27px;
     height: 27px;
+
     padding: 0;
-    border: 1px solid #dce3eb;
-    border-radius: 4px;
-    background: #ffffff;
-    color: #56637c;
+
+    border: 1px solid #dfe4ed;
+    border-radius: 5px;
+
+    background: #fff;
+    color: #55617a;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     font-family: inherit;
-    font-size: 8.5px;
+    font-size: 9px;
+
     cursor: pointer;
 }
 
-.pagination-controls button:hover:not(:disabled) {
-    border-color: #aebbd0;
-    background: #f8faff;
+.pagination-controlse button:hover:not(:disabled) {
+  border-color: #cfc5ed;
+    background: #5b20d5;
+    color: #fff;
 }
 
-.pagination-controls button:disabled {
-    color: #c0c7d2;
-    background: #fafbfd;
+.pagination-controlse button:disabled {
+     opacity: 0.45;
     cursor: not-allowed;
 }
 
-.pagination-controls button.active-page {
-    border-color: #2563eb;
-    background: #2563eb;
-    color: #ffffff;
+.pagination-controlse button.active-page {
+   border-color: #5b20d5;
+    background: #5b20d5;
+    color: #fff;
 }
 
 .page-size-select {
@@ -1995,12 +2013,9 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .table-pagination {
-        align-items: flex-start;
-        flex-direction: column;
-    }
+  
 
-    .pagination-controls {
+    .pagination-controlse {
         width: 100%;
         justify-content: flex-start;
         flex-wrap: wrap;
@@ -2105,4 +2120,27 @@
     .delete-confirm-footer button {
         width: 100%;
     }
+}
+
+@media (max-width: 560px) {
+
+    .table-paginatione {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 10px;
+        padding: 10px 15px;
+    }
+
+    .pagination-controlse {
+        width: 100%;
+        margin-left: 0;
+
+        justify-content: center;
+        align-items: center;
+
+        flex-wrap: wrap;
+    }
+
 }

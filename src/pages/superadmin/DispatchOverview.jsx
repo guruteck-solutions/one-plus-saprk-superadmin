@@ -18,6 +18,8 @@ import {
   XCircle,
   ChevronDown,
   Save,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 import "../../css/dispatchOverview.css";
@@ -102,6 +104,9 @@ const DispatchManagement = () => {
   const [selectedStatus, setSelectedStatus] = useState("ALL");
   const [selectedWarehouse, setSelectedWarehouse] = useState("ALL");
   const [selectedTransporter, setSelectedTransporter] = useState("ALL");
+
+  const [dispatchCurrentPage, setDispatchCurrentPage] = useState(1);
+  const DISPATCHES_PER_PAGE = 10;
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -287,6 +292,18 @@ const DispatchManagement = () => {
     if (selectedWarehouse === "ALL") return dispatches;
     return dispatches.filter((item) => item.warehouse === selectedWarehouse);
   }, [dispatches, selectedWarehouse]);
+
+  const dispatchTotalPages = Math.ceil(
+    filteredDispatches.length / DISPATCHES_PER_PAGE
+  );
+
+  const dispatchStartIndex =
+    (dispatchCurrentPage - 1) * DISPATCHES_PER_PAGE;
+
+  const paginatedDispatches = filteredDispatches.slice(
+    dispatchStartIndex,
+    dispatchStartIndex + DISPATCHES_PER_PAGE
+  );
 
   const monthQuantity = monthlyStats.reduce(
     (sum, row) => sum + Number(row.quantity || 0),
@@ -727,7 +744,7 @@ const DispatchManagement = () => {
               <table className="dispatch-table">
                 <thead><tr><th>Dispatch No.</th><th>Dispatch Date</th><th>Order / Invoice No.</th><th>Customer / Party</th><th>Destination</th><th>Transporter</th><th>Vehicle No.</th><th>Qty (MT/Ltrs)</th><th>Status</th><th>POD</th><th>Actions</th></tr></thead>
                 <tbody>
-                  {filteredDispatches.length === 0 ? <tr><td colSpan="11" className="dispatch-empty-cell">No dispatch records found.</td></tr> : filteredDispatches.slice(0, 10).map((item) => <tr key={item._id}>
+                  {filteredDispatches.length === 0 ? <tr><td colSpan="11" className="dispatch-empty-cell">No dispatch records found.</td></tr> : paginatedDispatches.map((item) => <tr key={item._id}>
                     <td><strong>{item.dispatchNumber}</strong></td>
                     <td>{formatDateTime(item.dispatchDate)}</td>
                     <td>{item.invoice || "-"}</td>
@@ -743,7 +760,65 @@ const DispatchManagement = () => {
                 </tbody>
               </table>
             </div>
-            <div className="dispatch-table-footer">Showing {Math.min(filteredDispatches.length, 10)} of {filteredDispatches.length} entries</div>
+            <div className="dispatch-pagination">
+              <span>
+                Showing{" "}
+                {filteredDispatches.length === 0
+                  ? 0
+                  : dispatchStartIndex + 1}{" "}
+                to{" "}
+                {Math.min(
+                  dispatchStartIndex + DISPATCHES_PER_PAGE,
+                  filteredDispatches.length
+                )}{" "}
+                of {filteredDispatches.length} entries
+              </span>
+
+              <div className="dispatch-pagination-controls">
+                <button
+                  type="button"
+                  disabled={dispatchCurrentPage === 1}
+                  onClick={() =>
+                    setDispatchCurrentPage((prev) =>
+                      Math.max(1, prev - 1)
+                    )
+                  }
+                >
+                  <ChevronLeft size={16} />
+                </button>
+
+                {Array.from(
+                  { length: dispatchTotalPages },
+                  (_, index) => index + 1
+                ).map((page) => (
+                  <button
+                    type="button"
+                    key={page}
+                    className={
+                      dispatchCurrentPage === page ? "active" : ""
+                    }
+                    onClick={() => setDispatchCurrentPage(page)}
+                  >
+                    {page}
+                  </button>
+                ))}
+
+                <button
+                  type="button"
+                  disabled={
+                    dispatchCurrentPage === dispatchTotalPages ||
+                    dispatchTotalPages === 0
+                  }
+                  onClick={() =>
+                    setDispatchCurrentPage((prev) =>
+                      Math.min(dispatchTotalPages, prev + 1)
+                    )
+                  }
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+            </div>
           </div>
 
           <div className="dispatch-monthly-grid">

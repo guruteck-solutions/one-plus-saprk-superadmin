@@ -1066,13 +1066,13 @@
   font-size: 8.5px;
 }
 
-.pagination-controls {
+.pagination-controlsf {
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-.pagination-controls button {
+.pagination-controlsf button {
   width: 25px;
   height: 25px;
   border: 1px solid #dfe4ed;
@@ -1086,26 +1086,35 @@
   font-size: 8.5px;
 }
 
-.pagination-controls button.active {
-  border-color: #ff6700;
-  background: #ff6700;
+.pagination-controlsf button:hover:not(:disabled) {
   color: #fff;
+  border-color: #cfc5ed;
+  background: #5b20d5;
 }
 
-.pagination-controls button:disabled {
+.pagination-controlsf button.active {
+  color: #ffffff;
+  background: #5b20d5;
+  border-color: #5b20d5;
+}
+
+.pagination-controlsf button:disabled {
   opacity: 0.45;
   cursor: not-allowed;
 }
 
-.pagination-controls select {
-  height: 25px;
-  margin-left: 4px;
-  padding: 0 6px;
-  border: 1px solid #dfe4ed;
-  border-radius: 4px;
-  background: #fff;
-  color: #5c6780;
-  font-size: 8.5px;
+.pagination-controlsf select {
+  height: 28px;
+  padding: 0 7px;
+
+  border: 1px solid #dfe4ec;
+  border-radius: 5px;
+
+  background: #ffffff;
+  color: #53607e;
+
+  font-size: 9px;
+  outline: none;
 }
 
 /* Expense Breakdown */
@@ -1515,4 +1524,32 @@
   .quick-actions-gridd {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media (max-width: 600px) {
+
+  .pagination-row {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 15px;
+  }
+
+  .pagination-row>span {
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .pagination-controlsf {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .pagination-controlsf select {
+    margin-left: 2px;
+  }
+
 }

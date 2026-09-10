@@ -757,71 +757,102 @@
    ========================================================= */
 
 .commission-pagination {
-    min-height: 43px;
-    padding: 7px 10px;
+    width: 100%;
+    min-height: 52px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+
+    border-top: 1px solid #edf0f4;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+
+    gap: 15px;
 }
 
-.commission-pagination>span {
-    color: #7e899c;
-    font-size: 8.2px;
+.commission-pagination > span {
+    flex: 0 0 auto;
+    margin: 0;
+
+    color: #68738b;
+    font-size: 9px;
     white-space: nowrap;
 }
 
 .commission-pagination-controls {
+    flex: 0 0 auto;
+    margin-left: auto;
+
     display: flex;
     align-items: center;
-    gap: 3px;
+    justify-content: flex-end;
+
+    gap: 5px;
 }
 
 .commission-pagination-controls button {
-    width: 23px;
-    height: 23px;
+    width: 27px;
+    height: 27px;
+
     padding: 0;
-    border: 1px solid #dce3eb;
-    border-radius: 4px;
-    background: #ffffff;
-    color: #526079;
-    display: flex;
+
+    border: 1px solid #dfe4ed;
+    border-radius: 5px;
+
+    background: #fff;
+    color: #55617a;
+
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+
     font-family: inherit;
-    font-size: 8.5px;
+    font-size: 9px;
+
     cursor: pointer;
 }
 
 .commission-pagination-controls button:hover:not(:disabled) {
-    background: #f6f8fb;
-    border-color: #b9c5d5;
+    border-color: #cfc5ed;
+    background: #5b20d5;
+    color: #fff;
 }
 
 .commission-pagination-controls button.active {
-    border-color: #102d72;
-    background: #102d72;
-    color: #ffffff;
+      border-color: #5b20d5;
+    background: #5b20d5;
+    color: #fff;
 }
 
 .commission-pagination-controls button:disabled {
+    color: #c0c7d2;
+    background: #fafbfd;
     opacity: 0.45;
     cursor: not-allowed;
 }
 
 .commission-pagination-controls select {
-    height: 23px;
+    height: 27px;
     margin-left: 3px;
-    padding: 0 6px;
-    border: 1px solid #dce3eb;
-    border-radius: 4px;
-    background: #ffffff;
-    color: #526079;
+    padding: 0 7px;
+
+    border: 1px solid #dfe4ed;
+    border-radius: 5px;
+
+    background: #fff;
+    color: #55617a;
+
     font-family: inherit;
-    font-size: 8.2px;
+    font-size: 9px;
     outline: none;
+
+    cursor: pointer;
 }
 
+.commission-pagination-controls select:focus {
+    border-color: #b9c5d5;
+}
 /* =========================================================
    REPORTS
    ========================================================= */
@@ -1604,4 +1635,35 @@
     .commission-pagination-controls button {
         width: 22px;
     }
+}
+
+@media (max-width: 560px) {
+
+    .commission-pagination {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 10px;
+        padding: 10px 15px;
+    }
+
+    .commission-pagination > span {
+        width: 100%;
+        margin: 0;
+
+        text-align: center;
+        white-space: normal;
+    }
+
+    .commission-pagination-controls {
+        width: 100%;
+        margin-left: 0;
+
+        justify-content: center;
+        align-items: center;
+
+        flex-wrap: wrap;
+    }
+
 }

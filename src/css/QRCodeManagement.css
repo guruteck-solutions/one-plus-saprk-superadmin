@@ -640,56 +640,80 @@
 /* Pagination */
 
 .qr-pagination {
-  min-height: 43px;
-  padding: 6px 10px;
+  min-height: 55px;
+  padding: 10px 15px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  color: #747e97;
+  gap: 15px;
+
+  flex-wrap: wrap;
+}
+
+.qr-pagination>span {
+  color: #657087;
   font-size: 9px;
+  white-space: nowrap;
 }
 
 .qr-pagination-controls {
   display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: flex-end;
+  gap: 6px;
 }
 
 .qr-pagination-controls button {
-  width: 25px;
-  height: 25px;
-  padding: 0;
-  border: 1px solid #dfe4ed;
-  border-radius: 4px;
-  background: #fff;
-  color: #55617e;
+  min-width: 28px;
+  height: 28px;
+
+  padding: 0 7px;
+
+  color: #4f5b76;
+  background: #ffffff;
+
+  border: 1px solid #dfe4ec;
+  border-radius: 5px;
+
+  font-size: 9px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 9px;
+
+  cursor: pointer;
 }
 
 .qr-pagination-controls button:hover:not(:disabled) {
-  border-color: #9f7bdf;
-  color: #6542bd;
+  color: #fff;
+  border-color: #cfc5ed;
+  background: #5b20d5;
 }
 
 .qr-pagination-controls button.active {
-  border-color: #ff6800;
-  background: #ff6800;
-  color: #fff;
+  color: #ffffff;
+  background: #5b20d5;
+  border-color: #5b20d5;
+}
+
+.qr-pagination-controls button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
 
 .qr-pagination-controls select {
-  height: 25px;
+  height: 28px;
   padding: 0 7px;
-  border: 1px solid #dfe4ed;
-  border-radius: 4px;
-  background: #fff;
+
+  border: 1px solid #dfe4ec;
+  border-radius: 5px;
+
+  background: #ffffff;
   color: #53607e;
+
   font-size: 9px;
-  outline: 0;
+  outline: none;
 }
 
 /* Right sidebar cards */
@@ -1286,15 +1310,6 @@
     gap: 18px;
   }
 
-  .qr-pagination {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .qr-pagination-controls {
-    align-self: flex-end;
-  }
-
   .qr-form-grid,
   .qr-detail-grid {
     grid-template-columns: 1fr;
@@ -1307,4 +1322,29 @@
   .qr-modal {
     max-height: 94vh;
   }
+}
+
+@media (max-width: 560px) {
+
+  .qr-pagination {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 15px;
+  }
+
+  .qr-pagination>span {
+    width: 100%;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .qr-pagination-controls {
+    width: 100%;
+    align-self: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
 }

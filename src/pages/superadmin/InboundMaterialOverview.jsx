@@ -19,6 +19,8 @@ import {
     Save,
     ClipboardCheck,
     AlertTriangle,
+    ChevronLeft,
+    ChevronRight,
 } from "lucide-react";
 
 import "../../css/inboundMaterialOverview.css";
@@ -44,6 +46,8 @@ const QUANTITY_CHECK_OPTIONS = [
     { value: "PASSED", label: "Passed" },
     { value: "MISMATCH", label: "Mismatch" },
 ];
+
+
 
 const EMPTY_FORM = {
     poDate: "",
@@ -973,6 +977,21 @@ const InboundMaterialManagement = () => {
         [monthlyStats]
     );
 
+    const [inboundCurrentPage, setInboundCurrentPage] = useState(1);
+    const INBOUND_ITEMS_PER_PAGE = 10;
+
+    const inboundTotalPages = Math.ceil(
+        inbounds.length / INBOUND_ITEMS_PER_PAGE
+    );
+
+    const inboundStartIndex =
+        (inboundCurrentPage - 1) * INBOUND_ITEMS_PER_PAGE;
+
+    const paginatedInbounds = inbounds.slice(
+        inboundStartIndex,
+        inboundStartIndex + INBOUND_ITEMS_PER_PAGE
+    );
+
     return (
         <div className="inbound-material-management-page">
             <div className="inbound-page-header">
@@ -1453,7 +1472,7 @@ const InboundMaterialManagement = () => {
                                             </td>
                                         </tr>
                                     ) : (
-                                        inbounds.slice(0, 10).map((item) => (
+                                        paginatedInbounds.map((item) => (
                                             <tr key={item._id}>
                                                 <td>
                                                     <strong>
@@ -1550,9 +1569,64 @@ const InboundMaterialManagement = () => {
                             </table>
                         </div>
 
-                        <div className="inbound-table-footer">
-                            Showing {Math.min(inbounds.length, 10)} of{" "}
-                            {inbounds.length} entries
+
+
+                        <div className="inbound-pagination">
+                            <span>
+                                Showing{" "}
+                                {inbounds.length === 0 ? 0 : inboundStartIndex + 1}{" "}
+                                to{" "}
+                                {Math.min(
+                                    inboundStartIndex + INBOUND_ITEMS_PER_PAGE,
+                                    inbounds.length
+                                )}{" "}
+                                of {inbounds.length} entries
+                            </span>
+
+                            <div className="inbound-pagination-controls">
+                                <button
+                                    type="button"
+                                    disabled={inboundCurrentPage === 1}
+                                    onClick={() =>
+                                        setInboundCurrentPage((prev) =>
+                                            Math.max(1, prev - 1)
+                                        )
+                                    }
+                                >
+                                    <ChevronLeft size={16} />
+                                </button>
+
+                                {Array.from(
+                                    { length: inboundTotalPages },
+                                    (_, index) => index + 1
+                                ).map((page) => (
+                                    <button
+                                        type="button"
+                                        key={page}
+                                        className={
+                                            inboundCurrentPage === page ? "active" : ""
+                                        }
+                                        onClick={() => setInboundCurrentPage(page)}
+                                    >
+                                        {page}
+                                    </button>
+                                ))}
+
+                                <button
+                                    type="button"
+                                    disabled={
+                                        inboundCurrentPage === inboundTotalPages ||
+                                        inboundTotalPages === 0
+                                    }
+                                    onClick={() =>
+                                        setInboundCurrentPage((prev) =>
+                                            Math.min(inboundTotalPages, prev + 1)
+                                        )
+                                    }
+                                >
+                                    <ChevronRight size={16} />
+                                </button>
+                            </div>
                         </div>
                     </div>
 

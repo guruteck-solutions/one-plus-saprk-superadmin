@@ -643,55 +643,72 @@
 /* Table footer */
 
 .lead-table-footer {
-    min-height: 43px;
-    padding: 7px 11px;
+    min-height: 55px;
+    padding: 10px 15px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    color: #747e98;
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.lead-table-footer>span {
+    color: #657087;
     font-size: 9px;
+    white-space: nowrap;
 }
 
 .lead-pagination {
     display: flex;
     align-items: center;
-    gap: 5px;
+    justify-content: flex-end;
+    gap: 6px;
 }
 
 .lead-pagination button {
-    width: 25px;
-    height: 25px;
-    padding: 0;
-    border: 1px solid #dfe4ed;
-    border-radius: 4px;
+    min-width: 28px;
+    height: 28px;
+
+    padding: 0 7px;
+
+    color: #4f5b76;
     background: #ffffff;
-    color: #55617f;
+
+    border: 1px solid #dfe4ec;
+    border-radius: 5px;
+
+    font-size: 9px;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 9px;
+
+    cursor: pointer;
 }
 
 .lead-pagination button:hover:not(:disabled) {
-    border-color: #8b5cf6;
-    color: #6d28d9;
+    color: #fff;
+    border-color: #cfc5ed;
+    background: #5b20d5;
 }
 
 .lead-pagination button.active {
-    border-color: #ff6800;
-    background: #ff6800;
     color: #ffffff;
+    background: #5b20d5;
+    border-color: #5b20d5;
 }
 
 .lead-pagination button:disabled {
-    opacity: .45;
+    opacity: 0.45;
     cursor: not-allowed;
 }
 
 .lead-pagination span {
+    color: #798398;
+    font-size: 9px;
     padding: 0 3px;
-    color: #7c86a0;
 }
 
 /* Right sidebar */
@@ -1155,6 +1172,7 @@
     background: #ff7100;
     color: #ffffff;
 }
+
 .lead-save-btn:hover:not(:disabled) {
     background: #ea6500;
 }
@@ -1300,11 +1318,6 @@
         flex: 0 0 145px;
     }
 
-    .lead-table-footer {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
     .lead-pagination {
         align-self: flex-end;
     }
@@ -1317,4 +1330,29 @@
     .lead-modal-overlay {
         padding: 10px;
     }
+}
+
+@media (max-width: 560px) {
+
+    .lead-table-footer {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+
+    .lead-table-footer>span {
+        width: 100%;
+        text-align: center;
+        white-space: normal;
+    }
+
+    .lead-pagination {
+        width: 100%;
+        align-self: auto;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
 }

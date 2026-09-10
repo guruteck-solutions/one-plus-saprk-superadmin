@@ -20,6 +20,8 @@ import {
     Save,
     Pencil,
     Trash2,
+    ChevronLeft,
+    ChevronRight,
 } from "lucide-react";
 
 import "../../css/inventoryManagement.css";
@@ -75,6 +77,25 @@ const InventoryManagement = () => {
     const [categoryStock, setCategoryStock] = useState([]);
     const [groupStock, setGroupStock] = useState([]);
     const [warehouseStock, setWarehouseStock] = useState([]);
+
+    const [movementCurrentPage, setMovementCurrentPage] = useState(1);
+    const MOVEMENTS_PER_PAGE = 10;
+    const [warehouseCurrentPage, setWarehouseCurrentPage] = useState(1);
+    const WAREHOUSE_ITEMS_PER_PAGE = 10;
+    const [stockCurrentPage, setStockCurrentPage] = useState(1);
+    const STOCKS_PER_PAGE = 10;
+
+    const warehouseTotalPages = Math.ceil(
+        warehouseStock.length / WAREHOUSE_ITEMS_PER_PAGE
+    );
+
+    const warehouseStartIndex =
+        (warehouseCurrentPage - 1) * WAREHOUSE_ITEMS_PER_PAGE;
+
+    const paginatedWarehouseStock = warehouseStock.slice(
+        warehouseStartIndex,
+        warehouseStartIndex + WAREHOUSE_ITEMS_PER_PAGE
+    );
     const [lowStock, setLowStock] = useState([]);
     const [reorderItems, setReorderItems] = useState([]);
     const [deadStock, setDeadStock] = useState([]);
@@ -95,6 +116,8 @@ const InventoryManagement = () => {
 
     const [movementForm, setMovementForm] = useState(EMPTY_MOVEMENT_FORM);
     const [transferForm, setTransferForm] = useState(EMPTY_TRANSFER_FORM);
+
+
 
     const getToken = () =>
         localStorage.getItem("token") ||
@@ -381,6 +404,18 @@ const InventoryManagement = () => {
                 .includes(query)
         );
     }, [stocks, searchText]);
+
+    const stockTotalPages = Math.ceil(
+        filteredStocks.length / STOCKS_PER_PAGE
+    );
+
+    const stockStartIndex =
+        (stockCurrentPage - 1) * STOCKS_PER_PAGE;
+
+    const paginatedStocks = filteredStocks.slice(
+        stockStartIndex,
+        stockStartIndex + STOCKS_PER_PAGE
+    );
 
     const getStockStatus = (stock) => {
         const quantity = Number(stock?.quantity || 0);
@@ -695,6 +730,7 @@ const InventoryManagement = () => {
     };
 
     const renderStockTable = () => (
+        <>
         <div className="inventory-table-wrapper">
             <table className="inventory-table">
                 <thead>
@@ -719,7 +755,7 @@ const InventoryManagement = () => {
                     ) : filteredStocks.length === 0 ? (
                         <tr><td colSpan="10" className="inventory-empty-cell">No stock records found.</td></tr>
                     ) : (
-                        filteredStocks.map((stock) => {
+                        paginatedStocks.map((stock) => {
                             const status = getStockStatus(stock);
                             return (
                                 <tr
@@ -756,12 +792,92 @@ const InventoryManagement = () => {
                 </tbody>
             </table>
         </div>
+        <div className="stock-pagination">
+    <span>
+        Showing{" "}
+        {filteredStocks.length === 0
+            ? 0
+            : stockStartIndex + 1}{" "}
+        to{" "}
+        {Math.min(
+            stockStartIndex + STOCKS_PER_PAGE,
+            filteredStocks.length
+        )}{" "}
+        of {filteredStocks.length} entries
+    </span>
+
+    <div className="stock-pagination-controls">
+        <button
+            type="button"
+            disabled={stockCurrentPage === 1}
+            onClick={() =>
+                setStockCurrentPage((prev) =>
+                    Math.max(1, prev - 1)
+                )
+            }
+        >
+            <ChevronLeft size={16} />
+        </button>
+
+        {Array.from(
+            { length: stockTotalPages },
+            (_, index) => index + 1
+        ).map((page) => (
+            <button
+                type="button"
+                key={page}
+                className={
+                    stockCurrentPage === page
+                        ? "active"
+                        : ""
+                }
+                onClick={() =>
+                    setStockCurrentPage(page)
+                }
+            >
+                {page}
+            </button>
+        ))}
+
+        <button
+            type="button"
+            disabled={
+                stockCurrentPage === stockTotalPages ||
+                stockTotalPages === 0
+            }
+            onClick={() =>
+                setStockCurrentPage((prev) =>
+                    Math.min(
+                        stockTotalPages,
+                        prev + 1
+                    )
+                )
+            }
+        >
+            <ChevronRight size={16} />
+        </button>
+    </div>
+</div>
+</>
+
     );
 
     const renderMovementTable = (onlyOutward = false) => {
         const list = onlyOutward
             ? movements.filter((movement) => movement?.movementType === "OUTWARD")
             : movements;
+
+        const movementTotalPages = Math.ceil(
+            list.length / MOVEMENTS_PER_PAGE
+        );
+
+        const movementStartIndex =
+            (movementCurrentPage - 1) * MOVEMENTS_PER_PAGE;
+
+        const paginatedMovements = list.slice(
+            movementStartIndex,
+            movementStartIndex + MOVEMENTS_PER_PAGE
+        );
 
         return (
             <div className="inventory-table-wrapper">
@@ -787,7 +903,7 @@ const InventoryManagement = () => {
                         ) : list.length === 0 ? (
                             <tr><td colSpan="9" className="inventory-empty-cell">No stock movements found.</td></tr>
                         ) : (
-                            list.map((movement) => (
+                            paginatedMovements.map((movement) => (
                                 <tr key={movement._id}>
                                     <td>{formatDate(movement.movementDate)}</td>
                                     <td>{movement._id}</td>
@@ -827,6 +943,70 @@ const InventoryManagement = () => {
                         )}
                     </tbody>
                 </table>
+                <div className="movement-pagination">
+                    <span>
+                        Showing{" "}
+                        {list.length === 0 ? 0 : movementStartIndex + 1}{" "}
+                        to{" "}
+                        {Math.min(
+                            movementStartIndex + MOVEMENTS_PER_PAGE,
+                            list.length
+                        )}{" "}
+                        of {list.length} entries
+                    </span>
+
+                    <div className="movement-pagination-controls">
+                        <button
+                            type="button"
+                            disabled={movementCurrentPage === 1}
+                            onClick={() =>
+                                setMovementCurrentPage((prev) =>
+                                    Math.max(1, prev - 1)
+                                )
+                            }
+                        >
+                            <ChevronLeft size={16} />
+                        </button>
+
+                        {Array.from(
+                            { length: movementTotalPages },
+                            (_, index) => index + 1
+                        ).map((page) => (
+                            <button
+                                type="button"
+                                key={page}
+                                className={
+                                    movementCurrentPage === page
+                                        ? "active"
+                                        : ""
+                                }
+                                onClick={() =>
+                                    setMovementCurrentPage(page)
+                                }
+                            >
+                                {page}
+                            </button>
+                        ))}
+
+                        <button
+                            type="button"
+                            disabled={
+                                movementCurrentPage === movementTotalPages ||
+                                movementTotalPages === 0
+                            }
+                            onClick={() =>
+                                setMovementCurrentPage((prev) =>
+                                    Math.min(
+                                        movementTotalPages,
+                                        prev + 1
+                                    )
+                                )
+                            }
+                        >
+                            <ChevronRight size={16} />
+                        </button>
+                    </div>
+                </div>
             </div>
         );
     };
@@ -888,7 +1068,7 @@ const InventoryManagement = () => {
                     ["movements", "Stock Movement"],
                     ["inward", "Inward"],
                     ["outward", "Outward"],
-                    ["warehouse", "Warehouse Stock"],
+                    // ["warehouse", "Warehouse Stock"],
                     ["summary", "Stock Summary"],
                     ["query", "Stock Query"],
                     ["reports", "Reports"],
@@ -943,8 +1123,74 @@ const InventoryManagement = () => {
                                 <div className="inventory-table-wrapper">
                                     <table className="inventory-table">
                                         <thead><tr><th>Warehouse</th><th>Raw Material</th><th>Packing Material</th><th>Finished Goods</th><th>WIP</th><th>Total Stock</th></tr></thead>
-                                        <tbody>{warehouseStock.length === 0 ? <tr><td colSpan="6" className="inventory-empty-cell">No warehouse data.</td></tr> : warehouseStock.map((item) => <tr key={item._id}><td><strong>{item._id}</strong></td><td>{formatNumber(item.rawMaterial)}</td><td>{formatNumber(item.packingMaterial)}</td><td>{formatNumber(item.finishedGoods)}</td><td>{formatNumber(item.wip)}</td><td><strong>{formatNumber(item.totalStock)}</strong></td></tr>)}</tbody>
+                                        <tbody>{warehouseStock.length === 0 ? <tr><td colSpan="6" className="inventory-empty-cell">No warehouse data.</td></tr> : paginatedWarehouseStock.map((item) => <tr key={item._id}><td><strong>{item._id}</strong></td><td>{formatNumber(item.rawMaterial)}</td><td>{formatNumber(item.packingMaterial)}</td><td>{formatNumber(item.finishedGoods)}</td><td>{formatNumber(item.wip)}</td><td><strong>{formatNumber(item.totalStock)}</strong></td></tr>)}</tbody>
                                     </table>
+                                </div>
+                                <div className="warehouse-pagination">
+                                    <span>
+                                        Showing{" "}
+                                        {warehouseStock.length === 0
+                                            ? 0
+                                            : warehouseStartIndex + 1}{" "}
+                                        to{" "}
+                                        {Math.min(
+                                            warehouseStartIndex + WAREHOUSE_ITEMS_PER_PAGE,
+                                            warehouseStock.length
+                                        )}{" "}
+                                        of {warehouseStock.length} entries
+                                    </span>
+
+                                    <div className="warehouse-pagination-controls">
+                                        <button
+                                            type="button"
+                                            disabled={warehouseCurrentPage === 1}
+                                            onClick={() =>
+                                                setWarehouseCurrentPage((prev) =>
+                                                    Math.max(1, prev - 1)
+                                                )
+                                            }
+                                        >
+                                            <ChevronLeft size={16} />
+                                        </button>
+
+                                        {Array.from(
+                                            { length: warehouseTotalPages },
+                                            (_, index) => index + 1
+                                        ).map((page) => (
+                                            <button
+                                                type="button"
+                                                key={page}
+                                                className={
+                                                    warehouseCurrentPage === page
+                                                        ? "active"
+                                                        : ""
+                                                }
+                                                onClick={() =>
+                                                    setWarehouseCurrentPage(page)
+                                                }
+                                            >
+                                                {page}
+                                            </button>
+                                        ))}
+
+                                        <button
+                                            type="button"
+                                            disabled={
+                                                warehouseCurrentPage === warehouseTotalPages ||
+                                                warehouseTotalPages === 0
+                                            }
+                                            onClick={() =>
+                                                setWarehouseCurrentPage((prev) =>
+                                                    Math.min(
+                                                        warehouseTotalPages,
+                                                        prev + 1
+                                                    )
+                                                )
+                                            }
+                                        >
+                                            <ChevronRight size={16} />
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -1005,7 +1251,7 @@ const InventoryManagement = () => {
 
             {activeTab === "outward" && <div className="inventory-panel"><div className="inventory-panel-header"><div><h2>Outward Material</h2><p>Record material consumption.</p></div><button type="button" className="inventory-primary-btn" onClick={openOutwardModal}><Plus size={15} />Record Outward</button></div>{renderMovementTable(true)}</div>}
 
-            {activeTab === "warehouse" && <div className="inventory-panel"><div className="inventory-panel-header"><div><h2>Warehouse Stock</h2><p>Warehouse-wise stock summary</p></div></div><div className="inventory-table-wrapper"><table className="inventory-table"><thead><tr><th>Warehouse</th><th>Raw Material</th><th>Packing Material</th><th>Finished Goods</th><th>WIP</th><th>Total Stock</th></tr></thead><tbody>{warehouseStock.length === 0 ? <tr><td colSpan="6" className="inventory-empty-cell">No warehouse stock found.</td></tr> : warehouseStock.map((item) => <tr key={item._id}><td><strong>{item._id}</strong></td><td>{formatNumber(item.rawMaterial)}</td><td>{formatNumber(item.packingMaterial)}</td><td>{formatNumber(item.finishedGoods)}</td><td>{formatNumber(item.wip)}</td><td><strong>{formatNumber(item.totalStock)}</strong></td></tr>)}</tbody></table></div></div>}
+
 
             {activeTab === "summary" && <div className="inventory-panel"><div className="inventory-panel-header"><div><h2>Stock Summary</h2><p>Inventory movement summary</p></div></div><div className="inventory-summary-grid">{[["Total Stock", stockSummary?.totalStock], ["Total Inward", stockSummary?.totalInward], ["Total Outward", stockSummary?.totalOutward], ["Total Transfers", stockSummary?.totalTransfers], ["Total Adjustments", stockSummary?.totalAdjustments]].map(([label, value]) => <div key={label}><span>{label}</span><strong>{formatNumber(value)}</strong></div>)}</div></div>}
 

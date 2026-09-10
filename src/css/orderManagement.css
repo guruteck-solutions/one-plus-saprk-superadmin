@@ -867,9 +867,9 @@
    ========================================================= */
 
 .order-pagination {
-    min-height: 52px;
+    min-height: 55px;
 
-    padding: 10px 17px;
+    padding: 10px 15px;
 
     border-top: 1px solid #edf0f4;
 
@@ -878,28 +878,35 @@
     justify-content: space-between;
     gap: 15px;
 
-    color: #7b8799;
-
-    font-size: 10px;
+    flex-wrap: wrap;
 }
 
-.pagination-buttons {
+.order-pagination>span {
+    color: #657087;
+    font-size: 9px;
+    white-space: nowrap;
+}
+
+.pagination-buttonss {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: flex-end;
+    gap: 6px;
 }
 
-.pagination-buttons button {
-    width: 29px;
-    height: 29px;
+.pagination-buttonss button {
+    min-width: 28px;
+    height: 28px;
 
-    padding: 0;
+    padding: 0 7px;
 
-    border: 1px solid #dce2e9;
+    color: #4f5b76;
+    background: #ffffff;
+
+    border: 1px solid #dfe4ec;
     border-radius: 5px;
 
-    background: #ffffff;
-    color: #55647a;
+    font-size: 9px;
 
     display: flex;
     align-items: center;
@@ -908,25 +915,22 @@
     cursor: pointer;
 }
 
-.pagination-buttons button:hover:not(:disabled) {
-    border-color: #1570ef;
-    color: #1570ef;
-    background: #f7faff;
+.pagination-buttonss button:hover:not(:disabled) {
+    color: #fff;
+    border-color: #cfc5ed;
+    background: #5b20d5;
 }
 
-.pagination-buttons button:disabled {
+.pagination-buttonss button.active {
+    color: #ffffff;
+    background: #5b20d5;
+    border-color: #5b20d5;
+}
+
+.pagination-buttonss button:disabled {
     opacity: 0.45;
     cursor: not-allowed;
 }
-
-.pagination-buttons>span {
-    min-width: 48px;
-    text-align: center;
-    color: #56657b;
-    font-size: 10px;
-    font-weight: 600;
-}
-
 
 /* =========================================================
    BOTTOM DASHBOARD
@@ -1827,15 +1831,6 @@
 
     }
 
-    .order-pagination {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .order-pagination .pagination-buttons {
-        align-self: flex-end;
-    }
-
     .order-summary-content {
         flex-direction: column;
         justify-content: center;
@@ -1969,4 +1964,29 @@
         padding: 12px;
         gap: 7px;
     }
+}
+
+@media (max-width: 700px) {
+
+    .order-pagination {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+
+    .order-pagination>span {
+        width: 100%;
+        text-align: center;
+        white-space: normal;
+    }
+
+    .order-pagination .pagination-buttonss {
+        width: 100%;
+        align-self: auto;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
 }

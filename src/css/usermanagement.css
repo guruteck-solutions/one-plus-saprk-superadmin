@@ -574,12 +574,15 @@
     justify-content: space-between;
     gap: 15px;
     padding: 10px 15px;
+    flex-wrap: wrap;
 }
 
 .users-table-footer>span {
     color: #657087;
     font-size: 9px;
+    white-space: nowrap;
 }
+
 
 .users-pagination {
     display: flex;
@@ -599,8 +602,9 @@
 }
 
 .users-pagination button:hover:not(:disabled) {
-    color: #5420d6;
+    color: #fff;
     border-color: #cfc5ed;
+
 }
 
 .users-pagination button.active {
@@ -969,14 +973,23 @@
     }
 
     .users-table-footer {
-        align-items: flex-start;
+        align-items: center;
         flex-direction: column;
+        gap: 10px;
+        padding: 10px 15px;
+    }
+
+    .users-table-footer>span {
+        white-space: normal;
     }
 
     .users-pagination {
         width: 100%;
         justify-content: center;
+        flex-wrap: wrap;
     }
+
+
 
     .view-user-modal-overlay {
         padding: 10px;
