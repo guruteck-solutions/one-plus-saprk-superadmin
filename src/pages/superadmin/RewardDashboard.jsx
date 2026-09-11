@@ -19,6 +19,8 @@ import {
     ArrowDownCircle,
     Download,
     Trash2,
+    ChevronRight,
+    ChevronLeft,
 } from "lucide-react";
 
 import "../../css/rewardDashboard.css";
@@ -789,7 +791,7 @@ const RewardDashboard = () => {
                                         setCurrentPage((prev) => Math.max(1, prev - 1))
                                     }
                                 >
-                                    ‹
+                                    <ChevronLeft size={16} />
                                 </button>
 
                                 {Array.from(
@@ -815,7 +817,7 @@ const RewardDashboard = () => {
                                         )
                                     }
                                 >
-                                    ›
+                                    <ChevronRight size={16} />
                                 </button>
 
                             </div>

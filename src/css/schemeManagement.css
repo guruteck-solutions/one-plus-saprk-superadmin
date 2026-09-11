@@ -684,7 +684,7 @@
     box-sizing: border-box;
 }
 
-.scheme-pagination > span {
+.scheme-pagination>span {
     color: #657087;
     font-size: 9px;
     white-space: nowrap;
@@ -719,9 +719,9 @@
 }
 
 .pagination-controlsc button:hover:not(:disabled) {
-    color: #fff;
-    border-color: #eddac5;
+    border-color: #cfc5ed;
     background: #5b20d5;
+    color: #fff;
 }
 
 .pagination-controlsc button.active {
@@ -1468,7 +1468,7 @@
         padding: 10px 15px;
     }
 
-    .scheme-pagination > span {
+    .scheme-pagination>span {
         width: 100%;
         text-align: center;
         white-space: normal;

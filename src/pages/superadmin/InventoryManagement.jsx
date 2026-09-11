@@ -731,134 +731,134 @@ const InventoryManagement = () => {
 
     const renderStockTable = () => (
         <>
-        <div className="inventory-table-wrapper">
-            <table className="inventory-table">
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>SKU</th>
-                        <th>Warehouse</th>
-                        <th>Category</th>
-                        <th>Group</th>
-                        <th>Quantity</th>
-                        <th>Unit</th>
-                        <th>Reorder Level</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {stocksLoading ? (
-                        <tr><td colSpan="10" className="inventory-empty-cell">Loading stock...</td></tr>
-                    ) : stocksError ? (
-                        <tr><td colSpan="10" className="inventory-empty-cell">{stocksError}</td></tr>
-                    ) : filteredStocks.length === 0 ? (
-                        <tr><td colSpan="10" className="inventory-empty-cell">No stock records found.</td></tr>
-                    ) : (
-                        paginatedStocks.map((stock) => {
-                            const status = getStockStatus(stock);
-                            return (
-                                <tr
-                                    key={stock._id}
-                                    className={selectedStock?._id === stock._id ? "selected-row" : ""}
-                                    onClick={() => openViewStockModal(stock)}
-                                >
-                                    <td><strong>{stock.product?.productName || "-"}</strong></td>
-                                    <td>{stock.product?.sku || "-"}</td>
-                                    <td>{stock.warehouse || "-"}</td>
-                                    <td>{stock.category || stock.product?.category || "-"}</td>
-                                    <td>{stock.group || "-"}</td>
-                                    <td>{formatNumber(stock.quantity)}</td>
-                                    <td>{stock.unit || "-"}</td>
-                                    <td>{formatNumber(stock.reorderLevel)}</td>
-                                    <td><span className={status.className}>{status.label}</span></td>
-                                    <td>
-                                        <button
-                                            type="button"
-                                            className="inventory-icon-btn"
-                                            title="View Stock"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                openViewStockModal(stock);
-                                            }}
-                                        >
-                                            <Eye size={15} />
-                                        </button>
-                                    </td>
-                                </tr>
-                            );
-                        })
-                    )}
-                </tbody>
-            </table>
-        </div>
-        <div className="stock-pagination">
-    <span>
-        Showing{" "}
-        {filteredStocks.length === 0
-            ? 0
-            : stockStartIndex + 1}{" "}
-        to{" "}
-        {Math.min(
-            stockStartIndex + STOCKS_PER_PAGE,
-            filteredStocks.length
-        )}{" "}
-        of {filteredStocks.length} entries
-    </span>
+            <div className="inventory-table-wrapper">
+                <table className="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>SKU</th>
+                            <th>Warehouse</th>
+                            <th>Category</th>
+                            <th>Group</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Reorder Level</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {stocksLoading ? (
+                            <tr><td colSpan="10" className="inventory-empty-cell">Loading stock...</td></tr>
+                        ) : stocksError ? (
+                            <tr><td colSpan="10" className="inventory-empty-cell">{stocksError}</td></tr>
+                        ) : filteredStocks.length === 0 ? (
+                            <tr><td colSpan="10" className="inventory-empty-cell">No stock records found.</td></tr>
+                        ) : (
+                            paginatedStocks.map((stock) => {
+                                const status = getStockStatus(stock);
+                                return (
+                                    <tr
+                                        key={stock._id}
+                                        className={selectedStock?._id === stock._id ? "selected-row" : ""}
+                                        onClick={() => openViewStockModal(stock)}
+                                    >
+                                        <td><strong>{stock.product?.productName || "-"}</strong></td>
+                                        <td>{stock.product?.sku || "-"}</td>
+                                        <td>{stock.warehouse || "-"}</td>
+                                        <td>{stock.category || stock.product?.category || "-"}</td>
+                                        <td>{stock.group || "-"}</td>
+                                        <td>{formatNumber(stock.quantity)}</td>
+                                        <td>{stock.unit || "-"}</td>
+                                        <td>{formatNumber(stock.reorderLevel)}</td>
+                                        <td><span className={status.className}>{status.label}</span></td>
+                                        <td>
+                                            <button
+                                                type="button"
+                                                className="inventory-icon-btn"
+                                                title="View Stock"
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    openViewStockModal(stock);
+                                                }}
+                                            >
+                                                <Eye size={15} />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                );
+                            })
+                        )}
+                    </tbody>
+                </table>
+            </div>
+            <div className="stock-pagination">
+                <span>
+                    Showing{" "}
+                    {filteredStocks.length === 0
+                        ? 0
+                        : stockStartIndex + 1}{" "}
+                    to{" "}
+                    {Math.min(
+                        stockStartIndex + STOCKS_PER_PAGE,
+                        filteredStocks.length
+                    )}{" "}
+                    of {filteredStocks.length} entries
+                </span>
 
-    <div className="stock-pagination-controls">
-        <button
-            type="button"
-            disabled={stockCurrentPage === 1}
-            onClick={() =>
-                setStockCurrentPage((prev) =>
-                    Math.max(1, prev - 1)
-                )
-            }
-        >
-            <ChevronLeft size={16} />
-        </button>
+                <div className="stock-pagination-controls">
+                    <button
+                        type="button"
+                        disabled={stockCurrentPage === 1}
+                        onClick={() =>
+                            setStockCurrentPage((prev) =>
+                                Math.max(1, prev - 1)
+                            )
+                        }
+                    >
+                        <ChevronLeft size={16} />
+                    </button>
 
-        {Array.from(
-            { length: stockTotalPages },
-            (_, index) => index + 1
-        ).map((page) => (
-            <button
-                type="button"
-                key={page}
-                className={
-                    stockCurrentPage === page
-                        ? "active"
-                        : ""
-                }
-                onClick={() =>
-                    setStockCurrentPage(page)
-                }
-            >
-                {page}
-            </button>
-        ))}
+                    {Array.from(
+                        { length: stockTotalPages },
+                        (_, index) => index + 1
+                    ).map((page) => (
+                        <button
+                            type="button"
+                            key={page}
+                            className={
+                                stockCurrentPage === page
+                                    ? "active"
+                                    : ""
+                            }
+                            onClick={() =>
+                                setStockCurrentPage(page)
+                            }
+                        >
+                            {page}
+                        </button>
+                    ))}
 
-        <button
-            type="button"
-            disabled={
-                stockCurrentPage === stockTotalPages ||
-                stockTotalPages === 0
-            }
-            onClick={() =>
-                setStockCurrentPage((prev) =>
-                    Math.min(
-                        stockTotalPages,
-                        prev + 1
-                    )
-                )
-            }
-        >
-            <ChevronRight size={16} />
-        </button>
-    </div>
-</div>
-</>
+                    <button
+                        type="button"
+                        disabled={
+                            stockCurrentPage === stockTotalPages ||
+                            stockTotalPages === 0
+                        }
+                        onClick={() =>
+                            setStockCurrentPage((prev) =>
+                                Math.min(
+                                    stockTotalPages,
+                                    prev + 1
+                                )
+                            )
+                        }
+                    >
+                        <ChevronRight size={16} />
+                    </button>
+                </div>
+            </div>
+        </>
 
     );
 

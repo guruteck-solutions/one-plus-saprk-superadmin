@@ -15,6 +15,7 @@ import {
     Upload,
     Download,
     Search,
+    ChevronLeft,
 } from "lucide-react";
 import "../../css/productmanagement.css";
 
@@ -290,27 +291,27 @@ const ProductManagement = () => {
     });
 
     const totalPages = Math.ceil(
-    filteredProducts.length / itemsPerPage
-);
+        filteredProducts.length / itemsPerPage
+    );
 
-const startIndex = (currentPage - 1) * itemsPerPage;
+    const startIndex = (currentPage - 1) * itemsPerPage;
 
-const endIndex = startIndex + itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
 
-const paginatedProducts = filteredProducts.slice(
-    startIndex,
-    endIndex
-);
+    const paginatedProducts = filteredProducts.slice(
+        startIndex,
+        endIndex
+    );
 
-useEffect(() => {
-    setCurrentPage(1);
-}, [
-    searchTerm,
-    selectedCategory,
-    selectedSubCategory,
-    selectedBrand,
-    selectedStatus
-]);
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [
+        searchTerm,
+        selectedCategory,
+        selectedSubCategory,
+        selectedBrand,
+        selectedStatus
+    ]);
     //     =
     // INITIAL LOAD
     //     =
@@ -697,55 +698,55 @@ useEffect(() => {
 
                 <div className="product-table-footer">
 
-    <span>
-        Showing{" "}
-        {filteredProducts.length === 0 ? 0 : startIndex + 1}
-        {"–"}
-        {Math.min(endIndex, filteredProducts.length)} of{" "}
-        {filteredProducts.length} entries
-    </span>
+                    <span>
+                        Showing{" "}
+                        {filteredProducts.length === 0 ? 0 : startIndex + 1}
+                        {"–"}
+                        {Math.min(endIndex, filteredProducts.length)} of{" "}
+                        {filteredProducts.length} entries
+                    </span>
 
-    <div className="product-pagination">
+                    <div className="product-pagination">
 
-        <button
-            disabled={currentPage === 1}
-            onClick={() =>
-                setCurrentPage((prev) => prev - 1)
-            }
-        >
-            ‹
-        </button>
+                        <button
+                            disabled={currentPage === 1}
+                            onClick={() =>
+                                setCurrentPage((prev) => prev - 1)
+                            }
+                        >
+                            <ChevronLeft size={16} />
+                        </button>
 
-        {Array.from(
-            { length: totalPages },
-            (_, index) => index + 1
-        ).map((page) => (
-            <button
-                key={page}
-                className={
-                    currentPage === page ? "active" : ""
-                }
-                onClick={() => setCurrentPage(page)}
-            >
-                {page}
-            </button>
-        ))}
+                        {Array.from(
+                            { length: totalPages },
+                            (_, index) => index + 1
+                        ).map((page) => (
+                            <button
+                                key={page}
+                                className={
+                                    currentPage === page ? "active" : ""
+                                }
+                                onClick={() => setCurrentPage(page)}
+                            >
+                                {page}
+                            </button>
+                        ))}
 
-        <button
-            disabled={
-                currentPage === totalPages ||
-                totalPages === 0
-            }
-            onClick={() =>
-                setCurrentPage((prev) => prev + 1)
-            }
-        >
-            ›
-        </button>
+                        <button
+                            disabled={
+                                currentPage === totalPages ||
+                                totalPages === 0
+                            }
+                            onClick={() =>
+                                setCurrentPage((prev) => prev + 1)
+                            }
+                        >
+                            <ChevronRight size={16} />
+                        </button>
 
-    </div>
+                    </div>
 
-</div>
+                </div>
 
             </div>
 

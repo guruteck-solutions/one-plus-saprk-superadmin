@@ -774,216 +774,216 @@ const LoyaltyTierManagement = () => {
                     </div>
                 ) : (
                     <>
-                    <div className="table-wrapper">
+                        <div className="table-wrapper">
 
-                        <table className="loyalty-table">
+                            <table className="loyalty-table">
 
-                            <thead>
-                                <tr>
-                                    <th>Tier</th>
-                                    <th>Level</th>
-                                    <th>Type</th>
-                                    <th>Applicable To</th>
-                                    <th>Min. Purchase</th>
-                                    <th>Reward Multiplier</th>
-                                    <th>Cashback</th>
-                                    <th>Benefits</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-
-                                {paginatedTiers.map((tier) => (
-                                    <tr key={tier._id}>
-
-                                        <td>
-                                            <div className="tier-name-cell">
-                                                <div className="tier-avatar">
-                                                    {tier.level === 1 ? (
-                                                        <Award size={19} />
-                                                    ) : tier.level === 2 ? (
-                                                        <Star size={19} />
-                                                    ) : (
-                                                        <Crown size={19} />
-                                                    )}
-                                                </div>
-
-                                                <div>
-                                                    <strong>
-                                                        {tier.tierName}
-                                                    </strong>
-
-                                                    {tier.description && (
-                                                        <small>
-                                                            {tier.description}
-                                                        </small>
-                                                    )}
-                                                </div>
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            <span className="level-badge">
-                                                Level {tier.level}
-                                            </span>
-                                        </td>
-
-                                        <td>
-                                            <span className="type-badge">
-                                                {tier.tierType}
-                                            </span>
-                                        </td>
-
-                                        <td>
-                                            <div className="customer-tags">
-                                                {(tier.applicableTo || []).map(
-                                                    (type) => (
-                                                        <span key={type}>
-                                                            {type}
-                                                        </span>
-                                                    )
-                                                )}
-                                            </div>
-                                        </td>
-
-                                        <td>
-                                            ₹
-                                            {Number(
-                                                tier.minPurchase || 0
-                                            ).toLocaleString("en-IN")}
-                                        </td>
-
-                                        <td>
-                                            <strong>
-                                                {tier.rewardPointsMultiplier}x
-                                            </strong>
-                                        </td>
-
-                                        <td>
-                                            <strong>
-                                                {tier.cashbackPercentage}%
-                                            </strong>
-                                        </td>
-
-                                        <td>
-                                            <span className="benefit-count">
-                                                <Gift size={14} />
-                                                {getBenefitsCount(tier)}
-                                            </span>
-                                        </td>
-
-                                        <td>
-                                            <button
-                                                className={`status-toggle ${tier.status === "ACTIVE"
-                                                    ? "active"
-                                                    : "inactive"
-                                                    }`}
-                                                onClick={() =>
-                                                    handleStatusChange(tier)
-                                                }
-                                            >
-                                                <span />
-                                                {tier.status}
-                                            </button>
-                                        </td>
-
-                                        <td>
-                                            <div className="action-buttons">
-
-                                                <button
-                                                    className="icon-btn view"
-                                                    title="View"
-                                                    onClick={() =>
-                                                        openViewModal(tier)
-                                                    }
-                                                >
-                                                    <Eye size={17} />
-                                                </button>
-
-                                                <button
-                                                    className="icon-btn edit"
-                                                    title="Edit"
-                                                    onClick={() =>
-                                                        openEditModal(tier)
-                                                    }
-                                                >
-                                                    <Edit size={17} />
-                                                </button>
-
-                                                <button
-                                                    className="icon-btn delete"
-                                                    title="Delete"
-                                                    onClick={() =>
-                                                        handleDelete(tier)
-                                                    }
-                                                >
-                                                    <Trash2 size={17} />
-                                                </button>
-
-                                            </div>
-                                        </td>
-
+                                <thead>
+                                    <tr>
+                                        <th>Tier</th>
+                                        <th>Level</th>
+                                        <th>Type</th>
+                                        <th>Applicable To</th>
+                                        <th>Min. Purchase</th>
+                                        <th>Reward Multiplier</th>
+                                        <th>Cashback</th>
+                                        <th>Benefits</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
                                     </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    {paginatedTiers.map((tier) => (
+                                        <tr key={tier._id}>
+
+                                            <td>
+                                                <div className="tier-name-cell">
+                                                    <div className="tier-avatar">
+                                                        {tier.level === 1 ? (
+                                                            <Award size={19} />
+                                                        ) : tier.level === 2 ? (
+                                                            <Star size={19} />
+                                                        ) : (
+                                                            <Crown size={19} />
+                                                        )}
+                                                    </div>
+
+                                                    <div>
+                                                        <strong>
+                                                            {tier.tierName}
+                                                        </strong>
+
+                                                        {tier.description && (
+                                                            <small>
+                                                                {tier.description}
+                                                            </small>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <span className="level-badge">
+                                                    Level {tier.level}
+                                                </span>
+                                            </td>
+
+                                            <td>
+                                                <span className="type-badge">
+                                                    {tier.tierType}
+                                                </span>
+                                            </td>
+
+                                            <td>
+                                                <div className="customer-tags">
+                                                    {(tier.applicableTo || []).map(
+                                                        (type) => (
+                                                            <span key={type}>
+                                                                {type}
+                                                            </span>
+                                                        )
+                                                    )}
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                ₹
+                                                {Number(
+                                                    tier.minPurchase || 0
+                                                ).toLocaleString("en-IN")}
+                                            </td>
+
+                                            <td>
+                                                <strong>
+                                                    {tier.rewardPointsMultiplier}x
+                                                </strong>
+                                            </td>
+
+                                            <td>
+                                                <strong>
+                                                    {tier.cashbackPercentage}%
+                                                </strong>
+                                            </td>
+
+                                            <td>
+                                                <span className="benefit-count">
+                                                    <Gift size={14} />
+                                                    {getBenefitsCount(tier)}
+                                                </span>
+                                            </td>
+
+                                            <td>
+                                                <button
+                                                    className={`status-toggle ${tier.status === "ACTIVE"
+                                                        ? "active"
+                                                        : "inactive"
+                                                        }`}
+                                                    onClick={() =>
+                                                        handleStatusChange(tier)
+                                                    }
+                                                >
+                                                    <span />
+                                                    {tier.status}
+                                                </button>
+                                            </td>
+
+                                            <td>
+                                                <div className="action-buttons">
+
+                                                    <button
+                                                        className="icon-btn view"
+                                                        title="View"
+                                                        onClick={() =>
+                                                            openViewModal(tier)
+                                                        }
+                                                    >
+                                                        <Eye size={17} />
+                                                    </button>
+
+                                                    <button
+                                                        className="icon-btn edit"
+                                                        title="Edit"
+                                                        onClick={() =>
+                                                            openEditModal(tier)
+                                                        }
+                                                    >
+                                                        <Edit size={17} />
+                                                    </button>
+
+                                                    <button
+                                                        className="icon-btn delete"
+                                                        title="Delete"
+                                                        onClick={() =>
+                                                            handleDelete(tier)
+                                                        }
+                                                    >
+                                                        <Trash2 size={17} />
+                                                    </button>
+
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                    ))}
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                        <div className="loyalty-pagination">
+                            <span>
+                                Showing{" "}
+                                {filteredTiers.length === 0
+                                    ? 0
+                                    : (currentPage - 1) * PAGE_SIZE + 1}{" "}
+                                to{" "}
+                                {Math.min(
+                                    currentPage * PAGE_SIZE,
+                                    filteredTiers.length
+                                )}{" "}
+                                of {filteredTiers.length} entries
+                            </span>
+
+                            <div className="loyalty-pagination-controls">
+                                <button
+                                    type="button"
+                                    disabled={currentPage === 1}
+                                    onClick={() =>
+                                        setCurrentPage((page) => page - 1)
+                                    }
+                                >
+                                    <ChevronLeft size={15} />
+                                </button>
+
+                                {Array.from(
+                                    { length: totalPages },
+                                    (_, index) => index + 1
+                                ).map((page) => (
+                                    <button
+                                        type="button"
+                                        key={page}
+                                        className={currentPage === page ? "active" : ""}
+                                        onClick={() => setCurrentPage(page)}
+                                    >
+                                        {page}
+                                    </button>
                                 ))}
 
-                            </tbody>
-
-                        </table>
-                    </div>
-
-                    <div className="loyalty-pagination">
-    <span>
-        Showing{" "}
-        {filteredTiers.length === 0
-            ? 0
-            : (currentPage - 1) * PAGE_SIZE + 1}{" "}
-        to{" "}
-        {Math.min(
-            currentPage * PAGE_SIZE,
-            filteredTiers.length
-        )}{" "}
-        of {filteredTiers.length} entries
-    </span>
-
-    <div className="loyalty-pagination-controls">
-        <button
-            type="button"
-            disabled={currentPage === 1}
-            onClick={() =>
-                setCurrentPage((page) => page - 1)
-            }
-        >
-            <ChevronLeft size={15} />
-        </button>
-
-        {Array.from(
-            { length: totalPages },
-            (_, index) => index + 1
-        ).map((page) => (
-            <button
-                type="button"
-                key={page}
-                className={currentPage === page ? "active" : ""}
-                onClick={() => setCurrentPage(page)}
-            >
-                {page}
-            </button>
-        ))}
-
-        <button
-            type="button"
-            disabled={currentPage === totalPages}
-            onClick={() =>
-                setCurrentPage((page) => page + 1)
-            }
-        >
-            <ChevronRight size={15} />
-        </button>
-    </div>
-</div>
-</>
+                                <button
+                                    type="button"
+                                    disabled={currentPage === totalPages}
+                                    onClick={() =>
+                                        setCurrentPage((page) => page + 1)
+                                    }
+                                >
+                                    <ChevronRight size={15} />
+                                </button>
+                            </div>
+                        </div>
+                    </>
                 )}
             </div>
 

@@ -1060,18 +1060,18 @@
 }
 
 .pagination-controlse button:hover:not(:disabled) {
-  border-color: #cfc5ed;
+    border-color: #cfc5ed;
     background: #5b20d5;
     color: #fff;
 }
 
 .pagination-controlse button:disabled {
-     opacity: 0.45;
+    opacity: 0.45;
     cursor: not-allowed;
 }
 
 .pagination-controlse button.active-page {
-   border-color: #5b20d5;
+    border-color: #5b20d5;
     background: #5b20d5;
     color: #fff;
 }
@@ -2013,7 +2013,7 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-  
+
 
     .pagination-controlse {
         width: 100%;

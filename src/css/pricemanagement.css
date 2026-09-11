@@ -853,75 +853,76 @@
 }
 
 .price-table-footer {
-    min-height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 10px 15px;
-    flex-wrap: wrap;
-    flex-direction: row;
+  min-height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 10px 15px;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
-.price-table-footer > span {
-    color: #657087;
-    font-size: 9px;
-    white-space: nowrap;
+.price-table-footer>span {
+  color: #657087;
+  font-size: 9px;
+  white-space: nowrap;
 }
 
 .price-pagination {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
 }
 
 .price-pagination button {
-    min-width: 28px;
-    height: 28px;
-    padding: 0 7px;
-    color: #4f5b76;
-    background: #ffffff;
-    border: 1px solid #dfe4ec;
-    border-radius: 5px;
-    font-size: 9px;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 7px;
+  color: #4f5b76;
+  background: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 5px;
+  font-size: 9px;
 }
 
 .price-pagination button:hover:not(:disabled) {
-    color: #fff;
-    border-color: #cfc5ed;
+  color: #fff;
+  border-color: #cfc5ed;
 }
 
 .price-pagination button.active {
-    color: #ffffff;
-    background: #5b20d5;
-    border-color: #5b20d5;
+  color: #ffffff;
+  background: #5b20d5;
+  border-color: #5b20d5;
 }
 
 .price-pagination span {
-    color: #798398;
-    font-size: 9px;
+  color: #798398;
+  font-size: 9px;
 }
+
 @media (max-width: 600px) {
 
-    .price-table-footer {
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px 15px;
-    }
+  .price-table-footer {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 15px;
+  }
 
-    .price-table-footer > span {
-        width: 100%;
-        white-space: normal;
-        text-align: center;
-    }
+  .price-table-footer>span {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
 
-    .price-pagination {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
+  .price-pagination {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
 }

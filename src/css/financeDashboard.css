@@ -1087,9 +1087,9 @@
 }
 
 .pagination-controlsf button:hover:not(:disabled) {
-  color: #fff;
   border-color: #cfc5ed;
   background: #5b20d5;
+  color: #fff;
 }
 
 .pagination-controlsf button.active {

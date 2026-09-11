@@ -686,9 +686,9 @@
 }
 
 .qr-pagination-controls button:hover:not(:disabled) {
-  color: #fff;
-  border-color: #cfc5ed;
-  background: #5b20d5;
+ border-color: #cfc5ed;
+    background: #5b20d5;
+    color: #fff;
 }
 
 .qr-pagination-controls button.active {

@@ -1849,35 +1849,35 @@ const BankPaymentSheet = () => {
                                     />
                                 </div>
 
-                               <div className="bank-form-group">
-    <label>
-        Account Number
-    </label>
+                                <div className="bank-form-group">
+                                    <label>
+                                        Account Number
+                                    </label>
 
-    <input
-        type="text"
-        name="accountNumber"
-        value={editForm.accountNumber}
-        onChange={(e) => /^\d*$/.test(e.target.value) && handleEditChange(e)}
-    />
-</div>
+                                    <input
+                                        type="text"
+                                        name="accountNumber"
+                                        value={editForm.accountNumber}
+                                        onChange={(e) => /^\d*$/.test(e.target.value) && handleEditChange(e)}
+                                    />
+                                </div>
 
                                 <div className="bank-form-group">
-    <label>IFSC Code</label>
+                                    <label>IFSC Code</label>
 
-    <input
-        type="text"
-        name="ifscCode"
-        value={editForm.ifscCode}
-        onChange={(e) => {
-            const value = e.target.value.toUpperCase();
-            if (/^[A-Z]{0,4}0?[A-Z0-9]{0,6}$/.test(value)) {
-                handleEditChange({ target: { name: "ifscCode", value } });
-            }
-        }}
-        maxLength={11}
-    />
-</div>
+                                    <input
+                                        type="text"
+                                        name="ifscCode"
+                                        value={editForm.ifscCode}
+                                        onChange={(e) => {
+                                            const value = e.target.value.toUpperCase();
+                                            if (/^[A-Z]{0,4}0?[A-Z0-9]{0,6}$/.test(value)) {
+                                                handleEditChange({ target: { name: "ifscCode", value } });
+                                            }
+                                        }}
+                                        maxLength={11}
+                                    />
+                                </div>
 
                                 <div className="bank-form-group">
                                     <label>Amount (₹)</label>

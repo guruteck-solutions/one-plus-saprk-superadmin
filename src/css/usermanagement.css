@@ -602,16 +602,25 @@
 }
 
 .users-pagination button:hover:not(:disabled) {
-    color: #fff;
     border-color: #cfc5ed;
-
+    background: #5b20d5;
+    color: #fff;
 }
 
 .users-pagination button.active {
-    color: #ffffff;
-    background: #5b20d5;
     border-color: #5b20d5;
+    background: #5b20d5;
+    color: #fff;
 }
+
+.users-pagination button:disabled {
+    color: #c0c7d2;
+    background: #fafbfd;
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+
 
 .users-pagination span {
     color: #798398;

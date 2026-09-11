@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
-import { Upload, Download, Filter, Search, Pencil, Eye, Trash2, X } from "lucide-react";
+import { Upload, Download, Filter, Search, Pencil, Eye, Trash2, X, ChevronRight, ChevronLeft, } from "lucide-react";
 import "../../css/pricemanagement.css";
 
 const API_BASE_URL = "http://localhost:5000/api";
@@ -1564,7 +1564,7 @@ const PriceManagement = () => {
                     setCurrentPage((prev) => prev - 1)
                   }
                 >
-                  ‹
+                  <ChevronLeft size={16} />
                 </button>
 
                 {Array.from(
@@ -1591,7 +1591,7 @@ const PriceManagement = () => {
                     setCurrentPage((prev) => prev + 1)
                   }
                 >
-                  ›
+                  <ChevronRight size={16} />
                 </button>
 
               </div>

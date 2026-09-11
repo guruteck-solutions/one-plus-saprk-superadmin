@@ -59,7 +59,7 @@ const App = () => {
         {/* DASHBOARD */}
         <Route path="/dashboard" element={<DashboardLayout><Dashboard /></DashboardLayout>} />
         <Route path="/users" element={<DashboardLayout><UserManagement /></DashboardLayout>} />
-        <Route path="/users/add" element={<DashboardLayout><AddUser /></DashboardLayout>}/>
+        <Route path="/users/add" element={<DashboardLayout><AddUser /></DashboardLayout>} />
         <Route path="/users/edit/:id" element={<DashboardLayout><AddUser /></DashboardLayout>} />
         <Route path="/products" element={<DashboardLayout><ProductManagement /></DashboardLayout>} />
         <Route path="/prices" element={<DashboardLayout><PriceManagement /></DashboardLayout>} />

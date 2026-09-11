@@ -1044,8 +1044,9 @@
 }
 
 .pagination-controlsr button:hover:not(:disabled) {
-  color: #ffffff;
-  border-color: #cfc5ed;
+ border-color: #cfc5ed;
+    background: #5b20d5;
+    color: #fff;
 }
 
 .pagination-controlsr button.active {
@@ -1137,8 +1138,9 @@
 }
 
 .scheduled-pagination-controls button:hover:not(:disabled) {
-  color: #ffffff;
-  border-color: #cfc5ed;
+ border-color: #cfc5ed;
+    background: #5b20d5;
+    color: #fff;
 }
 
 .scheduled-pagination-controls button.active {
