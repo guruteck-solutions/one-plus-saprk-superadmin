@@ -1050,38 +1050,37 @@ const ManufacturingBatchManagement = () => {
 
     // COST VERIFICATION
 
-    const fetchCostVerification =
-        async (batchId) => {
-            try {
-                setCostLoading(true);
-                setCostError("");
+    const fetchCostVerification = async (batchId) => {
+        try {
+            setCostLoading(true);
+            setCostError("");
 
-                const response = await axios.get(
-                    `${API_BASE_URL}/cost-verification/${batchId}`,
-                    authConfig()
+            const response = await axios.get(
+                `${API_BASE_URL}/cost-verification/${batchId}`,
+                authConfig()
+            );
+
+            if (response.data?.success) {
+                setCostVerification(
+                    response.data.verification
                 );
-
-                if (response.data?.success) {
-                    setCostVerification(
-                        response.data.verification
-                    );
-                }
-            } catch (err) {
-                setCostVerification(null);
-
-                if (
-                    err.response?.status !== 404
-                ) {
-                    setCostError(
-                        err.response?.data
-                            ?.message ||
-                        "Failed to load cost verification"
-                    );
-                }
-            } finally {
-                setCostLoading(false);
             }
-        };
+        } catch (err) {
+            setCostVerification(null);
+
+            if (
+                err.response?.status !== 404
+            ) {
+                setCostError(
+                    err.response?.data
+                        ?.message ||
+                    "Failed to load cost verification"
+                );
+            }
+        } finally {
+            setCostLoading(false);
+        }
+    };
 
     // Fetch cost verification whenever a batch gets selected,
     // regardless of which tab is active - both tabs show it now.

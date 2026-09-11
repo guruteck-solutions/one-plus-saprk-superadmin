@@ -994,7 +994,14 @@
 }
 
 .manufacturing-modal.large {
-    width: min(940px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.manufacturing-view-content {
+    max-height: calc(90vh - 100px);
+    overflow-y: auto;
+    padding-right: 8px;
 }
 
 .manufacturing-modal-header {

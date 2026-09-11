@@ -1645,15 +1645,6 @@ const PriceManagement = () => {
                 <h2>Price List Details</h2>
                 <p>View price list details</p>
               </div>
-
-              <button
-                type="button"
-                className="price-modal-close"
-                onClick={handleCloseViewModal}
-                aria-label="Close"
-              >
-                <X size={18} />
-              </button>
             </div>
 
             <div className="price-modal-form">
