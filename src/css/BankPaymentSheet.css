@@ -501,13 +501,13 @@
     font-size: 9px;
 }
 
-.pagination-buttons {
+.pagination-buttonsp {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.pagination-buttons button {
+.pagination-buttonsp button {
     min-width: 26px;
     height: 26px;
     display: flex;
@@ -521,15 +521,16 @@
     font-size: 9px;
 }
 
-.pagination-buttons button.active {
+.pagination-buttonsp button.active {
     color: #fff;
     background: #5421d6;
     border-color: #5421d6;
 }
 
-.pagination-buttons button:hover:not(:disabled) {
-    color: #5421d6;
-    border-color: #d3c9ef;
+.pagination-buttonsp button:hover:not(:disabled) {
+    border-color: #cfc5ed;
+    background: #5b20d5;
+    color: #fff;
 }
 
 .pagination-dots {
@@ -947,9 +948,7 @@
         width: 100%;
     }
 
-    .pagination-buttons {
-        flex-wrap: wrap;
-    }
+
 
     .bank-pagination>select {
         margin-left: auto;
@@ -1019,8 +1018,92 @@
         flex: none;
     }
 
-    .pagination-buttons {
+    .pagination-buttonsp {
         width: 100%;
         justify-content: center;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .bank-pagination {
+        min-height: auto;
+        padding: 10px 14px;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 10px;
+    }
+
+    .pagination-info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .pagination-buttonsp {
+        width: 100%;
+
+        justify-content: center;
+        align-items: center;
+
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .pagination-buttonsp button {
+        min-width: 27px;
+        height: 27px;
+    }
+
+    .pagination-dots {
+        padding: 4px;
+    }
+
+    .bank-pagination>select {
+        height: 27px;
+        margin: 0;
+
+        max-width: 100%;
+    }
+
+    /* Bottom Summary */
+    .bank-bottom-summary {
+        grid-template-columns: 1fr;
+
+        gap: 0;
+        padding: 10px 14px;
+    }
+
+    .bank-bottom-summary>div:not(.bottom-summary-actions) {
+        min-height: 42px;
+
+        padding: 8px 0;
+
+        border-right: none;
+        border-bottom: 1px solid #edf0f5;
+    }
+
+    .bank-bottom-summary>div:last-of-type {
+        border-bottom: none;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .bank-bottom-summary strong {
+        margin-top: 4px;
+    }
+
+    .bottom-summary-actions {
+        padding-top: 10px;
+
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .bank-preview-btn {
+        width: 100%;
+        max-width: 220px;
     }
 }

@@ -765,7 +765,7 @@ const Directory = () => {
             of {contacts.length} entries
           </span>
 
-          <div className="pagination-controls">
+          <div className="pagination-controlsd">
 
             <button
               disabled={currentPage === 1}
@@ -814,21 +814,6 @@ const Directory = () => {
             >
               <ChevronRight size={17} />
             </button>
-
-            <select
-              value={itemsPerPage}
-              onChange={(e) => {
-                setItemsPerPage(
-                  Number(e.target.value)
-                );
-                setCurrentPage(1);
-              }}
-            >
-              <option value="5">5 / page</option>
-              <option value="10">10 / page</option>
-              <option value="20">20 / page</option>
-              <option value="50">50 / page</option>
-            </select>
 
           </div>
 

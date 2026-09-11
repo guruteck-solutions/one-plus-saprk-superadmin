@@ -691,13 +691,13 @@
     font-size: 7.5px
 }
 
-.pagination-controls {
+.pagination-controlsa {
     display: flex;
     align-items: center;
     gap: 5px
 }
 
-.pagination-controls button {
+.pagination-controlsa button {
     min-width: 26px;
     height: 26px;
     display: inline-flex;
@@ -711,10 +711,23 @@
     font-size: 8px
 }
 
-.pagination-controls button.active {
+.pagination-controlsa button:hover:not(:disabled) {
+    border-color: #cfc5ed;
+    background: #5b20d5;
     color: #fff;
-    background: #5420d6;
-    border-color: #5420d6
+}
+
+.pagination-controlsa button.active {
+    border-color: #5b20d5;
+    background: #5b20d5;
+    color: #fff;
+}
+
+.pagination-controlsa button:disabled {
+    color: #c0c7d2;
+    background: #fafbfd;
+    opacity: 0.45;
+    cursor: not-allowed;
 }
 
 .pagination-dots {
@@ -1385,9 +1398,7 @@
         width: 100%
     }
 
-    .pagination-controls {
-        flex-wrap: wrap
-    }
+
 
     .approval-pagination>select {
         margin-left: auto
@@ -1474,12 +1485,53 @@
         grid-template-columns: 1fr
     }
 
-    .pagination-controls {
+    .approval-pagination>select {
+        margin-left: 0
+    }
+}
+
+@media (max-width: 650px) {
+
+    .approval-pagination {
+        min-height: auto;
+        padding: 10px 13px;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 10px;
+    }
+
+    .approval-pagination>span {
         width: 100%;
-        justify-content: center
+        text-align: center;
+        white-space: normal;
+    }
+
+    .pagination-controlsa {
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .pagination-controlsa button {
+        min-width: 27px;
+        height: 27px;
+    }
+
+    .pagination-dots {
+        min-width: 20px;
     }
 
     .approval-pagination>select {
-        margin-left: 0
+        height: 27px;
+        margin: 0;
+        max-width: 100%;
     }
 }

@@ -1339,10 +1339,6 @@ const EmployeeHRManagement = () => {
                                 >
                                     <ChevronRight size={16} />
                                 </button>
-
-                                <select value={PAGE_SIZE} disabled className="page-size-select">
-                                    <option value={5}>5 / page</option>
-                                </select>
                             </div>
                         </div>
                     </div>

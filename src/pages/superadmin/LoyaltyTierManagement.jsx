@@ -20,6 +20,8 @@ import {
     Download,
     SlidersHorizontal,
     History,
+    ChevronLeft,
+    ChevronRight,
 } from "lucide-react";
 
 import "../../css/loyaltyTierManagement.css";
@@ -90,6 +92,9 @@ const LoyaltyTierManagement = () => {
 
     const [editingTier, setEditingTier] = useState(null);
     const [viewingTier, setViewingTier] = useState(null);
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const PAGE_SIZE = 10;
 
     const [form, setForm] = useState(initialForm);
 
@@ -193,6 +198,16 @@ const LoyaltyTierManagement = () => {
         typeFilter,
         customerFilter,
     ]);
+
+    const totalPages = Math.max(
+        1,
+        Math.ceil(filteredTiers.length / PAGE_SIZE)
+    );
+
+    const paginatedTiers = filteredTiers.slice(
+        (currentPage - 1) * PAGE_SIZE,
+        currentPage * PAGE_SIZE
+    );
 
     // =====================================================
     // FORM HELPERS
@@ -758,6 +773,7 @@ const LoyaltyTierManagement = () => {
                         </button>
                     </div>
                 ) : (
+                    <>
                     <div className="table-wrapper">
 
                         <table className="loyalty-table">
@@ -779,7 +795,7 @@ const LoyaltyTierManagement = () => {
 
                             <tbody>
 
-                                {filteredTiers.map((tier) => (
+                                {paginatedTiers.map((tier) => (
                                     <tr key={tier._id}>
 
                                         <td>
@@ -916,6 +932,58 @@ const LoyaltyTierManagement = () => {
 
                         </table>
                     </div>
+
+                    <div className="loyalty-pagination">
+    <span>
+        Showing{" "}
+        {filteredTiers.length === 0
+            ? 0
+            : (currentPage - 1) * PAGE_SIZE + 1}{" "}
+        to{" "}
+        {Math.min(
+            currentPage * PAGE_SIZE,
+            filteredTiers.length
+        )}{" "}
+        of {filteredTiers.length} entries
+    </span>
+
+    <div className="loyalty-pagination-controls">
+        <button
+            type="button"
+            disabled={currentPage === 1}
+            onClick={() =>
+                setCurrentPage((page) => page - 1)
+            }
+        >
+            <ChevronLeft size={15} />
+        </button>
+
+        {Array.from(
+            { length: totalPages },
+            (_, index) => index + 1
+        ).map((page) => (
+            <button
+                type="button"
+                key={page}
+                className={currentPage === page ? "active" : ""}
+                onClick={() => setCurrentPage(page)}
+            >
+                {page}
+            </button>
+        ))}
+
+        <button
+            type="button"
+            disabled={currentPage === totalPages}
+            onClick={() =>
+                setCurrentPage((page) => page + 1)
+            }
+        >
+            <ChevronRight size={15} />
+        </button>
+    </div>
+</div>
+</>
                 )}
             </div>
 

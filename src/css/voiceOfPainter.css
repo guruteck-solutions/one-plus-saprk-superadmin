@@ -759,14 +759,15 @@
 }
 
 .voice-pagination-controls button:hover:not(:disabled) {
-    background: #f6f8fb;
-    border-color: #b9c5d5;
+    border-color: #cfc5ed;
+    background: #5b20d5;
+    color: #fff;
 }
 
 .voice-pagination-controls button.active {
-    border-color: #102d72;
-    background: #102d72;
-    color: #ffffff;
+    border-color: #5b20d5;
+    background: #5b20d5;
+    color: #fff;
 }
 
 .voice-pagination-controls button:disabled {
@@ -1739,13 +1740,14 @@
     }
 
     .voice-pagination {
-        align-items: flex-start;
+        align-items: center;
         flex-direction: column;
     }
 
     .voice-pagination-controls {
         width: 100%;
         flex-wrap: wrap;
+        justify-content: center;
     }
 
     .voice-pagination-controls select {

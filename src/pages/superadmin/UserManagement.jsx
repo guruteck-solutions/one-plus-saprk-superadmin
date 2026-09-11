@@ -11,6 +11,8 @@ import {
     UserX,
     UserPlus,
     Filter,
+    ChevronLeft,
+    ChevronRight,
 } from "lucide-react";
 
 import "../../css/usermanagement.css";
@@ -1184,7 +1186,7 @@ const UserManagement = () => {
                                 setCurrentPage((prev) => prev - 1)
                             }
                         >
-                            ‹
+                            <ChevronLeft size={16} />
                         </button>
 
                         {Array.from(
@@ -1208,7 +1210,7 @@ const UserManagement = () => {
                                 setCurrentPage((prev) => prev + 1)
                             }
                         >
-                            ›
+                            <ChevronRight size={16} />
                         </button>
 
                     </div>

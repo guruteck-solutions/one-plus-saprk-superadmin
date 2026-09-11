@@ -11,7 +11,7 @@
     background: #fff;
     color: #17245d;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px
+    font-size: 12px;
 }
 
 .directory-page button,
@@ -560,13 +560,13 @@
     font-size: 8px
 }
 
-.pagination-controls {
+.pagination-controlsd {
     display: flex;
     align-items: center;
     gap: 7px
 }
 
-.pagination-controls button {
+.pagination-controlsd button {
     width: 30px;
     height: 30px;
     display: inline-flex;
@@ -580,19 +580,26 @@
     font-size: 8px
 }
 
-.pagination-controls button:hover:not(:disabled) {
-    color: #5420d6;
-    background: #faf9ff;
-    border-color: #cfc4ef
-}
-
-.pagination-controls button.active-page {
+.pagination-controlsd button:hover:not(:disabled) {
+    border-color: #cfc5ed;
+    background: #5b20d5;
     color: #fff;
-    background: #5420d6;
-    border-color: #5420d6
 }
 
-.pagination-controls select {
+.pagination-controlsd button.active-page {
+    border-color: #5b20d5;
+    background: #5b20d5;
+    color: #fff;
+}
+
+.pagination-controlsd button:disabled {
+    color: #c0c7d2;
+    background: #fafbfd;
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.pagination-controlsd select {
     height: 30px;
     min-width: 88px;
     padding: 0 8px;
@@ -862,12 +869,12 @@
     }
 
     .directory-pagination {
-        align-items: flex-start;
+        align-items: center;
         flex-direction: column;
         padding: 10px 11px
     }
 
-    .pagination-controls {
+    .pagination-controlsd {
         width: 100%;
         flex-wrap: wrap;
         justify-content: center
@@ -906,11 +913,11 @@
         min-width: 950px
     }
 
-    .pagination-controls {
+    .pagination-controlsd {
         gap: 4px
     }
 
-    .pagination-controls button {
+    .pagination-controlsd button {
         width: 28px;
         height: 28px
     }

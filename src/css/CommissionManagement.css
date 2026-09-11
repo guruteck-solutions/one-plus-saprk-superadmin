@@ -771,7 +771,7 @@
     gap: 15px;
 }
 
-.commission-pagination > span {
+.commission-pagination>span {
     flex: 0 0 auto;
     margin: 0;
 
@@ -820,7 +820,7 @@
 }
 
 .commission-pagination-controls button.active {
-      border-color: #5b20d5;
+    border-color: #5b20d5;
     background: #5b20d5;
     color: #fff;
 }
@@ -853,6 +853,7 @@
 .commission-pagination-controls select:focus {
     border-color: #b9c5d5;
 }
+
 /* =========================================================
    REPORTS
    ========================================================= */
@@ -1648,7 +1649,7 @@
         padding: 10px 15px;
     }
 
-    .commission-pagination > span {
+    .commission-pagination>span {
         width: 100%;
         margin: 0;
 

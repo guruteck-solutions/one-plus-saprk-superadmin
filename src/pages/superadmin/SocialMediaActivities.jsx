@@ -1147,7 +1147,7 @@ export default function SocialMediaActivities() {
                             of {posts.length} entries
                         </span>
 
-                        <div className="pagination-buttons">
+                        <div className="pagination-buttonsm">
 
                             <button
                                 disabled={currentPage === 1}
@@ -1201,14 +1201,6 @@ export default function SocialMediaActivities() {
                             </button>
 
                         </div>
-
-                        <select
-                            value={itemsPerPage}
-                            disabled
-                            className="page-size"
-                        >
-                            <option>10 / page</option>
-                        </select>
 
                     </div>
 
@@ -1271,8 +1263,8 @@ export default function SocialMediaActivities() {
                                     <div
                                         key={index}
                                         className={`calendar-day ${dayPosts.length
-                                                ? "has-post"
-                                                : ""
+                                            ? "has-post"
+                                            : ""
                                             }`}
                                         onClick={() => {
                                             if (dayPosts.length) {

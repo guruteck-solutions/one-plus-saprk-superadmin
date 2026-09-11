@@ -1786,32 +1786,6 @@ const NotificationManagement = () => {
                             >
                                 <ChevronRight size={15} />
                             </button>
-
-
-                            <select
-                                value={rowsPerPage}
-                                onChange={(e) => {
-                                    setRowsPerPage(
-                                        Number(e.target.value)
-                                    );
-                                    setCurrentPage(1);
-                                }}
-                            >
-
-                                <option value={10}>
-                                    10 / page
-                                </option>
-
-                                <option value={20}>
-                                    20 / page
-                                </option>
-
-                                <option value={50}>
-                                    50 / page
-                                </option>
-
-                            </select>
-
                         </div>
 
                     </div>

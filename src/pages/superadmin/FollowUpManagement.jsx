@@ -1141,8 +1141,8 @@ const FollowUpManagement = () => {
         <div className="followup-page">
 
             {/* =================================================
-          HEADER
-      ================================================= */}
+            HEADER
+        ================================================= */}
 
             <div className="followup-header">
 
@@ -1189,8 +1189,8 @@ const FollowUpManagement = () => {
 
 
             {/* =================================================
-          ERROR
-      ================================================= */}
+            ERROR
+        ================================================= */}
 
             {error && (
                 <div className="followup-error">
@@ -1211,8 +1211,8 @@ const FollowUpManagement = () => {
 
 
             {/* =================================================
-          STATISTICS
-      ================================================= */}
+            STATISTICS
+        ================================================= */}
 
             <div className="followup-stats-grid">
 
@@ -1247,8 +1247,8 @@ const FollowUpManagement = () => {
 
 
             {/* =================================================
-          FOLLOW-UP TRIGGERS
-      ================================================= */}
+            FOLLOW-UP TRIGGERS
+        ================================================= */}
 
             <div className="followup-section trigger-section">
 
@@ -1345,8 +1345,8 @@ const FollowUpManagement = () => {
 
 
             {/* =================================================
-          MAIN CONTENT GRID
-      ================================================= */}
+            MAIN CONTENT GRID
+        ================================================= */}
 
             <div className="followup-content-grid">
                 <div className="followup-main-content">
@@ -1965,7 +1965,7 @@ const FollowUpManagement = () => {
 
                             </div>
 
-                            <div className="pagination-controls">
+                            <div className="pagination-controlsf">
 
                                 <button
                                     type="button"
@@ -1977,7 +1977,6 @@ const FollowUpManagement = () => {
                                     }
                                 >
                                     <ChevronLeft size={15} />
-                                    Previous
                                 </button>
 
                                 {Array.from(
@@ -2021,22 +2020,10 @@ const FollowUpManagement = () => {
                                         )
                                     }
                                 >
-                                    Next
                                     <ChevronRight size={15} />
                                 </button>
 
                             </div>
-
-                            <select
-                                className="page-size-select"
-                                value={PAGE_SIZE}
-                                disabled
-                                onChange={() => { }}
-                            >
-                                <option value={10}>
-                                    10 / page
-                                </option>
-                            </select>
 
                         </div>
 
@@ -2046,8 +2033,8 @@ const FollowUpManagement = () => {
 
 
                 {/* =================================================
-            RIGHT SIDEBAR
-        ================================================= */}
+                RIGHT SIDEBAR
+            ================================================= */}
 
                 <div className="followup-sidebar">
 
@@ -2198,16 +2185,16 @@ const FollowUpManagement = () => {
                                     className="status-donut-ring"
                                     style={{
                                         background: `conic-gradient(
-                      #1f2a78 0% ${statusPercentage(
+                        #1f2a78 0% ${statusPercentage(
                                             stats.pending
                                         )}%,
-                      #d69e2e ${statusPercentage(
+                        #d69e2e ${statusPercentage(
                                             stats.pending
                                         )}% ${statusPercentage(
                                             stats.pending +
                                             stats.inProgress
                                         )}%,
-                      #38a169 ${statusPercentage(
+                        #38a169 ${statusPercentage(
                                             stats.pending +
                                             stats.inProgress
                                         )}% ${statusPercentage(
@@ -2215,12 +2202,12 @@ const FollowUpManagement = () => {
                                             stats.inProgress +
                                             stats.closed
                                         )}%,
-                      #e53e3e ${statusPercentage(
+                        #e53e3e ${statusPercentage(
                                             stats.pending +
                                             stats.inProgress +
                                             stats.closed
                                         )}% 100%
-                    )`,
+                        )`,
                                     }}
                                 >
                                     <div className="status-donut-center">
@@ -2354,8 +2341,8 @@ const FollowUpManagement = () => {
 
 
             {/* =================================================
-          NEW FOLLOW-UP MODAL
-      ================================================= */}
+            NEW FOLLOW-UP MODAL
+        ================================================= */}
 
             {showNewModal && (
                 <div
@@ -2598,8 +2585,8 @@ const FollowUpManagement = () => {
 
 
             {/* =================================================
-          VIEW FOLLOW-UP MODAL
-      ================================================= */}
+            VIEW FOLLOW-UP MODAL
+        ================================================= */}
 
             {showViewModal &&
                 selectedFollowUp && (
@@ -2808,8 +2795,8 @@ const FollowUpManagement = () => {
 
 
             {/* =================================================
-          EDIT FOLLOW-UP MODAL
-      ================================================= */}
+            EDIT FOLLOW-UP MODAL
+        ================================================= */}
 
             {showEditModal &&
                 selectedFollowUp && (
@@ -3052,8 +3039,8 @@ const FollowUpManagement = () => {
 
 
             {/* =================================================
-          ADD REMARKS MODAL
-      ================================================= */}
+            ADD REMARKS MODAL
+        ================================================= */}
 
             {showRemarksModal &&
                 selectedFollowUp && (
@@ -3138,8 +3125,8 @@ const FollowUpManagement = () => {
 
 
             {/* =================================================
-          SCHEDULE MODAL
-      ================================================= */}
+            SCHEDULE MODAL
+        ================================================= */}
 
             {showScheduleModal &&
                 selectedFollowUp && (
@@ -3264,8 +3251,8 @@ const FollowUpManagement = () => {
 
 
             {/* =================================================
-          ASSIGN OWNERSHIP MODAL
-      ================================================= */}
+            ASSIGN OWNERSHIP MODAL
+        ================================================= */}
 
             {showAssignModal &&
                 selectedFollowUp && (
@@ -3380,8 +3367,8 @@ const FollowUpManagement = () => {
 
 
             {/* =================================================
-          DELETE CONFIRMATION
-      ================================================= */}
+            DELETE CONFIRMATION
+        ================================================= */}
 
             {showDeleteModal &&
                 selectedFollowUp && (

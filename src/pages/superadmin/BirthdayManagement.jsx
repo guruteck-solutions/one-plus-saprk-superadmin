@@ -1039,7 +1039,7 @@ const BirthdayManagement = () => {
             of {filteredBirthdays.length} entries
           </span>
 
-          <div className="pagination-buttons">
+          <div className="pagination-buttonsb">
 
             <button
               disabled={page === 1}
@@ -1079,13 +1079,6 @@ const BirthdayManagement = () => {
             </button>
 
           </div>
-
-          <select
-            value={itemsPerPage}
-            disabled
-          >
-            <option value="10">10 / page</option>
-          </select>
 
         </div>
 

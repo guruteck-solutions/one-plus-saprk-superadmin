@@ -1257,7 +1257,7 @@ const ApprovalWorkflow = () => {
                             of {filteredRequests.length} entries
                         </span>
 
-                        <div className="pagination-controls">
+                        <div className="pagination-controlsa">
                             <button
                                 disabled={safePage === 1}
                                 onClick={() =>
@@ -1309,20 +1309,6 @@ const ApprovalWorkflow = () => {
                                 <ChevronRight size={15} />
                             </button>
                         </div>
-
-                        <select
-                            value={itemsPerPage}
-                            onChange={(e) => {
-                                setItemsPerPage(
-                                    Number(e.target.value)
-                                );
-                                setCurrentPage(1);
-                            }}
-                        >
-                            <option value={10}>10 / page</option>
-                            <option value={20}>20 / page</option>
-                            <option value={50}>50 / page</option>
-                        </select>
                     </div>
                 </div>
 

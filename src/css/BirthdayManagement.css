@@ -816,13 +816,13 @@
     white-space: nowrap;
 }
 
-.pagination-buttons {
+.pagination-buttonsb {
     display: flex;
     align-items: center;
     gap: 3px;
 }
 
-.pagination-buttons button {
+.pagination-buttonsb button {
     width: 23px;
     height: 23px;
 
@@ -844,18 +844,19 @@
     cursor: pointer;
 }
 
-.pagination-buttons button:hover:not(:disabled) {
-    background: #f6f8fb;
-    border-color: #b9c5d5;
+.pagination-buttonsb button:hover:not(:disabled) {
+    border-color: #edd4c5;
+    background: #5b20d5;
+    color: #fff;
 }
 
-.pagination-buttons button.active {
-    border-color: #102d72;
-    background: #102d72;
-    color: #ffffff;
+.pagination-buttonsb button.active {
+    border-color: #5b20d5;
+    background: #5b20d5;
+    color: #fff;
 }
 
-.pagination-buttons button:disabled {
+.pagination-buttonsb button:disabled {
     opacity: 0.45;
     cursor: not-allowed;
 }
@@ -1796,13 +1797,15 @@
     }
 
     .birthday-pagination {
-        align-items: flex-start;
+        align-items: center;
         flex-direction: column;
+
     }
 
-    .pagination-buttons {
+    .pagination-buttonsb {
         width: 100%;
         flex-wrap: wrap;
+        justify-content: center;
     }
 
     .birthday-right-sidebar {

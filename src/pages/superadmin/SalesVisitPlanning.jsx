@@ -178,7 +178,7 @@ function SalesVisitPlanning() {
   });
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(5);
+  const [pageSize, setPageSize] = useState(10);
 
   const [openActionId, setOpenActionId] = useState(null);
 
@@ -2042,7 +2042,7 @@ function SalesVisitPlanning() {
                 of {filteredVisits.length} entries
               </span>
 
-              <div className="pagination-controls">
+              <div className="pagination-controlsv">
 
                 <button
                   disabled={currentPage === 1}
@@ -2090,27 +2090,6 @@ function SalesVisitPlanning() {
                 >
                   <ChevronRight size={16} />
                 </button>
-
-                <select
-                  value={pageSize}
-                  onChange={(e) => {
-                    setPageSize(
-                      Number(e.target.value)
-                    );
-                    setCurrentPage(1);
-                  }}
-                >
-                  <option value={5}>
-                    5 / page
-                  </option>
-                  <option value={10}>
-                    10 / page
-                  </option>
-                  <option value={20}>
-                    20 / page
-                  </option>
-                </select>
-
               </div>
 
             </div>
