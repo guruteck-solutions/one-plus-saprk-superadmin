@@ -1226,6 +1226,28 @@
     font-size: 10px;
 }
 
+.view-mb-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+.view-mb-close-bottom {
+    min-width: 80px;
+    height: 34px;
+    color: #3f4b67;
+    background: #ffffff;
+    border: 1px solid #dfe4ec;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.view-mb-close-bottom:hover {
+    color: #5420d6;
+    border-color: #cfc5ed;
+}
+
 /* =========================
    SCROLLBARS
 ========================= */

@@ -1297,10 +1297,6 @@ const OrderManagement = () => {
                     <div className="order-view-modal">
                         <div className="order-view-header">
                             <h2>Order Details</h2>
-
-                            <button type="button" className="order-modal-close" onClick={closeViewOrderModal}>
-                                <XCircle size={20} />
-                            </button>
                         </div>
 
                         <div className="order-view-body">

@@ -1358,7 +1358,7 @@ const InventoryManagement = () => {
             {modalType === "VIEW_MOVEMENT" && selectedMovement && (
                 <div className="inventory-modal-overlay" onClick={closeModal}>
                     <div className="inventory-modal" onClick={(e) => e.stopPropagation()}>
-                        <div className="inventory-modal-header"><div><h2>Movement Details</h2><p>{movementLabel(selectedMovement.movementType)}</p></div><button type="button" className="inventory-close-btn" onClick={closeModal}><X size={18} /></button></div>
+                        <div className="inventory-modal-header"><div><h2>Movement Details</h2><p>{movementLabel(selectedMovement.movementType)}</p></div></div>
                         <div className="inventory-detail-grid">
                             <div><span>Movement Type</span><strong>{movementLabel(selectedMovement.movementType)}</strong></div>
                             <div><span>Date</span><strong>{formatDateTime(selectedMovement.movementDate)}</strong></div>
@@ -1366,10 +1366,14 @@ const InventoryManagement = () => {
                             <div><span>SKU</span><strong>{selectedMovement.product?.sku || "-"}</strong></div>
                             <div><span>Warehouse</span><strong>{selectedMovement.warehouse || "-"}</strong></div>
                             <div><span>Quantity</span><strong>{formatNumber(selectedMovement.quantity)} {selectedMovement.unit || ""}</strong></div>
+
                             <div><span>Reference</span><strong>{selectedMovement.reference || "-"}</strong></div>
                             <div><span>User</span><strong>{selectedMovement.user?.name || selectedMovement.user?.email || "-"}</strong></div>
                             <div className="inventory-detail-wide"><span>Remarks</span><strong>{selectedMovement.remarks || "-"}</strong></div>
                             {selectedMovement.movementType === "TRANSFER" && <><div><span>From Warehouse</span><strong>{selectedMovement.fromWarehouse || "-"}</strong></div><div><span>To Warehouse</span><strong>{selectedMovement.toWarehouse || "-"}</strong></div></>}
+                        </div>
+                        <div className="view-im-footer">
+                            <button type="button" className="view-im-close-bottom" onClick={closeModal}>Close</button>
                         </div>
                     </div>
                 </div>

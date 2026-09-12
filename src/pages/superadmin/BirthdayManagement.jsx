@@ -1405,12 +1405,6 @@ const BirthdayManagement = () => {
                 <h2>Birthday Details</h2>
               </div>
 
-              <button
-                onClick={() => setViewBirthday(null)}
-              >
-                <X size={20} />
-              </button>
-
             </div>
 
             <div className="birthday-view-details">

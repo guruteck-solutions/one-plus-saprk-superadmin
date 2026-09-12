@@ -1770,10 +1770,6 @@ const FinanceDashboard = () => {
                 <h2>Transaction Details</h2>
                 <p>{selectedTransaction.transactionId}</p>
               </div>
-
-              <button onClick={() => setShowViewModal(false)}>
-                <X size={20} />
-              </button>
             </div>
 
             <div className="transaction-details">

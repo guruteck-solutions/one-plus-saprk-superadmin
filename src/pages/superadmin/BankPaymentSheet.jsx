@@ -1682,14 +1682,6 @@ const BankPaymentSheet = () => {
                                 </p>
                             </div>
 
-                            <button
-                                onClick={() =>
-                                    setShowViewModal(false)
-                                }
-                            >
-                                <X size={20} />
-                            </button>
-
                         </div>
 
                         <div className="bank-view-details">

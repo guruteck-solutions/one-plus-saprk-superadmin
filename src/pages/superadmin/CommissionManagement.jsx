@@ -257,7 +257,7 @@ export default function CommissionManagement() {
     const [status, setStatus] = useState("");
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [rowsPerPage, setRowsPerPage] = useState(1);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
 
     const [showAddModal, setShowAddModal] = useState(false);
     const [showViewModal, setShowViewModal] = useState(false);
@@ -2082,16 +2082,6 @@ export default function CommissionManagement() {
                                 <h2>Commission Details</h2>
                                 <p>Complete commission transaction information</p>
                             </div>
-
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    setShowViewModal(false);
-                                    setSelectedCommission(null);
-                                }}
-                            >
-                                <X size={20} />
-                            </button>
                         </div>
 
                         <div className="commission-detail-grid">
@@ -2173,18 +2163,6 @@ export default function CommissionManagement() {
                                 }}
                             >
                                 Close
-                            </button>
-
-                            <button
-                                type="button"
-                                className="commission-save-btn"
-                                onClick={() => {
-                                    setShowViewModal(false);
-                                    openEditModal(selectedCommission);
-                                }}
-                            >
-                                <Pencil size={16} />
-                                Edit
                             </button>
                         </div>
                     </div>

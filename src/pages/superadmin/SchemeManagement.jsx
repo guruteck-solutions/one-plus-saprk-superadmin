@@ -1389,15 +1389,6 @@ const SchemeManagement = () => {
                 <h2>Scheme Details</h2>
                 <p>Complete scheme information</p>
               </div>
-
-              <button
-                onClick={() => {
-                  setShowViewModal(false);
-                  setSelectedScheme(null);
-                }}
-              >
-                <X size={20} />
-              </button>
             </div>
 
             <div className="scheme-view-content">
@@ -1487,17 +1478,6 @@ const SchemeManagement = () => {
                 }}
               >
                 Close
-              </button>
-
-              <button
-                className="scheme-submit-btn"
-                onClick={() => {
-                  setShowViewModal(false);
-                  handleEdit(selectedScheme);
-                }}
-              >
-                <Pencil size={16} />
-                Edit Scheme
               </button>
             </div>
           </div>

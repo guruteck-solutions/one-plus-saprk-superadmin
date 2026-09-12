@@ -1326,6 +1326,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 7px;
+  padding-right: 10px;
 }
 
 .cancel-btn {

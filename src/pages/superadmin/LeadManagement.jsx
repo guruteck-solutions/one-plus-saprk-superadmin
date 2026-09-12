@@ -1199,14 +1199,6 @@ const LeadManagement = () => {
                                 <h2>Lead Details</h2>
                                 <p>{selectedLead.leadNumber}</p>
                             </div>
-
-                            <button
-                                type="button"
-                                className="lead-modal-close"
-                                onClick={() => setShowViewModal(false)}
-                            >
-                                <X size={20} />
-                            </button>
                         </div>
 
                         <div className="lead-view-content">

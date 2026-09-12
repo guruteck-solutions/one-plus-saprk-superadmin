@@ -1861,15 +1861,6 @@ const DocumentManagement = () => {
                                     View document information and status
                                 </p>
                             </div>
-
-                            <button
-                                onClick={() => {
-                                    setShowViewModal(false);
-                                    setSelectedDocument(null);
-                                }}
-                            >
-                                <X size={21} />
-                            </button>
                         </div>
 
                         <div className="document-details-grid">
@@ -1986,6 +1977,14 @@ const DocumentManagement = () => {
                             >
                                 <Edit size={17} />
                                 Edit
+                            </button>
+                            <button className="cancel-btn"
+                                onClick={() => {
+                                    setShowViewModal(false);
+                                    setSelectedDocument(null);
+                                }}
+                            >
+                                Close
                             </button>
                         </div>
                     </div>

@@ -1252,16 +1252,6 @@ const UserManagement = () => {
                                 </p>
 
                             </div>
-
-                            <button
-                                className="view-user-close-btn"
-                                onClick={() =>
-                                    setShowViewUser(false)
-                                }
-                            >
-                                ×
-                            </button>
-
                         </div>
 
                         {viewLoading ? (

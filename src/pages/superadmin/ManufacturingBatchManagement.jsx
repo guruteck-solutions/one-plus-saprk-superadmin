@@ -3305,16 +3305,6 @@ const ManufacturingBatchManagement = () => {
                                 </p>
                             </div>
 
-                            <button
-                                type="button"
-                                className="manufacturing-close-btn"
-                                onClick={() =>
-                                    setShowViewModal(false)
-                                }
-                            >
-                                <X size={18} />
-                            </button>
-
                         </div>
 
                         {detailsLoading ? (
@@ -3654,9 +3644,18 @@ const ManufacturingBatchManagement = () => {
                                                 }
                                             </strong>
                                         </div>
-
                                     </div>
-
+                                </div>
+                                <div className="view-mb-footer">
+                                <button
+                                    type="button"
+                                    className="view-mb-close-bottom"
+                                    onClick={() =>
+                                        setShowViewModal(false)
+                                    }
+                                >
+                                    Close
+                                </button>
                                 </div>
 
                             </div>

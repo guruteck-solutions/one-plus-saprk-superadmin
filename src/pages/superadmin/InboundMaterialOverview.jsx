@@ -2251,14 +2251,6 @@ const InboundMaterialManagement = () => {
                                 <h2>GRN Details</h2>
                                 <p>{selectedInbound.grnNumber}</p>
                             </div>
-
-                            <button
-                                type="button"
-                                className="inbound-close-btn"
-                                onClick={closeModal}
-                            >
-                                <X size={18} />
-                            </button>
                         </div>
 
                         <div className="inbound-detail-grid">
@@ -2450,26 +2442,10 @@ const InboundMaterialManagement = () => {
                         <div className="inbound-modal-footer">
                             <button
                                 type="button"
-                                className="inbound-secondary-btn"
-                                onClick={() =>
-                                    openEditModal(selectedInbound)
-                                }
-                                disabled={saving}
+                                className="view-im-close-bottom"
+                                onClick={closeModal}
                             >
-                                <Pencil size={14} />
-                                Edit
-                            </button>
-
-                            <button
-                                type="button"
-                                className="inbound-danger-btn"
-                                onClick={() =>
-                                    handleDelete(selectedInbound)
-                                }
-                                disabled={saving}
-                            >
-                                <Trash2 size={14} />
-                                Delete
+                                Close
                             </button>
                         </div>
                     </div>

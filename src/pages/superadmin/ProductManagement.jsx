@@ -756,16 +756,6 @@ const ProductManagement = () => {
 
                         <div className="product-modal-header">
                             <h2>Product Details</h2>
-
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    setShowViewModal(false);
-                                    setSelectedProduct(null);
-                                }}
-                            >
-                                ×
-                            </button>
                         </div>
 
                         <div className="product-details-grid">

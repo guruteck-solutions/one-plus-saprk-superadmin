@@ -1763,10 +1763,6 @@ const EmployeeHRManagement = () => {
                                 <h2>Employee Details</h2>
                                 <p>Employee profile information</p>
                             </div>
-
-                            <button type="button" className="modal-close-button" onClick={() => setShowEmployeeDetails(false)}>
-                                <X size={19} />
-                            </button>
                         </div>
 
                         <div className="employee-profile-header">
@@ -1824,17 +1820,6 @@ const EmployeeHRManagement = () => {
                         </div>
 
                         <div className="details-footer">
-                            <button
-                                type="button"
-                                className="cancel-button"
-                                onClick={() => {
-                                    setShowEmployeeDetails(false);
-                                    openEditEmployeeModal(selectedEmployee);
-                                }}
-                            >
-                                <Pencil size={15} />
-                                Edit
-                            </button>
 
                             <button type="button" className="save-employee-button" onClick={() => setShowEmployeeDetails(false)}>
                                 Close

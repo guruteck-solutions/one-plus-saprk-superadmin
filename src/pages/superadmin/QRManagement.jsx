@@ -2073,15 +2073,6 @@ const QRManagement = () => {
                     information
                   </p>
                 </div>
-
-                <button
-                  onClick={() =>
-                    setShowViewModal(false)
-                  }
-                >
-                  <X size={18} />
-                </button>
-
               </div>
 
               <div className="qr-view-content">

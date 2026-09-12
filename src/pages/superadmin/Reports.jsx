@@ -1952,13 +1952,6 @@ const Reports = () => {
                 <h3>Report Details</h3>
                 <p>{selectedReport.reportName}</p>
               </div>
-
-              <button
-                onClick={() => setShowViewModal(false)}
-              >
-                <X size={20} />
-              </button>
-
             </div>
 
             <div className="report-details">

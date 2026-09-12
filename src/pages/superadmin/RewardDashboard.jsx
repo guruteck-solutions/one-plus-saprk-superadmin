@@ -1005,9 +1005,6 @@ const RewardDashboard = () => {
                     <div className="reward-modal" onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h3>Reward Transaction Details</h3>
-                            <button onClick={() => setViewTransaction(null)}>
-                                <X size={18} />
-                            </button>
                         </div>
 
                         <div className="modal-body">
@@ -1047,7 +1044,11 @@ const RewardDashboard = () => {
                                 <span>Remark</span>
                                 <strong>{viewTransaction.description || "-"}</strong>
                             </div>
-
+                            <div className="reward-view-footer">
+                                <button onClick={() => setViewTransaction(null)} className="view-reward-close-bottom">
+                                    Close
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

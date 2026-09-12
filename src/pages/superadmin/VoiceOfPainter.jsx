@@ -1708,12 +1708,6 @@ function VoiceOfPainter() {
                                 </p>
                             </div>
 
-                            <button
-                                onClick={() => setShowView(false)}
-                            >
-                                <X size={20} />
-                            </button>
-
                         </div>
 
                         <div className="voice-view-content">

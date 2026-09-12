@@ -2610,13 +2610,6 @@ const FollowUpManagement = () => {
                                     </p>
                                 </div>
 
-                                <button
-                                    type="button"
-                                    onClick={closeViewModal}
-                                >
-                                    <X size={20} />
-                                </button>
-
                             </div>
 
                             <div className="view-followup-content">

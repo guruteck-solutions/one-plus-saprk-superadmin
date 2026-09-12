@@ -900,7 +900,7 @@ const DispatchManagement = () => {
       {modal === "VIEW" && selectedDispatch && (
         <div className="dispatch-modal-overlay" onClick={closeModal}>
           <div className="dispatch-modal large" onClick={(e) => e.stopPropagation()}>
-            <div className="dispatch-modal-header"><div><h2>Dispatch Details</h2><p>{selectedDispatch.dispatchNumber}</p></div><button type="button" className="dispatch-close-btn" onClick={closeModal}><X size={18} /></button></div>
+            <div className="dispatch-modal-header"><div><h2>Dispatch Details</h2><p>{selectedDispatch.dispatchNumber}</p></div></div>
             <div className="dispatch-detail-grid">
               <div><span>Customer</span><strong>{selectedDispatch.customer || "-"}</strong></div>
               <div><span>Invoice</span><strong>{selectedDispatch.invoice || "-"}</strong></div>
@@ -922,6 +922,9 @@ const DispatchManagement = () => {
               <div className="dispatch-detail-wide"><span>Remarks</span><strong>{selectedDispatch.remarks || "-"}</strong></div>
             </div>
             <div className="dispatch-status-controls"><span>Update Status</span>{STATUS_OPTIONS.map((item) => <button key={item.value} type="button" className={selectedDispatch.status === item.value ? "dispatch-status-btn active" : "dispatch-status-btn"} disabled={statusSaving || selectedDispatch.status === item.value} onClick={() => changeStatus(selectedDispatch, item.value)}>{item.label}</button>)}<button type="button" className="dispatch-secondary-btn" onClick={() => openEdit(selectedDispatch)}><Pencil size={14} />Edit</button><button type="button" className="dispatch-danger-btn" onClick={() => deleteDispatch(selectedDispatch)}><Trash2 size={14} />Delete</button></div>
+            <div className="view-do-footer">
+              <button type="button" className="view-do-footer-bottom" onClick={closeModal}><X size={18} /></button>
+            </div>
           </div>
         </div>
       )}
