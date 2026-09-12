@@ -775,19 +775,19 @@
     width: 26px;
     height: 26px;
     padding: 0;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    background: transparent;
-    color: #68758c;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    color: #56627c;
+    background: #ffffff;
+    border: 1px solid #e0e5ec;
+    border-radius: 5px;
 }
 
 .dispatch-icon-btn:hover {
-    border-color: #dce3ed;
-    background: #f5f8fc;
-    color: #1769e8;
+    color: #5420d6;
+    border-color: #cfc5ed;
+    background: #faf9ff;
 }
 
 .dispatch-icon-btn.danger:hover {
@@ -854,7 +854,7 @@
 .dispatch-quick-actions {
     padding: 7px 13px 9px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
 }
 
 .dispatch-quick-actions button {

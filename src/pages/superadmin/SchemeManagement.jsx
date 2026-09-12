@@ -1116,44 +1116,12 @@ const SchemeManagement = () => {
                               <Pencil size={16} />
                             </button>
 
-                            <div className="scheme-more-wrapper">
-                              <button
-                                title="More"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setOpenMenu(
-                                    openMenu === scheme._id ? null : scheme._id
-                                  );
-                                }}
-                              >
-                                <MoreVertical size={20} />
-                              </button>
-
-                              {openMenu === scheme._id && (
-                                <div
-                                  className="scheme-more-menu"
-                                  onClick={(e) => e.stopPropagation()}
-                                >
-                                  <button onClick={() => handleView(scheme)}>
-                                    <Eye size={17} />
-                                    View
-                                  </button>
-
-                                  <button onClick={() => handleEdit(scheme)}>
-                                    <Pencil size={17} />
-                                    Edit
-                                  </button>
-
-                                  <button
-                                    className="delete-action"
-                                    onClick={() => handleDelete(scheme)}
-                                  >
-                                    <Trash2 size={14} />
-                                    Delete
-                                  </button>
-                                </div>
-                              )}
-                            </div>
+                            <button
+                              className="scheme-action-buttons delete-action"
+                              onClick={() => handleDelete(scheme)}
+                            >
+                              <Trash2 size={14} />
+                            </button>
                           </div>
                         </td>
                       </tr>

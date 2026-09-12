@@ -555,7 +555,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    gap: 5px
+    gap: 5px;
 }
 
 .row-icon-btn {
@@ -575,8 +575,14 @@
 
 .row-icon-btn:hover {
     color: #5420d6;
+    border-color: #cfc5ed;
     background: #faf9ff;
-    border-color: #cfc4ef
+}
+
+.row-icon-btn-delete:hover {
+    color: #e33d3d;
+    border-color: #f0caca;
+    background: #fff8f8;
 }
 
 .row-icon-btn.approve-icon {

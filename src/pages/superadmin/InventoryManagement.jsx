@@ -913,7 +913,7 @@ const InventoryManagement = () => {
                                     <td>{formatNumber(movement.quantity)} {movement.unit || ""}</td>
                                     <td>{movement.reference || "-"}</td>
                                     <td>{movement.user?.name || movement.user?.email || "-"}</td>
-                                    <td>
+                                    <td><div className="inventory-action-buttons">
                                         <button
                                             type="button"
                                             className="inventory-icon-btn"
@@ -922,7 +922,9 @@ const InventoryManagement = () => {
                                         >
                                             <Eye size={15} />
                                         </button>
+
                                         <button
+                                            type="button"
                                             className="inventory-icon-btn"
                                             onClick={() => handleEditMovement(movement)}
                                             title="Edit"
@@ -931,12 +933,14 @@ const InventoryManagement = () => {
                                         </button>
 
                                         <button
-                                            className="inventory-icon-btn"
+                                            type="button"
+                                            className="inventory-icon-btn inventory-icon-btn-delete"
                                             onClick={() => handleDeleteMovement(movement._id)}
                                             title="Delete"
                                         >
                                             <Trash2 size={16} />
                                         </button>
+                                    </div>
                                     </td>
                                 </tr>
                             ))

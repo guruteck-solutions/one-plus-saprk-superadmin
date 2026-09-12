@@ -1342,26 +1342,13 @@ const Reports = () => {
                           </button>
 
 
-                          <button
+                          <button className="report-delete"
                             type="button"
-                            className="row-icon-btn"
                             title="Delete Report"
                             onClick={() => handleDelete(report._id)}
                           >
                             <Trash2 size={16} />
                           </button>
-
-                          {/* <button
-                            title="More"
-                            onClick={() =>
-                              handleViewReport(
-                                report._id
-                              )
-                            }
-                          >
-                            <MoreVertical size={16} />
-                          </button> */}
-
                         </div>
 
                       </td>
@@ -1556,7 +1543,7 @@ const Reports = () => {
                           )}
                         </button>
 
-                        <button
+                        <button className="report-delete"
                           title="Delete"
                           onClick={() =>
                             handleDeleteScheduled(

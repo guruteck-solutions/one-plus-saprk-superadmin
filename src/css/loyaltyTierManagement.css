@@ -682,40 +682,26 @@
 .icon-btn {
     width: 25px;
     height: 25px;
-
-    padding: 0;
-
-    border: 1px solid #dce3eb;
-    border-radius: 4px;
-
-    background: #ffffff;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    cursor: pointer;
-}
-
-.icon-btn.view {
-    color: #2563eb;
-}
-
-.icon-btn.edit {
-    color: #53617a;
-}
-
-.icon-btn.delete {
-    color: #e04444;
+    padding: 0;
+    color: #56627c;
+    background: #ffffff;
+    border: 1px solid #e0e5ec;
+    border-radius: 5px;
 }
 
 .icon-btn:hover {
-    background: #f7f9fc;
+    color: #5420d6;
+    border-color: #cfc5ed;
+    background: #faf9ff;
 }
 
 .icon-btn.delete:hover {
-    background: #fff2f2;
-    border-color: #efcccc;
+    color: #e33d3d;
+    border-color: #f0caca;
+    background: #fff8f8;
 }
 
 /* =========================================================

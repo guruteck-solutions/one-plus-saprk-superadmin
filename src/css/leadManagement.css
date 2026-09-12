@@ -624,13 +624,15 @@
 }
 
 .lead-action:hover {
-    border-color: #8b5cf6;
-    color: #6d28d9;
+    color: #5420d6;
+    border-color: #cfc5ed;
+    background: #faf9ff;
 }
 
 .lead-action.delete:hover {
-    border-color: #f04438;
-    color: #f04438;
+    color: #e33d3d;
+    border-color: #f0caca;
+    background: #fff8f8;
 }
 
 .lead-empty {

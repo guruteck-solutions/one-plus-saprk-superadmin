@@ -490,7 +490,7 @@
 .scheduled-actions {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
 }
 
 .report-actions button,
@@ -498,20 +498,33 @@
   width: 22px;
   height: 22px;
   padding: 0;
-  border: 0;
-  border-radius: 4px;
-  background: transparent;
-  color: #59657e;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: #56627c;
+  background: #ffffff;
+  border: 1px solid #e0e5ec;
+  border-radius: 5px;
 }
 
 .report-actions button:hover,
 .scheduled-actions button:hover {
-  background: #f2f4f8;
-  color: #7040d8;
+  color: #5420d6;
+  border-color: #cfc5ed;
+  background: #faf9ff;
+}
+
+.scheduled-actions .report-delete:hover {
+  color: #e33d3d;
+  border-color: #f0caca;
+  background: #fff8f8;
+}
+
+.report-actions .report-delete:hover {
+  color: #e33d3d;
+  border-color: #f0caca;
+  background: #fff8f8;
 }
 
 .table-loading,
@@ -1044,9 +1057,9 @@
 }
 
 .pagination-controlsr button:hover:not(:disabled) {
- border-color: #cfc5ed;
-    background: #5b20d5;
-    color: #fff;
+  border-color: #cfc5ed;
+  background: #5b20d5;
+  color: #fff;
 }
 
 .pagination-controlsr button.active {
@@ -1138,9 +1151,9 @@
 }
 
 .scheduled-pagination-controls button:hover:not(:disabled) {
- border-color: #cfc5ed;
-    background: #5b20d5;
-    color: #fff;
+  border-color: #cfc5ed;
+  background: #5b20d5;
+  color: #fff;
 }
 
 .scheduled-pagination-controls button.active {

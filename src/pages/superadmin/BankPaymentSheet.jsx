@@ -1143,7 +1143,7 @@ const BankPaymentSheet = () => {
 
                                                     {/* DELETE */}
 
-                                                    <button
+                                                    <button className="delete-bankpay"
                                                         title="Delete"
                                                         onClick={() =>
                                                             handleDelete(payment)

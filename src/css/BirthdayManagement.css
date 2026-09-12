@@ -759,40 +759,35 @@
    TABLE ACTIONS
    ========================================================= */
 
-.table-actions {
+.table-actionsb {
     display: flex;
     align-items: center;
     gap: 2px;
 }
 
-.table-actions button {
-    width: 23px;
-    height: 23px;
-
-    padding: 0;
-
-    border: 1px solid transparent;
-    border-radius: 4px;
-
-    background: transparent;
-    color: #617087;
-
+.table-actionsb button {
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    cursor: pointer;
+    padding: 0;
+    color: #56627c;
+    background: #ffffff;
+    border: 1px solid #e0e5ec;
+    border-radius: 5px;
 }
 
-.table-actions button:hover {
-    border-color: #dce3eb;
-    background: #f6f8fb;
-    color: #2563eb;
+.table-actionsb button:hover {
+    color: #5420d6;
+    border-color: #cfc5ed;
+    background: #faf9ff;
 }
 
-.table-actions button[title="Delete"]:hover {
-    background: #fff3f3;
-    color: #df4444;
+.table-actionsb button[title="Delete"]:hover {
+    color: #e33d3d;
+    border-color: #f0caca;
+    background: #fff8f8;
 }
 
 /* =========================================================

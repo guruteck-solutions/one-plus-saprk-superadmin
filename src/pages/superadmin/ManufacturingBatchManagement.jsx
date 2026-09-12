@@ -2612,7 +2612,7 @@ const ManufacturingBatchManagement = () => {
 
                                                             <button
                                                                 type="button"
-                                                                className="manufacturing-icon-btn"
+                                                                className="manufacturing-icon-btn manufacturing-icon-btn-delete"
                                                                 onClick={() => handleDeleteBatch(batch._id)}
                                                                 disabled={deletingBatch}
                                                                 title="Delete"

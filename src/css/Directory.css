@@ -535,18 +535,14 @@
 
 .contact-actions button:hover {
     color: #5420d6;
+    border-color: #cfc5ed;
     background: #faf9ff;
-    border-color: #cfc4ef
-}
-
-.contact-actions button:first-child:hover {
-    color: #2563eb
 }
 
 .contact-actions button:last-child:hover {
-    color: #e23a3a;
-    background: #fff7f7;
-    border-color: #f0caca
+    color: #e33d3d;
+    border-color: #f0caca;
+    background: #fff8f8;
 }
 
 .directory-pagination {

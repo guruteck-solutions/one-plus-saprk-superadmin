@@ -816,25 +816,6 @@
   background: #eef1f5;
 }
 
-.notification-action-buttons {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-}
-
-.notification-action-buttons button {
-  width: 22px;
-  height: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  color: #61708f;
-  background: #fff;
-  border: 1px solid #e4e8ef;
-  border-radius: 4px;
-}
-
 .notification-empty {
   height: 80px !important;
   text-align: center !important;
@@ -2285,11 +2266,15 @@
 }
 
 .notification-action-buttons button:hover {
-  color: #2563eb;
+  color: #5420d6;
+  border-color: #cfc5ed;
+  background: #faf9ff;
+}
 
-  border-color: #bfd0ef;
-
-  background: #f8faff;
+.notification-action-buttons .notification-delete:hover {
+  color: #e33d3d;
+  border-color: #f0caca;
+  background: #fff8f8;
 }
 
 

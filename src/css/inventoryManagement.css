@@ -155,19 +155,31 @@
     width: 28px;
     height: 28px;
     padding: 0;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    background: transparent;
-    color: #65718a;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    color: #56627c;
+    background: #ffffff;
+    border: 1px solid #e0e5ec;
+    border-radius: 5px;
 }
 
 .inventory-icon-btn:hover {
-    border-color: #dbe2ed;
-    background: #f5f8fc;
-    color: #1769e8;
+    color: #5420d6;
+    border-color: #cfc5ed;
+    background: #faf9ff;
+}
+
+.inventory-icon-btn-delete:hover {
+    color: #e33d3d;
+    border-color: #f0caca;
+    background: #fff8f8;
+}
+
+.inventory-action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .inventory-close-btn {

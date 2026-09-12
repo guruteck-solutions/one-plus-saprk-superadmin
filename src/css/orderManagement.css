@@ -834,15 +834,15 @@
 }
 
 .order-action:hover {
-    border-color: #1570ef;
-    background: #edf4ff;
-    color: #1570ef;
+    color: #5420d6;
+    border-color: #cfc5ed;
+    background: #faf9ff;
 }
 
 .order-action.delete:hover {
-    border-color: #f04438;
-    background: #fff0ef;
-    color: #f04438;
+    color: #e33d3d;
+    border-color: #f0caca;
+    background: #fff8f8;
 }
 
 

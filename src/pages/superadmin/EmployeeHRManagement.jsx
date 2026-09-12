@@ -1269,7 +1269,7 @@ const EmployeeHRManagement = () => {
                                                 <td>{formatDate(employee.joiningDate)}</td>
 
                                                 <td>
-                                                    <div className="table-actions">
+                                                    <div className="table-actionse">
                                                         <button
                                                             type="button"
                                                             className="table-action-button"
@@ -1281,7 +1281,7 @@ const EmployeeHRManagement = () => {
 
                                                         <button
                                                             type="button"
-                                                            className="table-action-button edit-action-button"
+                                                            className="table-action-button"
                                                             title="Edit employee"
                                                             onClick={() => openEditEmployeeModal(employee)}
                                                         >

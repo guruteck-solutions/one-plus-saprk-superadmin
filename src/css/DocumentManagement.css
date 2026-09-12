@@ -646,6 +646,9 @@
     align-items: center;
     justify-content: center;
     padding: 0;
+    color: #56627c;
+    background: #ffffff;
+    border: 1px solid #e0e5ec;
     border-radius: 5px;
 }
 
@@ -657,20 +660,20 @@
 
 .table-action-btns:hover {
     color: #5420d6;
-    background: #faf9ff;
     border-color: #cfc5ed;
+    background: #faf9ff;
 }
 
 .delete-menu-item {
-    color: #dc4747;
+    color: #56617a;
     background: #ffffff;
-    border: 1px solid #ead5d5;
+    border: 1px solid #dfe4eb;
 }
 
 .delete-menu-item:hover {
-    color: #ffffff;
-    background: #dc4747;
-    border-color: #dc4747;
+    color: #e33d3d;
+    border-color: #f0caca;
+    background: #fff8f8;
 }
 
 .more-action-wrappers {

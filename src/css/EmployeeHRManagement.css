@@ -965,7 +965,7 @@
     background: #ffe8e8;
 }
 
-.table-actions {
+.table-actionse {
     display: flex;
     align-items: center;
     gap: 2px;
@@ -975,23 +975,19 @@
     width: 25px;
     height: 25px;
     padding: 0;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    background: transparent;
-    color: #68758b;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    color: #56627c;
+    background: #ffffff;
+    border: 1px solid #e0e5ec;
+    border-radius: 5px;
 }
 
 .table-action-button:hover {
-    border-color: #dce3eb;
-    background: #f6f8fb;
-    color: #2563eb;
-}
-
-.edit-action-button:hover {
-    color: #7c3aed;
+    color: #5420d6;
+    border-color: #cfc5ed;
+    background: #faf9ff;
 }
 
 .delete-action-button:hover {

@@ -591,30 +591,35 @@
     gap: 2px;
 }
 
-.scheme-action-buttons>button,
-.scheme-more-wrapper>button {
+.scheme-action-buttons>button {
     width: 25px;
     height: 25px;
     padding: 0;
     border: 0;
-    border-radius: 4px;
-    background: transparent;
-    color: #59667f;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    color: #56627c;
+    background: #ffffff;
+    border: 1px solid #e0e5ec;
+    border-radius: 5px;
+    gap: px;
 }
 
-.scheme-action-buttons>button:hover,
-.scheme-more-wrapper>button:hover {
-    background: #f1edfa;
-    color: #6847bd;
+.scheme-action-buttons>button:hover {
+    color: #5420d6;
+    border-color: #cfc5ed;
+    background: #faf9ff;
 }
 
-.scheme-more-wrapper {
-    position: relative;
+.scheme-action-buttons .delete-action:hover {
+    color: #e33d3d;
+    border-color: #f0caca;
+    background: #fff8f8;
 }
+
+
 
 .scheme-more-menu {
     position: absolute;

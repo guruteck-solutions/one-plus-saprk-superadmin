@@ -1649,7 +1649,7 @@ const QRManagement = () => {
                             </button>
 
                             <button
-                              className="qr-icon-btn"
+                              className="qr-icon-btn qr-icon-btn-delete"
                               title="More"
                               onClick={() =>
                                 handleDeleteQR(

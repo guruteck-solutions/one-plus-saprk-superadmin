@@ -962,7 +962,7 @@ const BirthdayManagement = () => {
                     </td>
 
                     <td>
-                      <div className="table-actions">
+                      <div className="table-actionsb">
 
                         <button
                           title="Send WhatsApp"

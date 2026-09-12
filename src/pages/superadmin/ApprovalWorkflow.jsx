@@ -1024,7 +1024,7 @@ const ApprovalWorkflow = () => {
                                                             </button>
 
                                                             <button
-                                                                className="row-icon-btn"
+                                                                className="row-icon-btn row-icon-btn-delete"
                                                                 onClick={() => handleDelete(request)}
                                                                 disabled={actionLoading}
                                                             >

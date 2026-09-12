@@ -448,6 +448,12 @@
     border-color: #d3c9ef;
 }
 
+.table-actions .delete-bankpay:hover {
+    color: #e33d3d;
+    border-color: #f0caca;
+    background: #fff8f8;
+}
+
 .more-action-wrapper {
     position: relative;
 }

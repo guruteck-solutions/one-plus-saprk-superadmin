@@ -743,22 +743,14 @@
 
 .icon-action:hover {
   color: #5420d6;
+  border-color: #cfc5ed;
   background: #faf9ff;
-  border-color: #cfc4ef;
-}
-
-.icon-action.view:hover {
-  color: #2563eb
-}
-
-.icon-action.edit:hover {
-  color: #5420d6
 }
 
 .icon-action.delete:hover {
-  color: #df3838;
-  background: #fff7f7;
-  border-color: #efcccc;
+  color: #e33d3d;
+  border-color: #f0caca;
+  background: #fff8f8;
 }
 
 /* EMPTY */

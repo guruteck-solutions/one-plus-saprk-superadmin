@@ -845,36 +845,34 @@
 .table-action-btn {
   width: 23px;
   height: 23px;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
-  border: 1px solid #e5e8f0;
-  border-radius: 4px;
-  background: #fff;
-  transition: 0.15s ease;
+  color: #56627c;
+  background: #ffffff;
+  border: 1px solid #e0e5ec;
+  border-radius: 5px;
 }
 
-.table-action-btn.view {
-  color: #6b35d7;
-}
 
-.table-action-btn.edit {
-  color: #2563eb;
-}
 
-.table-action-btn.delete {
-  color: #e53935;
+.table-action-btn.delete:hover {
+  color: #e33d3d;
+  border-color: #f0caca;
+  background: #fff8f8;
 }
 
 .table-action-btn.more {
-  color: #5f6881;
-  border-color: transparent;
+  color: #5420d6;
+  border-color: #cfc5ed;
+  background: #faf9ff;
 }
 
 .table-action-btn:hover {
-  background: #f7f8fc;
-  border-color: #d7dce8;
+  color: #5420d6;
+  border-color: #cfc5ed;
+  background: #faf9ff;
 }
 
 .more-action-wrapper {

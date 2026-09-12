@@ -170,19 +170,25 @@
     width: 30px;
     height: 30px;
     padding: 0;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    background: transparent;
-    color: #596783;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    color: #56627c;
+    background: #ffffff;
+    border: 1px solid #e0e5ec;
+    border-radius: 5px;
 }
 
 .manufacturing-icon-btn:hover {
-    border-color: #dce2ec;
-    background: #f5f7fb;
-    color: #17264a;
+    color: #5420d6;
+    border-color: #cfc5ed;
+    background: #faf9ff;
+}
+
+.manufacturing-icon-btn-delete:hover {
+    color: #e33d3d;
+    border-color: #f0caca;
+    background: #fff8f8;
 }
 
 .manufacturing-close-btn {

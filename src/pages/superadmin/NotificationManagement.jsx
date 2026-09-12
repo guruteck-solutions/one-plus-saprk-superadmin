@@ -1652,7 +1652,7 @@ const NotificationManagement = () => {
                                                         </button>
 
 
-                                                        <button
+                                                        <button className="notification-delete"
                                                             type="button"
                                                             title="Delete"
                                                             onClick={() =>
