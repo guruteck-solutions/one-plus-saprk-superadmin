@@ -22,7 +22,7 @@ import {
 } from "lucide-react";
 import "../../css/BankPaymentSheet.css";
 
-const API_URL = "http://localhost:5000/api/bank-payments";
+const API_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/bank-payments";
 
 const BankPaymentSheet = () => {
     const [payments, setPayments] = useState([]);

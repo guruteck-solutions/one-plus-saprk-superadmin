@@ -22,7 +22,7 @@ import {
 import axios from "axios";
 import "../../css/BirthdayManagement.css";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api";
 
 const BirthdayManagement = () => {
   const [birthdays, setBirthdays] = useState([]);

@@ -180,7 +180,7 @@ const AddUser = () => {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `http://localhost:5000/api/users/${id}`,
+        `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${id}`,
         {
           method: "GET",
           headers: {
@@ -270,7 +270,7 @@ const AddUser = () => {
         setProfilePreview(
           user.profilePicture.startsWith("http")
             ? user.profilePicture
-            : `http://localhost:5000${user.profilePicture}`
+            : `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}${user.profilePicture}`
         );
       }
 
@@ -590,8 +590,8 @@ const AddUser = () => {
       // ==========================================
 
       const url = isEditMode
-        ? `http://localhost:5000/api/users/${id}`
-        : "http://localhost:5000/api/users";
+        ? `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${id}`
+        : (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/users";
 
       const method = isEditMode
         ? "PUT"

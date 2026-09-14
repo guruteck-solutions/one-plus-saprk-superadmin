@@ -31,7 +31,7 @@ import {
 } from "lucide-react";
 import "../../css/salesVisitPlanning.css";
 
-const API_BASE_URL = "http://localhost:5000/api/sales-visits";
+const API_BASE_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/sales-visits";
 
 const initialVisitForm = {
   visitType: "DEALER",

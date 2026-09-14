@@ -30,7 +30,7 @@ import {
 } from "lucide-react";
 import "../../css/QRCodeManagement.css";
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api";
 
 const QR_STATUS = [
   "Unused",

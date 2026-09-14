@@ -90,7 +90,7 @@ const LeadManagement = () => {
         try {
             setLoading(true);
             const token = localStorage.getItem("token");
-            const response = await axios.get("http://localhost:5000/api/leads", {
+            const response = await axios.get((import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/leads", {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setLeads(response.data.leads || []);
@@ -106,7 +106,7 @@ const LeadManagement = () => {
     const fetchUsers = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.get("http://localhost:5000/api/users", {
+            const response = await axios.get((import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/users", {
                 headers: { Authorization: `Bearer ${token}` },
             });
             const userData = response.data.users || response.data.data || [];
@@ -324,7 +324,7 @@ const LeadManagement = () => {
 
         try {
             const token = localStorage.getItem("token");
-            await axios.delete(`http://localhost:5000/api/leads/${id}`, {
+            await axios.delete(`${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/leads/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             alert("Lead deleted successfully");
@@ -379,13 +379,13 @@ const LeadManagement = () => {
 
             if (editingLead) {
                 await axios.put(
-                    `http://localhost:5000/api/leads/${editingLead._id}`,
+                    `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/leads/${editingLead._id}`,
                     formData,
                     { headers: { Authorization: `Bearer ${token}` } }
                 );
                 alert("Lead updated successfully");
             } else {
-                await axios.post("http://localhost:5000/api/leads", formData, {
+                await axios.post((import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/leads", formData, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 alert("Lead created successfully");

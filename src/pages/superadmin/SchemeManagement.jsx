@@ -29,7 +29,7 @@ import {
 
 import "../../css/schemeManagement.css";
 
-const API_URL = "http://localhost:5000/api/schemes";
+const API_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/schemes";
 
 
 const FALLBACK_SCHEMES = [

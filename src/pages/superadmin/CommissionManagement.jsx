@@ -29,7 +29,7 @@ import {
 
 import "../../css/CommissionManagement.css";
 
-const API_URL = "http://localhost:5000/api/commissions";
+const API_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/commissions";
 
 const STATUS_OPTIONS = [
     "PENDING_CALCULATION",

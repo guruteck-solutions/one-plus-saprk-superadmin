@@ -66,7 +66,7 @@ const DailyCashReport = () => {
         try {
             setSummaryLoading(true);
             const token = localStorage.getItem("token");
-            const response = await axios.get("http://localhost:5000/api/daily-cash-reports", {
+            const response = await axios.get((import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/daily-cash-reports", {
                 headers: { Authorization: `Bearer ${token}` },
             });
             const reports = response.data?.reports || [];
@@ -87,7 +87,7 @@ const DailyCashReport = () => {
         try {
             setRecentReportsLoading(true);
             const token = localStorage.getItem("token");
-            const response = await axios.get("http://localhost:5000/api/daily-cash-reports", {
+            const response = await axios.get((import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/daily-cash-reports", {
                 headers: { Authorization: `Bearer ${token}` },
             });
             const reports = response.data?.reports || [];
@@ -313,7 +313,7 @@ const DailyCashReport = () => {
             };
 
             const token = localStorage.getItem("token");
-            const response = await axios.post("http://localhost:5000/api/daily-cash-reports", payload, {
+            const response = await axios.post((import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/daily-cash-reports", payload, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 

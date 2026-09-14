@@ -25,7 +25,7 @@ import {
 
 import "../../css/manufacturingManagement.css";
 
-const API_BASE_URL = "http://localhost:5000/api/manufacturing";
+const API_BASE_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/manufacturing";
 
 const ManufacturingBatchManagement = () => {
 
@@ -219,7 +219,7 @@ const ManufacturingBatchManagement = () => {
     const fetchProducts = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:5000/api/products",
+                (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/products",
                 authConfig()
             );
 
@@ -243,7 +243,7 @@ const ManufacturingBatchManagement = () => {
     const fetchUsers = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:5000/api/users",
+                (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/users",
                 authConfig()
             );
 

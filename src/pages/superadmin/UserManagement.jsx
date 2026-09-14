@@ -59,7 +59,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                "http://localhost:5000/api/users",
+                (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/users",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -252,7 +252,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                `http://localhost:5000/api/users/${userId}`,
+                `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -306,7 +306,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.delete(
-                `http://localhost:5000/api/users/${userId}`,
+                `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -357,7 +357,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                `http://localhost:5000/api/users/${userId}/kyc/approve`,
+                `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}/kyc/approve`,
                 {},
                 {
                     headers: {
@@ -372,7 +372,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const userResponse = await axios.get(
-                    `http://localhost:5000/api/users/${userId}`,
+                    `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -427,7 +427,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                `http://localhost:5000/api/users/${userId}/kyc/reject`,
+                `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}/kyc/reject`,
                 {
                     remarks: remarks.trim(),
                 },
@@ -444,7 +444,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const userResponse = await axios.get(
-                    `http://localhost:5000/api/users/${userId}`,
+                    `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -501,7 +501,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                `http://localhost:5000/api/users/${userId}/kyc/correction`,
+                `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}/kyc/correction`,
                 {
                     remarks: remarks.trim(),
                 },
@@ -520,7 +520,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const userResponse = await axios.get(
-                    `http://localhost:5000/api/users/${userId}`,
+                    `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -959,7 +959,7 @@ const UserManagement = () => {
                                                 <div className="table-user-avatar">
                                                     {user.profilePicture ? (
                                                         <img
-                                                            src={`http://localhost:5000${user.profilePicture}`}
+                                                            src={`${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}${user.profilePicture}`}
                                                             alt={user.name}
                                                         />
                                                     ) : (
@@ -1273,7 +1273,7 @@ const UserManagement = () => {
                                         {selectedUser.profilePicture ? (
 
                                             <img
-                                                src={`http://localhost:5000${selectedUser.profilePicture}`}
+                                                src={`${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}${selectedUser.profilePicture}`}
                                                 alt={selectedUser.name}
                                             />
 

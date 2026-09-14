@@ -17,7 +17,7 @@ import {
 
 import "../../css/generalSettings.css";
 
-const API_URL = "http://localhost:5000/api/system-settings";
+const API_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/system-settings";
 
 const SystemSettings = () => {
   const [settings, setSettings] = useState({

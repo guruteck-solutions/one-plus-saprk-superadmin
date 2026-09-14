@@ -25,7 +25,7 @@ const ForgotPassword = () => {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:5000/api/auth/forgot-password/send-otp",
+        (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/auth/forgot-password/send-otp",
         {
           identifier: identifier.trim(),
         }
