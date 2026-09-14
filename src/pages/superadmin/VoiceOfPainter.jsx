@@ -26,7 +26,7 @@ import {
     ChevronLeft,
     ChevronRight,
 } from "lucide-react";
-import "../../css/VoiceOfPainter.css";
+import "../../css/voiceOfPainter.css";
 
 const API_BASE = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/feedback";
 

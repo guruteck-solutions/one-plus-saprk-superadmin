@@ -23,7 +23,7 @@ import {
     ChevronLeft,
 } from "lucide-react";
 
-import "../../css/manufacturingManagement.css";
+import "../../css/ManufacturingManagement.css";
 
 const API_BASE_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/manufacturing";
 
