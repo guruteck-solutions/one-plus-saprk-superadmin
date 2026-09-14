@@ -720,7 +720,7 @@
   gap: 7px;
 }
 
-.modal-close-btn,
+
 .modal-save-btn,
 .modal-download-btn {
   height: 33px;
@@ -739,6 +739,17 @@
   border: 1px solid #dfe4ed;
   background: #fff;
   color: #59657d;
+
+  height: 33px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 9px;
+  font-weight: 600;
 }
 
 .modal-close-btn:hover {

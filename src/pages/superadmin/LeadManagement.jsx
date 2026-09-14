@@ -1253,7 +1253,7 @@ const LeadManagement = () => {
                         <div className="lead-modal-footer">
                             <button
                                 type="button"
-                                className="lead-cancel-btn"
+                                className="lead-close-btn"
                                 onClick={() => setShowViewModal(false)}
                             >
                                 Close

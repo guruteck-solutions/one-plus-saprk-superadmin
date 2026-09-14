@@ -1327,6 +1327,25 @@
     cursor: not-allowed;
 }
 
+.commission-close-btn {
+    height: 32px;
+    min-width: 85px;
+    padding: 0 12px;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 8.5px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid #dce3eb;
+    background: #ffffff;
+    color: #59657b;
+}
+
+.commission-close-btn:hover {
+    color: #5420d6;
+    border-color: #cfc5ed;
+}
+
 /* =========================================================
    DETAIL MODAL
    ========================================================= */

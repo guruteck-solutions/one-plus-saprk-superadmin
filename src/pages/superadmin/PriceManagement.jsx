@@ -1785,7 +1785,7 @@ const PriceManagement = () => {
               <div className="price-modal-footer">
                 <button
                   type="button"
-                  className="price-modal-cancel"
+                  className="price-modal-close"
                   onClick={handleCloseViewModal}
                 >
                   Close

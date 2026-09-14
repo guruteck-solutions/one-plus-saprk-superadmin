@@ -3435,13 +3435,6 @@ function Modal({
 
           <h2>{title}</h2>
 
-          <button
-            onClick={onClose}
-            className="modal-close-btn"
-          >
-            <X size={19} />
-          </button>
-
         </div>
 
         <div className="sales-modal-body">

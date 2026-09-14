@@ -1169,6 +1169,22 @@
     color: #526083;
 }
 
+.lead-close-btn {
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 600;
+    border: 1px solid #dfe4ee;
+    background: #ffffff;
+    color: #526083;
+}
+
+.lead-close-btn:hover {
+    color: #5420d6;
+    border-color: #cfc5ed;
+}
+
 .lead-save-btn {
     border: 1px solid #ff7100;
     background: #ff7100;

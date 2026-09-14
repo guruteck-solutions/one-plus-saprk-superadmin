@@ -699,6 +699,17 @@
   border: 1px solid #dce2eb;
 }
 
+.price-modal-close {
+  color: #46516b;
+  background: #fff;
+  border: 1px solid #dce2eb;
+}
+
+.price-modal-close:hover {
+  color: #5420d6;
+  border-color: #cfc5ed;
+}
+
 .price-modal-submit {
   color: #fff;
   background: #ff7100;

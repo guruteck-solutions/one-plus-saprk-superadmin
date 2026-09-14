@@ -1847,13 +1847,6 @@ const FinanceDashboard = () => {
           <div className="finance-modal">
             <div className="finance-modal-header">
               <h2>Edit Transaction</h2>
-              <button
-                type="button"
-                onClick={() => setShowEditModal(false)}
-                className="finance-modal-close"
-              >
-                ×
-              </button>
             </div>
 
             <form onSubmit={handleEditSubmit}>
@@ -2014,14 +2007,15 @@ const FinanceDashboard = () => {
               </div>
 
               <div className="finance-modal-actions">
-                <button
+                <button className="finance-cancel-update-btn"
                   type="button"
                   onClick={() => setShowEditModal(false)}
                 >
                   Cancel
                 </button>
 
-                <button type="submit">
+                <button className="finance-update-btn"
+                  type="submit">
                   Update Transaction
                 </button>
               </div>

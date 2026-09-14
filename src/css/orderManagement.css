@@ -1475,7 +1475,7 @@
 
 .order-modal-footer,
 .order-view-footer {
-    padding-top: 20px;
+    padding: 20px;
 
     border-top: 1px solid #edf0f4;
 
@@ -1505,6 +1505,24 @@
 
     background: #ffffff;
     color: #536278;
+}
+
+.order-modal-om-close {
+    border: 1px solid #d9e0e9;
+    font-size: 10px;
+    background: #ffffff;
+    color: #536278;
+    height: 38px;
+    padding: 0 17px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.order-modal-om-close:hover {
+    color: #5420d6;
+    border-color: #cfc5ed;
 }
 
 .order-modal-cancel:hover {
@@ -1632,9 +1650,7 @@
     font-weight: 600;
 }
 
-.order-view-footer {
-    padding: 0 20px 20px;
-}
+
 
 
 /* =========================================================
@@ -1918,7 +1934,7 @@
     }
 
     .order-view-footer {
-        padding: 0 16px 16px;
+        padding: 16px;
     }
 
     .order-modal-footer {
@@ -1926,10 +1942,10 @@
         align-items: stretch;
     }
 
-    .order-modal-cancel,
+    /* .order-modal-cancel,
     .order-modal-submit {
-        width: 100%;
-    }
+        width: 37px;
+    } */
 }
 
 

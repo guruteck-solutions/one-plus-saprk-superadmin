@@ -1420,12 +1420,7 @@ const NotificationManagement = () => {
                         <div>
                             <h3>Recent Notifications</h3>
                         </div>
-
-
                         <div className="notification-table-search">
-
-                            <Search size={15} />
-
                             <input
                                 value={search}
                                 onChange={(e) => {
@@ -1434,7 +1429,7 @@ const NotificationManagement = () => {
                                 }}
                                 placeholder="Search notifications..."
                             />
-
+                            <Search size={15} />
                         </div>
 
                     </div>
@@ -2141,7 +2136,7 @@ const NotificationManagement = () => {
                                 </div>
                             </div>
 
-                            <div className="notification-modal-footer">
+                            <div className="notification-modal-footern">
                                 <button
                                     type="button"
                                     className="notification-cancel-btn"
@@ -2182,12 +2177,6 @@ const NotificationManagement = () => {
                                 <h2>Notification Details</h2>
                                 <p>Complete notification information</p>
                             </div>
-
-                            <button
-                                onClick={() => setShowViewModal(false)}
-                            >
-                                <X size={19} />
-                            </button>
                         </div>
 
                         <div className="notification-detail-grid">
@@ -2279,7 +2268,7 @@ const NotificationManagement = () => {
                             </div>
                         </div>
 
-                        <div className="notification-modal-footer">
+                        <div className="notification-modal-footern">
                             <button
                                 className="notification-cancel-btn"
                                 onClick={() =>

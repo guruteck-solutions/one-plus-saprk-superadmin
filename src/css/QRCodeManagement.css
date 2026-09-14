@@ -80,6 +80,21 @@
   font-weight: 600;
 }
 
+.qr-close-btn{
+  min-width: 80px;
+    height: 34px;
+    color: #3f4b67;
+    background: #ffffff;
+    border: 1px solid #dfe4ec;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 600;
+}
+.qr-close-btn:hover{
+    color: #5420d6;
+    border-color: #cfc5ed;
+}
+
 .qr-primary-btn {
   border: 1px solid #ff6800;
   background: #ff6800;

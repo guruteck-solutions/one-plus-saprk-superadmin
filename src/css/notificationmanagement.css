@@ -697,10 +697,10 @@
 }
 
 .notification-table-search svg {
-  position: absolute;
   left: 8px;
   top: 6px;
   color: #7b86a1;
+  justify-content: flex-end;
 }
 
 .notification-table-search input {
@@ -1078,14 +1078,16 @@
   resize: vertical;
 }
 
-.notification-modal-footer {
+.notification-modal-footern {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 8px;
   padding-top: 14px;
   margin-top: 5px;
+  margin-bottom: 4px;
   border-top: 1px solid #edf0f5;
+  padding-right: 16px;
 }
 
 .notification-cancel-btn {
@@ -1096,6 +1098,11 @@
   border: 1px solid #dfe4ec;
   border-radius: 5px;
   font-size: 9px;
+}
+
+.notification-cancel-btn:hover {
+  color: #5420d6;
+  border-color: #cfc5ed;
 }
 
 .notification-detail-grid {
@@ -1283,12 +1290,12 @@
     max-height: calc(100vh - 20px);
   }
 
-  .notification-modal-footer {
+  .notification-modal-footern {
     flex-wrap: wrap;
   }
 
-  .notification-modal-footer .notification-cancel-btn,
-  .notification-modal-footer .notification-primary-btn {
+  .notification-modal-footern .notification-cancel-btn,
+  .notification-modal-footern .notification-primary-btn {
     flex: 1;
   }
 
@@ -2538,7 +2545,7 @@
   }
 
   .notification-table-search {
-    width: 135px;
+    width: 100%;
   }
 
   .notification-panel-header h3 {

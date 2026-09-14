@@ -839,14 +839,6 @@ const Directory = () => {
                 <h2>Contact Details</h2>
                 <p>Contact information</p>
               </div>
-
-              <button
-                className="modal-close-btn"
-                onClick={() => setShowViewModal(false)}
-                aria-label="Close"
-              >
-                <X size={20} />
-              </button>
             </div>
 
             <div className="contact-form">
@@ -902,7 +894,7 @@ const Directory = () => {
                   className="cancel-btn"
                   onClick={() => setShowViewModal(false)}
                 >
-                  <X size={16} />
+
                   Close
                 </button>
               </div>
@@ -1082,7 +1074,6 @@ const Directory = () => {
                     setShowModal(false)
                   }
                 >
-                  <X size={16} />
                   Cancel
                 </button>
 

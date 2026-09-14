@@ -2184,7 +2184,7 @@ const QRManagement = () => {
 
 
                 <button
-                  className="qr-primary-btn"
+                  className="qr-close-btn"
                   onClick={() =>
                     setShowViewModal(false)
                   }

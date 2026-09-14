@@ -1757,14 +1757,6 @@ const ApprovalWorkflow = () => {
                                         {selectedRequest.requestId}
                                     </p>
                                 </div>
-
-                                <button
-                                    onClick={() =>
-                                        setShowView(false)
-                                    }
-                                >
-                                    <X size={20} />
-                                </button>
                             </div>
 
                             <div className="approval-detail-grid">
@@ -1891,6 +1883,8 @@ const ApprovalWorkflow = () => {
                                     )}
                             </div>
 
+
+
                             {selectedRequest.status ===
                                 "Pending" && (
                                     <div className="approval-modal-footer">
@@ -1921,7 +1915,18 @@ const ApprovalWorkflow = () => {
                                         </button>
                                     </div>
                                 )}
+                            <div className="view-aw-footer">
+                                <button
+                                    className="view-aw-footer-bottom"
+                                    onClick={() =>
+                                        setShowView(false)
+                                    }
+                                >
+                                    Close
+                                </button>
+                            </div>
                         </div>
+
                     </div>
                 )}
 

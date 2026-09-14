@@ -631,6 +631,11 @@
     font-weight: 600;
 }
 
+.product-modal-pm-footer:hover {
+    color: #5420d6;
+    border-color: #cfc5ed;
+}
+
 .product-modal-footer .save-product-btn {
     color: #fff;
     background: #ff7100;

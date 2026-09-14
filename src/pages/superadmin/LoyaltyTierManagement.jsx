@@ -1916,7 +1916,7 @@ const LoyaltyTierManagement = () => {
 
                             </div>
 
-                            <div className="modal-footer">
+                            <div className="modal-lt-footer">
 
                                 <button
                                     type="button"
@@ -1990,15 +1990,6 @@ const LoyaltyTierManagement = () => {
                                     Loyalty tier details
                                 </p>
                             </div>
-
-                            <button
-                                className="modal-close"
-                                onClick={() =>
-                                    setShowViewModal(false)
-                                }
-                            >
-                                <X size={20} />
-                            </button>
 
                         </div>
 
@@ -2163,7 +2154,7 @@ const LoyaltyTierManagement = () => {
 
                         </div>
 
-                        <div className="modal-footer">
+                        <div className="modal-lt-footer">
 
                             <button
                                 className="btn-secondary"

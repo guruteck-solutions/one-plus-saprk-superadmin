@@ -1501,6 +1501,29 @@
   font-weight: 700;
 }
 
+.view-sm-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-right: 23px;
+}
+
+.view-sm-close-bottom {
+  min-width: 80px;
+  height: 34px;
+  color: #3f4b67;
+  background: #ffffff;
+  border: 1px solid #dfe4ec;
+  border-radius: 5px;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.view-sm-close-bottom:hover{
+    color: #5420d6;
+    border-color: #cfc5ed;
+}
 /* ================= RESPONSIVE ================= */
 
 @media(max-width:1300px) {

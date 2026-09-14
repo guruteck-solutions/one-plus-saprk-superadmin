@@ -1860,12 +1860,6 @@ export default function SocialMediaActivities() {
                                 </p>
                             </div>
 
-                            <button
-                                onClick={() => setShowView(false)}
-                            >
-                                <X size={20} />
-                            </button>
-
                         </div>
 
                         <div className="view-content">
@@ -1977,7 +1971,15 @@ export default function SocialMediaActivities() {
                                 </div>
 
                             </div>
+                        </div>
 
+                        <div className="view-sm-footer">
+                            <button
+                                className="view-sm-close-bottom"
+                                onClick={() => setShowView(false)}
+                            >
+                                Close
+                            </button>
                         </div>
 
                     </div>

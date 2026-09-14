@@ -1363,7 +1363,7 @@ const OrderManagement = () => {
                         </div>
 
                         <div className="order-view-footer">
-                            <button type="button" className="order-modal-cancel" onClick={closeViewOrderModal}>
+                            <button type="button" className="order-modal-om-close" onClick={closeViewOrderModal}>
                                 Close
                             </button>
                         </div>

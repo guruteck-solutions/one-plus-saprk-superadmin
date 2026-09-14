@@ -2156,7 +2156,7 @@ export default function CommissionManagement() {
                         <div className="commission-modal-footer">
                             <button
                                 type="button"
-                                className="commission-cancel-btn"
+                                className="commission-close-btn"
                                 onClick={() => {
                                     setShowViewModal(false);
                                     setSelectedCommission(null);

@@ -813,7 +813,7 @@ const ProductManagement = () => {
                         </div>
 
                         <div className="product-modal-footer">
-                            <button
+                            <button className="product-modal-pm-footer"
                                 type="button"
                                 onClick={() => {
                                     setShowViewModal(false);

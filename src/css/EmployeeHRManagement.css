@@ -1712,6 +1712,26 @@
     color: #ffffff;
 }
 
+.close-emp-btn {
+    color: #3f4b67;
+    background: #ffffff;
+    border: 1px solid #dfe4ec;
+    min-height: 34px;
+    padding: 0 12px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.close-emp-btn:hover {
+    color: #5420d6;
+    border-color: #cfc5ed;
+}
+
 .save-employee-button:hover:not(:disabled) {
     border-color: #e94d0c;
     background: #e94d0c;

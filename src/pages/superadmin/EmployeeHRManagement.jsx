@@ -1821,7 +1821,7 @@ const EmployeeHRManagement = () => {
 
                         <div className="details-footer">
 
-                            <button type="button" className="save-employee-button" onClick={() => setShowEmployeeDetails(false)}>
+                            <button type="button" className="close-emp-btn" onClick={() => setShowEmployeeDetails(false)}>
                                 Close
                             </button>
                         </div>

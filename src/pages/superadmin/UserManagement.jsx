@@ -1673,11 +1673,10 @@ const UserManagement = () => {
 
                                 <div className="view-user-footer">
 
-                                    <button
+                                    <button className="view-user-close-bottom"
                                         onClick={() =>
                                             setShowViewUser(false)
                                         }
-                                        className="view-user-close-bottom"
                                     >
                                         Close
                                     </button>
