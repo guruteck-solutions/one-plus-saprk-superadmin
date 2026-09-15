@@ -20,7 +20,7 @@ import {
     FileText,
     Clock3,
 } from "lucide-react";
-import "../../css/BankPaymentSheet.css";
+import "../../css/superadmin/BankPaymentSheet.css";
 
 const API_URL = "http://localhost:5000/api/bank-payments";
 

@@ -26,7 +26,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-import "../../css/reports.css";
+import "../../css/superadmin/reports.css";
 
 const API_BASE_URL = "http://localhost:5000/api/reports";
 const REPORT_SERVER_URL = "http://localhost:5000";

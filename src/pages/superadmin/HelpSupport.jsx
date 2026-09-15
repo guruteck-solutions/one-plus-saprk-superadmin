@@ -7,7 +7,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 
-import "../../css/helpsupport.css";
+import "../../css/superadmin/helpsupport.css";
 
 const faqData = [
   {

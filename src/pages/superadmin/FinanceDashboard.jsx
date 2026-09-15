@@ -27,7 +27,7 @@ import {
   Trash2,
 } from "lucide-react";
 
-import "../../css/financeDashboard.css";
+import "../../css/superadmin/financeDashboard.css";
 
 const API_URL = "http://localhost:5000/api/finance";
 

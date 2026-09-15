@@ -15,7 +15,7 @@ import {
     ChevronRight,
 } from "lucide-react";
 
-import "../../css/usermanagement.css";
+import "../../css/superadmin/usermanagement.css";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";

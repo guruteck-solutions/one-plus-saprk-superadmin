@@ -18,7 +18,7 @@ import {
   ChevronRight,
   Plus,
 } from "lucide-react";
-import "../../css/Directory.css";
+import "../../css/superadmin/Directory.css";
 
 const API_URL = "http://localhost:5000/api/contacts";
 

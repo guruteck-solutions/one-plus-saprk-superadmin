@@ -17,7 +17,7 @@ import {
     Search,
     ChevronLeft,
 } from "lucide-react";
-import "../../css/productmanagement.css";
+import "../../css/superadmin/productmanagement.css";
 
 
 const ProductManagement = () => {

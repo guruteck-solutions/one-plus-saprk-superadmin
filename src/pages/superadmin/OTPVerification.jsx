@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ShieldCheck } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../css/otpverification.css";
+import "../../css/superadmin/otpverification.css";
 
 const OTPVerification = () => {
   const navigate = useNavigate();

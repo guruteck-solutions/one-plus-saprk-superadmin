@@ -16,7 +16,7 @@ import {
   UserPlus,
 } from "lucide-react";
 
-import "../../css/addUser.css";
+import "../../css/superadmin/addUser.css";
 
 const AddUser = () => {
   const navigate = useNavigate();

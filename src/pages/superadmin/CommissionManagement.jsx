@@ -27,7 +27,7 @@ import {
     Search,
 } from "lucide-react";
 
-import "../../css/CommissionManagement.css";
+import "../../css/superadmin/CommissionManagement.css";
 
 const API_URL = "http://localhost:5000/api/commissions";
 

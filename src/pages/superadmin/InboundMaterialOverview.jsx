@@ -23,7 +23,7 @@ import {
     ChevronRight,
 } from "lucide-react";
 
-import "../../css/inboundMaterialOverview.css";
+import "../../css/superadmin/inboundMaterialOverview.css";
 
 const API_BASE_URL = "http://localhost:5000/api";
 

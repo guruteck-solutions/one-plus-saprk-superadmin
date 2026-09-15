@@ -23,7 +23,7 @@ import {
     ChevronLeft,
 } from "lucide-react";
 
-import "../../css/rewardDashboard.css";
+import "../../css/superadmin/rewardDashboard.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 

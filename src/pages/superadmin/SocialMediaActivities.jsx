@@ -21,7 +21,7 @@ import {
     BarChart3,
     Share2,
 } from "lucide-react";
-import "../../css/SocialMediaActivities.css";
+import "../../css/superadmin/SocialMediaActivities.css";
 
 const API_URL = "http://localhost:5000/api/social-media";
 const SERVER_URL = "http://localhost:5000";

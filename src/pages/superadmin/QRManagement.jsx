@@ -28,7 +28,7 @@ import {
   RefreshCw,
   Trash2,
 } from "lucide-react";
-import "../../css/QRCodeManagement.css";
+import "../../css/superadmin/QRCodeManagement.css";
 
 const API_BASE = "http://localhost:5000/api";
 

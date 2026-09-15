@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "../../css/dailyCashReport.css";
+import "../../css/superadmin/dailyCashReport.css";
 import {
     Printer, Download, ReceiptText, FileText, LayoutDashboard,
     Wallet, TrendingDown, ArrowLeftRight, PiggyBank, UploadCloud, X, Trash2,

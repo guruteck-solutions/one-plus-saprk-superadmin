@@ -28,7 +28,7 @@ import {
     X,
 } from "lucide-react";
 
-import "../../css/followUpManagement.css";
+import "../../css/superadmin/followUpManagement.css";
 
 const API_BASE_URL = "http://localhost:5000/api/follow-ups";
 

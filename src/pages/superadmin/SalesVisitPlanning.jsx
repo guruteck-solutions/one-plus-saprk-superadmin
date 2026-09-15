@@ -29,7 +29,7 @@ import {
   AlertCircle,
   ClipboardList,
 } from "lucide-react";
-import "../../css/salesVisitPlanning.css";
+import "../../css/superadmin/salesVisitPlanning.css";
 
 const API_BASE_URL = "http://localhost:5000/api/sales-visits";
 

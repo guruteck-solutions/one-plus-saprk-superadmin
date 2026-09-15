@@ -2,7 +2,7 @@ import { useState } from "react";
 import { loginUser } from "../../services/authService";
 import { Eye, EyeOff, User, Lock, ShieldCheck, Smartphone } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import "../../css/login.css";
+import "../../css/superadmin/login.css";
 
 const Login = () => {
     const navigate = useNavigate();

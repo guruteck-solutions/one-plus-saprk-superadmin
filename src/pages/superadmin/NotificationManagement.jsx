@@ -29,7 +29,7 @@ import {
     CreditCard,
 } from "lucide-react";
 
-import "../../css/notificationmanagement.css";
+import "../../css/superadmin/notificationmanagement.css";
 
 const API_BASE_URL = "http://localhost:5000/api";
 

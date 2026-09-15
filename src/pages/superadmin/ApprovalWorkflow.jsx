@@ -23,7 +23,7 @@ import {
     Pencil,
     Trash2,
 } from "lucide-react";
-import "../../css/ApprovalWorkflow.css";
+import "../../css/superadmin/ApprovalWorkflow.css";
 
 const API_URL = "http://localhost:5000/api/approvals";
 

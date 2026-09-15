@@ -23,7 +23,7 @@ import {
     ChevronLeft,
 } from "lucide-react";
 
-import "../../css/manufacturingManagement.css";
+import "../../css/superadmin/manufacturingManagement.css";
 
 const API_BASE_URL = "http://localhost:5000/api/manufacturing";
 

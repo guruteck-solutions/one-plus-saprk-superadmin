@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowLeft, Mail, Smartphone } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../css/forgetpassword.css";
+import "../../css/superadmin/forgetpassword.css";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();

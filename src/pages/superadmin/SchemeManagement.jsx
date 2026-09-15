@@ -27,7 +27,7 @@ import {
   X,
 } from "lucide-react";
 
-import "../../css/schemeManagement.css";
+import "../../css/superadmin/schemeManagement.css";
 
 const API_URL = "http://localhost:5000/api/schemes";
 

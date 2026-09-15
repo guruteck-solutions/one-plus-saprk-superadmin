@@ -22,7 +22,7 @@ import {
     Upload,
 } from "lucide-react";
 
-import "../../css/orderManagement.css";
+import "../../css/superadmin/orderManagement.css";
 
 const ORDERS_PER_PAGE = 10;
 

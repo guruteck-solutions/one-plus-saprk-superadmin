@@ -15,7 +15,7 @@ import {
   Image as ImageIcon,
 } from "lucide-react";
 
-import "../../css/generalSettings.css";
+import "../../css/superadmin/generalSettings.css";
 
 const API_URL = "http://localhost:5000/api/system-settings";
 

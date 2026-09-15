@@ -20,7 +20,7 @@ import {
   Settings,
 } from "lucide-react";
 import axios from "axios";
-import "../../css/BirthdayManagement.css";
+import "../../css/superadmin/BirthdayManagement.css";
 
 const API_URL = "http://localhost:5000/api";
 

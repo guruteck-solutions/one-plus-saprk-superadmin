@@ -32,7 +32,7 @@ import {
     Activity,
     FileDown,
 } from "lucide-react";
-import "../../css/DocumentManagement.css";
+import "../../css/superadmin/DocumentManagement.css";
 
 const API_URL = "http://localhost:5000/api/documents";
 

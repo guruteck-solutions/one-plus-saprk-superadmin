@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Eye, EyeOff, Lock, ShieldCheck } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../css/resetpassword.css";
+import "../../css/superadmin/resetpassword.css";
 
 const ResetPassword = () => {
   const navigate = useNavigate();

@@ -24,7 +24,7 @@ import {
     ChevronRight,
 } from "lucide-react";
 
-import "../../css/loyaltyTierManagement.css";
+import "../../css/superadmin/loyaltyTierManagement.css";
 
 
 const API_URL = "http://localhost:5000/api/loyalty-tiers";

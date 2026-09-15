@@ -22,7 +22,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-import "../../css/dispatchOverview.css";
+import "../../css/superadmin/dispatchOverview.css";
 
 const API_BASE_URL = "http://localhost:5000/api";
 

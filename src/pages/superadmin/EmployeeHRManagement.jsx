@@ -30,7 +30,7 @@ import {
     BadgeCheck,
 } from "lucide-react";
 
-import "../../css/EmployeeHRManagement.css";
+import "../../css/superadmin/EmployeeHRManagement.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 

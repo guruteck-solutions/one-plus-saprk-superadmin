@@ -25,7 +25,7 @@ import {
     Filter
 } from "lucide-react";
 
-import "../../css/leadManagement.css";
+import "../../css/superadmin/leadManagement.css";
 
 const LeadManagement = () => {
 
