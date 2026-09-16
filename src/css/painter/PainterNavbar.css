@@ -1,0 +1,333 @@
+/* =========================================
+   PAINTER NAVBAR
+========================================= */
+
+.painter-navbar {
+  position: fixed;
+  top: 0;
+  left: 220px;
+  right: 0;
+
+  height: 78px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 28px;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e4e8ec;
+
+  box-sizing: border-box;
+
+  z-index: 900;
+}
+
+
+/* =========================================
+   LEFT SECTION
+========================================= */
+
+.painter-navbar-left {
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+}
+
+
+/* =========================================
+   MENU BUTTON
+========================================= */
+
+.painter-navbar-menu-btn {
+  width: 38px;
+  height: 38px;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 12px;
+
+  border: 1px solid #e3e7eb;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #1b2733;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.painter-navbar-menu-btn:hover {
+  background: #f5f7f9;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.painter-navbar-brand {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+  min-width: 0;
+}
+
+.painter-navbar-brand h2 {
+  margin: 0;
+
+  color: #111a24;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  line-height: 1.25;
+
+  white-space: nowrap;
+}
+
+.painter-navbar-brand span {
+  margin-top: 3px;
+
+  color: #7b8794;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   RIGHT SECTION
+========================================= */
+
+.painter-navbar-right {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================
+   ICON BUTTON
+========================================= */
+
+.painter-navbar-icon-btn {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #edf0f3;
+  border-radius: 50%;
+
+  background: #f7f8fa;
+  color: #657383;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.painter-navbar-icon-btn:hover {
+  background: #fff3e9;
+  color: #ff7818;
+  border-color: #ffe0c8;
+}
+
+.painter-navbar-icon-btn svg {
+  stroke-width: 1.8;
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.painter-navbar-profile {
+  min-height: 44px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 4px 10px 4px 7px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: #1c2732;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.painter-navbar-profile:hover {
+  background: #f7f8fa;
+}
+
+.painter-navbar-profile svg {
+  width: 34px;
+  height: 34px;
+
+  color: #ff7818;
+
+  stroke-width: 1.7;
+
+  flex-shrink: 0;
+}
+
+.painter-navbar-profile span {
+  color: #303b46;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================
+   DESKTOP
+========================================= */
+
+@media (min-width: 769px) {
+  .painter-navbar-left {
+    flex: 0 0 auto;
+  }
+
+  .painter-navbar-right {
+    margin-left: auto;
+  }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1024px) {
+
+  .painter-navbar {
+    left: 220px;
+
+    padding: 0 20px;
+  }
+
+  .painter-navbar-brand h2 {
+    font-size: 17px;
+  }
+
+  .painter-navbar-right {
+    gap: 8px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .painter-navbar {
+    left: 0;
+
+    height: 68px;
+
+    padding: 0 15px;
+  }
+
+  .painter-navbar-menu-btn {
+    display: flex;
+  }
+
+  .painter-navbar-brand h2 {
+    font-size: 16px;
+  }
+
+  .painter-navbar-brand span {
+    font-size: 10px;
+  }
+
+  .painter-navbar-right {
+    gap: 6px;
+  }
+
+  .painter-navbar-icon-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .painter-navbar-profile {
+    padding-right: 2px;
+  }
+
+  .painter-navbar-profile span {
+    display: none;
+  }
+
+  .painter-navbar-profile svg {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .painter-navbar {
+    height: 64px;
+
+    padding: 0 12px;
+  }
+
+  .painter-navbar-menu-btn {
+    width: 36px;
+    height: 36px;
+
+    margin-right: 9px;
+  }
+
+  .painter-navbar-brand h2 {
+    font-size: 14px;
+  }
+
+  .painter-navbar-brand span {
+    font-size: 9px;
+  }
+
+  .painter-navbar-icon-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .painter-navbar-profile svg {
+    width: 32px;
+    height: 32px;
+  }
+}

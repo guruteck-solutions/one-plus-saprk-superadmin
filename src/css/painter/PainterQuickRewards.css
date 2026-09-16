@@ -1,0 +1,383 @@
+/* ================================
+   QUICK REWARDS
+================================ */
+
+.painter-quick-rewards {
+  width: 100%;
+  min-height: calc(100vh - 64px);
+  padding: 28px 30px 40px;
+  box-sizing: border-box;
+  background: #f8fafc;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.painter-quick-rewards-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.painter-quick-rewards-header h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #172033;
+}
+
+.painter-quick-rewards-header p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #697386;
+}
+
+/* ================================
+   REDEEM BUTTON
+================================ */
+
+.painter-rewards-redeem-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 8px;
+  background: #172033;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.painter-rewards-redeem-btn:hover {
+  background: #273249;
+}
+
+/* ================================
+   ERROR
+================================ */
+
+.painter-rewards-error {
+  margin-bottom: 20px;
+  padding: 12px 15px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+/* ================================
+   SUMMARY CARDS
+================================ */
+
+.painter-rewards-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.painter-reward-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #e5e9f0;
+  border-radius: 10px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.painter-reward-summary-icon {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #f1f5f9;
+  color: #172033;
+}
+
+.painter-reward-summary-card span {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.painter-reward-summary-card strong {
+  display: block;
+  font-size: 23px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #172033;
+}
+
+/* ================================
+   RECENT REWARDS CARD
+================================ */
+
+.painter-recent-rewards-card {
+  width: 100%;
+  border: 1px solid #e5e9f0;
+  border-radius: 10px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.painter-recent-rewards-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 20px 22px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.painter-recent-rewards-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #172033;
+}
+
+.painter-recent-rewards-header p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: #737d8c;
+}
+
+/* ================================
+   REFRESH BUTTON
+================================ */
+
+.painter-rewards-refresh-btn {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dfe4eb;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #4b5563;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.painter-rewards-refresh-btn:hover {
+  background: #f5f7fa;
+  color: #172033;
+}
+
+/* ================================
+   TABLE
+================================ */
+
+.painter-rewards-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.painter-rewards-table {
+  width: 100%;
+  min-width: 650px;
+  border-collapse: collapse;
+}
+
+.painter-rewards-table th,
+.painter-rewards-table td {
+  padding: 15px 22px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.painter-rewards-table th {
+  background: #f8fafc;
+  color: #596579;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.painter-rewards-table td {
+  color: #374151;
+  font-size: 14px;
+}
+
+.painter-rewards-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.painter-rewards-table tbody tr:hover {
+  background: #fafbfc;
+}
+
+/* ================================
+   STATUS
+================================ */
+
+.painter-reward-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 78px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.painter-reward-status-approved,
+.painter-reward-status-released,
+.painter-reward-status-completed {
+  background: #ecfdf3;
+  color: #15803d;
+}
+
+.painter-reward-status-pending {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.painter-reward-status-rejected {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.painter-reward-status-add {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+/* ================================
+   EMPTY / LOADING
+================================ */
+
+.painter-rewards-empty {
+  padding: 45px 20px !important;
+  text-align: center !important;
+  color: #8a94a6 !important;
+  font-size: 14px !important;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 1024px) {
+  .painter-quick-rewards {
+    padding: 24px 22px 35px;
+  }
+
+  .painter-rewards-summary {
+    gap: 14px;
+  }
+
+  .painter-reward-summary-card {
+    padding: 17px;
+  }
+
+  .painter-reward-summary-card strong {
+    font-size: 21px;
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+  .painter-quick-rewards {
+    min-height: calc(100vh - 58px);
+    padding: 20px 16px 30px;
+  }
+
+  .painter-quick-rewards-header {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .painter-quick-rewards-header h1 {
+    font-size: 23px;
+  }
+
+  .painter-quick-rewards-header p {
+    font-size: 13px;
+  }
+
+  .painter-rewards-redeem-btn {
+    width: 100%;
+  }
+
+  .painter-rewards-summary {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .painter-reward-summary-card {
+    padding: 16px;
+  }
+
+  .painter-recent-rewards-header {
+    padding: 17px;
+  }
+
+  .painter-recent-rewards-header h2 {
+    font-size: 17px;
+  }
+
+  .painter-rewards-table th,
+  .painter-rewards-table td {
+    padding: 13px 16px;
+  }
+}
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 480px) {
+  .painter-quick-rewards {
+    padding: 18px 12px 25px;
+  }
+
+  .painter-quick-rewards-header h1 {
+    font-size: 21px;
+  }
+
+  .painter-reward-summary-card {
+    gap: 12px;
+  }
+
+  .painter-reward-summary-icon {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+
+  .painter-reward-summary-card strong {
+    font-size: 20px;
+  }
+
+  .painter-recent-rewards-header {
+    padding: 15px;
+  }
+}

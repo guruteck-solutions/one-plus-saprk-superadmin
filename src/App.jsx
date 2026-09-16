@@ -9,7 +9,9 @@ import ForgotPassword from "./pages/superadmin/ForgotPassword";
 import OTPVerification from "./pages/superadmin/OTPVerification";
 import ResetPassword from "./pages/superadmin/ResetPassword";
 
+// superadmin
 import Dashboard from "./pages/superadmin/Dashboard";
+import DashboardLayout from "./layouts/DashboardLayout";
 import UserManagement from "./pages/superadmin/UserManagement";
 import AddUser from "./pages/superadmin/AddUser";
 import ProductManagement from "./pages/superadmin/ProductManagement";
@@ -21,7 +23,6 @@ import QRManagement from "./pages/superadmin/QRManagement";
 import RewardDashboard from "./pages/superadmin/RewardDashboard";
 import SchemeManagement from "./pages/superadmin/SchemeManagement";
 import FinanceDashboard from "./pages/superadmin/FinanceDashboard";
-import DashboardLayout from "./layouts/DashboardLayout";
 import Reports from "./pages/superadmin/Reports";
 import SystemSettings from "./pages/superadmin/SystemSettings";
 import ManufacturingBatchManagement from "./pages/superadmin/ManufacturingBatchManagement";
@@ -43,6 +44,14 @@ import Directory from "./pages/superadmin/Directory";
 import SocialMediaActivities from "./pages/superadmin/SocialMediaActivities";
 import HelpSupport from "./pages/superadmin/HelpSupport";
 
+// painter
+import PainterDashboard from "./pages/painter/PainterDashboard";
+import PainterLayout from "./layouts/PainterLayout";
+import PainterQuickScan from "./pages/painter/PainterQuickScan";
+import PainterQuickShop from "./pages/painter/PainterQuickShop";
+import PainterQuickRewards from "./pages/painter/PainterQuickRewards";
+import PainterNotifications from "./pages/painter/PainterMonthlyRewardSummary.jsx";
+import PainterNotificationCentre from "./pages/painter/PainterNotificationCentre";
 
 const App = () => {
   return (
@@ -89,7 +98,18 @@ const App = () => {
         <Route path="/approval-workflow" element={<DashboardLayout><ApprovalWorkflow /></DashboardLayout>} />
         <Route path="/directory" element={<DashboardLayout><Directory /></DashboardLayout>} />
         <Route path="/social-media-activities" element={<DashboardLayout><SocialMediaActivities /></DashboardLayout>} />
-        <Route path="/help-support" element={<DashboardLayout><HelpSupport /></DashboardLayout>} /></Routes>
+        <Route path="/help-support" element={<DashboardLayout><HelpSupport /></DashboardLayout>} />
+
+        {/* painter */}
+
+        <Route path="/painter/dashboard" element={<PainterLayout><PainterDashboard /></PainterLayout>} />
+        <Route path="/painter/quick-scan" element={<PainterLayout><PainterQuickScan /></PainterLayout>} />
+        <Route path="/painter/quick-shop" element={<PainterLayout><PainterQuickShop /></PainterLayout>} />
+        <Route path="/painter/quick-rewards" element={<PainterLayout><PainterQuickRewards /></PainterLayout>} />
+        <Route path="/painter/monthly-reward-summary" element={<PainterLayout><PainterNotifications /></PainterLayout>} />
+        <Route path="/painter/notifications" element={<PainterLayout><PainterNotificationCentre /></PainterLayout>} />
+
+      </Routes>
 
     </BrowserRouter>
   );

@@ -1,0 +1,471 @@
+.painter-dashboard {
+  width: 100%;
+  min-height: calc(100vh - 64px);
+  padding: 14px 24px 10px;
+  background: #f5f6f8;
+  box-sizing: border-box;
+  color: #111827;
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.painter-dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.painter-dashboard-header h1 {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #111827;
+}
+
+.painter-dashboard-header p {
+  margin: 6px 0 0;
+  font-size: 11px;
+  color: #7b8794;
+}
+
+.painter-notification-btn {
+  display: none;
+}
+
+/* =========================
+   SUMMARY CARDS
+========================= */
+
+.painter-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.painter-summary-card {
+  min-width: 0;
+  min-height: 108px;
+  padding: 14px 13px;
+  background: #ffffff;
+  border: 1px solid #e2e6eb;
+  border-radius: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  box-sizing: border-box;
+}
+
+.painter-summary-icon {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border-radius: 50%;
+  background: #f5f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff7800;
+}
+
+.painter-summary-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.painter-summary-content span {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 10px;
+  color: #7b8794;
+}
+
+.painter-summary-content strong {
+  display: block;
+  font-size: 22px;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #111827;
+}
+
+.painter-summary-content small {
+  display: block;
+  margin-top: 20px;
+  font-size: 9px;
+  color: #10a36b;
+}
+
+.painter-summary-content .pending-text {
+  color: #7b8794;
+}
+
+/* =========================
+   MIDDLE SECTION
+========================= */
+
+.painter-dashboard-middle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.painter-dashboard-card {
+  background: #ffffff;
+  border: 1px solid #e2e6eb;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.painter-dashboard-card h2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* =========================
+   QUICK ACTIONS
+========================= */
+
+.painter-quick-card {
+  padding: 17px 19px;
+}
+
+.painter-quick-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.painter-quick-action {
+  height: 42px;
+  padding: 0 10px;
+  border: 1px solid #e1e5ea;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.painter-quick-action:hover {
+  border-color: #ff7800;
+}
+
+.painter-quick-action.active {
+  background: #ff7800;
+  border-color: #ff7800;
+  color: #ffffff;
+}
+
+/* =========================
+   LOYALTY
+========================= */
+
+.painter-loyalty-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 27px;
+}
+
+.painter-loyalty-label {
+  font-size: 10px;
+  color: #7b8794;
+}
+
+.painter-loyalty-badge {
+  min-width: 68px;
+  height: 27px;
+  padding: 0 14px;
+  border-radius: 20px;
+  background: #fff2e6;
+  color: #f47a17;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 700;
+  box-sizing: border-box;
+}
+
+.painter-loyalty-row strong {
+  font-size: 10px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* =========================
+   LATEST REWARD
+========================= */
+
+.painter-latest-card {
+  padding: 17px 19px;
+}
+
+.painter-latest-points {
+  margin-top: 17px;
+  font-size: 25px;
+  line-height: 1;
+  font-weight: 700;
+  color: #f47700;
+}
+
+.painter-latest-description {
+  margin: 11px 0 17px;
+  font-size: 10px;
+  color: #7b8794;
+}
+
+.painter-view-reward-btn {
+  height: 36px;
+  min-width: 128px;
+  padding: 0 17px;
+  border: 1px solid #e1e5ea;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #111827;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.painter-view-reward-btn:hover {
+  border-color: #ff7800;
+}
+
+/* =========================
+   BOTTOM SECTION
+========================= */
+
+.painter-dashboard-bottom {
+  display: grid;
+  grid-template-columns: 2fr 0.85fr;
+  gap: 18px;
+}
+
+/* =========================
+   MONTHLY CHART
+========================= */
+
+.painter-monthly-card {
+  height: 210px;
+  padding: 17px 19px 12px;
+}
+
+.painter-chart {
+  height: 145px;
+  margin-top: 10px;
+  padding: 0 15px 0 10px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 28px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.painter-chart-column {
+  height: 100%;
+  flex: 1;
+  max-width: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.painter-chart-bar-wrapper {
+  width: 100%;
+  height: 118px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.painter-chart-bar {
+  width: 100%;
+  min-height: 10px;
+  border-radius: 6px 6px 4px 4px;
+  background: #e7ebf0;
+}
+
+.painter-chart-bar.current {
+  background: #ff7800;
+}
+
+.painter-chart-column span {
+  margin-top: 10px;
+  font-size: 9px;
+  color: #7b8794;
+}
+
+.painter-chart-value {
+  position: absolute;
+  top: -1px;
+  right: 10px;
+  font-size: 9px;
+  color: #7b8794;
+}
+
+/* =========================
+   ACTIVE SCHEMES
+========================= */
+
+.painter-schemes-card {
+  height: 210px;
+  padding: 17px 19px;
+}
+
+.painter-scheme-list {
+  margin-top: 23px;
+}
+
+.painter-scheme-item {
+  margin-bottom: 17px;
+}
+
+.painter-scheme-item:last-child {
+  margin-bottom: 0;
+}
+
+.painter-scheme-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 7px;
+}
+
+.painter-scheme-header strong {
+  font-size: 10px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.painter-scheme-header span {
+  font-size: 9px;
+  color: #657384;
+}
+
+.painter-progress-track {
+  width: 100%;
+  height: 7px;
+  background: #e5e9ee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.painter-progress-bar {
+  height: 100%;
+  background: #ff7800;
+  border-radius: 10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1200px) {
+  .painter-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .painter-dashboard-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .painter-dashboard {
+    padding: 16px;
+  }
+
+  .painter-dashboard-middle {
+    grid-template-columns: 1fr;
+  }
+
+  .painter-dashboard-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .painter-dashboard {
+    padding: 14px;
+  }
+
+  .painter-dashboard-header h1 {
+    font-size: 21px;
+  }
+
+  .painter-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .painter-summary-card {
+    min-height: 100px;
+  }
+
+  .painter-quick-actions {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .painter-quick-action {
+    width: 100%;
+  }
+
+  .painter-loyalty-row {
+    flex-wrap: wrap;
+    gap: 9px;
+  }
+
+  .painter-latest-points {
+    font-size: 23px;
+  }
+
+  .painter-monthly-card,
+  .painter-schemes-card {
+    height: auto;
+    min-height: 210px;
+  }
+
+  .painter-chart {
+    gap: 10px;
+    padding: 0 5px;
+  }
+
+  .painter-chart-column {
+    max-width: 42px;
+  }
+}
+
+@media (max-width: 400px) {
+  .painter-dashboard-header h1 {
+    font-size: 19px;
+  }
+
+  .painter-summary-content strong {
+    font-size: 20px;
+  }
+
+  .painter-quick-card,
+  .painter-latest-card,
+  .painter-monthly-card,
+  .painter-schemes-card {
+    padding: 15px;
+  }
+}

@@ -43,8 +43,12 @@ const Login = () => {
             // User information save
             localStorage.setItem("user", JSON.stringify(data.user));
 
-            // Dashboard par redirect
-            navigate("/dashboard");
+            // Role based redirect
+            if (data.user?.role === "PAINTER") {
+                navigate("/painter/dashboard");
+            } else {
+                navigate("/dashboard");
+            }
 
         } catch (error) {
             console.error("Login error:", error);
@@ -165,6 +169,7 @@ const Login = () => {
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
+                                    autoComplete="username"
                                 />
                             </div>
                         </div>
@@ -183,6 +188,7 @@ const Login = () => {
                                     value={formData.password}
                                     onChange={handleChange}
                                     required
+                                    autoComplete="current-password"
                                 />
 
                                 <button
