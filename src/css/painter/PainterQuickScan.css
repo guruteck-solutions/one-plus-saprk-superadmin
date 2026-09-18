@@ -4,6 +4,7 @@
   padding: 18px 24px 12px;
   box-sizing: border-box;
   background: #f5f7fa;
+  padding-top: 88px;
 }
 
 /* =========================
@@ -223,6 +224,7 @@
 @media (max-width: 1024px) {
   .painter-quick-scan {
     padding: 18px 20px 12px;
+    padding-top: 88px;
   }
 
   .painter-quick-scan-card {
@@ -243,6 +245,7 @@
   .painter-quick-scan {
     min-height: calc(100vh - 58px);
     padding: 16px 14px 12px;
+    paddding-top: 88px;
   }
 
   .painter-quick-scan-header {
@@ -298,6 +301,7 @@
 @media (max-width: 480px) {
   .painter-quick-scan {
     padding: 12px 10px;
+    padding-top: 88px;
   }
 
   .painter-quick-scan-card {

@@ -5,9 +5,9 @@
 .painter-quick-shop {
     width: 100%;
     min-height: calc(100vh - 64px);
-    padding: 28px 32px;
     box-sizing: border-box;
     background: #f5f7fa;
+    padding-top: 88px;
 }
 
 /* =========================================
@@ -135,7 +135,7 @@
     color: #172554;
 }
 
-.painter-shop-product-info > p {
+.painter-shop-product-info>p {
     margin: 0 0 15px;
     font-size: 14px;
     color: #64748b;
@@ -331,14 +331,14 @@
    MODAL PRODUCT NAME / MRP
 ========================================= */
 
-.painter-shop-modal-body > h3 {
+.painter-shop-modal-body>h3 {
     margin: 0 0 7px;
     font-size: 20px;
     font-weight: 700;
     color: #172554;
 }
 
-.painter-shop-modal-body > p {
+.painter-shop-modal-body>p {
     margin: 0 0 20px;
     font-size: 15px;
     font-weight: 600;
@@ -522,6 +522,7 @@
 @media (max-width: 900px) {
     .painter-quick-shop {
         padding: 24px;
+        padding-top: 88px;
     }
 
     .painter-shop-product-grid {
@@ -541,6 +542,7 @@
     .painter-quick-shop {
         min-height: calc(100vh - 58px);
         padding: 18px 14px;
+        padding-top: 88px;
     }
 
     .painter-quick-shop-header {
@@ -603,7 +605,7 @@
         height: 180px;
     }
 
-    .painter-shop-modal-body > h3 {
+    .painter-shop-modal-body>h3 {
         font-size: 18px;
     }
 

@@ -1,0 +1,434 @@
+/* =====================================================
+   BARCODE SCANNER PAGE
+===================================================== */
+
+.painter-barcode-scanner-page {
+  width: 100%;
+  min-height: calc(100vh - 64px);
+  padding: 28px 30px 40px;
+  box-sizing: border-box;
+  background: #f8fafc;
+  padding-top: 88px;
+}
+
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.painter-barcode-scanner-header {
+  margin-bottom: 24px;
+}
+
+.painter-barcode-scanner-header h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #111827;
+}
+
+.painter-barcode-scanner-header p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.painter-barcode-scanner-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.9fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+
+/* =====================================================
+   SCANNER CARD
+===================================================== */
+
+.painter-barcode-scanner-card {
+  min-width: 0;
+  padding: 26px;
+  border-radius: 12px;
+  background: #1f252c;
+  box-sizing: border-box;
+}
+
+.painter-barcode-scanner-card h2 {
+  margin: 0 0 22px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   SCAN AREA
+===================================================== */
+
+.painter-barcode-scan-area {
+  position: relative;
+  width: 100%;
+  min-height: 310px;
+  border: 2px solid #f97316;
+  border-radius: 8px;
+  background: #252c34;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.painter-barcode-lines {
+  width: 76%;
+  max-width: 470px;
+  height: 105px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.painter-barcode-lines span {
+  display: block;
+  height: 100%;
+  width: 4px;
+  background: #f8fafc;
+  border-radius: 1px;
+}
+
+.painter-barcode-lines span:nth-child(1) {
+  width: 8px;
+}
+
+.painter-barcode-lines span:nth-child(2) {
+  width: 3px;
+}
+
+.painter-barcode-lines span:nth-child(3) {
+  width: 7px;
+}
+
+.painter-barcode-lines span:nth-child(4) {
+  width: 3px;
+}
+
+.painter-barcode-lines span:nth-child(5) {
+  width: 9px;
+}
+
+
+/* =====================================================
+   BARCODE INPUT
+===================================================== */
+
+.painter-barcode-input {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  width: min(76%, 470px);
+  height: 38px;
+  transform: translateX(-50%);
+  padding: 0 12px;
+  border: 1px solid #475569;
+  border-radius: 6px;
+  outline: none;
+  background: #1f252c;
+  color: #ffffff;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.painter-barcode-input::placeholder {
+  color: #94a3b8;
+}
+
+.painter-barcode-input:focus {
+  border-color: #f97316;
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.painter-barcode-error {
+  margin: 10px 0 0;
+  color: #fca5a5;
+  font-size: 12px;
+}
+
+
+/* =====================================================
+   CAPTURE BUTTON
+===================================================== */
+
+.painter-barcode-capture-btn {
+  margin-top: 20px;
+  min-width: 150px;
+  height: 38px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: none;
+  border-radius: 6px;
+  background: #f97316;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.painter-barcode-capture-btn:hover {
+  background: #ea580c;
+}
+
+.painter-barcode-capture-btn:active {
+  transform: translateY(1px);
+}
+
+.painter-barcode-capture-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+
+/* =====================================================
+   SCAN OPTIONS CARD
+===================================================== */
+
+.painter-barcode-options-card {
+  min-width: 0;
+  padding: 26px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.painter-barcode-options-card h2 {
+  margin: 0 0 20px;
+  color: #111827;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   OPTIONS LIST
+===================================================== */
+
+.painter-barcode-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+/* =====================================================
+   OPTION ITEM
+===================================================== */
+
+.painter-barcode-option-item {
+  width: 100%;
+  min-height: 70px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  text-align: left;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+button.painter-barcode-option-item:enabled {
+  cursor: pointer;
+}
+
+button.painter-barcode-option-item:enabled:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+
+/* =====================================================
+   OPTION NUMBER
+===================================================== */
+
+.painter-barcode-option-number {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff7ed;
+  color: #f97316;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =====================================================
+   OPTION CONTENT
+===================================================== */
+
+.painter-barcode-option-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.painter-barcode-option-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #1e293b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.painter-barcode-option-title svg {
+  flex-shrink: 0;
+  color: #64748b;
+}
+
+.painter-barcode-option-content p {
+  margin: 4px 0 0;
+  color: #94a3b8;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+  .painter-barcode-scanner-content {
+    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
+    gap: 18px;
+  }
+
+  .painter-barcode-scanner-page {
+    padding: 24px 22px 35px;
+    padding-top: 88px;
+  }
+
+  .painter-barcode-scanner-card,
+  .painter-barcode-options-card {
+    padding: 22px;
+  }
+
+  .painter-barcode-scan-area {
+    min-height: 280px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE / SMALL TABLET
+===================================================== */
+
+@media (max-width: 768px) {
+  .painter-barcode-scanner-page {
+    min-height: calc(100vh - 58px);
+    padding: 20px 16px 30px;
+    padding-top: 88px;
+  }
+
+  .painter-barcode-scanner-header {
+    margin-bottom: 20px;
+  }
+
+  .painter-barcode-scanner-header h1 {
+    font-size: 22px;
+  }
+
+  .painter-barcode-scanner-header p {
+    font-size: 12px;
+  }
+
+  .painter-barcode-scanner-content {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .painter-barcode-scanner-card,
+  .painter-barcode-options-card {
+    padding: 20px;
+  }
+
+  .painter-barcode-scan-area {
+    min-height: 260px;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+  .painter-barcode-scanner-page {
+    padding: 17px 12px 25px;
+    padding-top: 88px;
+  }
+
+  .painter-barcode-scanner-header h1 {
+    font-size: 20px;
+  }
+
+  .painter-barcode-scanner-card,
+  .painter-barcode-options-card {
+    padding: 16px;
+    border-radius: 9px;
+  }
+
+  .painter-barcode-scanner-card h2,
+  .painter-barcode-options-card h2 {
+    font-size: 16px;
+  }
+
+  .painter-barcode-scan-area {
+    min-height: 230px;
+  }
+
+  .painter-barcode-lines {
+    width: 82%;
+  }
+
+  .painter-barcode-input {
+    width: 82%;
+  }
+
+  .painter-barcode-capture-btn {
+    width: 100%;
+  }
+
+  .painter-barcode-option-item {
+    min-height: 66px;
+    padding: 10px;
+  }
+
+  .painter-barcode-option-number {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+}

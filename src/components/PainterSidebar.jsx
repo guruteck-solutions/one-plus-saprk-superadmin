@@ -40,7 +40,7 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     {
       label: "Scan & Rewards",
       icon: QrCode,
-      path: "/painter/scan-rewards",
+      path: "/painter/barcode-scanner",
     },
     {
       label: "Rewards",
@@ -137,6 +137,58 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   ];
 
   /* =====================================================
+   SCAN & REWARDS SUBMENU
+===================================================== */
+
+  const scanRewardsItems = [
+    // {
+    //   label: "Barcode Scanner",
+    //   icon: QrCode,
+    //   path: "/painter/barcode-scanner",
+    // },
+    {
+      label: "Manual Code Entry",
+      icon: QrCode,
+      path: "/painter/manual-code-entry",
+    },
+    {
+      label: "Scan Result",
+      icon: QrCode,
+      path: "/painter/scan-result",
+    },
+    {
+      label: "Invalid QR Popup",
+      icon: QrCode,
+      path: "/painter/invalid-qr",
+    },
+    {
+      label: "Duplicate QR Popup",
+      icon: QrCode,
+      path: "/painter/duplicate-qr",
+    },
+    {
+      label: "Scan History",
+      icon: QrCode,
+      path: "/painter/scan-history",
+    },
+    {
+      label: "Product Verification",
+      icon: QrCode,
+      path: "/painter/product-verification",
+    },
+    {
+      label: "Reward History",
+      icon: Award,
+      path: "/painter/reward-history",
+    },
+    {
+      label: "Wallet Ledger",
+      icon: FileText,
+      path: "/painter/wallet-ledger",
+    },
+  ];
+
+  /* =====================================================
      DASHBOARD ROUTES
   ===================================================== */
 
@@ -148,12 +200,23 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   const isDashboardSectionActive =
     dashboardPaths.includes(location.pathname);
 
+  const scanRewardsPaths = scanRewardsItems.map(
+    (item) => item.path
+  );
+
+  const isScanRewardsSectionActive =
+    scanRewardsPaths.includes(location.pathname);
+
   /* =====================================================
      DASHBOARD DROPDOWN STATE
   ===================================================== */
 
   const [dashboardOpen, setDashboardOpen] = useState(
     isDashboardSectionActive
+  );
+
+  const [scanRewardsOpen, setScanRewardsOpen] = useState(
+    isScanRewardsSectionActive
   );
 
   /* =====================================================
@@ -164,7 +227,14 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     if (isDashboardSectionActive) {
       setDashboardOpen(true);
     }
-  }, [isDashboardSectionActive]);
+
+    if (isScanRewardsSectionActive) {
+      setScanRewardsOpen(true);
+    }
+  }, [
+    isDashboardSectionActive,
+    isScanRewardsSectionActive,
+  ]);
 
   /* =====================================================
      NAVIGATION
@@ -228,9 +298,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
       ================================================= */}
 
       <aside
-        className={`painter-sidebar ${
-          isOpen ? "painter-sidebar-open" : ""
-        }`}
+        className={`painter-sidebar ${isOpen ? "painter-sidebar-open" : ""
+          }`}
       >
         {/* =================================================
             HEADER
@@ -270,11 +339,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
 
               <button
                 type="button"
-                className={`painter-sidebar-item painter-sidebar-dashboard-item ${
-                  isDashboardSectionActive
-                    ? "painter-sidebar-active"
-                    : ""
-                }`}
+                className={`painter-sidebar-item painter-sidebar-dashboard-item ${isDashboardSectionActive
+                  ? "painter-sidebar-active"
+                  : ""
+                  }`}
                 onClick={() =>
                   handleMobileNavigation(
                     "/painter/dashboard"
@@ -290,11 +358,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
 
               <button
                 type="button"
-                className={`painter-sidebar-dropdown-btn ${
-                  isDashboardSectionActive
-                    ? "painter-sidebar-dropdown-active"
-                    : ""
-                }`}
+                className={`painter-sidebar-dropdown-btn ${isDashboardSectionActive
+                  ? "painter-sidebar-dropdown-active"
+                  : ""
+                  }`}
                 onClick={() =>
                   setDashboardOpen((prev) => !prev)
                 }
@@ -329,11 +396,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                     <button
                       key={item.path}
                       type="button"
-                      className={`painter-sidebar-subitem ${
-                        isActive
-                          ? "painter-sidebar-subitem-active"
-                          : ""
-                      }`}
+                      className={`painter-sidebar-subitem ${isActive
+                        ? "painter-sidebar-subitem-active"
+                        : ""
+                        }`}
                       onClick={() =>
                         handleDashboardNavigation(
                           item.path
@@ -354,21 +420,109 @@ const PainterSidebar = ({ isOpen, onClose }) => {
               MAIN MENU
           ================================================= */}
 
+          {/* =================================================
+    MAIN MENU
+================================================= */}
+
           {mainMenuItems.slice(1).map((item) => {
             const Icon = item.icon;
 
-            const isActive =
-              location.pathname === item.path;
+            const isScanRewards =
+              item.label === "Scan & Rewards";
+
+            const isActive = isScanRewards
+              ? isScanRewardsSectionActive
+              : location.pathname === item.path;
+
+            if (isScanRewards) {
+              return (
+                <div
+                  className="painter-sidebar-group"
+                  key={item.path}
+                >
+                  <div className="painter-sidebar-dashboard-row">
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isActive
+                          ? "painter-sidebar-active"
+                          : ""
+                        }`}
+                      onClick={() =>
+                        handleMobileNavigation(
+                          "/painter/barcode-scanner"
+                        )
+                      }
+                    >
+                      <Icon size={18} />
+
+                      <span>Scan & Rewards</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isActive
+                          ? "painter-sidebar-dropdown-active"
+                          : ""
+                        }`}
+                      onClick={() =>
+                        setScanRewardsOpen((prev) => !prev)
+                      }
+                      aria-label="Toggle Scan & Rewards menu"
+                      aria-expanded={scanRewardsOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          scanRewardsOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+                  </div>
+
+                  {scanRewardsOpen && (
+                    <div className="painter-sidebar-submenu">
+                      {scanRewardsItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname === subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                                ? "painter-sidebar-subitem-active"
+                                : ""
+                              }`}
+                            onClick={() =>
+                              handleDashboardNavigation(
+                                subItem.path
+                              )
+                            }
+                          >
+                            <SubIcon size={16} />
+
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            }
 
             return (
               <button
                 key={item.path}
                 type="button"
-                className={`painter-sidebar-item ${
-                  isActive
+                className={`painter-sidebar-item ${isActive
                     ? "painter-sidebar-main-active"
                     : ""
-                }`}
+                  }`}
                 onClick={() =>
                   handleMobileNavigation(item.path)
                 }

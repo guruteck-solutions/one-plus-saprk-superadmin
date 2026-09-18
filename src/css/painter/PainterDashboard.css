@@ -5,6 +5,7 @@
   background: #f5f6f8;
   box-sizing: border-box;
   color: #111827;
+  padding-top: 88px;
 }
 
 /* =========================
@@ -390,6 +391,7 @@
 @media (max-width: 900px) {
   .painter-dashboard {
     padding: 16px;
+    padding-top:88px;
   }
 
   .painter-dashboard-middle {
@@ -404,6 +406,7 @@
 @media (max-width: 600px) {
   .painter-dashboard {
     padding: 14px;
+    padding-top: 88px;
   }
 
   .painter-dashboard-header h1 {

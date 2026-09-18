@@ -52,6 +52,14 @@ import PainterQuickShop from "./pages/painter/PainterQuickShop";
 import PainterQuickRewards from "./pages/painter/PainterQuickRewards";
 import PainterNotifications from "./pages/painter/PainterMonthlyRewardSummary.jsx";
 import PainterNotificationCentre from "./pages/painter/PainterNotificationCentre";
+import PainterBarcodeScanner from "./pages/painter/PainterBarcodeScanner";
+import PainterManualCodeEntry from "./pages/painter/PainterManualCodeEntry";
+import PainterScanResult from "./pages/painter/PainterScanResult";
+import PainterInvalidQR from "./pages/painter/PainterInvalidQR";
+import PainterDuplicateQR from "./pages/painter/PainterDuplicateQR";
+import PainterScanHistory from "./pages/painter/PainterScanHistory";
+import PainterProductVerification from "./pages/painter/PainterProductVerification";
+
 
 const App = () => {
   return (
@@ -108,6 +116,13 @@ const App = () => {
         <Route path="/painter/quick-rewards" element={<PainterLayout><PainterQuickRewards /></PainterLayout>} />
         <Route path="/painter/monthly-reward-summary" element={<PainterLayout><PainterNotifications /></PainterLayout>} />
         <Route path="/painter/notifications" element={<PainterLayout><PainterNotificationCentre /></PainterLayout>} />
+        <Route path="/painter/barcode-scanner" element={<PainterLayout><PainterBarcodeScanner /></PainterLayout>} />
+        <Route path="/painter/manual-code-entry" element={<PainterLayout><PainterManualCodeEntry /></PainterLayout>} />
+        <Route path="/painter/scan-result" element={<PainterLayout><PainterScanResult /></PainterLayout>} />
+        <Route path="/painter/invalid-qr" element={<PainterLayout><PainterInvalidQR /></PainterLayout>} />
+        <Route path="/painter/duplicate-qr" element={<PainterLayout><PainterDuplicateQR /></PainterLayout>} />
+        <Route path="/painter/scan-history" element={<PainterLayout><PainterScanHistory /></PainterLayout>} />
+        <Route path="/painter/product-verification" element={<PainterLayout><PainterProductVerification /></PainterLayout>} />
 
       </Routes>
 

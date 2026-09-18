@@ -8,6 +8,7 @@
   padding: 28px 30px 40px;
   box-sizing: border-box;
   background: #f8fafc;
+  padding-top: 88px;
 }
 
 /* ================================
@@ -284,6 +285,7 @@
 @media (max-width: 1024px) {
   .painter-quick-rewards {
     padding: 24px 22px 35px;
+    padding-top: 88px;
   }
 
   .painter-rewards-summary {
@@ -307,6 +309,7 @@
   .painter-quick-rewards {
     min-height: calc(100vh - 58px);
     padding: 20px 16px 30px;
+    padding-top: 88px;
   }
 
   .painter-quick-rewards-header {
@@ -357,6 +360,7 @@
 @media (max-width: 480px) {
   .painter-quick-rewards {
     padding: 18px 12px 25px;
+    padding-top: 88px;
   }
 
   .painter-quick-rewards-header h1 {

@@ -8,6 +8,7 @@
   padding: 28px 30px 40px;
   box-sizing: border-box;
   background: #f8fafc;
+  padding-top: 88px;
 }
 
 /* =========================================
@@ -204,6 +205,7 @@
 @media (max-width: 1024px) {
   .painter-notifications-page {
     padding: 24px 22px 35px;
+    padding-top: 88px;
   }
 
   .painter-notifications-page-header h1 {
@@ -227,6 +229,7 @@
   .painter-notifications-page {
     min-height: calc(100vh - 58px);
     padding: 20px 16px 30px;
+    padding-top: 88px;
   }
 
   .painter-notifications-page-header {
@@ -285,6 +288,7 @@
 @media (max-width: 480px) {
   .painter-notifications-page {
     padding: 18px 12px 25px;
+    padding-top: 88px;
   }
 
   .painter-notifications-page-header {
