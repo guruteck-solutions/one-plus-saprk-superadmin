@@ -1,0 +1,255 @@
+.painter-wallet-ledger-page {
+  width: 100%;
+  min-height: calc(100vh - 64px);
+  padding: 28px 32px;
+  box-sizing: border-box;
+  background: #f8fafc;
+  padding-top: 88px;
+}
+
+.painter-wallet-ledger-header {
+  margin-bottom: 24px;
+}
+
+.painter-wallet-ledger-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #172033;
+}
+
+.painter-wallet-ledger-header p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* Summary */
+
+.painter-wallet-ledger-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.painter-wallet-ledger-summary-card {
+  min-height: 110px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+}
+
+.painter-wallet-ledger-summary-card span {
+  font-size: 11px;
+  color: #64748b;
+}
+
+.painter-wallet-ledger-summary-card strong {
+  margin-top: 12px;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #172033;
+  overflow-wrap: anywhere;
+}
+
+/* Ledger Card */
+
+.painter-wallet-ledger-card {
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+}
+
+.painter-wallet-ledger-card-header {
+  margin-bottom: 20px;
+}
+
+.painter-wallet-ledger-card-header h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #172033;
+}
+
+.painter-wallet-ledger-card-header p {
+  margin: 5px 0 0;
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* Table */
+
+.painter-wallet-ledger-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.painter-wallet-ledger-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+.painter-wallet-ledger-table th {
+  padding: 13px 14px;
+  text-align: left;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.painter-wallet-ledger-table td {
+  padding: 15px 14px;
+  border-bottom: 1px solid #eef2f7;
+  color: #334155;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.painter-wallet-ledger-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.painter-wallet-ledger-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.painter-wallet-ledger-positive {
+  color: #16a34a !important;
+  font-weight: 600;
+}
+
+.painter-wallet-ledger-negative {
+  color: #ef4444 !important;
+  font-weight: 600;
+}
+
+/* Loading / Error / Empty */
+
+.painter-wallet-ledger-state {
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 13px;
+  text-align: center;
+}
+
+.painter-wallet-ledger-error {
+  padding: 14px 16px;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  background: #fef2f2;
+  color: #dc2626;
+  font-size: 13px;
+}
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+  .painter-wallet-ledger-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .painter-wallet-ledger-page {
+    padding: 24px;
+    padding-top: 88px;
+  }
+
+  .painter-wallet-ledger-card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .painter-wallet-ledger-page {
+    padding: 20px 18px;
+    padding-top: 88px;
+  }
+
+  .painter-wallet-ledger-summary {
+    gap: 12px;
+  }
+
+  .painter-wallet-ledger-summary-card {
+    min-height: 95px;
+    padding: 15px;
+  }
+
+  .painter-wallet-ledger-summary-card strong {
+    font-size: 19px;
+  }
+
+  .painter-wallet-ledger-card {
+    padding: 18px;
+  }
+
+  .painter-wallet-ledger-header h1 {
+    font-size: 22px;
+  }
+
+  .painter-wallet-ledger-table {
+    min-width: 650px;
+  }
+}
+
+@media (max-width: 480px) {
+  .painter-wallet-ledger-page {
+    padding: 18px 12px;
+    padding-top: 88px;
+  }
+
+  .painter-wallet-ledger-header {
+    margin-bottom: 18px;
+  }
+
+  .painter-wallet-ledger-header h1 {
+    font-size: 20px;
+  }
+
+  .painter-wallet-ledger-header p {
+    font-size: 12px;
+  }
+
+  .painter-wallet-ledger-summary {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .painter-wallet-ledger-summary-card {
+    min-height: 85px;
+  }
+
+  .painter-wallet-ledger-card {
+    padding: 15px;
+    border-radius: 11px;
+  }
+
+  .painter-wallet-ledger-card-header h2 {
+    font-size: 15px;
+  }
+
+  .painter-wallet-ledger-table th,
+  .painter-wallet-ledger-table td {
+    padding: 12px 10px;
+  }
+}

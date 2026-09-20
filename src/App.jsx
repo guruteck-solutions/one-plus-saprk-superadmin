@@ -59,6 +59,8 @@ import PainterInvalidQR from "./pages/painter/PainterInvalidQR";
 import PainterDuplicateQR from "./pages/painter/PainterDuplicateQR";
 import PainterScanHistory from "./pages/painter/PainterScanHistory";
 import PainterProductVerification from "./pages/painter/PainterProductVerification";
+import PainterRewardHistory from "./pages/painter/PainterRewardHistory";
+import PainterWalletLedger from "./pages/painter/PainterWalletLedger";
 
 
 const App = () => {
@@ -123,6 +125,8 @@ const App = () => {
         <Route path="/painter/duplicate-qr" element={<PainterLayout><PainterDuplicateQR /></PainterLayout>} />
         <Route path="/painter/scan-history" element={<PainterLayout><PainterScanHistory /></PainterLayout>} />
         <Route path="/painter/product-verification" element={<PainterLayout><PainterProductVerification /></PainterLayout>} />
+        <Route path="/painter/reward-history" element={<PainterLayout><PainterRewardHistory /></PainterLayout>} />
+        <Route path="/painter/wallet-ledger" element={<PainterLayout><PainterWalletLedger /></PainterLayout>} />
 
       </Routes>
 
