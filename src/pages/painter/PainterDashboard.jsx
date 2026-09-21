@@ -26,7 +26,7 @@ const PainterDashboard = () => {
   const [loading, setLoading] = useState(false);
 
   const API_URL =
-    import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    import.meta.env.VITE_API_URL || "http://localhost:5000";
 
   useEffect(() => {
     fetchDashboard();
@@ -38,11 +38,14 @@ const PainterDashboard = () => {
 
       const token = localStorage.getItem("token");
 
-      const response = await fetch(`${API_URL}/painter/dashboard`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch(
+        `${API_URL}/api/painter/dashboard`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       const data = await response.json();
 
@@ -93,9 +96,11 @@ const PainterDashboard = () => {
 
           <div className="painter-summary-content">
             <span>Reward Points</span>
+
             <strong>
               {summary?.totalRewardPoints || 0}
             </strong>
+
             <small>-</small>
           </div>
         </div>
@@ -107,9 +112,14 @@ const PainterDashboard = () => {
 
           <div className="painter-summary-content">
             <span>Cash Rewards</span>
+
             <strong>
-              ₹{Number(summary?.totalCashRewards || 0).toLocaleString()}
+              ₹
+              {Number(
+                summary?.totalCashRewards || 0
+              ).toLocaleString()}
             </strong>
+
             <small>-</small>
           </div>
         </div>
@@ -121,9 +131,11 @@ const PainterDashboard = () => {
 
           <div className="painter-summary-content">
             <span>Pending Rewards</span>
+
             <strong>
               {summary?.pendingRewards || 0}
             </strong>
+
             <small className="pending-text">
               -
             </small>
@@ -137,9 +149,11 @@ const PainterDashboard = () => {
 
           <div className="painter-summary-content">
             <span>Product Scans</span>
+
             <strong>
               {summary?.productScans || 0}
             </strong>
+
             <small>-</small>
           </div>
         </div>
@@ -184,6 +198,7 @@ const PainterDashboard = () => {
 
           {/* Loyalty Tier */}
           <div className="painter-loyalty-row">
+
             <span className="painter-loyalty-label">
               Current Loyalty Tier
             </span>
@@ -194,9 +209,12 @@ const PainterDashboard = () => {
 
             <strong>
               {painter?.loyaltyProgress
-                ? `${painter.loyaltyProgress}% to ${painter.nextTier || "-"}`
+                ? `${painter.loyaltyProgress}% to ${
+                    painter.nextTier || "-"
+                  }`
                 : "-"}
             </strong>
+
           </div>
 
         </section>
@@ -209,11 +227,13 @@ const PainterDashboard = () => {
           {latestReward ? (
             <>
               <div className="painter-latest-points">
+
                 {latestReward.rewardType === "POINTS"
                   ? `+${latestReward.points || 0} Points`
                   : `₹${Number(
                       latestReward.cashAmount || 0
                     ).toLocaleString()}`}
+
               </div>
 
               <p className="painter-latest-description">
@@ -253,7 +273,9 @@ const PainterDashboard = () => {
                   className="painter-chart-column"
                   key={item.month}
                 >
+
                   <div className="painter-chart-bar-wrapper">
+
                     <div
                       className={`painter-chart-bar ${
                         item.current ? "current" : ""
@@ -262,9 +284,11 @@ const PainterDashboard = () => {
                         height: `${item.percentage || 0}%`,
                       }}
                     />
+
                   </div>
 
                   <span>{item.month}</span>
+
                 </div>
               ))}
 
@@ -290,7 +314,9 @@ const PainterDashboard = () => {
                   className="painter-scheme-item"
                   key={scheme._id || scheme.name}
                 >
+
                   <div className="painter-scheme-header">
+
                     <strong>
                       {scheme.name || "-"}
                     </strong>
@@ -298,16 +324,20 @@ const PainterDashboard = () => {
                     <span>
                       {scheme.progress || 0}%
                     </span>
+
                   </div>
 
                   <div className="painter-progress-track">
+
                     <div
                       className="painter-progress-bar"
                       style={{
                         width: `${scheme.progress || 0}%`,
                       }}
                     />
+
                   </div>
+
                 </div>
               ))}
 

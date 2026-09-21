@@ -67,6 +67,11 @@ import PainterRewardLedger from "./pages/painter/PainterRewardLedger";
 import PainterRewardTransactionHistory from "./pages/painter/PainterRewardTransactionHistory";
 import PainterRewardAnalytics from "./pages/painter/PainterRewardAnalytics";
 import PainterSchemePerformance from "./pages/painter/PainterSchemePerformance";
+import PainterRedemptionDashboard from "./pages/painter/PainterRedemptionDashboard.jsx";
+import PainterRedeemRewards from "./pages/painter/PainterRedeemRewards";
+import PainterRedemptionRequest from "./pages/painter/PainterRedemptionRequest";
+import PainterRedemptionHistory from "./pages/painter/PainterRedemptionHistory";
+import PainterRedemptionStatus from "./pages/painter/PainterRedemptionStatus";
 
 
 const App = () => {
@@ -139,6 +144,11 @@ const App = () => {
         <Route path="/painter/reward-transaction-history" element={<PainterLayout><PainterRewardTransactionHistory /></PainterLayout>} />
         <Route path="/painter/reward-analytics" element={<PainterLayout><PainterRewardAnalytics /></PainterLayout>} />
         <Route path="/painter/scheme-performance" element={<PainterLayout><PainterSchemePerformance /></PainterLayout>} />
+        <Route path="/painter/redemption-dashboard" element={<PainterLayout><PainterRedemptionDashboard /></PainterLayout>} />
+        <Route path="/painter/redeem-rewards" element={<PainterLayout><PainterRedeemRewards /></PainterLayout>} />
+        <Route path="/painter/redemption-request" element={<PainterLayout><PainterRedemptionRequest /></PainterLayout>} />
+        <Route path="/painter/redemption-history" element={<PainterLayout><PainterRedemptionHistory /></PainterLayout>} />
+        <Route path="/painter/redemption-status" element={<PainterLayout><PainterRedemptionStatus /></PainterLayout>} />
 
       </Routes>
 

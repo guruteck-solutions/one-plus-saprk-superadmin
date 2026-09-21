@@ -1,0 +1,336 @@
+/* =====================================================
+   REDEMPTION REQUEST
+===================================================== */
+
+.painter-redemption-request-page {
+  width: 100%;
+  min-height: calc(100vh - 64px);
+  padding: 28px 32px;
+  padding-top: 88px;
+  box-sizing: border-box;
+  background: #f8fafc;
+}
+
+.painter-redemption-request-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.painter-redemption-request-header {
+  margin-bottom: 34px;
+}
+
+.painter-redemption-request-header h1 {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #172033;
+}
+
+.painter-redemption-request-header p {
+  margin: 7px 0 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* =====================================================
+   REQUEST CARD
+===================================================== */
+
+.painter-redemption-request-card {
+  width: 100%;
+  max-width: 765px;
+  min-height: 610px;
+  margin: 0 auto;
+  padding: 32px 38px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+}
+
+.painter-redemption-request-card h2 {
+  margin: 0 0 40px;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #172033;
+}
+
+/* =====================================================
+   FORM FIELD
+===================================================== */
+
+.painter-redemption-request-field {
+  margin-bottom: 30px;
+}
+
+.painter-redemption-request-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* =====================================================
+   INPUT / SELECT
+===================================================== */
+
+.painter-redemption-request-input {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid #dfe5ed;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  color: #172033;
+  font-family: inherit;
+  font-size: 12px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.painter-redemption-request-input:hover {
+  border-color: #cbd5e1;
+}
+
+.painter-redemption-request-input:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.08);
+}
+
+.painter-redemption-request-input::placeholder {
+  color: #94a3b8;
+}
+
+/* =====================================================
+   SELECT
+===================================================== */
+
+select.painter-redemption-request-input {
+  cursor: pointer;
+  appearance: auto;
+}
+
+/* =====================================================
+   AMOUNT INPUT
+===================================================== */
+
+.painter-redemption-request-amount-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.painter-redemption-request-amount-wrapper
+  .painter-redemption-request-input {
+  padding-right: 70px;
+}
+
+.painter-redemption-request-amount-wrapper span {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  color: #64748b;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+/* =====================================================
+   NUMBER INPUT
+===================================================== */
+
+.painter-redemption-request-input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.painter-redemption-request-input[type="number"]::-webkit-inner-spin-button,
+.painter-redemption-request-input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+/* =====================================================
+   MESSAGES
+===================================================== */
+
+.painter-redemption-request-message {
+  margin-bottom: 16px;
+  padding: 11px 13px;
+  border-radius: 7px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.painter-redemption-request-message.error {
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.painter-redemption-request-message.success {
+  border: 1px solid #bbf7d0;
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
+
+.painter-redemption-request-submit {
+  width: 100%;
+  height: 50px;
+  margin-top: -2px;
+  padding: 0 18px;
+  border: 1px solid #f97316;
+  border-radius: 8px;
+  background: #f97316;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.painter-redemption-request-submit:hover {
+  background: #ea580c;
+  border-color: #ea580c;
+}
+
+.painter-redemption-request-submit:active {
+  transform: translateY(1px);
+}
+
+.painter-redemption-request-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1024px) {
+  .painter-redemption-request-page {
+    padding: 24px;
+    padding-top: 88px;
+  }
+
+  .painter-redemption-request-card {
+    max-width: 760px;
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+  .painter-redemption-request-page {
+    padding: 20px 18px;
+    padding-top: 88px;
+  }
+
+  .painter-redemption-request-header {
+    margin-bottom: 24px;
+  }
+
+  .painter-redemption-request-header h1 {
+    font-size: 22px;
+  }
+
+  .painter-redemption-request-header p {
+    font-size: 12px;
+  }
+
+  .painter-redemption-request-card {
+    min-height: auto;
+    padding: 24px;
+  }
+
+  .painter-redemption-request-card h2 {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .painter-redemption-request-field {
+    margin-bottom: 22px;
+  }
+
+  .painter-redemption-request-input {
+    height: 42px;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+  .painter-redemption-request-page {
+    padding: 18px 12px;
+    padding-top: 88px;
+  }
+
+  .painter-redemption-request-header h1 {
+    font-size: 21px;
+  }
+
+  .painter-redemption-request-header p {
+    font-size: 12px;
+  }
+
+  .painter-redemption-request-card {
+    padding: 18px;
+    border-radius: 11px;
+  }
+
+  .painter-redemption-request-card h2 {
+    font-size: 18px;
+    margin-bottom: 26px;
+  }
+
+  .painter-redemption-request-field {
+    margin-bottom: 20px;
+  }
+
+  .painter-redemption-request-field label {
+    font-size: 11px;
+  }
+
+  .painter-redemption-request-input {
+    height: 40px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  .painter-redemption-request-amount-wrapper
+    .painter-redemption-request-input {
+    padding-right: 62px;
+  }
+
+  .painter-redemption-request-amount-wrapper span {
+    right: 10px;
+    font-size: 11px;
+  }
+
+  .painter-redemption-request-submit {
+    height: 44px;
+  }
+}

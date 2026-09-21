@@ -48,6 +48,11 @@ const PainterSidebar = ({ isOpen, onClose }) => {
       path: "/painter/rewards",
     },
     {
+      label: "Reward Redemption",
+      icon: Gift,
+      path: "/painter/redemption-dashboard",
+    },
+    {
       label: "Schemes & Offers",
       icon: Target,
       path: "/painter/schemes-offers",
@@ -225,6 +230,34 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     },
   ];
 
+  const redemptionItems = [
+    {
+      label: "Redemption Dashboard",
+      icon: Gift,
+      path: "/painter/redemption-dashboard",
+    },
+    {
+      label: "Redeem Rewards",
+      icon: Gift,
+      path: "/painter/redeem-rewards",
+    },
+    {
+      label: "Redemption Request",
+      icon: FileText,
+      path: "/painter/redemption-request",
+    },
+    {
+      label: "Redemption History",
+      icon: FileText,
+      path: "/painter/redemption-history",
+    },
+    {
+      label: "Redemption Status",
+      icon: Award,
+      path: "/painter/redemption-status",
+    },
+  ];
+
   /* =====================================================
      ACTIVE ROUTES
   ===================================================== */
@@ -251,10 +284,18 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   const isRewardAnalyticsSectionActive =
     rewardAnalyticsPaths.includes(location.pathname);
 
+  const redemptionPaths = redemptionItems.map(
+    (item) => item.path
+  );
+
+  const isRedemptionSectionActive =
+    redemptionPaths.includes(location.pathname);
+
+
+
   /* =====================================================
      DROPDOWN STATE
   ===================================================== */
-
   const [dashboardOpen, setDashboardOpen] = useState(
     isDashboardSectionActive
   );
@@ -264,6 +305,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   );
 
   const [rewardAnalyticsOpen, setRewardAnalyticsOpen] = useState(true);
+
+  const [redemptionOpen, setRedemptionOpen] = useState(true);
 
   /* =====================================================
      KEEP DROPDOWN OPEN WHEN SUBMENU PAGE IS ACTIVE
@@ -281,10 +324,15 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     if (isRewardAnalyticsSectionActive) {
       setRewardAnalyticsOpen(true);
     }
+
+    if (isRedemptionSectionActive) {
+      setRedemptionOpen(true);
+    }
   }, [
     isDashboardSectionActive,
     isScanRewardsSectionActive,
     isRewardAnalyticsSectionActive,
+    isRedemptionSectionActive,
   ]);
 
   /* =====================================================
@@ -339,9 +387,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
       ================================================= */}
 
       <aside
-        className={`painter-sidebar ${
-          isOpen ? "painter-sidebar-open" : ""
-        }`}
+        className={`painter-sidebar ${isOpen ? "painter-sidebar-open" : ""
+          }`}
       >
         {/* =================================================
             HEADER
@@ -379,11 +426,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
 
               <button
                 type="button"
-                className={`painter-sidebar-item painter-sidebar-dashboard-item ${
-                  isDashboardSectionActive
-                    ? "painter-sidebar-active"
-                    : ""
-                }`}
+                className={`painter-sidebar-item painter-sidebar-dashboard-item ${isDashboardSectionActive
+                  ? "painter-sidebar-active"
+                  : ""
+                  }`}
                 onClick={() =>
                   handleMobileNavigation(
                     "/painter/dashboard"
@@ -396,11 +442,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
 
               <button
                 type="button"
-                className={`painter-sidebar-dropdown-btn ${
-                  isDashboardSectionActive
-                    ? "painter-sidebar-dropdown-active"
-                    : ""
-                }`}
+                className={`painter-sidebar-dropdown-btn ${isDashboardSectionActive
+                  ? "painter-sidebar-dropdown-active"
+                  : ""
+                  }`}
                 onClick={() =>
                   setDashboardOpen((prev) => !prev)
                 }
@@ -436,11 +481,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                     <button
                       key={item.path}
                       type="button"
-                      className={`painter-sidebar-subitem ${
-                        isActive
-                          ? "painter-sidebar-subitem-active"
-                          : ""
-                      }`}
+                      className={`painter-sidebar-subitem ${isActive
+                        ? "painter-sidebar-subitem-active"
+                        : ""
+                        }`}
                       onClick={() =>
                         handleDashboardNavigation(
                           item.path
@@ -471,11 +515,16 @@ const PainterSidebar = ({ isOpen, onClose }) => {
             const isRewards =
               item.label === "Rewards";
 
+            const isRedemption =
+              item.label === "Reward Redemption";
+
             const isActive = isScanRewards
               ? isScanRewardsSectionActive
               : isRewards
                 ? isRewardAnalyticsSectionActive
-                : location.pathname === item.path;
+                : isRedemption
+                  ? isRedemptionSectionActive
+                  : location.pathname === item.path;
 
             /* =================================================
                 SCAN & REWARDS GROUP
@@ -491,11 +540,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
 
                     <button
                       type="button"
-                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${
-                        isActive
-                          ? "painter-sidebar-active"
-                          : ""
-                      }`}
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isActive
+                        ? "painter-sidebar-active"
+                        : ""
+                        }`}
                       onClick={() =>
                         handleMobileNavigation(
                           "/painter/barcode-scanner"
@@ -508,11 +556,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
 
                     <button
                       type="button"
-                      className={`painter-sidebar-dropdown-btn ${
-                        isActive
-                          ? "painter-sidebar-dropdown-active"
-                          : ""
-                      }`}
+                      className={`painter-sidebar-dropdown-btn ${isActive
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
+                        }`}
                       onClick={() =>
                         setScanRewardsOpen(
                           (prev) => !prev
@@ -549,11 +596,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                             <button
                               key={subItem.path}
                               type="button"
-                              className={`painter-sidebar-subitem ${
-                                isSubActive
-                                  ? "painter-sidebar-subitem-active"
-                                  : ""
-                              }`}
+                              className={`painter-sidebar-subitem ${isSubActive
+                                ? "painter-sidebar-subitem-active"
+                                : ""
+                                }`}
                               onClick={() =>
                                 handleMobileNavigation(
                                   subItem.path
@@ -590,11 +636,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
 
                     <button
                       type="button"
-                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${
-                        isActive
-                          ? "painter-sidebar-active"
-                          : ""
-                      }`}
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isActive
+                        ? "painter-sidebar-active"
+                        : ""
+                        }`}
                       onClick={() =>
                         handleMobileNavigation(
                           "/painter/reward-dashboard"
@@ -607,11 +652,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
 
                     <button
                       type="button"
-                      className={`painter-sidebar-dropdown-btn ${
-                        isActive
-                          ? "painter-sidebar-dropdown-active"
-                          : ""
-                      }`}
+                      className={`painter-sidebar-dropdown-btn ${isActive
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
+                        }`}
                       onClick={() =>
                         setRewardAnalyticsOpen(
                           (prev) => !prev
@@ -648,11 +692,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                             <button
                               key={subItem.path}
                               type="button"
-                              className={`painter-sidebar-subitem ${
-                                isSubActive
-                                  ? "painter-sidebar-subitem-active"
-                                  : ""
-                              }`}
+                              className={`painter-sidebar-subitem ${isSubActive
+                                ? "painter-sidebar-subitem-active"
+                                : ""
+                                }`}
                               onClick={() =>
                                 handleRewardNavigation(
                                   subItem.path
@@ -675,6 +718,83 @@ const PainterSidebar = ({ isOpen, onClose }) => {
               );
             }
 
+            if (isRedemption) {
+              return (
+                <div
+                  className="painter-sidebar-group"
+                  key={item.path}
+                >
+                  <div className="painter-sidebar-dashboard-row">
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isRedemptionSectionActive
+                        ? "painter-sidebar-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        handleMobileNavigation(
+                          "/painter/redemption-dashboard"
+                        )
+                      }
+                    >
+                      <Icon size={18} />
+                      <span>Reward Redemption</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isRedemptionSectionActive
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        setRedemptionOpen((prev) => !prev)
+                      }
+                      aria-label="Toggle Reward Redemption menu"
+                      aria-expanded={redemptionOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          redemptionOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+                  </div>
+
+                  {redemptionOpen && (
+                    <div className="painter-sidebar-submenu">
+                      {redemptionItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname === subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                              ? "painter-sidebar-subitem-active"
+                              : ""
+                              }`}
+                            onClick={() =>
+                              handleMobileNavigation(subItem.path)
+                            }
+                          >
+                            <SubIcon size={16} />
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
             /* =================================================
                 NORMAL MENU ITEM
             ================================================= */
@@ -683,11 +803,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
               <button
                 key={item.path}
                 type="button"
-                className={`painter-sidebar-item ${
-                  isActive
-                    ? "painter-sidebar-main-active"
-                    : ""
-                }`}
+                className={`painter-sidebar-item ${isActive
+                  ? "painter-sidebar-main-active"
+                  : ""
+                  }`}
                 onClick={() =>
                   handleMobileNavigation(item.path)
                 }
