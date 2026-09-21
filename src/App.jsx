@@ -61,6 +61,12 @@ import PainterScanHistory from "./pages/painter/PainterScanHistory";
 import PainterProductVerification from "./pages/painter/PainterProductVerification";
 import PainterRewardHistory from "./pages/painter/PainterRewardHistory";
 import PainterWalletLedger from "./pages/painter/PainterWalletLedger";
+import PainterRewardDashboard from "./pages/painter/PainterRewardDashboard";
+import PainterRewardWallet from "./pages/painter/PainterRewardWallet";
+import PainterRewardLedger from "./pages/painter/PainterRewardLedger";
+import PainterRewardTransactionHistory from "./pages/painter/PainterRewardTransactionHistory";
+import PainterRewardAnalytics from "./pages/painter/PainterRewardAnalytics";
+import PainterSchemePerformance from "./pages/painter/PainterSchemePerformance";
 
 
 const App = () => {
@@ -127,6 +133,12 @@ const App = () => {
         <Route path="/painter/product-verification" element={<PainterLayout><PainterProductVerification /></PainterLayout>} />
         <Route path="/painter/reward-history" element={<PainterLayout><PainterRewardHistory /></PainterLayout>} />
         <Route path="/painter/wallet-ledger" element={<PainterLayout><PainterWalletLedger /></PainterLayout>} />
+        <Route path="/painter/reward-dashboard" element={<PainterLayout><PainterRewardDashboard /></PainterLayout>} />
+        <Route path="/painter/reward-wallet" element={<PainterLayout><PainterRewardWallet /></PainterLayout>} />
+        <Route path="/painter/reward-ledger" element={<PainterLayout><PainterRewardLedger /></PainterLayout>} />
+        <Route path="/painter/reward-transaction-history" element={<PainterLayout><PainterRewardTransactionHistory /></PainterLayout>} />
+        <Route path="/painter/reward-analytics" element={<PainterLayout><PainterRewardAnalytics /></PainterLayout>} />
+        <Route path="/painter/scheme-performance" element={<PainterLayout><PainterSchemePerformance /></PainterLayout>} />
 
       </Routes>
 
