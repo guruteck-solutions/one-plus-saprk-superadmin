@@ -1,0 +1,238 @@
+.painter-offers-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 24px;
+  background: #f8fafc;
+  box-sizing: border-box;
+  padding-top: 88px;
+}
+
+.painter-offers-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.painter-offers-header h1 {
+  margin: 0 0 7px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #172033;
+}
+
+.painter-offers-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #7a8496;
+}
+
+.painter-offers-breadcrumb span {
+  color: #a5adba;
+}
+
+.painter-offers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.painter-offer-card {
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e6eaf0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.painter-offer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.painter-offer-image {
+  width: 190px;
+  min-width: 190px;
+  height: 220px;
+  overflow: hidden;
+  background: #f1f5f9;
+}
+
+.painter-offer-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.painter-offer-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+}
+
+.painter-offer-content {
+  flex: 1;
+  min-width: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.painter-offer-type {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background: #fff3e8;
+  color: #e8751a;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.painter-offer-content h2 {
+  margin: 0 0 8px;
+  color: #172033;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.painter-offer-content p {
+  margin: 0;
+  color: #697386;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.painter-offer-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 12px;
+  color: #7a8496;
+  font-size: 12px;
+}
+
+.painter-offer-view-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: auto;
+  padding: 9px 15px;
+  border: none;
+  border-radius: 7px;
+  background: #e8751a;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.painter-offer-view-btn:hover {
+  background: #d9630b;
+}
+
+.painter-offers-loading {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #697386;
+  font-size: 14px;
+}
+
+.painter-offers-loader {
+  animation: painterOfferSpin 1s linear infinite;
+}
+
+@keyframes painterOfferSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.painter-offers-error {
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 14px;
+}
+
+.painter-offers-empty {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid #e6eaf0;
+  border-radius: 12px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.painter-offers-empty h3 {
+  margin: 12px 0 6px;
+  color: #172033;
+  font-size: 17px;
+}
+
+.painter-offers-empty p {
+  margin: 0;
+  color: #7a8496;
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .painter-offers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .painter-offers-page {
+    padding: 16px;
+    padding-top: 88px;
+  }
+
+  .painter-offers-header h1 {
+    font-size: 21px;
+  }
+
+  .painter-offer-card {
+    flex-direction: column;
+  }
+
+  .painter-offer-image {
+    width: 100%;
+    min-width: 0;
+    height: 190px;
+  }
+
+  .painter-offer-content {
+    padding: 16px;
+  }
+
+  .painter-offer-view-btn {
+    width: 100%;
+    margin-top: 18px;
+  }
+}

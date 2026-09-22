@@ -1,0 +1,254 @@
+.painter-offer-details-page {
+    width: 100%;
+    min-height: 100%;
+    padding: 24px 28px;
+    box-sizing: border-box;
+    background: #f7f8fa;
+    padding-top: 88px;
+}
+
+.painter-offer-page-header {
+    margin-bottom: 24px;
+}
+
+.painter-offer-page-header h1 {
+    margin: 0 0 6px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #101828;
+}
+
+.painter-offer-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #718096;
+    font-size: 13px;
+}
+
+.painter-offer-breadcrumb span {
+    color: #a0aec0;
+}
+
+.painter-offer-details-card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 28px;
+    background: #ffffff;
+    border: 1px solid #e4e8ee;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(16, 24, 40, 0.04);
+}
+
+.painter-offer-hero {
+    padding: 48px 38px;
+    border-radius: 13px;
+    background: #fff0e4;
+}
+
+.painter-offer-hero h2 {
+    margin: 0 0 16px;
+    color: #f47716;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.painter-offer-hero strong {
+    display: block;
+    margin-bottom: 18px;
+    color: #172033;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.painter-offer-valid-text {
+    color: #8994a5;
+    font-size: 13px;
+}
+
+.painter-offer-content-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 28px 16px 10px;
+}
+
+.painter-offer-information {
+    flex: 1;
+    min-width: 0;
+}
+
+.painter-offer-information h2 {
+    margin: 0 0 22px;
+    color: #172033;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.painter-offer-type-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.painter-offer-type-row span {
+    color: #718096;
+}
+
+.painter-offer-type-row strong {
+    color: #172033;
+}
+
+.painter-offer-date-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #718096;
+}
+
+.painter-offer-date-row div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.painter-offer-date-row span {
+    font-size: 12px;
+    color: #8994a5;
+}
+
+.painter-offer-date-row strong {
+    color: #172033;
+    font-size: 13px;
+}
+
+.painter-offer-terms {
+    margin-top: 12px;
+}
+
+.painter-offer-terms p {
+    margin: 0 0 16px;
+    color: #273142;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.painter-offer-action {
+    min-width: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.painter-offer-claim-btn {
+    width: 260px;
+    height: 48px;
+    border: none;
+    border-radius: 8px;
+    background: #ff7817;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.painter-offer-claim-btn:hover {
+    background: #e9680d;
+}
+
+.painter-offer-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 20px;
+    padding: 8px 13px;
+    border: 1px solid #d9dee7;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #344054;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.painter-offer-message {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+    color: #667085;
+}
+
+.painter-offer-message h2 {
+    margin: 0 0 8px;
+    color: #172033;
+}
+
+.painter-offer-message p {
+    margin: 0 0 20px;
+}
+
+.painter-offer-message button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 7px;
+    background: #ff7817;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.painter-offer-error {
+    color: #b42318;
+}
+
+@media (max-width: 900px) {
+    .painter-offer-details-page {
+        padding: 20px;
+        padding-top: 88px;
+    }
+
+    .painter-offer-content-section {
+        flex-direction: column;
+    }
+
+    .painter-offer-action {
+        width: 100%;
+        min-width: 0;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    .painter-offer-details-page {
+        padding: 16px;
+        padding-top: 88px;
+    }
+
+    .painter-offer-details-card {
+        padding: 16px;
+    }
+
+    .painter-offer-hero {
+        padding: 28px 22px;
+    }
+
+    .painter-offer-hero h2 {
+        font-size: 23px;
+    }
+
+    .painter-offer-content-section {
+        padding: 24px 4px 8px;
+    }
+
+    .painter-offer-claim-btn {
+        width: 100%;
+    }
+}

@@ -78,6 +78,8 @@ import PainterTierBenefits from "./pages/painter/PainterTierBenefits";
 import PainterSchemeListing from "./pages/painter/PainterSchemeListing";
 import PainterSchemeDetails from "./pages/painter/PainterSchemeDetails";
 import PainterSchemePdfPreview from "./pages/painter/PainterSchemePdfPreview";
+import PainterOffersListing from "./pages/painter/PainterOffersListing";
+import PainterOfferDetails from "./pages/painter/PainterOfferDetails";
 
 
 const App = () => {
@@ -163,6 +165,9 @@ const App = () => {
         <Route path="/painter/scheme-details/:id" element={<PainterLayout><PainterSchemeDetails /></PainterLayout>} />
         <Route path="/painter/scheme-pdf-preview" element={<PainterLayout><PainterSchemePdfPreview /></PainterLayout>} />
         <Route path="/painter/scheme-pdf-preview/:id" element={<PainterLayout><PainterSchemePdfPreview /></PainterLayout>} />
+        <Route path="/painter/offers-listing" element={<PainterLayout><PainterOffersListing /></PainterLayout>} />
+        <Route path="/painter/offer-details" element={<PainterLayout><PainterOfferDetails /></PainterLayout>} />
+        <Route path="/painter/offer-details/:id" element={<PainterLayout><PainterOfferDetails /></PainterLayout>} />
       </Routes>
 
     </BrowserRouter>

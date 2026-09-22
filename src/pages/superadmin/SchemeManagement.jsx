@@ -71,7 +71,7 @@ const SchemeForm = ({ formData, onChange, onSubmit, onCancel, saving, submitText
           required
         >
           <option value="CASHBACK">Cashback Offer</option>
-          <option value="REWARD">Reward Scheme</option>
+          <option value="REWARD">Reward Offer</option>
           <option value="DISCOUNT">Discount Offer</option>
         </select>
       </div>
@@ -741,7 +741,7 @@ const SchemeManagement = () => {
   function getSchemeTypeLabel(type) {
     const labels = {
       CASHBACK: "Cashback Offer",
-      REWARD: "Reward Scheme",
+      REWARD: "Reward Offer",
       DISCOUNT: "Discount Offer",
       PROMOTIONAL: "Promotional",
       SEASONAL: "Seasonal",
