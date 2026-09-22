@@ -1,0 +1,383 @@
+/* ==========================================
+   LOYALTY DASHBOARD
+   ========================================== */
+
+.painter-loyalty-dashboard {
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  padding: 14px 24px 24px;
+  box-sizing: border-box;
+  background: #f5f6f8;
+  padding-top: 88px;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.painter-loyalty-header {
+  margin-bottom: 40px;
+}
+
+.painter-loyalty-header h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #111827;
+}
+
+.painter-loyalty-header p {
+  margin: 7px 0 0;
+  font-size: 13px;
+  color: #7b8794;
+}
+
+.painter-loyalty-header p span {
+  margin: 0 4px;
+}
+
+/* ==========================================
+   MAIN CONTENT
+   ========================================== */
+
+.painter-loyalty-content {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+  gap: 36px;
+  align-items: stretch;
+}
+
+/* ==========================================
+   CURRENT TIER CARD
+   ========================================== */
+
+.painter-current-tier-card {
+  min-height: 575px;
+  padding: 42px 38px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background: #101820;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.painter-current-tier-label {
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: #b8c0c9;
+}
+
+.painter-current-tier-card h2 {
+  margin: 0;
+  font-size: 46px;
+  line-height: 1;
+  font-weight: 700;
+  color: #ff8a1f;
+  text-transform: uppercase;
+}
+
+.painter-tier-progress-text {
+  margin-top: 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f4f5f6;
+}
+
+.painter-tier-progress-text strong {
+  font-weight: 700;
+}
+
+/* ==========================================
+   PROGRESS BAR
+   ========================================== */
+
+.painter-tier-progress-bar {
+  width: 100%;
+  height: 10px;
+  margin-top: 36px;
+  background: #3b4a57;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.painter-tier-progress-fill {
+  height: 100%;
+  background: #ff7f19;
+  border-radius: inherit;
+  transition: width 0.35s ease;
+}
+
+.painter-tier-points-text {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #9da8b3;
+}
+
+/* ==========================================
+   VIEW BENEFITS BUTTON
+   ========================================== */
+
+.painter-view-benefits-btn {
+  width: 235px;
+  min-height: 48px;
+  margin-top: 40px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 9px;
+  background: #ff7f19;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.painter-view-benefits-btn:hover {
+  background: #f2730d;
+  transform: translateY(-1px);
+}
+
+/* ==========================================
+   TIER OVERVIEW
+   ========================================== */
+
+.painter-tier-overview-card {
+  min-height: 575px;
+  padding: 28px 30px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e3e7eb;
+  border-radius: 16px;
+}
+
+.painter-tier-overview-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* ==========================================
+   TIER LIST
+   ========================================== */
+
+.painter-tier-list {
+  margin-top: 54px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.painter-tier-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.painter-tier-number {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border-radius: 50%;
+  background: #f6f7f9;
+  color: #8b949e;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.painter-tier-item-active .painter-tier-number {
+  color: #ff8a1f;
+}
+
+.painter-tier-info {
+  min-width: 0;
+}
+
+.painter-tier-info h3 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #111827;
+  text-transform: capitalize;
+}
+
+.painter-tier-range {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #8a96a3;
+}
+
+.painter-tier-info p {
+  margin: 7px 0 0;
+  font-size: 11px;
+  color: #4b5563;
+}
+
+/* ==========================================
+   EMPTY / STATE
+   ========================================== */
+
+.painter-tier-empty {
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #7b8794;
+}
+
+.painter-loyalty-state {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.painter-loyalty-error {
+  padding: 16px 18px;
+  border-radius: 10px;
+  background: #fff1f1;
+  border: 1px solid #f2caca;
+  color: #b42318;
+  font-size: 14px;
+}
+
+/* ==========================================
+   TABLET
+   ========================================== */
+
+@media (max-width: 1100px) {
+  .painter-loyalty-content {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .painter-current-tier-card,
+  .painter-tier-overview-card {
+    min-height: auto;
+  }
+
+  .painter-current-tier-card {
+    padding: 32px;
+  }
+
+  .painter-tier-overview-card {
+    padding: 26px;
+  }
+}
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 768px) {
+  .painter-loyalty-dashboard {
+    padding: 16px;
+    padding-top: 88px;
+  }
+
+  .painter-loyalty-header {
+    margin-bottom: 24px;
+  }
+
+  .painter-loyalty-header h1 {
+    font-size: 23px;
+  }
+
+  .painter-loyalty-content {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .painter-current-tier-card {
+    min-height: 430px;
+    padding: 28px 24px;
+    border-radius: 12px;
+  }
+
+  .painter-current-tier-card h2 {
+    font-size: 38px;
+  }
+
+  .painter-tier-progress-text {
+    font-size: 14px;
+  }
+
+  .painter-view-benefits-btn {
+    width: 100%;
+  }
+
+  .painter-tier-overview-card {
+    min-height: auto;
+    padding: 22px 20px;
+    border-radius: 12px;
+  }
+
+  .painter-tier-list {
+    margin-top: 32px;
+    gap: 30px;
+  }
+}
+
+/* ==========================================
+   SMALL MOBILE
+   ========================================== */
+
+@media (max-width: 480px) {
+  .painter-loyalty-dashboard {
+    padding: 12px;
+    padding-top: 88px;
+  }
+
+  .painter-loyalty-header h1 {
+    font-size: 21px;
+  }
+
+  .painter-loyalty-header p {
+    font-size: 12px;
+  }
+
+  .painter-current-tier-card {
+    padding: 24px 20px;
+  }
+
+  .painter-current-tier-card h2 {
+    font-size: 34px;
+  }
+
+  .painter-tier-progress-bar {
+    margin-top: 28px;
+  }
+
+  .painter-tier-item {
+    gap: 13px;
+  }
+
+  .painter-tier-number {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+
+  .painter-tier-info h3 {
+    font-size: 15px;
+  }
+}

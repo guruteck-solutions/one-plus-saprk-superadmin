@@ -53,6 +53,11 @@ const PainterSidebar = ({ isOpen, onClose }) => {
       path: "/painter/redemption-dashboard",
     },
     {
+      label: "Loyalty Tier",
+      icon: Award,
+      path: "/painter/loyalty-dashboard",
+    },
+    {
       label: "Schemes & Offers",
       icon: Target,
       path: "/painter/schemes-offers",
@@ -258,6 +263,52 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     },
   ];
 
+  const loyaltyTierItems = [
+    {
+      label: "Loyalty Dashboard",
+      icon: Award,
+      path: "/painter/loyalty-dashboard",
+    },
+    {
+      label: "Tier Progress",
+      icon: Target,
+      path: "/painter/tier-progress",
+    },
+    {
+      label: "Tier Benefits",
+      icon: Gift,
+      path: "/painter/tier-benefits",
+    },
+  ];
+
+  const schemesOffersItems = [
+    {
+      label: "Scheme Listing",
+      icon: FileText,
+      path: "/painter/scheme-listing",
+    },
+    {
+      label: "Scheme Details",
+      icon: FileText,
+      path: "/painter/scheme-details",
+    },
+    {
+      label: "Scheme PDF Preview",
+      icon: FileText,
+      path: "/painter/scheme-pdf-preview",
+    },
+    {
+      label: "Offers Listing",
+      icon: Gift,
+      path: "/painter/offers-listing",
+    },
+    {
+      label: "Offer Details",
+      icon: Gift,
+      path: "/painter/offer-details",
+    },
+  ];
+
   /* =====================================================
      ACTIVE ROUTES
   ===================================================== */
@@ -291,6 +342,16 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   const isRedemptionSectionActive =
     redemptionPaths.includes(location.pathname);
 
+  const loyaltyTierPaths = loyaltyTierItems.map(
+    (item) => item.path
+  );
+
+  const isLoyaltyTierSectionActive =
+    loyaltyTierPaths.includes(location.pathname);
+
+  const schemesOffersPaths = schemesOffersItems.map((item) => item.path);
+  const isSchemesOffersSectionActive = schemesOffersPaths.includes(location.pathname);
+
 
 
   /* =====================================================
@@ -307,6 +368,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   const [rewardAnalyticsOpen, setRewardAnalyticsOpen] = useState(true);
 
   const [redemptionOpen, setRedemptionOpen] = useState(true);
+
+  const [loyaltyTierOpen, setLoyaltyTierOpen] = useState(true);
+
+  const [schemesOffersOpen, setSchemesOffersOpen] = useState(true);
 
   /* =====================================================
      KEEP DROPDOWN OPEN WHEN SUBMENU PAGE IS ACTIVE
@@ -328,11 +393,21 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     if (isRedemptionSectionActive) {
       setRedemptionOpen(true);
     }
+
+    if (isLoyaltyTierSectionActive) {
+      setLoyaltyTierOpen(true);
+    }
+
+    if (isSchemesOffersSectionActive) {
+      setSchemesOffersOpen(true);
+    }
   }, [
     isDashboardSectionActive,
     isScanRewardsSectionActive,
     isRewardAnalyticsSectionActive,
     isRedemptionSectionActive,
+    isLoyaltyTierSectionActive,
+    isSchemesOffersSectionActive,
   ]);
 
   /* =====================================================
@@ -518,13 +593,23 @@ const PainterSidebar = ({ isOpen, onClose }) => {
             const isRedemption =
               item.label === "Reward Redemption";
 
+            const isLoyaltyTier =
+              item.label === "Loyalty Tier";
+
+            const isSchemesOffers =
+              item.label === "Schemes & Offers";
+
             const isActive = isScanRewards
               ? isScanRewardsSectionActive
               : isRewards
                 ? isRewardAnalyticsSectionActive
                 : isRedemption
                   ? isRedemptionSectionActive
-                  : location.pathname === item.path;
+                  : isLoyaltyTier
+                    ? isLoyaltyTierSectionActive
+                    : isSchemesOffers
+                      ? isSchemesOffersSectionActive
+                      : location.pathname === item.path;
 
             /* =================================================
                 SCAN & REWARDS GROUP
@@ -789,6 +874,176 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                           </button>
                         );
                       })}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            if (isLoyaltyTier) {
+              return (
+                <div
+                  className="painter-sidebar-group"
+                  key={item.path}
+                >
+                  <div className="painter-sidebar-dashboard-row">
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isLoyaltyTierSectionActive
+                        ? "painter-sidebar-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        handleMobileNavigation(
+                          "/painter/loyalty-dashboard"
+                        )
+                      }
+                    >
+                      <Icon size={18} />
+                      <span>Loyalty Tier</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isLoyaltyTierSectionActive
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        setLoyaltyTierOpen((prev) => !prev)
+                      }
+                      aria-label="Toggle Loyalty Tier menu"
+                      aria-expanded={loyaltyTierOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          loyaltyTierOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+
+                  </div>
+
+                  {loyaltyTierOpen && (
+                    <div className="painter-sidebar-submenu">
+
+                      {loyaltyTierItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname === subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                              ? "painter-sidebar-subitem-active"
+                              : ""
+                              }`}
+                            onClick={() =>
+                              handleMobileNavigation(
+                                subItem.path
+                              )
+                            }
+                          >
+                            <SubIcon size={16} />
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            /* =================================================
+    SCHEMES & OFFERS GROUP
+================================================= */
+
+            if (isSchemesOffers) {
+              return (
+                <div
+                  className="painter-sidebar-group"
+                  key={item.path}
+                >
+                  <div className="painter-sidebar-dashboard-row">
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isSchemesOffersSectionActive
+                          ? "painter-sidebar-active"
+                          : ""
+                        }`}
+                      onClick={() =>
+                        handleMobileNavigation(
+                          "/painter/scheme-listing"
+                        )
+                      }
+                    >
+                      <Icon size={18} />
+                      <span>Schemes & Offers</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isSchemesOffersSectionActive
+                          ? "painter-sidebar-dropdown-active"
+                          : ""
+                        }`}
+                      onClick={() =>
+                        setSchemesOffersOpen((prev) => !prev)
+                      }
+                      aria-label="Toggle Schemes & Offers menu"
+                      aria-expanded={schemesOffersOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          schemesOffersOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+
+                  </div>
+
+                  {schemesOffersOpen && (
+                    <div className="painter-sidebar-submenu">
+
+                      {schemesOffersItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname === subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                                ? "painter-sidebar-subitem-active"
+                                : ""
+                              }`}
+                            onClick={() =>
+                              handleMobileNavigation(
+                                subItem.path
+                              )
+                            }
+                          >
+                            <SubIcon size={16} />
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+
                     </div>
                   )}
                 </div>

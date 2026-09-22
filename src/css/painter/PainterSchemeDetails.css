@@ -1,0 +1,498 @@
+.painter-scheme-details-page {
+  width: 100%;
+  min-height: calc(100vh - 88px);
+  padding: 18px 26px 30px;
+  box-sizing: border-box;
+  background: #f5f6f8;
+  padding-top: 88px;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.painter-scheme-details-header {
+  margin-bottom: 22px;
+}
+
+.painter-scheme-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.painter-scheme-back-btn:hover {
+  color: #f56f00;
+}
+
+.painter-scheme-details-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.painter-scheme-details-title h1 {
+  margin: 0;
+  color: #111827;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.painter-scheme-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.painter-scheme-status.active {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.painter-scheme-status.upcoming {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.painter-scheme-status.expired {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.painter-scheme-details-header > p {
+  margin: 7px 0 0;
+  color: #7b8492;
+  font-size: 13px;
+}
+
+
+/* ================================
+   MAIN LAYOUT
+================================ */
+
+.painter-scheme-details-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(300px, 0.8fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.painter-scheme-details-left,
+.painter-scheme-details-right {
+  min-width: 0;
+}
+
+
+/* ================================
+   BANNER
+================================ */
+
+.painter-scheme-details-banner {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff0e4;
+  border: 1px solid #e6e9ed;
+}
+
+.painter-scheme-details-banner img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.painter-scheme-details-banner-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f56f00;
+  font-size: 24px;
+  font-weight: 700;
+  background: #fff0e4;
+}
+
+
+/* ================================
+   CARDS
+================================ */
+
+.painter-scheme-info-card,
+.painter-scheme-terms-card,
+.painter-scheme-validity-card,
+.painter-scheme-target-card,
+.painter-scheme-pdf-card {
+  margin-top: 18px;
+  padding: 20px;
+  border: 1px solid #e3e7ec;
+  border-radius: 13px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.painter-scheme-details-left .painter-scheme-info-card {
+  margin-top: 18px;
+}
+
+.painter-scheme-details-right .painter-scheme-validity-card {
+  margin-top: 0;
+}
+
+.painter-scheme-info-card h2,
+.painter-scheme-terms-card h2,
+.painter-scheme-validity-card h2,
+.painter-scheme-target-card h2,
+.painter-scheme-pdf-card h2 {
+  margin: 0 0 17px;
+  color: #1f2937;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+
+/* ================================
+   INFO
+================================ */
+
+.painter-scheme-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.painter-scheme-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.painter-scheme-info-item span {
+  color: #8a93a1;
+  font-size: 11px;
+}
+
+.painter-scheme-info-item strong {
+  color: #263342;
+  font-size: 13px;
+}
+
+
+/* ================================
+   TERMS
+================================ */
+
+.painter-scheme-terms-card p {
+  margin: 0;
+  white-space: pre-line;
+  color: #687384;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* ================================
+   DATES
+================================ */
+
+.painter-scheme-date-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #edf0f3;
+}
+
+.painter-scheme-date-row:last-child {
+  border-bottom: none;
+}
+
+.painter-scheme-date-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #fff1e7;
+  color: #f56f00;
+}
+
+.painter-scheme-date-row div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.painter-scheme-date-row span {
+  color: #8a93a1;
+  font-size: 11px;
+}
+
+.painter-scheme-date-row strong {
+  color: #263342;
+  font-size: 13px;
+}
+
+
+/* ================================
+   TARGET & REWARD
+================================ */
+
+.painter-scheme-target-empty {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 9px;
+  background: #f8fafc;
+}
+
+.painter-scheme-target-empty strong {
+  color: #9ca3af;
+  font-size: 20px;
+}
+
+.painter-scheme-target-empty span {
+  color: #8993a3;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+
+/* ================================
+   PDF
+================================ */
+
+.painter-scheme-download-btn {
+  width: 100%;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #fff0e4;
+  color: #e86200;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.painter-scheme-download-btn:hover {
+  background: #ffe3d0;
+}
+
+.painter-scheme-no-pdf {
+  padding: 13px;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #8993a3;
+  text-align: center;
+  font-size: 12px;
+}
+
+
+/* ================================
+   START EARNING
+================================ */
+
+.painter-scheme-start-btn {
+  width: 100%;
+  height: 45px;
+  margin-top: 18px;
+  border: none;
+  border-radius: 8px;
+  background: #f56f00;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.painter-scheme-start-btn:hover {
+  background: #dc5f00;
+}
+
+
+/* ================================
+   SELECT SCHEME MESSAGE
+================================ */
+
+.painter-scheme-select-message {
+  width: 100%;
+  max-width: 520px;
+  margin: 100px auto 0;
+  padding: 35px 25px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e3e7ec;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.painter-scheme-select-message h2 {
+  margin: 0 0 10px;
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.painter-scheme-select-message p {
+  margin: 0;
+  color: #7b8492;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.painter-scheme-select-message button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: #f56f00;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.painter-scheme-select-message button:hover {
+  background: #dc5f00;
+}
+
+
+/* ================================
+   LOADING / ERROR
+================================ */
+
+.painter-scheme-details-message {
+  width: 100%;
+  padding: 45px 20px;
+  box-sizing: border-box;
+  border: 1px solid #e3e7ec;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #718096;
+  text-align: center;
+  font-size: 14px;
+}
+
+.painter-scheme-details-error {
+  margin-top: 20px;
+  color: #dc2626;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 950px) {
+  .painter-scheme-details-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .painter-scheme-details-right {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .painter-scheme-details-right .painter-scheme-validity-card {
+    margin-top: 18px;
+  }
+
+  .painter-scheme-start-btn {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 650px) {
+  .painter-scheme-details-page {
+    padding: 16px 14px 25px;
+    padding-top: 88px;
+  }
+
+  .painter-scheme-details-title {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .painter-scheme-details-title h1 {
+    font-size: 23px;
+  }
+
+  .painter-scheme-details-banner {
+    height: 210px;
+  }
+
+  .painter-scheme-info-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .painter-scheme-details-right {
+    display: block;
+  }
+
+  .painter-scheme-details-right .painter-scheme-validity-card,
+  .painter-scheme-target-card,
+  .painter-scheme-pdf-card {
+    margin-top: 18px;
+  }
+
+  .painter-scheme-select-message {
+    margin-top: 60px;
+    padding: 28px 18px;
+  }
+}
+
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 400px) {
+  .painter-scheme-details-title h1 {
+    font-size: 20px;
+  }
+
+  .painter-scheme-details-banner {
+    height: 180px;
+  }
+
+  .painter-scheme-info-card,
+  .painter-scheme-terms-card,
+  .painter-scheme-validity-card,
+  .painter-scheme-target-card,
+  .painter-scheme-pdf-card {
+    padding: 16px;
+  }
+}

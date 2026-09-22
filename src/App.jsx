@@ -72,6 +72,12 @@ import PainterRedeemRewards from "./pages/painter/PainterRedeemRewards";
 import PainterRedemptionRequest from "./pages/painter/PainterRedemptionRequest";
 import PainterRedemptionHistory from "./pages/painter/PainterRedemptionHistory";
 import PainterRedemptionStatus from "./pages/painter/PainterRedemptionStatus";
+import PainterLoyaltyDashboard from "./pages/painter/PainterLoyaltyDashboard";
+import PainterTierProgress from "./pages/painter/PainterTierProgress";
+import PainterTierBenefits from "./pages/painter/PainterTierBenefits";
+import PainterSchemeListing from "./pages/painter/PainterSchemeListing";
+import PainterSchemeDetails from "./pages/painter/PainterSchemeDetails";
+import PainterSchemePdfPreview from "./pages/painter/PainterSchemePdfPreview";
 
 
 const App = () => {
@@ -149,7 +155,14 @@ const App = () => {
         <Route path="/painter/redemption-request" element={<PainterLayout><PainterRedemptionRequest /></PainterLayout>} />
         <Route path="/painter/redemption-history" element={<PainterLayout><PainterRedemptionHistory /></PainterLayout>} />
         <Route path="/painter/redemption-status" element={<PainterLayout><PainterRedemptionStatus /></PainterLayout>} />
-
+        <Route path="/painter/loyalty-dashboard" element={<PainterLayout><PainterLoyaltyDashboard /></PainterLayout>} />
+        <Route path="/painter/tier-progress" element={<PainterLayout><PainterTierProgress /></PainterLayout>} />
+        <Route path="/painter/tier-benefits" element={<PainterLayout><PainterTierBenefits /></PainterLayout>} />
+        <Route path="/painter/scheme-listing" element={<PainterLayout><PainterSchemeListing /></PainterLayout>} />
+        <Route path="/painter/scheme-details" element={<PainterLayout><PainterSchemeDetails /></PainterLayout>} />
+        <Route path="/painter/scheme-details/:id" element={<PainterLayout><PainterSchemeDetails /></PainterLayout>} />
+        <Route path="/painter/scheme-pdf-preview" element={<PainterLayout><PainterSchemePdfPreview /></PainterLayout>} />
+        <Route path="/painter/scheme-pdf-preview/:id" element={<PainterLayout><PainterSchemePdfPreview /></PainterLayout>} />
       </Routes>
 
     </BrowserRouter>
