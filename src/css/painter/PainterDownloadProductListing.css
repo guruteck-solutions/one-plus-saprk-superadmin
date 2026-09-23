@@ -1,0 +1,260 @@
+.painter-product-listing-page {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    padding: 18px 24px 24px;
+    box-sizing: border-box;
+    background: #f6f7f9;
+    padding-top: 88px;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.painter-product-listing-header {
+    margin-bottom: 165px;
+}
+
+.painter-product-listing-header h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-product-listing-header p {
+    margin: 6px 0 0;
+    font-size: 13px;
+    color: #718096;
+}
+
+/* ================================
+   PRODUCT GRID
+================================ */
+
+.painter-product-listing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+}
+
+/* ================================
+   PRODUCT CARD
+================================ */
+
+.painter-product-listing-card {
+    min-width: 0;
+    min-height: 128px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e3e7ec;
+    border-radius: 12px;
+}
+
+.painter-product-listing-image {
+    width: 96px;
+    height: 96px;
+    flex: 0 0 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    background: #fff0e5;
+}
+
+.painter-product-listing-image span {
+    font-size: 27px;
+    font-weight: 700;
+    color: #f47b20;
+}
+
+/* ================================
+   PRODUCT INFO
+================================ */
+
+.painter-product-listing-info {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.painter-product-listing-info h3 {
+    margin: 0 0 7px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #17202a;
+    line-height: 1.3;
+    text-transform: capitalize;
+}
+
+.painter-product-listing-info p {
+    margin: 0 0 5px;
+    font-size: 10px;
+    color: #87919c;
+    white-space: nowrap;
+}
+
+.painter-product-listing-info p span {
+    margin: 0 2px;
+}
+
+/* ================================
+   VIEW BUTTON
+================================ */
+
+.painter-product-listing-info button {
+    min-width: 92px;
+    height: 32px;
+    padding: 0 15px;
+    border: 1px solid #dce2e8;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #17202a;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.painter-product-listing-info button:hover {
+    background: #f7f8fa;
+    border-color: #cbd2d9;
+}
+
+/* ================================
+   LOADING
+================================ */
+
+.painter-product-listing-loading {
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* ================================
+   EMPTY
+================================ */
+
+.painter-product-listing-empty {
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid #e3e7ec;
+    border-radius: 12px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+.painter-product-listing-footer {
+    margin-top: 320px;
+    font-size: 10px;
+    color: #89929c;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 1100px) {
+    .painter-product-listing-header {
+        margin-bottom: 100px;
+    }
+
+    .painter-product-listing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .painter-product-listing-footer {
+        margin-top: 180px;
+    }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+    .painter-product-listing-page {
+        padding: 18px 15px 20px;
+        padding-top: 88px;
+
+    }
+
+    .painter-product-listing-header {
+        margin-bottom: 35px;
+    }
+
+    .painter-product-listing-header h1 {
+        font-size: 22px;
+    }
+
+    .painter-product-listing-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .painter-product-listing-card {
+        min-height: 112px;
+        gap: 15px;
+    }
+
+    .painter-product-listing-image {
+        width: 80px;
+        height: 80px;
+        flex-basis: 80px;
+    }
+
+    .painter-product-listing-footer {
+        margin-top: 50px;
+    }
+}
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 420px) {
+    .painter-product-listing-card {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .painter-product-listing-image {
+        width: 70px;
+        height: 70px;
+        flex-basis: 70px;
+    }
+
+    .painter-product-listing-image span {
+        font-size: 23px;
+    }
+
+    .painter-product-listing-info h3 {
+        font-size: 13px;
+    }
+
+    .painter-product-listing-info p {
+        font-size: 9px;
+    }
+
+    .painter-product-listing-info button {
+        min-width: 82px;
+        height: 30px;
+        font-size: 11px;
+    }
+}

@@ -1,0 +1,454 @@
+.painter-product-details-page {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    padding: 18px 24px 24px;
+    box-sizing: border-box;
+    background: #f6f7f9;
+    padding-top: 88px;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.painter-product-details-header {
+    margin-bottom: 38px;
+}
+
+.painter-product-details-header h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-product-details-header p {
+    margin: 6px 0 0;
+    font-size: 13px;
+    color: #718096;
+}
+
+/* ================================
+   MAIN PRODUCT CARD
+================================ */
+
+.painter-product-details-card {
+    width: 100%;
+    min-height: 575px;
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 48px;
+    padding: 52px 32px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e1e6eb;
+    border-radius: 12px;
+}
+
+/* ================================
+   PRODUCT IMAGE
+================================ */
+
+.painter-product-details-image {
+    width: 320px;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #fff0e5;
+    color: #f47b20;
+}
+
+.painter-product-details-image span {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.painter-product-details-image strong {
+    margin-top: 3px;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #111827;
+}
+
+/* ================================
+   PRODUCT CONTENT
+================================ */
+
+.painter-product-details-content {
+    min-width: 0;
+}
+
+.painter-product-details-content h2 {
+    margin: 15px 0 18px;
+    font-size: 23px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.3;
+}
+
+.painter-product-details-content h3 {
+    margin: 30px 0 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #6b7280;
+}
+
+/* ================================
+   PRODUCT INFORMATION
+================================ */
+
+.painter-product-details-info {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.painter-product-details-info div {
+    min-width: 0;
+    padding: 11px 12px;
+    box-sizing: border-box;
+    border: 1px solid #edf0f3;
+    border-radius: 7px;
+    background: #fafbfc;
+}
+
+.painter-product-details-info span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 10px;
+    color: #89929c;
+}
+
+.painter-product-details-info strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 11px;
+    font-weight: 600;
+    color: #202832;
+}
+
+/* ================================
+   TECHNICAL DOCUMENTS
+================================ */
+
+.painter-product-document-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.painter-product-document-row {
+    width: 100%;
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #f0f1f3;
+}
+
+.painter-product-document-left {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.painter-product-document-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fff0e5;
+    color: #f47b20;
+}
+
+.painter-product-document-left strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* ================================
+   DOWNLOAD BUTTON
+================================ */
+
+.painter-product-document-row button {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 7px 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #f47b20;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.painter-product-document-row button:hover {
+    color: #d95f0b;
+}
+
+.painter-product-document-row button:disabled {
+    color: #b8bec5;
+    cursor: not-allowed;
+}
+
+/* ================================
+   PLEASE SELECT PRODUCT
+================================ */
+
+.painter-product-details-select-message {
+    width: 100%;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e1e6eb;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.painter-product-details-select-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    border-radius: 50%;
+    background: #fff0e5;
+    color: #f47b20;
+}
+
+.painter-product-details-select-message h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.painter-product-details-select-message p {
+    max-width: 420px;
+    margin: 8px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #7b8490;
+}
+
+/* ================================
+   LOADING
+================================ */
+
+.painter-product-details-loading {
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e1e6eb;
+    border-radius: 12px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* ================================
+   EMPTY / NOT FOUND
+================================ */
+
+.painter-product-details-empty {
+    width: 100%;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e1e6eb;
+    border-radius: 12px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 1100px) {
+    .painter-product-details-page {
+        padding: 18px 20px 24px;
+        padding-top: 88px;
+
+    }
+
+    .painter-product-details-card {
+        grid-template-columns: 250px minmax(0, 1fr);
+        gap: 30px;
+        padding: 35px 25px;
+    }
+
+    .painter-product-details-image {
+        width: 250px;
+        height: 240px;
+    }
+
+    .painter-product-details-info {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+    .painter-product-details-page {
+        min-height: calc(100vh - 60px);
+        padding: 18px 15px 20px;
+
+        padding-top: 88px;
+    }
+
+    .painter-product-details-header {
+        margin-bottom: 24px;
+    }
+
+    .painter-product-details-header h1 {
+        font-size: 22px;
+    }
+
+    .painter-product-details-header p {
+        font-size: 12px;
+    }
+
+    .painter-product-details-card {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+        gap: 25px;
+        padding: 20px;
+    }
+
+    .painter-product-details-image {
+        width: 100%;
+        height: 220px;
+    }
+
+    .painter-product-details-content h2 {
+        margin-top: 0;
+        font-size: 20px;
+    }
+
+    .painter-product-details-content h3 {
+        margin-top: 25px;
+    }
+
+    .painter-product-details-info {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .painter-product-document-row {
+        min-height: 58px;
+    }
+
+    .painter-product-details-select-message {
+        min-height: 300px;
+        padding: 20px;
+    }
+}
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 420px) {
+    .painter-product-details-page {
+        padding: 14px 12px 18px;
+        padding-top: 88px;
+    }
+
+    .painter-product-details-card {
+        padding: 16px;
+        border-radius: 10px;
+    }
+
+    .painter-product-details-image {
+        height: 190px;
+    }
+
+    .painter-product-details-image span {
+        font-size: 22px;
+    }
+
+    .painter-product-details-image strong {
+        font-size: 24px;
+    }
+
+    .painter-product-details-info {
+        grid-template-columns: 1fr;
+    }
+
+    .painter-product-details-info div {
+        padding: 10px;
+    }
+
+    .painter-product-document-left {
+        gap: 9px;
+    }
+
+    .painter-product-document-icon {
+        width: 31px;
+        height: 31px;
+    }
+
+    .painter-product-document-left strong {
+        font-size: 11px;
+    }
+
+    .painter-product-document-row {
+        gap: 10px;
+    }
+
+    .painter-product-document-row button {
+        font-size: 10px;
+    }
+
+    .painter-product-details-select-icon {
+        width: 52px;
+        height: 52px;
+        margin-bottom: 15px;
+    }
+
+    .painter-product-details-select-message h2 {
+        font-size: 17px;
+    }
+
+    .painter-product-details-select-message p {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,205 @@
+.painter-product-images-page {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    padding: 18px 24px 24px;
+    box-sizing: border-box;
+    background: #f6f7f9;
+    padding-top: 88px;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.painter-product-images-header {
+    margin-bottom: 42px;
+}
+
+.painter-product-images-header h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-product-images-header p {
+    margin: 6px 0 0;
+    font-size: 13px;
+    color: #718096;
+}
+
+/* ================================
+   MAIN CARD
+================================ */
+
+.painter-product-images-card {
+    width: 100%;
+    min-height: 590px;
+    padding: 30px 26px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e1e6eb;
+    border-radius: 12px;
+}
+
+.painter-product-images-card h2 {
+    margin: 0 0 104px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #17202a;
+}
+
+/* ================================
+   IMAGE GRID
+================================ */
+
+.painter-product-images-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 38px 32px;
+}
+
+/* ================================
+   IMAGE BOX
+================================ */
+
+.painter-product-image-box {
+    width: 100%;
+    height: 158px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 11px;
+    background: #fff0e5;
+    color: #f47b20;
+}
+
+.painter-product-image-box span {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+.painter-product-images-footer {
+    margin-top: 160px;
+    font-size: 10px;
+    color: #89929c;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 1100px) {
+    .painter-product-images-page {
+        padding: 18px 20px 24px;
+        padding-top: 88px;
+
+    }
+
+    .painter-product-images-card {
+        padding: 26px 22px;
+    }
+
+    .painter-product-images-card h2 {
+        margin-bottom: 70px;
+    }
+
+    .painter-product-images-grid {
+        gap: 25px 22px;
+    }
+
+    .painter-product-image-box {
+        height: 145px;
+    }
+
+    .painter-product-images-footer {
+        margin-top: 100px;
+    }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 700px) {
+    .painter-product-images-page {
+        min-height: calc(100vh - 60px);
+        padding: 18px 15px 20px;
+        padding-top: 88px;
+
+    }
+
+    .painter-product-images-header {
+        margin-bottom: 25px;
+    }
+
+    .painter-product-images-header h1 {
+        font-size: 22px;
+    }
+
+    .painter-product-images-header p {
+        font-size: 12px;
+    }
+
+    .painter-product-images-card {
+        min-height: auto;
+        padding: 20px 16px;
+    }
+
+    .painter-product-images-card h2 {
+        margin-bottom: 35px;
+        font-size: 18px;
+    }
+
+    .painter-product-images-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .painter-product-image-box {
+        height: 130px;
+    }
+
+    .painter-product-image-box span {
+        font-size: 12px;
+    }
+
+    .painter-product-images-footer {
+        margin-top: 50px;
+    }
+}
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 420px) {
+    .painter-product-images-page {
+        padding: 14px 12px 18px;
+        padding-top: 88px;
+
+    }
+
+    .painter-product-images-card {
+        padding: 18px 12px;
+    }
+
+    .painter-product-images-card h2 {
+        margin-bottom: 25px;
+        font-size: 17px;
+    }
+
+    .painter-product-images-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .painter-product-image-box {
+        height: 150px;
+    }
+}

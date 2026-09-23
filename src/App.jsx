@@ -86,6 +86,11 @@ import PainterReferralDashboard from "./pages/painter/PainterReferralDashboard";
 import PainterShareReferral from "./pages/painter/PainterShareReferral";
 import PainterReferralHistory from "./pages/painter/PainterReferralHistory";
 import PainterReferralStatus from "./pages/painter/PainterReferralStatus";
+import PainterDownloadCategoryListing from "./pages/painter/PainterDownloadCategoryListing";
+import PainterDownloadProductListing from "./pages/painter/PainterDownloadProductListing";
+import PainterDownloadProductDetails from "./pages/painter/PainterDownloadProductDetails";
+import PainterDownloadProductImages from "./pages/painter/PainterDownloadProductImages";
+import PainterDownloadDocumentPreview from "./pages/painter/PainterDownloadDocumentPreview";
 
 
 const App = () => {
@@ -181,6 +186,12 @@ const App = () => {
         <Route path="/painter/share-referral" element={<PainterLayout><PainterShareReferral /></PainterLayout>} />
         <Route path="/painter/referral-history" element={<PainterLayout><PainterReferralHistory /></PainterLayout>} />
         <Route path="/painter/referral-status" element={<PainterLayout><PainterReferralStatus /></PainterLayout>} />
+        <Route path="/painter/download-category-listing" element={<PainterLayout><PainterDownloadCategoryListing /></PainterLayout>} />
+        <Route path="/painter/download-product-listing" element={<PainterLayout><PainterDownloadProductListing /></PainterLayout>} />
+        <Route path="/painter/download-product-details" element={<PainterLayout><PainterDownloadProductDetails /></PainterLayout>} />
+        <Route path="/painter/download-product-details/:id" element={<PainterLayout><PainterDownloadProductDetails /></PainterLayout>} />
+        <Route path="/painter/download-product-images" element={<PainterLayout><PainterDownloadProductImages /></PainterLayout>} />
+        <Route path="/painter/download-document-preview" element={<PainterLayout><PainterDownloadDocumentPreview /></PainterLayout>} />
       </Routes>
 
     </BrowserRouter>

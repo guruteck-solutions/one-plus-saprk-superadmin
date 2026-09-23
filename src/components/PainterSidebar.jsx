@@ -349,6 +349,34 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     },
   ];
 
+  const downloadItems = [
+    {
+      label: "Category Listing",
+      icon: FileText,
+      path: "/painter/download-category-listing",
+    },
+    {
+      label: "Product Listing",
+      icon: Package,
+      path: "/painter/download-product-listing",
+    },
+    {
+      label: "Product Details",
+      icon: FileText,
+      path: "/painter/download-product-details",
+    },
+    {
+      label: "Product Images",
+      icon: Package,
+      path: "/painter/download-product-images",
+    },
+    {
+      label: "Document Preview",
+      icon: FileText,
+      path: "/painter/download-document-preview",
+    },
+  ];
+
   /* =====================================================
      ACTIVE ROUTES
   ===================================================== */
@@ -404,6 +432,11 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   const isReferralSectionActive =
     referralPaths.includes(location.pathname);
 
+  const downloadPaths = downloadItems.map((item) => item.path);
+
+  const isDownloadSectionActive =
+    downloadPaths.includes(location.pathname);
+
 
 
   /* =====================================================
@@ -438,6 +471,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
 
   const [referralOpen, setReferralOpen] = useState(
     isReferralSectionActive
+  );
+
+  const [downloadOpen, setDownloadOpen] = useState(
+    isDownloadSectionActive
   );
 
   /* =====================================================
@@ -492,6 +529,12 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     } else {
       setReferralOpen(false);
     }
+
+    if (isDownloadSectionActive) {
+      setDownloadOpen(true);
+    } else {
+      setDownloadOpen(false);
+    }
   }, [
     isDashboardSectionActive,
     isScanRewardsSectionActive,
@@ -501,6 +544,7 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     isSchemesOffersSectionActive,
     isNotificationsAlertsSectionActive,
     isReferralSectionActive,
+    isDownloadSectionActive,
   ]);
 
   /* =====================================================
@@ -698,6 +742,9 @@ const PainterSidebar = ({ isOpen, onClose }) => {
             const isReferral =
               item.label === "Refer & Earn";
 
+            const isDownloads =
+              item.label === "Downloads";
+
             const isActive = isScanRewards
               ? isScanRewardsSectionActive
               : isRewards
@@ -712,7 +759,9 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                         ? isNotificationsAlertsSectionActive
                         : isReferral
                           ? isReferralSectionActive
-                          : location.pathname === item.path;
+                          : isDownloads
+                            ? isDownloadSectionActive
+                            : location.pathname === item.path;
 
             /* =================================================
                 SCAN & REWARDS GROUP
@@ -1077,8 +1126,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                     <button
                       type="button"
                       className={`painter-sidebar-item painter-sidebar-dashboard-item ${isReferralSectionActive
-                          ? "painter-sidebar-active"
-                          : ""
+                        ? "painter-sidebar-active"
+                        : ""
                         }`}
                       onClick={() =>
                         handleMobileNavigation(
@@ -1093,8 +1142,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                     <button
                       type="button"
                       className={`painter-sidebar-dropdown-btn ${isReferralSectionActive
-                          ? "painter-sidebar-dropdown-active"
-                          : ""
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
                         }`}
                       onClick={() =>
                         setReferralOpen((prev) => !prev)
@@ -1128,8 +1177,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                             key={subItem.path}
                             type="button"
                             className={`painter-sidebar-subitem ${isSubActive
-                                ? "painter-sidebar-subitem-active"
-                                : ""
+                              ? "painter-sidebar-subitem-active"
+                              : ""
                               }`}
                             onClick={() =>
                               handleMobileNavigation(
@@ -1300,6 +1349,89 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                             className={`painter-sidebar-subitem ${isSubActive
                               ? "painter-sidebar-subitem-active"
                               : ""
+                              }`}
+                            onClick={() =>
+                              handleMobileNavigation(
+                                subItem.path
+                              )
+                            }
+                          >
+                            <SubIcon size={16} />
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            if (isDownloads) {
+              return (
+                <div
+                  className="painter-sidebar-group"
+                  key={item.path}
+                >
+                  <div className="painter-sidebar-dashboard-row">
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isDownloadSectionActive
+                          ? "painter-sidebar-active"
+                          : ""
+                        }`}
+                      onClick={() =>
+                        handleMobileNavigation(
+                          "/painter/download-category-listing"
+                        )
+                      }
+                    >
+                      <Icon size={18} />
+                      <span>Downloads</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isDownloadSectionActive
+                          ? "painter-sidebar-dropdown-active"
+                          : ""
+                        }`}
+                      onClick={() =>
+                        setDownloadOpen((prev) => !prev)
+                      }
+                      aria-label="Toggle Downloads menu"
+                      aria-expanded={downloadOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          downloadOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+
+                  </div>
+
+                  {downloadOpen && (
+                    <div className="painter-sidebar-submenu">
+
+                      {downloadItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname === subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                                ? "painter-sidebar-subitem-active"
+                                : ""
                               }`}
                             onClick={() =>
                               handleMobileNavigation(
