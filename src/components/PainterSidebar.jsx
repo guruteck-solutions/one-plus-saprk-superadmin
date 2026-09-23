@@ -63,6 +63,11 @@ const PainterSidebar = ({ isOpen, onClose }) => {
       path: "/painter/schemes-offers",
     },
     {
+      label: "Notifications & Alerts",
+      icon: Bell,
+      path: "/painter/notification-listing",
+    },
+    {
       label: "Products",
       icon: Package,
       path: "/painter/products",
@@ -308,6 +313,41 @@ const PainterSidebar = ({ isOpen, onClose }) => {
       path: "/painter/offer-details",
     },
   ];
+  const notificationsAlertsItems = [
+    {
+      label: "Notification Listing",
+      icon: Bell,
+      path: "/painter/notification-listing",
+    },
+    {
+      label: "Notification Details",
+      icon: Bell,
+      path: "/painter/notification-details",
+    },
+  ];
+
+  const referralItems = [
+    {
+      label: "Referral Dashboard",
+      icon: UserPlus,
+      path: "/painter/referral-dashboard",
+    },
+    {
+      label: "Share Referral",
+      icon: UserPlus,
+      path: "/painter/share-referral",
+    },
+    {
+      label: "Referral History",
+      icon: FileText,
+      path: "/painter/referral-history",
+    },
+    {
+      label: "Referral Status",
+      icon: Award,
+      path: "/painter/referral-status",
+    },
+  ];
 
   /* =====================================================
      ACTIVE ROUTES
@@ -352,10 +392,22 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   const schemesOffersPaths = schemesOffersItems.map((item) => item.path);
   const isSchemesOffersSectionActive = schemesOffersPaths.includes(location.pathname);
 
+  const notificationsAlertsPaths = notificationsAlertsItems.map(
+    (item) => item.path
+  );
+
+  const isNotificationsAlertsSectionActive =
+    notificationsAlertsPaths.includes(location.pathname);
+
+  const referralPaths = referralItems.map((item) => item.path);
+
+  const isReferralSectionActive =
+    referralPaths.includes(location.pathname);
+
 
 
   /* =====================================================
-     DROPDOWN STATE
+     DROPDOWN STATE - ONLY OPEN IF ACTIVE
   ===================================================== */
   const [dashboardOpen, setDashboardOpen] = useState(
     isDashboardSectionActive
@@ -365,13 +417,28 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     isScanRewardsSectionActive
   );
 
-  const [rewardAnalyticsOpen, setRewardAnalyticsOpen] = useState(true);
+  const [rewardAnalyticsOpen, setRewardAnalyticsOpen] = useState(
+    isRewardAnalyticsSectionActive
+  );
 
-  const [redemptionOpen, setRedemptionOpen] = useState(true);
+  const [redemptionOpen, setRedemptionOpen] = useState(
+    isRedemptionSectionActive
+  );
 
-  const [loyaltyTierOpen, setLoyaltyTierOpen] = useState(true);
+  const [loyaltyTierOpen, setLoyaltyTierOpen] = useState(
+    isLoyaltyTierSectionActive
+  );
 
-  const [schemesOffersOpen, setSchemesOffersOpen] = useState(true);
+  const [schemesOffersOpen, setSchemesOffersOpen] = useState(
+    isSchemesOffersSectionActive
+  );
+
+  const [notificationsAlertsOpen, setNotificationsAlertsOpen] =
+    useState(isNotificationsAlertsSectionActive);
+
+  const [referralOpen, setReferralOpen] = useState(
+    isReferralSectionActive
+  );
 
   /* =====================================================
      KEEP DROPDOWN OPEN WHEN SUBMENU PAGE IS ACTIVE
@@ -380,26 +447,50 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (isDashboardSectionActive) {
       setDashboardOpen(true);
+    } else {
+      setDashboardOpen(false);
     }
 
     if (isScanRewardsSectionActive) {
       setScanRewardsOpen(true);
+    } else {
+      setScanRewardsOpen(false);
     }
 
     if (isRewardAnalyticsSectionActive) {
       setRewardAnalyticsOpen(true);
+    } else {
+      setRewardAnalyticsOpen(false);
     }
 
     if (isRedemptionSectionActive) {
       setRedemptionOpen(true);
+    } else {
+      setRedemptionOpen(false);
     }
 
     if (isLoyaltyTierSectionActive) {
       setLoyaltyTierOpen(true);
+    } else {
+      setLoyaltyTierOpen(false);
     }
 
     if (isSchemesOffersSectionActive) {
       setSchemesOffersOpen(true);
+    } else {
+      setSchemesOffersOpen(false);
+    }
+
+    if (isNotificationsAlertsSectionActive) {
+      setNotificationsAlertsOpen(true);
+    } else {
+      setNotificationsAlertsOpen(false);
+    }
+
+    if (isReferralSectionActive) {
+      setReferralOpen(true);
+    } else {
+      setReferralOpen(false);
     }
   }, [
     isDashboardSectionActive,
@@ -408,6 +499,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     isRedemptionSectionActive,
     isLoyaltyTierSectionActive,
     isSchemesOffersSectionActive,
+    isNotificationsAlertsSectionActive,
+    isReferralSectionActive,
   ]);
 
   /* =====================================================
@@ -599,6 +692,12 @@ const PainterSidebar = ({ isOpen, onClose }) => {
             const isSchemesOffers =
               item.label === "Schemes & Offers";
 
+            const isNotificationsAlerts =
+              item.label === "Notifications & Alerts";
+
+            const isReferral =
+              item.label === "Refer & Earn";
+
             const isActive = isScanRewards
               ? isScanRewardsSectionActive
               : isRewards
@@ -609,7 +708,11 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                     ? isLoyaltyTierSectionActive
                     : isSchemesOffers
                       ? isSchemesOffersSectionActive
-                      : location.pathname === item.path;
+                      : isNotificationsAlerts
+                        ? isNotificationsAlertsSectionActive
+                        : isReferral
+                          ? isReferralSectionActive
+                          : location.pathname === item.path;
 
             /* =================================================
                 SCAN & REWARDS GROUP
@@ -963,6 +1066,89 @@ const PainterSidebar = ({ isOpen, onClose }) => {
               );
             }
 
+            if (isReferral) {
+              return (
+                <div
+                  className="painter-sidebar-group"
+                  key={item.path}
+                >
+                  <div className="painter-sidebar-dashboard-row">
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isReferralSectionActive
+                          ? "painter-sidebar-active"
+                          : ""
+                        }`}
+                      onClick={() =>
+                        handleMobileNavigation(
+                          "/painter/referral-dashboard"
+                        )
+                      }
+                    >
+                      <Icon size={18} />
+                      <span>Refer & Earn</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isReferralSectionActive
+                          ? "painter-sidebar-dropdown-active"
+                          : ""
+                        }`}
+                      onClick={() =>
+                        setReferralOpen((prev) => !prev)
+                      }
+                      aria-label="Toggle Refer & Earn menu"
+                      aria-expanded={referralOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          referralOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+
+                  </div>
+
+                  {referralOpen && (
+                    <div className="painter-sidebar-submenu">
+
+                      {referralItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname === subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                                ? "painter-sidebar-subitem-active"
+                                : ""
+                              }`}
+                            onClick={() =>
+                              handleMobileNavigation(
+                                subItem.path
+                              )
+                            }
+                          >
+                            <SubIcon size={16} />
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
             /* =================================================
     SCHEMES & OFFERS GROUP
 ================================================= */
@@ -978,8 +1164,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                     <button
                       type="button"
                       className={`painter-sidebar-item painter-sidebar-dashboard-item ${isSchemesOffersSectionActive
-                          ? "painter-sidebar-active"
-                          : ""
+                        ? "painter-sidebar-active"
+                        : ""
                         }`}
                       onClick={() =>
                         handleMobileNavigation(
@@ -994,8 +1180,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                     <button
                       type="button"
                       className={`painter-sidebar-dropdown-btn ${isSchemesOffersSectionActive
-                          ? "painter-sidebar-dropdown-active"
-                          : ""
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
                         }`}
                       onClick={() =>
                         setSchemesOffersOpen((prev) => !prev)
@@ -1029,8 +1215,91 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                             key={subItem.path}
                             type="button"
                             className={`painter-sidebar-subitem ${isSubActive
-                                ? "painter-sidebar-subitem-active"
-                                : ""
+                              ? "painter-sidebar-subitem-active"
+                              : ""
+                              }`}
+                            onClick={() =>
+                              handleMobileNavigation(
+                                subItem.path
+                              )
+                            }
+                          >
+                            <SubIcon size={16} />
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            if (isNotificationsAlerts) {
+              return (
+                <div
+                  className="painter-sidebar-group"
+                  key={item.path}
+                >
+                  <div className="painter-sidebar-dashboard-row">
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isNotificationsAlertsSectionActive
+                        ? "painter-sidebar-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        handleMobileNavigation(
+                          "/painter/notification-listing"
+                        )
+                      }
+                    >
+                      <Icon size={18} />
+                      <span>Notifications & Alerts</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isNotificationsAlertsSectionActive
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        setNotificationsAlertsOpen((prev) => !prev)
+                      }
+                      aria-label="Toggle Notifications & Alerts menu"
+                      aria-expanded={notificationsAlertsOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          notificationsAlertsOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+
+                  </div>
+
+                  {notificationsAlertsOpen && (
+                    <div className="painter-sidebar-submenu">
+
+                      {notificationsAlertsItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname === subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                              ? "painter-sidebar-subitem-active"
+                              : ""
                               }`}
                             onClick={() =>
                               handleMobileNavigation(

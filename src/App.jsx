@@ -80,6 +80,12 @@ import PainterSchemeDetails from "./pages/painter/PainterSchemeDetails";
 import PainterSchemePdfPreview from "./pages/painter/PainterSchemePdfPreview";
 import PainterOffersListing from "./pages/painter/PainterOffersListing";
 import PainterOfferDetails from "./pages/painter/PainterOfferDetails";
+import PainterNotificationListing from "./pages/painter/PainterNotificationListing";
+import PainterNotificationDetails from "./pages/painter/PainterNotificationDetails";
+import PainterReferralDashboard from "./pages/painter/PainterReferralDashboard";
+import PainterShareReferral from "./pages/painter/PainterShareReferral";
+import PainterReferralHistory from "./pages/painter/PainterReferralHistory";
+import PainterReferralStatus from "./pages/painter/PainterReferralStatus";
 
 
 const App = () => {
@@ -168,6 +174,13 @@ const App = () => {
         <Route path="/painter/offers-listing" element={<PainterLayout><PainterOffersListing /></PainterLayout>} />
         <Route path="/painter/offer-details" element={<PainterLayout><PainterOfferDetails /></PainterLayout>} />
         <Route path="/painter/offer-details/:id" element={<PainterLayout><PainterOfferDetails /></PainterLayout>} />
+        <Route path="/painter/notification-listing" element={<PainterLayout><PainterNotificationListing /></PainterLayout>} />
+        <Route path="/painter/notification-details" element={<PainterLayout><PainterNotificationDetails /></PainterLayout>} />
+        <Route path="/painter/notification-details/:id" element={<PainterLayout><PainterNotificationDetails /></PainterLayout>} />
+        <Route path="/painter/referral-dashboard" element={<PainterLayout><PainterReferralDashboard /></PainterLayout>} />
+        <Route path="/painter/share-referral" element={<PainterLayout><PainterShareReferral /></PainterLayout>} />
+        <Route path="/painter/referral-history" element={<PainterLayout><PainterReferralHistory /></PainterLayout>} />
+        <Route path="/painter/referral-status" element={<PainterLayout><PainterReferralStatus /></PainterLayout>} />
       </Routes>
 
     </BrowserRouter>
