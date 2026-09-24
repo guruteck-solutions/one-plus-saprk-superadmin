@@ -1,0 +1,351 @@
+/* =========================================================
+   PAGE
+========================================================= */
+
+.painter-voice-upload-images-page {
+    width: 100%;
+    min-height: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.painter-voice-upload-images-header {
+    margin-bottom: 22px;
+}
+
+.painter-voice-upload-images-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.painter-voice-upload-images-header p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0 0;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.painter-voice-upload-images-header p span {
+    color: #9ca3af;
+}
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.painter-voice-upload-images-content {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.painter-voice-upload-images-subtitle {
+    margin: 0 0 16px;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.painter-voice-upload-images-card {
+    width: 100%;
+    padding: 28px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.painter-voice-upload-images-card h2 {
+    margin: 0 0 22px;
+    font-size: 19px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+/* =========================================================
+   DROPZONE
+========================================================= */
+
+.painter-voice-images-dropzone {
+    width: 100%;
+    min-height: 180px;
+    padding: 28px 20px;
+    border: 1.5px dashed #d6a45b;
+    border-radius: 10px;
+    background: #fffaf3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.painter-voice-images-dropzone:hover {
+    background: #fff7ed;
+    border-color: #f28c28;
+}
+
+.painter-voice-images-dropzone.drag-active {
+    background: #fff3e6;
+    border-color: #f28c28;
+}
+
+.painter-voice-images-dropzone svg {
+    color: #f28c28;
+}
+
+.painter-voice-images-dropzone strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.painter-voice-images-dropzone span {
+    font-size: 12px;
+    color: #6b7280;
+    text-align: center;
+}
+
+.painter-voice-images-dropzone small {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+/* =========================================================
+   IMAGE PREVIEW
+========================================================= */
+
+.painter-voice-image-preview-grid {
+    width: 100%;
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.painter-voice-image-preview-item {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    border-radius: 9px;
+    background: #f9fafb;
+}
+
+.painter-voice-image-preview-item img {
+    display: block;
+    width: 100%;
+    height: 125px;
+    object-fit: cover;
+}
+
+.painter-voice-image-preview-item button {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(31, 41, 55, 0.85);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.painter-voice-image-preview-item button:hover {
+    background: #dc2626;
+}
+
+.painter-voice-image-preview-item span {
+    display: block;
+    padding: 7px 8px;
+    overflow: hidden;
+    font-size: 11px;
+    color: #6b7280;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   TITLE FIELD
+========================================================= */
+
+.painter-voice-images-title-field {
+    margin-top: 22px;
+}
+
+.painter-voice-images-title-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.painter-voice-images-title-field label span {
+    color: #dc2626;
+}
+
+.painter-voice-images-title-field input {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 13px;
+    color: #1f2937;
+    background: #ffffff;
+    transition: 0.2s ease;
+}
+
+.painter-voice-images-title-field input:focus {
+    border-color: #f28c28;
+    box-shadow: 0 0 0 3px rgba(242, 140, 40, 0.1);
+}
+
+.painter-voice-images-title-field input::placeholder {
+    color: #9ca3af;
+}
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.painter-voice-images-actions {
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.painter-voice-choose-images-btn,
+.painter-voice-submit-images-btn {
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.painter-voice-choose-images-btn {
+    border: 1px solid #f28c28;
+    background: #ffffff;
+    color: #f28c28;
+}
+
+.painter-voice-choose-images-btn:hover {
+    background: #fff7ed;
+}
+
+.painter-voice-submit-images-btn {
+    border: 1px solid #f28c28;
+    background: #f28c28;
+    color: #ffffff;
+}
+
+.painter-voice-submit-images-btn:hover {
+    background: #e67e17;
+    border-color: #e67e17;
+}
+
+.painter-voice-submit-images-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+    .painter-voice-upload-images-page {
+        padding: 18px;
+    }
+
+    .painter-voice-upload-images-card {
+        padding: 22px;
+    }
+
+    .painter-voice-image-preview-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .painter-voice-upload-images-page {
+        padding: 14px;
+    }
+
+    .painter-voice-upload-images-header h1 {
+        font-size: 21px;
+    }
+
+    .painter-voice-upload-images-header p {
+        flex-wrap: wrap;
+    }
+
+    .painter-voice-upload-images-card {
+        padding: 18px;
+    }
+
+    .painter-voice-images-dropzone {
+        min-height: 155px;
+        padding: 22px 14px;
+    }
+
+    .painter-voice-image-preview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .painter-voice-image-preview-item img {
+        height: 115px;
+    }
+
+    .painter-voice-images-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .painter-voice-choose-images-btn,
+    .painter-voice-submit-images-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+    .painter-voice-image-preview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .painter-voice-image-preview-item img {
+        height: 160px;
+    }
+}

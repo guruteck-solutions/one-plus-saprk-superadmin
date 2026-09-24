@@ -377,6 +377,76 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     },
   ];
 
+  const shopItems = [
+    {
+      label: "Shop Dashboard",
+      icon: ShoppingBag,
+      path: "/painter/shop",
+    },
+    {
+      label: "Product Listing",
+      icon: Package,
+      path: "/painter/shop-product-listing",
+    },
+    {
+      label: "Product Details",
+      icon: FileText,
+      path: "/painter/shop-product-details",
+    },
+    {
+      label: "Shopping Cart",
+      icon: ShoppingBag,
+      path: "/painter/shop-cart",
+    },
+    {
+      label: "Submit Enquiry",
+      icon: FileText,
+      path: "/painter/shop-submit-enquiry",
+    },
+    {
+      label: "Enquiry History",
+      icon: FileText,
+      path: "/painter/shop-enquiry-history",
+    },
+    {
+      label: "Enquiry Details",
+      icon: FileText,
+      path: "/painter/shop-enquiry-details",
+    },
+  ];
+  const voiceItems = [
+    {
+      label: "Voice Dashboard",
+      icon: MessageSquare,
+      path: "/painter/voice-of-painter",
+    },
+    {
+      label: "Upload Video",
+      icon: FileText,
+      path: "/painter/voice-of-painter/upload-video",
+    },
+    {
+      label: "Upload Images",
+      icon: FileText,
+      path: "/painter/voice-of-painter/upload-images"
+    },
+    {
+      label: "Submit Feedback",
+      icon: MessageSquare,
+      path: "/painter/voice-of-painter/submit-feedback",
+    },
+    {
+      label: "Complaints",
+      icon: MessageSquare,
+      path: "/painter/complaints",
+    },
+    {
+      label: "Submission History",
+      icon: FileText,
+      path: "/painter/voice-of-painter/submission-history",
+    },
+  ];
+
   /* =====================================================
      ACTIVE ROUTES
   ===================================================== */
@@ -437,6 +507,14 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   const isDownloadSectionActive =
     downloadPaths.includes(location.pathname);
 
+  const shopPaths = shopItems.map((item) => item.path);
+
+  const isShopSectionActive =
+    shopPaths.includes(location.pathname);
+
+  const voicePaths = voiceItems.map((item) => item.path);
+  const isVoiceSectionActive = voicePaths.includes(location.pathname);
+
 
 
   /* =====================================================
@@ -476,6 +554,12 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   const [downloadOpen, setDownloadOpen] = useState(
     isDownloadSectionActive
   );
+
+  const [shopOpen, setShopOpen] = useState(
+    isShopSectionActive
+  );
+
+  const [voiceOpen, setVoiceOpen] = useState(isVoiceSectionActive);
 
   /* =====================================================
      KEEP DROPDOWN OPEN WHEN SUBMENU PAGE IS ACTIVE
@@ -535,6 +619,18 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     } else {
       setDownloadOpen(false);
     }
+
+    if (isShopSectionActive) {
+      setShopOpen(true);
+    } else {
+      setShopOpen(false);
+    }
+
+    if (isVoiceSectionActive) {
+      setVoiceOpen(true);
+    } else {
+      setVoiceOpen(false);
+    }
   }, [
     isDashboardSectionActive,
     isScanRewardsSectionActive,
@@ -545,6 +641,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     isNotificationsAlertsSectionActive,
     isReferralSectionActive,
     isDownloadSectionActive,
+    isShopSectionActive,
+    isVoiceSectionActive,
   ]);
 
   /* =====================================================
@@ -745,6 +843,12 @@ const PainterSidebar = ({ isOpen, onClose }) => {
             const isDownloads =
               item.label === "Downloads";
 
+            const isShop =
+              item.label === "Shop";
+
+            const isVoice =
+              item.label === "Voice of Painter";
+
             const isActive = isScanRewards
               ? isScanRewardsSectionActive
               : isRewards
@@ -761,7 +865,11 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                           ? isReferralSectionActive
                           : isDownloads
                             ? isDownloadSectionActive
-                            : location.pathname === item.path;
+                            : isShop
+                              ? isShopSectionActive
+                              : isVoice
+                                ? isVoiceSectionActive
+                                : location.pathname === item.path;
 
             /* =================================================
                 SCAN & REWARDS GROUP
@@ -1198,9 +1306,6 @@ const PainterSidebar = ({ isOpen, onClose }) => {
               );
             }
 
-            /* =================================================
-    SCHEMES & OFFERS GROUP
-================================================= */
 
             if (isSchemesOffers) {
               return (
@@ -1379,8 +1484,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                     <button
                       type="button"
                       className={`painter-sidebar-item painter-sidebar-dashboard-item ${isDownloadSectionActive
-                          ? "painter-sidebar-active"
-                          : ""
+                        ? "painter-sidebar-active"
+                        : ""
                         }`}
                       onClick={() =>
                         handleMobileNavigation(
@@ -1395,8 +1500,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                     <button
                       type="button"
                       className={`painter-sidebar-dropdown-btn ${isDownloadSectionActive
-                          ? "painter-sidebar-dropdown-active"
-                          : ""
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
                         }`}
                       onClick={() =>
                         setDownloadOpen((prev) => !prev)
@@ -1430,8 +1535,175 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                             key={subItem.path}
                             type="button"
                             className={`painter-sidebar-subitem ${isSubActive
-                                ? "painter-sidebar-subitem-active"
-                                : ""
+                              ? "painter-sidebar-subitem-active"
+                              : ""
+                              }`}
+                            onClick={() =>
+                              handleMobileNavigation(
+                                subItem.path
+                              )
+                            }
+                          >
+                            <SubIcon size={16} />
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            if (isShop) {
+              return (
+                <div
+                  className="painter-sidebar-group"
+                  key={item.path}
+                >
+                  <div className="painter-sidebar-dashboard-row">
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isShopSectionActive
+                        ? "painter-sidebar-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        handleMobileNavigation(
+                          "/painter/shop"
+                        )
+                      }
+                    >
+                      <Icon size={18} />
+                      <span>Shop</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isShopSectionActive
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        setShopOpen((prev) => !prev)
+                      }
+                      aria-label="Toggle Shop menu"
+                      aria-expanded={shopOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          shopOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+
+                  </div>
+
+                  {shopOpen && (
+                    <div className="painter-sidebar-submenu">
+
+                      {shopItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname ===
+                          subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                              ? "painter-sidebar-subitem-active"
+                              : ""
+                              }`}
+                            onClick={() =>
+                              handleMobileNavigation(
+                                subItem.path
+                              )
+                            }
+                          >
+                            <SubIcon size={16} />
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            if (isVoice) {
+              return (
+                <div
+                  className="painter-sidebar-group"
+                  key={item.path}
+                >
+                  <div className="painter-sidebar-dashboard-row">
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isVoiceSectionActive
+                        ? "painter-sidebar-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        handleMobileNavigation(
+                          "/painter/voice-of-painter"
+                        )
+                      }
+                    >
+                      <Icon size={18} />
+                      <span>Voice of Painter</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isVoiceSectionActive
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        setVoiceOpen((prev) => !prev)
+                      }
+                      aria-label="Toggle Voice of Painter menu"
+                      aria-expanded={voiceOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          voiceOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+
+                  </div>
+
+                  {voiceOpen && (
+                    <div className="painter-sidebar-submenu">
+
+                      {voiceItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname === subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                              ? "painter-sidebar-subitem-active"
+                              : ""
                               }`}
                             onClick={() =>
                               handleMobileNavigation(

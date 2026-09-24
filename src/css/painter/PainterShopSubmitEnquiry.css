@@ -1,0 +1,244 @@
+/* =========================================
+   PAINTER SHOP - SUBMIT ENQUIRY
+========================================= */
+
+.painter-shop-submit-enquiry-page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 24px;
+    background: #f7f8fa;
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.painter-shop-submit-enquiry-header {
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.painter-shop-submit-enquiry-header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-shop-submit-enquiry-header p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.painter-shop-submit-enquiry-card {
+    width: 100%;
+    max-width: 730px;
+    margin: 0 auto;
+    padding: 32px 42px 38px;
+
+    background: #ffffff;
+    border: 1px solid #e2e6ec;
+    border-radius: 14px;
+
+    box-sizing: border-box;
+}
+
+.painter-shop-submit-enquiry-card h2 {
+    margin: 0 0 36px;
+    font-size: 23px;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* =========================================
+   FORM
+========================================= */
+
+.painter-shop-submit-enquiry-card form {
+    width: 100%;
+}
+
+/* =========================================
+   FIELD
+========================================= */
+
+.painter-shop-submit-enquiry-field {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.painter-shop-submit-enquiry-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #5f6b7a;
+}
+
+.painter-shop-submit-enquiry-field label span {
+    color: #f97316;
+}
+
+/* =========================================
+   INPUT / SELECT
+========================================= */
+
+.painter-shop-submit-enquiry-field input,
+.painter-shop-submit-enquiry-field select {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+
+    border: 1px solid #dce2e9;
+    border-radius: 8px;
+
+    outline: none;
+    background: #ffffff;
+
+    color: #1f2937;
+    font-size: 13px;
+
+    box-sizing: border-box;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.painter-shop-submit-enquiry-field input:focus,
+.painter-shop-submit-enquiry-field select:focus {
+    border-color: #f28c28;
+    box-shadow: 0 0 0 2px rgba(242, 140, 40, 0.1);
+}
+
+.painter-shop-submit-enquiry-field input::placeholder {
+    color: #9ca3af;
+}
+
+/* Readonly Selected Products */
+
+.painter-shop-submit-enquiry-field input[readonly] {
+    background: #ffffff;
+    cursor: default;
+}
+
+/* =========================================
+   TWO COLUMN ROW
+========================================= */
+
+.painter-shop-submit-enquiry-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
+.painter-shop-submit-enquiry-btn {
+    width: 100%;
+    height: 50px;
+    margin-top: 8px;
+
+    border: 1px solid #f28c28;
+    border-radius: 8px;
+
+    background: #f28c28;
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.1s ease;
+}
+
+.painter-shop-submit-enquiry-btn:hover {
+    background: #df7817;
+    border-color: #df7817;
+}
+
+.painter-shop-submit-enquiry-btn:active {
+    transform: translateY(1px);
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 800px) {
+    .painter-shop-submit-enquiry-page {
+        padding: 20px;
+        padding-top: 88px;
+    }
+
+    .painter-shop-submit-enquiry-card {
+        max-width: 100%;
+        padding: 28px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+    .painter-shop-submit-enquiry-page {
+        padding: 16px;
+        padding-top: 88px;
+    }
+
+    .painter-shop-submit-enquiry-header h1 {
+        font-size: 23px;
+    }
+
+    .painter-shop-submit-enquiry-header p {
+        font-size: 12px;
+    }
+
+    .painter-shop-submit-enquiry-card {
+        padding: 22px 18px 28px;
+        border-radius: 10px;
+    }
+
+    .painter-shop-submit-enquiry-card h2 {
+        margin-bottom: 28px;
+        font-size: 20px;
+    }
+
+    .painter-shop-submit-enquiry-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .painter-shop-submit-enquiry-field {
+        margin-bottom: 20px;
+    }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+    .painter-shop-submit-enquiry-page {
+        padding: 12px;
+        padding-top: 88px;
+    }
+
+    .painter-shop-submit-enquiry-card {
+        padding: 20px 14px 24px;
+    }
+}

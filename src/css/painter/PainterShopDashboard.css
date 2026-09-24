@@ -1,0 +1,312 @@
+.painter-shop-dashboard-page {
+    width: 100%;
+    min-height: 100%;
+    padding: 8px 0 30px;
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+.painter-shop-dashboard-header {
+    margin-bottom: 52px;
+}
+
+.painter-shop-dashboard-header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-shop-dashboard-header p {
+    margin: 7px 0 0;
+    font-size: 13px;
+    color: #718096;
+}
+
+.painter-shop-products-section h2,
+.painter-shop-enquiries-card h2 {
+    margin: 0;
+    color: #111827;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.painter-shop-products-section {
+    margin-bottom: 64px;
+}
+
+.painter-shop-category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 30px;
+    margin-top: 38px;
+}
+
+.painter-shop-category-card {
+    min-height: 155px;
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid #e1e6eb;
+    border-radius: 14px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.painter-shop-category-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.painter-shop-category-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #fff0e5;
+    color: #ff7414;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.painter-shop-category-info h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #17202b;
+}
+
+.painter-shop-category-info span {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+    color: #7a8795;
+}
+
+.painter-shop-category-card button {
+    width: 92px;
+    height: 30px;
+    margin-top: 16px;
+    border: 0;
+    border-radius: 20px;
+    background: #fff0e5;
+    color: #ff7414;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.painter-shop-category-card button:hover {
+    background: #ff7414;
+    color: #ffffff;
+}
+
+.painter-shop-dashboard-bottom {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 30px;
+    align-items: stretch;
+}
+
+.painter-shop-enquiries-card {
+    min-height: 285px;
+    padding: 18px 20px;
+    background: #ffffff;
+    border: 1px solid #e1e6eb;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+
+.painter-shop-chart {
+    height: 215px;
+    margin-top: 15px;
+    padding: 10px 10px 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 25px;
+}
+
+.painter-shop-chart-column {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.painter-shop-chart-bar {
+    width: 48px;
+    max-width: 100%;
+    min-height: 30px;
+    border-radius: 6px 6px 3px 3px;
+    background: #e8edf3;
+}
+
+.painter-shop-chart-bar.current {
+    background: #4d78df;
+}
+
+.painter-shop-chart-column span {
+    font-size: 10px;
+    color: #7d8996;
+}
+
+.painter-shop-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.painter-shop-stat-card {
+    flex: 1;
+    min-height: 100px;
+    padding: 20px 22px;
+    background: #ffffff;
+    border: 1px solid #e1e6eb;
+    border-radius: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+.painter-shop-stat-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: #fff0e5;
+    color: #ff7414;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.painter-shop-stat-icon.success {
+    background: #edf9f2;
+    color: #17a566;
+}
+
+.painter-shop-stat-card span {
+    display: block;
+    font-size: 11px;
+    color: #7a8795;
+}
+
+.painter-shop-stat-card strong {
+    display: block;
+    margin-top: 3px;
+    font-size: 25px;
+    line-height: 1.2;
+    color: #111827;
+}
+
+.painter-shop-stat-card small {
+    display: block;
+    margin-top: 8px;
+    font-size: 10px;
+    color: #7a8795;
+}
+
+.painter-shop-dashboard-page button:focus-visible {
+    outline: 2px solid #ff7414;
+    outline-offset: 2px;
+}
+
+@media (max-width: 1200px) {
+    .painter-shop-category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .painter-shop-dashboard-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .painter-shop-stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .painter-shop-dashboard-page {
+        padding: 5px 0 25px;
+        padding-top: 88px;
+    }
+
+    .painter-shop-dashboard-header {
+        margin-bottom: 35px;
+    }
+
+    .painter-shop-dashboard-header h1 {
+        font-size: 24px;
+    }
+
+    .painter-shop-category-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 25px;
+    }
+
+    .painter-shop-products-section {
+        margin-bottom: 35px;
+    }
+
+    .painter-shop-dashboard-bottom {
+        gap: 18px;
+    }
+
+    .painter-shop-enquiries-card {
+        min-height: 260px;
+    }
+
+    .painter-shop-chart {
+        gap: 8px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .painter-shop-chart-bar {
+        width: 32px;
+    }
+
+    .painter-shop-stats {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .painter-shop-dashboard-header h1 {
+        font-size: 22px;
+    }
+
+    .painter-shop-dashboard-header p {
+        font-size: 12px;
+    }
+
+    .painter-shop-category-card {
+        padding: 18px;
+    }
+
+    .painter-shop-chart {
+        gap: 4px;
+    }
+
+    .painter-shop-chart-bar {
+        width: 25px;
+    }
+
+    .painter-shop-chart-column span {
+        font-size: 9px;
+    }
+}

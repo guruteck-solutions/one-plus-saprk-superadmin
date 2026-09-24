@@ -1,0 +1,174 @@
+.painter-submission-history-page {
+    min-height: 100vh;
+    background: #f5f7fa;
+    padding-top: 88px;
+}
+
+.painter-submission-history-header {
+    padding: 10px 28px 0;
+}
+
+.painter-submission-history-header h1 {
+    margin: 0;
+    color: #111827;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.painter-submission-history-header p {
+    margin: 5px 0 0;
+    color: #8995a5;
+    font-size: 13px;
+}
+
+.painter-submission-history-card {
+    margin: 44px 28px 30px;
+    padding: 0;
+    background: #ffffff;
+    border: 1px solid #e2e8ee;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.painter-submission-history-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.painter-submission-history-table {
+    width: 100%;
+    min-width: 750px;
+    border-collapse: collapse;
+}
+
+.painter-submission-history-table thead {
+    background: #f1f4f8;
+}
+
+.painter-submission-history-table th {
+    padding: 13px 11px;
+    text-align: left;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.painter-submission-history-table td {
+    padding: 11px;
+    border-bottom: 1px solid #edf0f3;
+    color: #1f2937;
+    font-size: 12px;
+}
+
+.painter-submission-history-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.painter-submission-history-table th:nth-child(1),
+.painter-submission-history-table td:nth-child(1) {
+    width: 27%;
+}
+
+.painter-submission-history-table th:nth-child(2),
+.painter-submission-history-table td:nth-child(2) {
+    width: 15%;
+}
+
+.painter-submission-history-table th:nth-child(3),
+.painter-submission-history-table td:nth-child(3) {
+    width: 14%;
+}
+
+.painter-submission-history-table th:nth-child(4),
+.painter-submission-history-table td:nth-child(4) {
+    width: 25%;
+}
+
+.painter-submission-history-table th:nth-child(5),
+.painter-submission-history-table td:nth-child(5) {
+    width: 15%;
+}
+
+.painter-history-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 115px;
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.painter-history-status-open {
+    background: #fff0e4;
+    color: #f97316;
+}
+
+.painter-history-status-assigned {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.painter-history-status-under_review {
+    background: #ffecef;
+    color: #2563eb;
+}
+
+.painter-history-status-resolved {
+    background: #e7f8ef;
+    color: #059669;
+}
+
+.painter-history-status-closed {
+    background: #eef0f3;
+    color: #64748b;
+}
+
+.painter-history-message {
+    height: 100px;
+    text-align: center !important;
+    color: #94a3b8 !important;
+}
+
+@media (max-width: 768px) {
+    .painter-submission-history-header {
+        padding: 15px 16px 0;
+    }
+
+    .painter-submission-history-header h1 {
+        font-size: 24px;
+    }
+
+    .painter-submission-history-card {
+        margin: 30px 16px 25px;
+    }
+
+    .painter-submission-history-table {
+        min-width: 700px;
+    }
+}
+
+@media (max-width: 480px) {
+    .painter-submission-history-header {
+        padding: 15px 12px 0;
+    }
+
+    .painter-submission-history-header h1 {
+        font-size: 21px;
+    }
+
+    .painter-submission-history-card {
+        margin: 25px 10px 20px;
+        border-radius: 10px;
+    }
+
+    .painter-submission-history-table {
+        min-width: 650px;
+    }
+
+    .painter-submission-history-table th,
+    .painter-submission-history-table td {
+        padding: 10px;
+    }
+}

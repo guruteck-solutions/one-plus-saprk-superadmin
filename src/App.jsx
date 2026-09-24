@@ -91,6 +91,19 @@ import PainterDownloadProductListing from "./pages/painter/PainterDownloadProduc
 import PainterDownloadProductDetails from "./pages/painter/PainterDownloadProductDetails";
 import PainterDownloadProductImages from "./pages/painter/PainterDownloadProductImages";
 import PainterDownloadDocumentPreview from "./pages/painter/PainterDownloadDocumentPreview";
+import PainterShopDashboard from "./pages/painter/PainterShopDashboard";
+import PainterShopProductListing from "./pages/painter/PainterShopProductListing";
+import PainterShopProductDetails from "./pages/painter/PainterShopProductDetails";
+import PainterShopCart from "./pages/painter/PainterShopCart";
+import PainterShopSubmitEnquiry from "./pages/painter/PainterShopSubmitEnquiry";
+import PainterShopEnquiryHistory from "./pages/painter/PainterShopEnquiryHistory";
+import PainterShopEnquiryDetails from "./pages/painter/PainterShopEnquiryDetails";
+import PainterVoiceDashboard from "./pages/painter/PainterVoiceDashboard";
+import PainterVoiceUploadVideo from "./pages/painter/PainterVoiceUploadVideo";
+import PainterVoiceUploadImages from "./pages/painter/PainterVoiceUploadImages";
+import PainterSubmitFeedback from "./pages/painter/PainterSubmitFeedback";
+import PainterComplaints from "./pages/painter/PainterComplaints";
+import PainterSubmissionHistory from "./pages/painter/PainterSubmissionHistory";
 
 
 const App = () => {
@@ -192,6 +205,21 @@ const App = () => {
         <Route path="/painter/download-product-details/:id" element={<PainterLayout><PainterDownloadProductDetails /></PainterLayout>} />
         <Route path="/painter/download-product-images" element={<PainterLayout><PainterDownloadProductImages /></PainterLayout>} />
         <Route path="/painter/download-document-preview" element={<PainterLayout><PainterDownloadDocumentPreview /></PainterLayout>} />
+        <Route path="/painter/shop" element={<PainterLayout><PainterShopDashboard /></PainterLayout>} />
+        <Route path="/painter/shop-product-listing" element={<PainterLayout><PainterShopProductListing /></PainterLayout>} />
+        <Route path="/painter/shop-product-details" element={<PainterLayout><PainterShopProductDetails /></PainterLayout>} />
+        <Route path="/painter/shop-product-details/:id" element={<PainterLayout><PainterShopProductDetails /></PainterLayout>} />
+        <Route path="/painter/shop-cart" element={<PainterLayout><PainterShopCart /></PainterLayout>} />
+        <Route path="/painter/shop-submit-enquiry" element={<PainterLayout><PainterShopSubmitEnquiry /></PainterLayout>} />
+        <Route path="/painter/shop-enquiry-history" element={<PainterLayout><PainterShopEnquiryHistory /></PainterLayout>} />
+        <Route path="/painter/shop-enquiry-details/:id" element={<PainterLayout><PainterShopEnquiryDetails /></PainterLayout>} />
+        <Route path="/painter/shop-enquiry-details" element={<PainterLayout><PainterShopEnquiryDetails /></PainterLayout>} />
+        <Route path="/painter/voice-of-painter" element={<PainterLayout><PainterVoiceDashboard /></PainterLayout>} />
+        <Route path="/painter/voice-of-painter/upload-video" element={<PainterLayout><PainterVoiceUploadVideo /></PainterLayout>} />
+        <Route path="/painter/voice-of-painter/upload-images" element={<PainterLayout><PainterVoiceUploadImages /></PainterLayout>} />
+        <Route path="/painter/voice-of-painter/submit-feedback" element={<PainterLayout><PainterSubmitFeedback /></PainterLayout>} />
+        <Route path="/painter/complaints" element={<PainterLayout><PainterComplaints /></PainterLayout>} />
+        <Route path="/painter/voice-of-painter/submission-history" element={<PainterLayout><PainterSubmissionHistory /></PainterLayout>} />
       </Routes>
 
     </BrowserRouter>
