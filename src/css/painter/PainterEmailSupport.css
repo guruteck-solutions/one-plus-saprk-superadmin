@@ -1,0 +1,168 @@
+.painter-email-support-page {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  padding: 18px 28px 40px;
+  box-sizing: border-box;
+  padding-top: 88px;
+}
+
+.painter-email-support-header {
+  margin-bottom: 40px;
+}
+
+.painter-email-support-header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.painter-email-support-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #718096;
+}
+
+.painter-email-support-card {
+  width: 100%;
+  min-height: 560px;
+  padding: 28px 32px 32px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.painter-email-support-card h2 {
+  margin: 0 0 42px;
+  font-size: 21px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.painter-email-support-form {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.painter-email-support-field {
+  width: 100%;
+}
+
+.painter-email-support-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #718096;
+}
+
+.painter-email-support-field input,
+.painter-email-support-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #dfe5eb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1f2937;
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.painter-email-support-field input {
+  height: 42px;
+  padding: 0 12px;
+}
+
+.painter-email-support-field textarea {
+  min-height: 130px;
+  padding: 12px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.painter-email-support-field input:focus,
+.painter-email-support-field textarea:focus {
+  border-color: #ff7a00;
+  box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.08);
+}
+
+.painter-email-support-submit {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+}
+
+.painter-email-support-submit button {
+  min-width: 130px;
+  height: 42px;
+  padding: 0 22px;
+  border: none;
+  border-radius: 8px;
+  background: #ff7a00;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.painter-email-support-submit button:hover {
+  background: #e96d00;
+}
+
+@media (max-width: 750px) {
+  .painter-email-support-page {
+    padding: 18px 20px 35px;
+    padding-top: 88px;
+  }
+
+  .painter-email-support-header h1 {
+    font-size: 24px;
+  }
+
+  .painter-email-support-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .painter-email-support-page {
+    padding: 16px 14px 30px;
+    padding-top: 88px;
+  }
+
+  .painter-email-support-header {
+    margin-bottom: 28px;
+  }
+
+  .painter-email-support-header h1 {
+    font-size: 22px;
+  }
+
+  .painter-email-support-card {
+    padding: 20px 16px;
+    border-radius: 10px;
+  }
+
+  .painter-email-support-card h2 {
+    margin-bottom: 30px;
+    font-size: 19px;
+  }
+
+  .painter-email-support-form {
+    gap: 22px;
+  }
+
+  .painter-email-support-submit {
+    justify-content: stretch;
+  }
+
+  .painter-email-support-submit button {
+    width: 100%;
+  }
+}

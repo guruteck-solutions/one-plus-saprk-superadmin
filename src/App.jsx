@@ -104,6 +104,18 @@ import PainterVoiceUploadImages from "./pages/painter/PainterVoiceUploadImages";
 import PainterSubmitFeedback from "./pages/painter/PainterSubmitFeedback";
 import PainterComplaints from "./pages/painter/PainterComplaints";
 import PainterSubmissionHistory from "./pages/painter/PainterSubmissionHistory";
+import PainterCustomerDetails from "./pages/painter/PainterCustomerDetails";
+import PainterLeadListing from "./pages/painter/PainterLeadListing";
+import PainterLeadDetails from "./pages/painter/PainterLeadDetails";
+import PainterLeadStatus from "./pages/painter/PainterLeadStatus";
+import PainterFollowUpNotes from "./pages/painter/PainterFollowUpNotes";
+import PainterContactUs from "./pages/painter/PainterContactUs";
+import PainterWhatsAppSupport from "./pages/painter/PainterWhatsAppSupport";
+import PainterEmailSupport from "./pages/painter/PainterEmailSupport";
+import PainterComplaintListing from "./pages/painter/PainterComplaintListing";
+import PainterRaiseComplaint from "./pages/painter/PainterRaiseComplaint";
+import PainterComplaintDetails from "./pages/painter/PainterComplaintDetails";
+import PainterComplaintHistory from "./pages/painter/PainterComplaintHistory";
 
 
 const App = () => {
@@ -218,8 +230,20 @@ const App = () => {
         <Route path="/painter/voice-of-painter/upload-video" element={<PainterLayout><PainterVoiceUploadVideo /></PainterLayout>} />
         <Route path="/painter/voice-of-painter/upload-images" element={<PainterLayout><PainterVoiceUploadImages /></PainterLayout>} />
         <Route path="/painter/voice-of-painter/submit-feedback" element={<PainterLayout><PainterSubmitFeedback /></PainterLayout>} />
-        <Route path="/painter/complaints" element={<PainterLayout><PainterComplaints /></PainterLayout>} />
+        <Route path="/painter/voice-of-painter/complaint" element={<PainterLayout><PainterComplaints /></PainterLayout>} />
         <Route path="/painter/voice-of-painter/submission-history" element={<PainterLayout><PainterSubmissionHistory /></PainterLayout>} />
+        <Route path="/painter/customer-details" element={<PainterLayout><PainterCustomerDetails /></PainterLayout>} />
+        <Route path="/painter/leads" element={<PainterLayout><PainterLeadListing /></PainterLayout>} />
+        <Route path="/painter/lead-details" element={<PainterLayout><PainterLeadDetails /></PainterLayout>} />
+        <Route path="/painter/lead-status" element={<PainterLayout><PainterLeadStatus /></PainterLayout>} />
+        <Route path="/painter/follow-up-notes" element={<PainterLayout><PainterFollowUpNotes /></PainterLayout>} />
+        <Route path="/painter/contact-us" element={<PainterLayout><PainterContactUs /></PainterLayout>} />
+        <Route path="/painter/whatsapp-support" element={<PainterLayout><PainterWhatsAppSupport /></PainterLayout>} />
+        <Route path="/painter/email-support" element={<PainterLayout><PainterEmailSupport /></PainterLayout>} />
+        <Route path="/painter/complaints" element={<PainterLayout><PainterComplaintListing /></PainterLayout>} />
+        <Route path="/painter/raise-complaint" element={<PainterLayout><PainterRaiseComplaint /></PainterLayout>} />
+        <Route path="/painter/complaint-details" element={<PainterLayout><PainterComplaintDetails /></PainterLayout>} />
+        <Route path="/painter/complaint-history" element={<PainterLayout><PainterComplaintHistory /></PainterLayout>} />
       </Routes>
 
     </BrowserRouter>

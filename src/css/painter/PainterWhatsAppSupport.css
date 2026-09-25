@@ -1,0 +1,145 @@
+.painter-whatsapp-support-page {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    padding: 8px 28px 40px;
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+.painter-whatsapp-support-header {
+    margin-bottom: 38px;
+}
+
+.painter-whatsapp-support-header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-whatsapp-support-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #718096;
+}
+
+.painter-whatsapp-support-card {
+    width: 640px;
+    max-width: 100%;
+    min-height: 585px;
+    margin: 0 auto;
+    padding: 90px 40px 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+}
+
+.painter-whatsapp-support-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #eafaf2;
+    color: #16a36a;
+}
+
+.painter-whatsapp-support-card h2 {
+    margin: 0 0 12px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-whatsapp-support-text {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #718096;
+}
+
+.painter-whatsapp-open-button {
+    width: 350px;
+    max-width: 100%;
+    height: 52px;
+    margin-top: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border: none;
+    border-radius: 9px;
+    background: #ff7a00;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.painter-whatsapp-open-button:hover {
+    background: #e96d00;
+}
+
+.painter-whatsapp-response-time {
+    margin: 40px 0 0;
+    font-size: 11px;
+    font-weight: 600;
+    color: #718096;
+}
+
+@media (max-width: 750px) {
+    .painter-whatsapp-support-page {
+        padding: 16px 20px 35px;
+        padding-top: 88px;
+    }
+
+    .painter-whatsapp-support-header h1 {
+        font-size: 24px;
+    }
+
+    .painter-whatsapp-support-card {
+        min-height: 520px;
+        padding: 70px 25px 40px;
+    }
+
+    .painter-whatsapp-open-button {
+        margin-top: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .painter-whatsapp-support-page {
+        padding: 16px 14px 30px;
+        padding-top: 88px;
+    }
+
+    .painter-whatsapp-support-header {
+        margin-bottom: 28px;
+    }
+
+    .painter-whatsapp-support-header h1 {
+        font-size: 22px;
+    }
+
+    .painter-whatsapp-support-card {
+        min-height: 480px;
+        padding: 55px 18px 35px;
+        border-radius: 10px;
+    }
+
+    .painter-whatsapp-support-card h2 {
+        font-size: 21px;
+    }
+
+    .painter-whatsapp-open-button {
+        width: 100%;
+        margin-top: 60px;
+    }
+}

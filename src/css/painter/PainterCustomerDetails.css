@@ -1,0 +1,172 @@
+.painter-customer-details-page {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    padding: 18px 28px 40px;
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+.painter-customer-details-header {
+    margin-bottom: 40px;
+}
+
+.painter-customer-details-header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-customer-details-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #718096;
+}
+
+.painter-customer-details-card {
+    width: 100%;
+    min-height: 590px;
+    padding: 28px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+.painter-customer-details-card h2 {
+    margin: 0 0 58px;
+    font-size: 21px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-customer-details-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 74px;
+    row-gap: 42px;
+}
+
+.painter-customer-detail-field {
+    width: 100%;
+}
+
+.painter-customer-detail-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #718096;
+}
+
+.painter-customer-detail-field input {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    border: 1px solid #dfe5eb;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 12px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.painter-customer-detail-field input::placeholder {
+    color: #a0aec0;
+}
+
+.painter-customer-detail-field input:focus {
+    border-color: #ff7a00;
+    box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.08);
+}
+
+.painter-customer-details-submit {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.painter-customer-details-submit button {
+    min-width: 110px;
+    height: 40px;
+    padding: 0 22px;
+    border: none;
+    border-radius: 8px;
+    background: #ff7a00;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.painter-customer-details-submit button:hover {
+    background: #e96d00;
+}
+
+.painter-customer-details-submit button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.painter-customer-details-loading {
+    padding: 30px 0;
+    font-size: 13px;
+    color: #718096;
+}
+
+@media (max-width: 900px) {
+    .painter-customer-details-page {
+        padding: 18px 20px 35px;
+        padding-top: 88px;
+
+    }
+
+    .painter-customer-details-form {
+        column-gap: 30px;
+    }
+}
+
+@media (max-width: 700px) {
+    .painter-customer-details-page {
+        padding: 16px 15px 30px;
+        padding-top: 88px;
+
+    }
+
+    .painter-customer-details-header {
+        margin-bottom: 25px;
+    }
+
+    .painter-customer-details-header h1 {
+        font-size: 24px;
+    }
+
+    .painter-customer-details-card {
+        padding: 22px 18px;
+        min-height: auto;
+    }
+
+    .painter-customer-details-card h2 {
+        margin-bottom: 35px;
+        font-size: 19px;
+    }
+
+    .painter-customer-details-form {
+        grid-template-columns: 1fr;
+        row-gap: 25px;
+    }
+
+    .painter-customer-details-submit {
+        grid-column: auto;
+        justify-content: stretch;
+        margin-top: 5px;
+    }
+
+    .painter-customer-details-submit button {
+        width: 100%;
+    }
+}

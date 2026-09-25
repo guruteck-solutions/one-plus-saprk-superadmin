@@ -1,0 +1,218 @@
+.painter-lead-details-page {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    padding: 18px 28px 40px;
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+.painter-lead-details-header {
+    margin-bottom: 40px;
+}
+
+.painter-lead-details-header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-lead-details-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #718096;
+}
+
+.painter-lead-details-card {
+    width: 100%;
+    min-height: 590px;
+    padding: 28px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+.painter-lead-details-card h2 {
+    margin: 0 0 42px;
+    font-size: 21px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-lead-details-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 1025px;
+}
+
+.painter-lead-summary-box {
+    min-height: 120px;
+    padding: 17px 14px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+.painter-lead-summary-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fff1e6;
+    color: #ff7a00;
+}
+
+.painter-lead-summary-box:nth-child(2) .painter-lead-summary-icon {
+    background: #f3f6fa;
+    color: #2563eb;
+}
+
+.painter-lead-summary-box:nth-child(3) .painter-lead-summary-icon {
+    background: #fff1e6;
+    color: #ff7a00;
+}
+
+.painter-lead-summary-box span {
+    display: block;
+    margin: 1px 0 5px;
+    font-size: 11px;
+    color: #718096;
+}
+
+.painter-lead-summary-box strong {
+    display: block;
+    margin-bottom: 22px;
+    font-size: 23px;
+    line-height: 1.1;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-lead-summary-box small {
+    display: block;
+    font-size: 10px;
+    color: #718096;
+}
+
+.painter-lead-contact {
+    margin-top: 46px;
+}
+
+.painter-lead-contact h3 {
+    margin: 0 0 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-lead-contact p {
+    margin: 0;
+    font-size: 12px;
+    color: #718096;
+}
+
+.painter-lead-details-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 38px;
+}
+
+.painter-lead-call-btn,
+.painter-lead-action-btn {
+    width: 196px;
+    height: 47px;
+    padding: 0 18px;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.painter-lead-call-btn {
+    border: 1px solid #ff7a00;
+    background: #ff7a00;
+    color: #ffffff;
+}
+
+.painter-lead-call-btn:hover {
+    background: #e96d00;
+    border-color: #e96d00;
+}
+
+.painter-lead-action-btn {
+    border: 1px solid #e1e6ec;
+    background: #ffffff;
+    color: #1f2937;
+}
+
+.painter-lead-action-btn:hover {
+    background: #f8fafc;
+}
+
+.painter-lead-details-loading,
+.painter-lead-details-empty {
+    padding: 40px;
+    text-align: center;
+    font-size: 13px;
+    color: #718096;
+}
+
+@media (max-width: 1000px) {
+    .painter-lead-details-summary {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .painter-lead-details-page {
+        padding: 16px 14px 30px;
+        padding-top: 88px;
+
+    }
+
+    .painter-lead-details-header {
+        margin-bottom: 28px;
+    }
+
+    .painter-lead-details-header h1 {
+        font-size: 24px;
+    }
+
+    .painter-lead-details-card {
+        padding: 20px 16px;
+        min-height: auto;
+    }
+
+    .painter-lead-details-card h2 {
+        margin-bottom: 28px;
+        font-size: 18px;
+    }
+
+    .painter-lead-details-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .painter-lead-call-btn,
+    .painter-lead-action-btn {
+        width: 100%;
+    }
+}

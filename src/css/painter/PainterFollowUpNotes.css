@@ -1,0 +1,256 @@
+.painter-follow-up-page {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    padding: 18px 28px 40px;
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+.painter-follow-up-header {
+    margin-bottom: 40px;
+}
+
+.painter-follow-up-header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-follow-up-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #718096;
+}
+
+.painter-follow-up-card {
+    width: 100%;
+    min-height: 500px;
+    padding: 28px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+.painter-follow-up-card h2 {
+    margin: 0 0 42px;
+    font-size: 21px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-follow-up-form {
+    width: 100%;
+    max-width: 1050px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* Search */
+.painter-follow-up-search-field {
+    width: 100%;
+    max-width: 520px;
+}
+
+.painter-follow-up-search-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #718096;
+}
+
+.painter-follow-up-search-field input {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    border: 1px solid #dfe5eb;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 12px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.painter-follow-up-search-field input::placeholder {
+    color: #a0aec0;
+}
+
+.painter-follow-up-search-field input:focus {
+    border-color: #ff7a00;
+    box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.08);
+}
+
+/* Fields */
+.painter-follow-up-field {
+    width: 100%;
+}
+
+.painter-follow-up-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #718096;
+}
+
+.painter-follow-up-field select,
+.painter-follow-up-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #dfe5eb;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 12px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.painter-follow-up-field select {
+    height: 42px;
+    padding: 0 12px;
+    cursor: pointer;
+}
+
+.painter-follow-up-field textarea {
+    min-height: 120px;
+    padding: 12px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.painter-follow-up-field select:focus,
+.painter-follow-up-field textarea:focus,
+.painter-follow-up-date-time input:focus {
+    border-color: #ff7a00;
+    box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.08);
+}
+
+.painter-follow-up-field textarea::placeholder {
+    color: #a0aec0;
+}
+
+/* Date + Time */
+.painter-follow-up-date-time {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    width: 100%;
+}
+
+.painter-follow-up-date-time input {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    border: 1px solid #dfe5eb;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 12px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Submit */
+.painter-follow-up-submit {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.painter-follow-up-submit button {
+    min-width: 140px;
+    height: 42px;
+    padding: 0 22px;
+    border: none;
+    border-radius: 8px;
+    background: #ff7a00;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.painter-follow-up-submit button:hover {
+    background: #e96d00;
+}
+
+.painter-follow-up-submit button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .painter-follow-up-page {
+        padding: 18px 20px 35px;
+        padding-top: 88px;
+    }
+
+    .painter-follow-up-card {
+        padding: 22px;
+    }
+
+    .painter-follow-up-search-field {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .painter-follow-up-page {
+        padding: 16px 14px 30px;
+        padding-top: 88px;
+    }
+
+    .painter-follow-up-header {
+        margin-bottom: 28px;
+    }
+
+    .painter-follow-up-header h1 {
+        font-size: 24px;
+    }
+
+    .painter-follow-up-card {
+        padding: 20px 16px;
+        border-radius: 10px;
+    }
+
+    .painter-follow-up-card h2 {
+        margin-bottom: 30px;
+        font-size: 18px;
+    }
+
+    .painter-follow-up-form {
+        gap: 22px;
+    }
+
+    .painter-follow-up-date-time {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .painter-follow-up-submit {
+        justify-content: stretch;
+    }
+
+    .painter-follow-up-submit button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .painter-follow-up-search-field input,
+    .painter-follow-up-field select,
+    .painter-follow-up-date-time input {
+        height: 40px;
+    }
+}

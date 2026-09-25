@@ -115,7 +115,7 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     {
       label: "Support",
       icon: HelpCircle,
-      path: "/painter/contact-support",
+      path: "/painter/contact-us",
     },
   ];
 
@@ -438,12 +438,81 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     {
       label: "Complaints",
       icon: MessageSquare,
-      path: "/painter/complaints",
+      path: "/painter/voice-of-painter/complaint",
     },
     {
       label: "Submission History",
       icon: FileText,
       path: "/painter/voice-of-painter/submission-history",
+    },
+  ];
+
+  const leadItems = [
+    {
+      label: "Lead Listing",
+      icon: BookOpen,
+      path: "/painter/leads",
+    },
+    {
+      label: "Lead Details",
+      icon: FileText,
+      path: "/painter/lead-details",
+    },
+    {
+      label: "Customer Details",
+      icon: UserPlus,
+      path: "/painter/customer-details",
+    },
+    {
+      label: "Lead Status",
+      icon: Target,
+      path: "/painter/lead-status",
+    },
+    {
+      label: "Follow-up Notes",
+      icon: FileText,
+      path: "/painter/follow-up-notes",
+    },
+  ];
+
+  const supportItems = [
+    {
+      label: "Contact Us",
+      icon: HelpCircle,
+      path: "/painter/contact-us",
+    },
+    {
+      label: "WhatsApp Support",
+      icon: MessageSquare,
+      path: "/painter/whatsapp-support",
+    },
+    {
+      label: "Email Support",
+      icon: FileText,
+      path: "/painter/email-support",
+    },
+  ];
+
+  const complaintItems = [
+    {
+      label: "Complaint Listing",
+      icon: FileText,
+      path: "/painter/complaints",
+    },
+    {
+      label: "Raise Complaint",
+      icon: MessageSquare,
+      path: "/painter/raise-complaint",
+    },
+    {
+      label: "Complaint Details",
+      icon: FileText,
+      path: "/painter/complaint-details",
+    },
+    {
+      label: "Complaint History",
+      icon: FileText,
+      path: "/painter/complaint-history",
     },
   ];
 
@@ -515,6 +584,15 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   const voicePaths = voiceItems.map((item) => item.path);
   const isVoiceSectionActive = voicePaths.includes(location.pathname);
 
+  const leadPaths = leadItems.map((item) => item.path);
+  const isLeadSectionActive = leadPaths.includes(location.pathname);
+
+  const supportPaths = supportItems.map((item) => item.path);
+  const isSupportSectionActive = supportPaths.includes(location.pathname);
+
+  const complaintPaths = complaintItems.map((item) => item.path);
+  const isComplaintSectionActive = complaintPaths.includes(location.pathname);
+
 
 
   /* =====================================================
@@ -560,6 +638,12 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   );
 
   const [voiceOpen, setVoiceOpen] = useState(isVoiceSectionActive);
+
+  const [leadOpen, setLeadOpen] = useState(isLeadSectionActive);
+
+  const [supportOpen, setSupportOpen] = useState(isSupportSectionActive);
+
+  const [complaintOpen, setComplaintOpen] = useState(isComplaintSectionActive);
 
   /* =====================================================
      KEEP DROPDOWN OPEN WHEN SUBMENU PAGE IS ACTIVE
@@ -631,6 +715,24 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     } else {
       setVoiceOpen(false);
     }
+
+    if (isLeadSectionActive) {
+      setLeadOpen(true);
+    } else {
+      setLeadOpen(false);
+    }
+
+    if (isSupportSectionActive) {
+      setSupportOpen(true);
+    } else {
+      setSupportOpen(false);
+    }
+
+    if (isComplaintSectionActive) {
+      setComplaintOpen(true);
+    } else {
+      setComplaintOpen(false);
+    }
   }, [
     isDashboardSectionActive,
     isScanRewardsSectionActive,
@@ -643,6 +745,9 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     isDownloadSectionActive,
     isShopSectionActive,
     isVoiceSectionActive,
+    isLeadSectionActive,
+    isSupportSectionActive,
+    isComplaintSectionActive,
   ]);
 
   /* =====================================================
@@ -849,6 +954,15 @@ const PainterSidebar = ({ isOpen, onClose }) => {
             const isVoice =
               item.label === "Voice of Painter";
 
+            const isLead =
+              item.label === "Leads";
+
+            const isSupport =
+              item.label === "Support";
+
+            const isComplaint =
+              item.label === "Complaints";
+
             const isActive = isScanRewards
               ? isScanRewardsSectionActive
               : isRewards
@@ -869,7 +983,13 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                               ? isShopSectionActive
                               : isVoice
                                 ? isVoiceSectionActive
-                                : location.pathname === item.path;
+                                : isLead
+                                  ? isLeadSectionActive
+                                  : isSupport
+                                    ? isSupportSectionActive
+                                    : isComplaint
+                                      ? isComplaintSectionActive
+                                      : location.pathname === item.path;
 
             /* =================================================
                 SCAN & REWARDS GROUP
@@ -1722,7 +1842,233 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                 </div>
               );
             }
+            if (isLead) {
+              return (
+                <div
+                  className="painter-sidebar-group"
+                  key={item.path}
+                >
+                  <div className="painter-sidebar-dashboard-row">
 
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isLeadSectionActive
+                        ? "painter-sidebar-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        handleMobileNavigation("/painter/leads")
+                      }
+                    >
+                      <Icon size={18} />
+                      <span>Leads</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isLeadSectionActive
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        setLeadOpen((prev) => !prev)
+                      }
+                      aria-label="Toggle Leads menu"
+                      aria-expanded={leadOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          leadOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+
+                  </div>
+
+                  {leadOpen && (
+                    <div className="painter-sidebar-submenu">
+
+                      {leadItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname === subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                              ? "painter-sidebar-subitem-active"
+                              : ""
+                              }`}
+                            onClick={() =>
+                              handleMobileNavigation(
+                                subItem.path
+                              )
+                            }
+                          >
+                            <SubIcon size={16} />
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            if (isSupport) {
+              return (
+                <div
+                  className="painter-sidebar-group"
+                  key={item.path}
+                >
+                  <div className="painter-sidebar-dashboard-row">
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isSupportSectionActive
+                        ? "painter-sidebar-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        handleMobileNavigation("/painter/contact-us")
+                      }
+                    >
+                      <Icon size={18} />
+                      <span>Support</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isSupportSectionActive
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
+                        }`}
+                      onClick={() =>
+                        setSupportOpen((prev) => !prev)
+                      }
+                      aria-label="Toggle Support menu"
+                      aria-expanded={supportOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          supportOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+
+                  </div>
+
+                  {supportOpen && (
+                    <div className="painter-sidebar-submenu">
+
+                      {supportItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname === subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                              ? "painter-sidebar-subitem-active"
+                              : ""
+                              }`}
+                            onClick={() =>
+                              handleMobileNavigation(
+                                subItem.path
+                              )
+                            }
+                          >
+                            <SubIcon size={16} />
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            if (isComplaint) {
+              return (
+                <div className="painter-sidebar-group" key={item.path}>
+                  <div className="painter-sidebar-dashboard-row">
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isComplaintSectionActive ? "painter-sidebar-active" : ""
+                        }`}
+                      onClick={() => handleMobileNavigation("/painter/complaints")}
+                    >
+                      <Icon size={18} />
+                      <span>Complaints</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isComplaintSectionActive
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
+                        }`}
+                      onClick={() => setComplaintOpen((prev) => !prev)}
+                      aria-label="Toggle Complaints menu"
+                      aria-expanded={complaintOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          complaintOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+                  </div>
+
+                  {complaintOpen && (
+                    <div className="painter-sidebar-submenu">
+                      {complaintItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname === subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                              ? "painter-sidebar-subitem-active"
+                              : ""
+                              }`}
+                            onClick={() =>
+                              handleMobileNavigation(subItem.path)
+                            }
+                          >
+                            <SubIcon size={16} />
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            }
             /* =================================================
                 NORMAL MENU ITEM
             ================================================= */
