@@ -1,0 +1,193 @@
+.painter-notification-settings-page {
+    width: 100%;
+    min-height: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+.painter-notification-settings-header {
+    margin-bottom: 42px;
+}
+
+.painter-notification-settings-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-notification-settings-header p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.painter-notification-settings-card {
+    width: 100%;
+    max-width: 900px;
+    min-height: 575px;
+    margin: 0 auto;
+    padding: 28px 42px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.painter-notification-settings-card h2 {
+    margin: 0 0 48px;
+    font-size: 21px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-notification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+.painter-notification-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 31px;
+}
+
+.painter-notification-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.painter-notification-toggle {
+    position: relative;
+    width: 59px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 30px;
+    background: #e5e7eb;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s ease;
+}
+
+.painter-notification-toggle.active {
+    background: #e8f8f0;
+}
+
+.painter-notification-toggle-circle {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #9ca3af;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.painter-notification-toggle.active .painter-notification-toggle-circle {
+    transform: translateX(29px);
+    background: #16a765;
+}
+
+.painter-notification-toggle:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.painter-notification-settings-error {
+    margin-bottom: 20px;
+    padding: 11px 13px;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 13px;
+}
+
+.painter-notification-settings-loading {
+    width: 100%;
+    padding: 60px 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .painter-notification-settings-page {
+        padding: 18px;
+        padding-top: 88px;
+    }
+
+    .painter-notification-settings-header {
+        margin-bottom: 25px;
+    }
+
+    .painter-notification-settings-card {
+        min-height: auto;
+        padding: 26px;
+    }
+
+    .painter-notification-settings-card h2 {
+        margin-bottom: 35px;
+    }
+
+    .painter-notification-list {
+        gap: 27px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .painter-notification-settings-page {
+        padding: 14px;
+        padding-top: 88px;
+    }
+
+    .painter-notification-settings-header h1 {
+        font-size: 21px;
+    }
+
+    .painter-notification-settings-header p {
+        font-size: 13px;
+    }
+
+    .painter-notification-settings-card {
+        padding: 20px 16px;
+        border-radius: 11px;
+    }
+
+    .painter-notification-settings-card h2 {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    .painter-notification-row {
+        gap: 12px;
+    }
+
+    .painter-notification-label {
+        font-size: 12px;
+    }
+
+    .painter-notification-toggle {
+        width: 54px;
+        height: 28px;
+    }
+
+    .painter-notification-toggle-circle {
+        width: 22px;
+        height: 22px;
+    }
+
+    .painter-notification-toggle.active .painter-notification-toggle-circle {
+        transform: translateX(26px);
+    }
+}

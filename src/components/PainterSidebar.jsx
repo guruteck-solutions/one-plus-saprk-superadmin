@@ -1,23 +1,9 @@
 import React, { useEffect, useState } from "react";
-
 import {
-  Award,
-  Bell,
-  BookOpen,
-  ChevronDown,
-  ChevronLeft,
-  FileText,
-  Gift,
-  HelpCircle,
-  Home,
-  MessageSquare,
-  Package,
-  QrCode,
-  ShoppingBag,
-  Star,
-  Target,
-  UserPlus,
-  X,
+  Award, Bell, BookOpen, ChevronDown, ChevronLeft,
+  FileText, Gift, HelpCircle, Home, LockKeyhole, MapPin,
+  MessageSquare, Package, QrCode, ShoppingBag, Share2,
+  Star, Target, User, UserPlus, X
 } from "lucide-react";
 
 import { useLocation } from "react-router-dom";
@@ -516,6 +502,49 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     },
   ];
 
+  const profileItems = [
+    {
+      label: "My Profile",
+      icon: User,
+      path: "/painter/profile",
+    },
+    {
+      label: "Edit Profile",
+      icon: User,
+      path: "/painter/profile/edit",
+    },
+    {
+      label: "Bank Details",
+      icon: FileText,
+      path: "/painter/profile/bank-details",
+    },
+    {
+      label: "Address Details",
+      icon: MapPin,
+      path: "/painter/profile/address-details",
+    },
+    {
+      label: "Notification Settings",
+      icon: Bell,
+      path: "/painter/profile/notification-settings",
+    },
+    {
+      label: "Change Password",
+      icon: LockKeyhole,
+      path: "/painter/profile/change-password",
+    },
+    {
+      label: "Share Profile",
+      icon: Share2,
+      path: "/painter/profile/share",
+    },
+    {
+      label: "Profile Preview",
+      icon: User,
+      path: "/painter/profile/preview",
+    },
+  ];
+
   /* =====================================================
      ACTIVE ROUTES
   ===================================================== */
@@ -593,7 +622,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   const complaintPaths = complaintItems.map((item) => item.path);
   const isComplaintSectionActive = complaintPaths.includes(location.pathname);
 
-
+  const profilePaths = profileItems.map((item) => item.path);
+  const isProfileSectionActive = profilePaths.includes(location.pathname);
 
   /* =====================================================
      DROPDOWN STATE - ONLY OPEN IF ACTIVE
@@ -644,6 +674,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   const [supportOpen, setSupportOpen] = useState(isSupportSectionActive);
 
   const [complaintOpen, setComplaintOpen] = useState(isComplaintSectionActive);
+
+  const [profileOpen, setProfileOpen] = useState(isProfileSectionActive);
 
   /* =====================================================
      KEEP DROPDOWN OPEN WHEN SUBMENU PAGE IS ACTIVE
@@ -733,6 +765,12 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     } else {
       setComplaintOpen(false);
     }
+
+    if (isProfileSectionActive) {
+      setProfileOpen(true);
+    } else {
+      setProfileOpen(false);
+    }
   }, [
     isDashboardSectionActive,
     isScanRewardsSectionActive,
@@ -748,6 +786,7 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     isLeadSectionActive,
     isSupportSectionActive,
     isComplaintSectionActive,
+    isProfileSectionActive,
   ]);
 
   /* =====================================================
@@ -963,6 +1002,9 @@ const PainterSidebar = ({ isOpen, onClose }) => {
             const isComplaint =
               item.label === "Complaints";
 
+            const isProfile =
+              item.label === "Profile";
+
             const isActive = isScanRewards
               ? isScanRewardsSectionActive
               : isRewards
@@ -989,7 +1031,9 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                                     ? isSupportSectionActive
                                     : isComplaint
                                       ? isComplaintSectionActive
-                                      : location.pathname === item.path;
+                                      : isProfile
+                                        ? isProfileSectionActive
+                                        : location.pathname === item.path;
 
             /* =================================================
                 SCAN & REWARDS GROUP
@@ -2042,6 +2086,72 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                   {complaintOpen && (
                     <div className="painter-sidebar-submenu">
                       {complaintItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname === subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                              ? "painter-sidebar-subitem-active"
+                              : ""
+                              }`}
+                            onClick={() =>
+                              handleMobileNavigation(subItem.path)
+                            }
+                          >
+                            <SubIcon size={16} />
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            if (isProfile) {
+              return (
+                <div className="painter-sidebar-group" key={item.path}>
+                  <div className="painter-sidebar-dashboard-row">
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isProfileSectionActive ? "painter-sidebar-active" : ""
+                        }`}
+                      onClick={() => handleMobileNavigation("/painter/profile")}
+                    >
+                      <Icon size={18} />
+                      <span>Profile</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isProfileSectionActive
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
+                        }`}
+                      onClick={() => setProfileOpen((prev) => !prev)}
+                      aria-label="Toggle Profile menu"
+                      aria-expanded={profileOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          profileOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+                  </div>
+
+                  {profileOpen && (
+                    <div className="painter-sidebar-submenu">
+                      {profileItems.map((subItem) => {
                         const SubIcon = subItem.icon;
 
                         const isSubActive =

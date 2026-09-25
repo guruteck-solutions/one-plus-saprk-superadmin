@@ -1,0 +1,209 @@
+.painter-bank-details-page {
+    width: 100%;
+    min-height: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+.painter-bank-details-header {
+    margin-bottom: 22px;
+}
+
+.painter-bank-details-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.painter-bank-details-header p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.painter-bank-details-card {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.painter-bank-details-card h2 {
+    margin: 0 0 24px;
+    font-size: 19px;
+    font-weight: 650;
+    color: #1f2937;
+}
+
+.painter-bank-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.painter-bank-detail-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.painter-bank-detail-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.painter-bank-detail-field input {
+    width: 100%;
+    height: 44px;
+    padding: 0 13px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.painter-bank-detail-field input::placeholder {
+    color: #9ca3af;
+}
+
+.painter-bank-detail-field input:focus {
+    border-color: #64748b;
+    box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.1);
+}
+
+.painter-bank-verification {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: fit-content;
+    margin-top: 24px;
+    padding: 9px 13px;
+    border-radius: 8px;
+    background: #ecfdf5;
+    color: #047857;
+    font-size: 13px;
+}
+
+.painter-bank-verification strong {
+    font-weight: 700;
+}
+
+.painter-bank-save-btn {
+    margin-top: 24px;
+    min-width: 150px;
+    height: 44px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 8px;
+    background: #1f2937;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.painter-bank-save-btn:hover {
+    opacity: 0.92;
+}
+
+.painter-bank-save-btn:active {
+    transform: translateY(1px);
+}
+
+.painter-bank-save-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.painter-bank-details-error {
+    margin-bottom: 20px;
+    padding: 11px 13px;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 13px;
+}
+
+.painter-bank-details-loading {
+    width: 100%;
+    padding: 60px 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .painter-bank-details-page {
+        padding: 18px;
+        padding-top: 88px;
+
+    }
+
+    .painter-bank-details-card {
+        padding: 22px;
+    }
+
+    .painter-bank-details-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .painter-bank-details-page {
+        padding: 14px;
+        padding-top: 88px;
+
+    }
+
+    .painter-bank-details-header h1 {
+        font-size: 21px;
+    }
+
+    .painter-bank-details-header p {
+        font-size: 13px;
+    }
+
+    .painter-bank-details-card {
+        padding: 18px;
+        border-radius: 11px;
+    }
+
+    .painter-bank-details-card h2 {
+        font-size: 17px;
+        margin-bottom: 20px;
+    }
+
+    .painter-bank-detail-field input {
+        height: 42px;
+        font-size: 13px;
+    }
+
+    .painter-bank-verification {
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 12px;
+    }
+
+    .painter-bank-save-btn {
+        width: 100%;
+        margin-top: 20px;
+    }
+}

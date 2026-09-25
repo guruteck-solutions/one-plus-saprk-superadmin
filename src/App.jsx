@@ -116,6 +116,14 @@ import PainterComplaintListing from "./pages/painter/PainterComplaintListing";
 import PainterRaiseComplaint from "./pages/painter/PainterRaiseComplaint";
 import PainterComplaintDetails from "./pages/painter/PainterComplaintDetails";
 import PainterComplaintHistory from "./pages/painter/PainterComplaintHistory";
+import PainterMyProfile from "./pages/painter/PainterMyProfile";
+import PainterEditProfile from "./pages/painter/PainterEditProfile";
+import PainterBankDetails from "./pages/painter/PainterBankDetails";
+import PainterAddressDetails from "./pages/painter/PainterAddressDetails";
+import PainterNotificationSettings from "./pages/painter/PainterNotificationSettings";
+import PainterChangePassword from "./pages/painter/PainterChangePassword";
+import PainterShareProfile from "./pages/painter/PainterShareProfile";
+import PainterProfilePreview from "./pages/painter/PainterProfilePreview";
 
 
 const App = () => {
@@ -244,6 +252,14 @@ const App = () => {
         <Route path="/painter/raise-complaint" element={<PainterLayout><PainterRaiseComplaint /></PainterLayout>} />
         <Route path="/painter/complaint-details" element={<PainterLayout><PainterComplaintDetails /></PainterLayout>} />
         <Route path="/painter/complaint-history" element={<PainterLayout><PainterComplaintHistory /></PainterLayout>} />
+        <Route path="/painter/profile" element={<PainterLayout><PainterMyProfile /></PainterLayout>} />
+        <Route path="/painter/profile/edit" element={<PainterLayout><PainterEditProfile /></PainterLayout>} />
+        <Route path="/painter/profile/bank-details" element={<PainterLayout><PainterBankDetails /></PainterLayout>} />
+        <Route path="/painter/profile/address-details" element={<PainterLayout><PainterAddressDetails /></PainterLayout>} />
+        <Route path="/painter/profile/notification-settings" element={<PainterLayout><PainterNotificationSettings /></PainterLayout>} />
+        <Route path="/painter/profile/change-password" element={<PainterLayout><PainterChangePassword /></PainterLayout>} />
+        <Route path="/painter/profile/share" element={<PainterLayout><PainterShareProfile /></PainterLayout>} />
+        <Route path="/painter/profile/preview" element={<PainterLayout><PainterProfilePreview /></PainterLayout>} />
       </Routes>
 
     </BrowserRouter>
