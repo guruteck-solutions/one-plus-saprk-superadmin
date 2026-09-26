@@ -3,7 +3,7 @@ import {
   Award, Bell, BookOpen, ChevronDown, ChevronLeft,
   FileText, Gift, HelpCircle, Home, LockKeyhole, MapPin,
   MessageSquare, Package, QrCode, ShoppingBag, Share2,
-  Star, Target, User, UserPlus, X
+  Star, Target, User, UserPlus, X, BarChart3, Trophy,
 } from "lucide-react";
 
 import { useLocation } from "react-router-dom";
@@ -53,11 +53,11 @@ const PainterSidebar = ({ isOpen, onClose }) => {
       icon: Bell,
       path: "/painter/notification-listing",
     },
-    {
-      label: "Products",
-      icon: Package,
-      path: "/painter/products",
-    },
+    // {
+    //   label: "Products",
+    //   icon: Package,
+    //   path: "/painter/products",
+    // },
     {
       label: "Shop",
       icon: ShoppingBag,
@@ -545,6 +545,29 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     },
   ];
 
+  const analyticsItems = [
+    {
+      label: "Performance Dashboard",
+      icon: Award,
+      path: "/painter/analytics/performance-dashboard",
+    },
+    {
+      label: "Monthly Performance",
+      icon: BarChart3,
+      path: "/painter/analytics/monthly-performance",
+    },
+    {
+      label: "Milestone Progress",
+      icon: Target,
+      path: "/painter/analytics/milestone-progress",
+    },
+    {
+      label: "Leaderboard (Future)",
+      icon: Trophy,
+      path: "/painter/analytics/leaderboard",
+    },
+  ];
+
   /* =====================================================
      ACTIVE ROUTES
   ===================================================== */
@@ -625,6 +648,10 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   const profilePaths = profileItems.map((item) => item.path);
   const isProfileSectionActive = profilePaths.includes(location.pathname);
 
+  const analyticsPaths = analyticsItems.map((item) => item.path);
+
+  const isAnalyticsSectionActive = analyticsPaths.includes(location.pathname);
+
   /* =====================================================
      DROPDOWN STATE - ONLY OPEN IF ACTIVE
   ===================================================== */
@@ -676,6 +703,8 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   const [complaintOpen, setComplaintOpen] = useState(isComplaintSectionActive);
 
   const [profileOpen, setProfileOpen] = useState(isProfileSectionActive);
+
+  const [analyticsOpen, setAnalyticsOpen] = useState(isAnalyticsSectionActive);
 
   /* =====================================================
      KEEP DROPDOWN OPEN WHEN SUBMENU PAGE IS ACTIVE
@@ -771,6 +800,12 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     } else {
       setProfileOpen(false);
     }
+
+    if (isAnalyticsSectionActive) {
+      setAnalyticsOpen(true);
+    } else {
+      setAnalyticsOpen(false);
+    }
   }, [
     isDashboardSectionActive,
     isScanRewardsSectionActive,
@@ -787,6 +822,7 @@ const PainterSidebar = ({ isOpen, onClose }) => {
     isSupportSectionActive,
     isComplaintSectionActive,
     isProfileSectionActive,
+    isAnalyticsSectionActive,
   ]);
 
   /* =====================================================
@@ -1005,6 +1041,9 @@ const PainterSidebar = ({ isOpen, onClose }) => {
             const isProfile =
               item.label === "Profile";
 
+            const isAnalytics =
+              item.label === "Analytics";
+
             const isActive = isScanRewards
               ? isScanRewardsSectionActive
               : isRewards
@@ -1033,7 +1072,9 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                                       ? isComplaintSectionActive
                                       : isProfile
                                         ? isProfileSectionActive
-                                        : location.pathname === item.path;
+                                        : isAnalytics
+                                          ? isAnalyticsSectionActive
+                                          : location.pathname === item.path;
 
             /* =================================================
                 SCAN & REWARDS GROUP
@@ -2152,6 +2193,74 @@ const PainterSidebar = ({ isOpen, onClose }) => {
                   {profileOpen && (
                     <div className="painter-sidebar-submenu">
                       {profileItems.map((subItem) => {
+                        const SubIcon = subItem.icon;
+
+                        const isSubActive =
+                          location.pathname === subItem.path;
+
+                        return (
+                          <button
+                            key={subItem.path}
+                            type="button"
+                            className={`painter-sidebar-subitem ${isSubActive
+                              ? "painter-sidebar-subitem-active"
+                              : ""
+                              }`}
+                            onClick={() =>
+                              handleMobileNavigation(subItem.path)
+                            }
+                          >
+                            <SubIcon size={16} />
+                            <span>{subItem.label}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            if (isAnalytics) {
+              return (
+                <div className="painter-sidebar-group" key={item.path}>
+                  <div className="painter-sidebar-dashboard-row">
+                    <button
+                      type="button"
+                      className={`painter-sidebar-item painter-sidebar-dashboard-item ${isAnalyticsSectionActive ? "painter-sidebar-active" : ""
+                        }`}
+                      onClick={() =>
+                        handleMobileNavigation("/painter/analytics/performance-dashboard")
+                      }
+                    >
+                      <Icon size={18} />
+                      <span>Analytics</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`painter-sidebar-dropdown-btn ${isAnalyticsSectionActive
+                        ? "painter-sidebar-dropdown-active"
+                        : ""
+                        }`}
+                      onClick={() => setAnalyticsOpen((prev) => !prev)}
+                      aria-label="Toggle Analytics menu"
+                      aria-expanded={analyticsOpen}
+                    >
+                      <ChevronDown
+                        size={17}
+                        className={
+                          analyticsOpen
+                            ? "painter-sidebar-chevron-open"
+                            : ""
+                        }
+                      />
+                    </button>
+                  </div>
+
+                  {analyticsOpen && (
+                    <div className="painter-sidebar-submenu">
+                      {analyticsItems.map((subItem) => {
                         const SubIcon = subItem.icon;
 
                         const isSubActive =

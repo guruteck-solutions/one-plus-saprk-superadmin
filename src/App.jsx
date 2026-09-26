@@ -124,6 +124,10 @@ import PainterNotificationSettings from "./pages/painter/PainterNotificationSett
 import PainterChangePassword from "./pages/painter/PainterChangePassword";
 import PainterShareProfile from "./pages/painter/PainterShareProfile";
 import PainterProfilePreview from "./pages/painter/PainterProfilePreview";
+import PainterPerformanceDashboard from "./pages/painter/PainterPerformanceDashboard";
+import PainterMonthlyPerformance from "./pages/painter/PainterMonthlyPerformance";
+import PainterMilestoneProgress from "./pages/painter/PainterMilestoneProgress";
+import PainterLeaderboard from "./pages/painter/PainterLeaderboard";
 
 
 const App = () => {
@@ -260,6 +264,10 @@ const App = () => {
         <Route path="/painter/profile/change-password" element={<PainterLayout><PainterChangePassword /></PainterLayout>} />
         <Route path="/painter/profile/share" element={<PainterLayout><PainterShareProfile /></PainterLayout>} />
         <Route path="/painter/profile/preview" element={<PainterLayout><PainterProfilePreview /></PainterLayout>} />
+        <Route path="/painter/analytics/performance-dashboard" element={<PainterLayout><PainterPerformanceDashboard /></PainterLayout>} />
+        <Route path="/painter/analytics/monthly-performance" element={<PainterLayout><PainterMonthlyPerformance /></PainterLayout>} />
+        <Route path="/painter/analytics/milestone-progress" element={<PainterLayout><PainterMilestoneProgress /></PainterLayout>} />
+        <Route path="/painter/analytics/leaderboard" element={<PainterLayout><PainterLeaderboard /></PainterLayout>} />
       </Routes>
 
     </BrowserRouter>

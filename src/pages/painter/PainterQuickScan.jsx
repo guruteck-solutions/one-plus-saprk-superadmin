@@ -1,104 +1,474 @@
-import React, { useState } from "react";
-import { Camera, QrCode, ScanLine } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  Camera,
+  QrCode,
+  ScanLine,
+  X,
+  RefreshCw,
+} from "lucide-react";
+import {
+  Html5Qrcode,
+  Html5QrcodeSupportedFormats,
+} from "html5-qrcode";
 import "../../css/painter/PainterQuickScan.css";
 
 const PainterQuickScan = () => {
   const [showManualInput, setShowManualInput] = useState(false);
   const [manualCode, setManualCode] = useState("");
   const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState("");
   const [loading, setLoading] = useState(false);
+  const [cameraActive, setCameraActive] = useState(false);
+  const [cameraLoading, setCameraLoading] = useState(false);
+
+  const scannerRef = useRef(null);
+  const scannerRunningRef = useRef(false);
+  const processingScanRef = useRef(false);
 
   const API_URL =
     import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+
+  // ==========================================
+  // SHOW MESSAGE
+  // ==========================================
+
+  const showMessage = (text, type = "") => {
+    setMessage(text);
+    setMessageType(type);
+  };
+
+  // ==========================================
+  // SUBMIT SCAN TO BACKEND
+  // ==========================================
+
+  const submitScan = async (scanCode, scanType) => {
+    if (!scanCode || processingScanRef.current) {
+      return;
+    }
+
+    try {
+      processingScanRef.current = true;
+      setLoading(true);
+
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(
+        `${API_URL}/painter/scan`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            scanCode: scanCode.trim(),
+            scanType,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        showMessage(
+          "Product scanned successfully.",
+          "success"
+        );
+
+        setManualCode("");
+        setShowManualInput(false);
+
+        await stopCamera();
+      } else if (response.status === 409) {
+        showMessage(
+          data.message || "This code has already been scanned.",
+          "error"
+        );
+
+        await stopCamera();
+      } else {
+        showMessage(
+          data.message || "Failed to process scan.",
+          "error"
+        );
+
+        await stopCamera();
+      }
+    } catch (error) {
+      console.error("Scan submission error:", error);
+
+      showMessage(
+        "Unable to connect to server.",
+        "error"
+      );
+
+      await stopCamera();
+    } finally {
+      setLoading(false);
+      processingScanRef.current = false;
+    }
+  };
+
+  // ==========================================
+  // QR / BARCODE DETECTED
+  // ==========================================
+
+  const handleScanSuccess = async (
+    decodedText,
+    decodedResult
+  ) => {
+    if (
+      !decodedText ||
+      processingScanRef.current
+    ) {
+      return;
+    }
+
+    let scanType = "BARCODE";
+
+    const detectedFormat =
+      decodedResult?.result?.format?.format;
+
+    if (
+      detectedFormat ===
+      Html5QrcodeSupportedFormats.QR_CODE
+    ) {
+      scanType = "QR";
+    }
+
+    await submitScan(
+      decodedText,
+      scanType
+    );
+  };
+
+  // ==========================================
+  // CAMERA ERROR CALLBACK
+  // ==========================================
+
+  const handleScanError = () => {
+    // Scanner continuously calls this while
+    // no code is detected, so don't show errors here.
+  };
+
+  // ==========================================
+  // START CAMERA
+  // ==========================================
+
+  const startCamera = async () => {
+    if (scannerRunningRef.current) {
+      return;
+    }
+
+    try {
+      setCameraLoading(true);
+      setMessage("");
+      setMessageType("");
+
+      const scannerId =
+        "painter-quick-scan-reader";
+
+      const scanner = new Html5Qrcode(
+        scannerId
+      );
+
+      scannerRef.current = scanner;
+
+      const formatsToSupport = [
+        Html5QrcodeSupportedFormats.QR_CODE,
+        Html5QrcodeSupportedFormats.CODE_128,
+        Html5QrcodeSupportedFormats.CODE_39,
+        Html5QrcodeSupportedFormats.CODE_93,
+        Html5QrcodeSupportedFormats.EAN_13,
+        Html5QrcodeSupportedFormats.EAN_8,
+        Html5QrcodeSupportedFormats.UPC_A,
+        Html5QrcodeSupportedFormats.UPC_E,
+        Html5QrcodeSupportedFormats.ITF,
+      ];
+
+      const config = {
+        fps: 10,
+        qrbox: {
+          width: 250,
+          height: 180,
+        },
+        aspectRatio: 1.777778,
+        formatsToSupport,
+        rememberLastUsedCamera: true,
+      };
+
+      await scanner.start(
+        {
+          facingMode: "environment",
+        },
+        config,
+        handleScanSuccess,
+        handleScanError
+      );
+
+      scannerRunningRef.current = true;
+      setCameraActive(true);
+
+      showMessage(
+        "Camera is ready. Align the QR / barcode inside the frame.",
+        "info"
+      );
+    } catch (error) {
+      console.error(
+        "Camera start error:",
+        error
+      );
+
+      scannerRef.current = null;
+      scannerRunningRef.current = false;
+      setCameraActive(false);
+
+      let errorMessage =
+        "Unable to open camera.";
+
+      if (
+        error?.message?.toLowerCase().includes(
+          "permission"
+        )
+      ) {
+        errorMessage =
+          "Camera permission denied. Please allow camera access in your browser.";
+      } else if (
+        error?.message?.toLowerCase().includes(
+          "not found"
+        )
+      ) {
+        errorMessage =
+          "No camera found on this device.";
+      }
+
+      showMessage(
+        errorMessage,
+        "error"
+      );
+    } finally {
+      setCameraLoading(false);
+    }
+  };
+
+  // ==========================================
+  // STOP CAMERA
+  // ==========================================
+
+  const stopCamera = async () => {
+    const scanner = scannerRef.current;
+
+    if (!scanner) {
+      setCameraActive(false);
+      scannerRunningRef.current = false;
+      return;
+    }
+
+    try {
+      if (scannerRunningRef.current) {
+        await scanner.stop();
+      }
+
+      scanner.clear();
+    } catch (error) {
+      console.error(
+        "Camera stop error:",
+        error
+      );
+    } finally {
+      scannerRef.current = null;
+      scannerRunningRef.current = false;
+      setCameraActive(false);
+    }
+  };
+
+  // ==========================================
+  // TOGGLE CAMERA
+  // ==========================================
+
+  const handleCameraToggle = async () => {
+    if (cameraActive) {
+      await stopCamera();
+
+      showMessage(
+        "Camera scanner closed.",
+        "info"
+      );
+    } else {
+      await startCamera();
+    }
+  };
+
+  // ==========================================
+  // MANUAL CODE SUBMIT
+  // ==========================================
 
   const handleManualSubmit = async (e) => {
     e.preventDefault();
 
     if (!/^\d{6}$/.test(manualCode)) {
-      setMessage("Please enter a valid 6-digit code.");
+      showMessage(
+        "Please enter a valid 6-digit code.",
+        "error"
+      );
       return;
     }
 
-    try {
-      setLoading(true);
-      setMessage("");
+    await submitScan(
+      manualCode,
+      "MANUAL"
+    );
+  };
 
-      const token = localStorage.getItem("token");
+  // ==========================================
+  // CLEANUP CAMERA
+  // ==========================================
 
-      const response = await fetch(`${API_URL}/painter/scan`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          scanCode: manualCode,
-          scanType: "MANUAL",
-        }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setMessage("Product scanned successfully.");
-        setManualCode("");
-        setShowManualInput(false);
-      } else {
-        setMessage(data.message || "Failed to process scan.");
+  useEffect(() => {
+    return () => {
+      if (scannerRef.current) {
+        scannerRef.current
+          .stop()
+          .catch(() => {})
+          .finally(() => {
+            scannerRef.current = null;
+            scannerRunningRef.current = false;
+          });
       }
-    } catch (error) {
-      console.error("Manual scan error:", error);
-      setMessage("Unable to connect to server.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleOpenCamera = () => {
-    setMessage("Camera scanner will open here.");
-  };
+    };
+  }, []);
 
   return (
     <div className="painter-quick-scan">
+
+      {/* ==========================================
+          HEADER
+      ========================================== */}
+
       <div className="painter-quick-scan-header">
         <div>
           <h1>Quick Scan</h1>
-          <p>Oneplus Spark PAINTS • Painter experience</p>
+          <p>
+            Oneplus Spark PAINTS • Painter experience
+          </p>
         </div>
       </div>
 
+      {/* ==========================================
+          SCAN CARD
+      ========================================== */}
+
       <div className="painter-quick-scan-card">
+
         <div className="painter-scan-title">
           <h2>Scan Product</h2>
-          <p>Align the QR / barcode inside the frame</p>
+
+          <p>
+            Align the QR / barcode inside the frame
+          </p>
         </div>
 
-        <div className="painter-scan-frame">
-          <div className="painter-scan-frame-content">
-            <ScanLine size={32} />
-            <span>QR / BARCODE</span>
-          </div>
+        {/* ==========================================
+            CAMERA / SCANNER
+        ========================================== */}
+
+        <div
+          className={`painter-scan-frame ${
+            cameraActive
+              ? "camera-active"
+              : ""
+          }`}
+        >
+          {!cameraActive && (
+            <div className="painter-scan-placeholder">
+              <ScanLine size={34} />
+
+              <span>
+                QR / BARCODE
+              </span>
+
+              <small>
+                Open camera to start scanning
+              </small>
+            </div>
+          )}
+
+          <div
+            id="painter-quick-scan-reader"
+            className="painter-camera-reader"
+          />
+
+          {cameraActive && (
+            <div className="painter-scanner-overlay">
+              <div className="painter-scanner-corners" />
+
+              <span>
+                Scan QR / Barcode
+              </span>
+            </div>
+          )}
         </div>
+
+        {/* ==========================================
+            CAMERA BUTTON
+        ========================================== */}
 
         <button
           type="button"
-          className="painter-open-camera-btn"
-          onClick={handleOpenCamera}
+          className={`painter-open-camera-btn ${
+            cameraActive
+              ? "camera-open"
+              : ""
+          }`}
+          onClick={handleCameraToggle}
+          disabled={cameraLoading || loading}
         >
-          <Camera size={17} />
-          <span>Open Camera</span>
+          {cameraActive ? (
+            <>
+              <X size={17} />
+              <span>Close Camera</span>
+            </>
+          ) : cameraLoading ? (
+            <>
+              <RefreshCw
+                size={17}
+                className="painter-spin"
+              />
+              <span>Opening Camera...</span>
+            </>
+          ) : (
+            <>
+              <Camera size={17} />
+              <span>Open Camera</span>
+            </>
+          )}
         </button>
+
+        {/* ==========================================
+            MANUAL CODE BUTTON
+        ========================================== */}
 
         <button
           type="button"
           className="painter-manual-code-btn"
           onClick={() => {
-            setShowManualInput((prev) => !prev);
+            setShowManualInput(
+              (prev) => !prev
+            );
+
             setMessage("");
+            setMessageType("");
           }}
+          disabled={loading}
         >
-          Manual 6-digit code
+          {showManualInput
+            ? "Hide Manual Code"
+            : "Manual 6-digit code"}
         </button>
+
+        {/* ==========================================
+            MANUAL INPUT
+        ========================================== */}
 
         {showManualInput && (
           <form
@@ -111,25 +481,67 @@ const PainterQuickScan = () => {
               maxLength={6}
               placeholder="Enter 6-digit code"
               value={manualCode}
+              disabled={loading}
               onChange={(e) =>
-                setManualCode(e.target.value.replace(/\D/g, ""))
+                setManualCode(
+                  e.target.value.replace(
+                    /\D/g,
+                    ""
+                  )
+                )
               }
             />
 
-            <button type="submit" disabled={loading}>
-              {loading ? "Scanning..." : "Scan Code"}
+            <button
+              type="submit"
+              disabled={
+                loading ||
+                manualCode.length !== 6
+              }
+            >
+              {loading
+                ? "Scanning..."
+                : "Scan Code"}
             </button>
           </form>
         )}
 
+        {/* ==========================================
+            MESSAGE
+        ========================================== */}
+
         {message && (
-          <p className="painter-scan-message">{message}</p>
+          <div
+            className={`painter-scan-message ${messageType}`}
+          >
+            {message}
+          </div>
         )}
+
       </div>
+
+      {/* ==========================================
+          MOBILE CAMERA NOTE
+      ========================================== */}
+
+      <div className="painter-camera-note">
+        <Camera size={14} />
+
+        <span>
+          For the best experience, allow camera
+          permission and use the rear camera on
+          mobile.
+        </span>
+      </div>
+
+      {/* ==========================================
+          FOOTER
+      ========================================== */}
 
       <div className="painter-quick-scan-footer">
         © Oneplus Spark PAINTS • Painter Mobile App UI
       </div>
+
     </div>
   );
 };

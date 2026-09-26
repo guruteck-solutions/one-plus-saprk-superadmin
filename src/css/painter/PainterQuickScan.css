@@ -1,114 +1,256 @@
+/* ==========================================
+   PAINTER QUICK SCAN
+========================================== */
+
 .painter-quick-scan {
   width: 100%;
-  min-height: calc(100vh - 64px);
-  padding: 18px 24px 12px;
+  min-height: 100%;
+  padding: 22px;
   box-sizing: border-box;
   background: #f5f7fa;
-  padding-top: 88px;
+  color: #111827;
 }
 
-/* =========================
+/* ==========================================
    HEADER
-========================= */
+========================================== */
 
 .painter-quick-scan-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 18px;
+  width: 100%;
+  margin-bottom: 22px;
 }
 
 .painter-quick-scan-header h1 {
-  margin: 0;
-  font-size: 26px;
-  line-height: 1.2;
+  margin: 0 0 5px;
+  font-size: 24px;
+  line-height: 1.25;
   font-weight: 700;
   color: #111827;
 }
 
 .painter-quick-scan-header p {
-  margin: 6px 0 0;
+  margin: 0;
   font-size: 12px;
   color: #7b8794;
 }
 
-/* =========================
+/* ==========================================
    MAIN CARD
-========================= */
+========================================== */
 
 .painter-quick-scan-card {
-  width: min(700px, 100%);
+  width: min(100%, 620px);
   margin: 0 auto;
-  padding: 26px 30px 20px;
+  padding: 24px;
+  border: 1px solid #e1e6ec;
+  border-radius: 14px;
+  background: #ffffff;
   box-sizing: border-box;
-  background: #10171f;
-  border-radius: 18px;
-  text-align: center;
+  box-shadow: 0 3px 14px rgba(15, 23, 42, 0.04);
 }
 
-/* =========================
-   TITLE
-========================= */
+.painter-scan-title {
+  text-align: center;
+  margin-bottom: 18px;
+}
 
 .painter-scan-title h2 {
-  margin: 0;
-  color: #f8fafc;
-  font-size: 24px;
+  margin: 0 0 6px;
+  font-size: 18px;
+  line-height: 1.3;
   font-weight: 700;
+  color: #111827;
 }
 
 .painter-scan-title p {
-  margin: 8px 0 0;
-  color: #aeb8c3;
-  font-size: 12px;
+  margin: 0;
+  font-size: 11px;
+  color: #7b8794;
 }
 
-/* =========================
-   SCAN FRAME
-========================= */
+/* ==========================================
+   CAMERA FRAME
+========================================== */
 
 .painter-scan-frame {
-  width: min(430px, 100%);
-  height: 310px;
-  margin: 54px auto 42px;
-  border: 4px solid #ff7918;
-  border-radius: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 330px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #dfe5eb;
+  border-radius: 12px;
+  background: #f7f9fb;
   box-sizing: border-box;
 }
 
-.painter-scan-frame-content {
+.painter-scan-frame.camera-active {
+  background: #000000;
+}
+
+/* ==========================================
+   DEFAULT PLACEHOLDER
+========================================== */
+
+.painter-scan-placeholder {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  color: #f8fafc;
+  gap: 9px;
+  color: #9aa4b2;
 }
 
-.painter-scan-frame-content svg {
+.painter-scan-placeholder svg {
+  color: #ff7a00;
+}
+
+.painter-scan-placeholder span {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: #4b5563;
+}
+
+.painter-scan-placeholder small {
+  font-size: 10px;
+  color: #9aa4b2;
+}
+
+/* ==========================================
+   HTML5 QR CODE READER
+========================================== */
+
+.painter-camera-reader {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.painter-camera-reader video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.painter-camera-reader img {
+  display: none !important;
+}
+
+.painter-camera-reader > div {
+  width: 100% !important;
+  height: 100% !important;
+  border: none !important;
+}
+
+.painter-camera-reader canvas {
   display: none;
 }
 
-.painter-scan-frame-content span {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 0.2px;
+/* Hide library's default scan region border */
+.painter-camera-reader__scan-region {
+  border: none !important;
 }
 
-/* =========================
-   OPEN CAMERA BUTTON
-========================= */
+/* ==========================================
+   SCANNER OVERLAY
+========================================== */
+
+.painter-scanner-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.painter-scanner-overlay > span {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.58);
+  color: #ffffff;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+/* ==========================================
+   SCANNER CORNERS
+========================================== */
+
+.painter-scanner-corners {
+  width: 230px;
+  height: 170px;
+  position: relative;
+}
+
+.painter-scanner-corners::before,
+.painter-scanner-corners::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid transparent;
+}
+
+.painter-scanner-corners::before {
+  border-top-color: #ff7a00;
+  border-left-color: #ff7a00;
+  clip-path: polygon(
+    0 0,
+    35px 0,
+    35px 3px,
+    3px 3px,
+    3px 35px,
+    0 35px,
+    0 0,
+    100% 0,
+    100% 35px,
+    calc(100% - 3px) 35px,
+    calc(100% - 3px) 3px,
+    calc(100% - 35px) 3px,
+    calc(100% - 35px) 0
+  );
+}
+
+.painter-scanner-corners::after {
+  border-bottom-color: #ff7a00;
+  border-right-color: #ff7a00;
+  clip-path: polygon(
+    0 100%,
+    35px 100%,
+    35px calc(100% - 3px),
+    3px calc(100% - 3px),
+    3px calc(100% - 35px),
+    0 calc(100% - 35px),
+    0 100%,
+    100% 100%,
+    100% calc(100% - 35px),
+    calc(100% - 3px) calc(100% - 35px),
+    calc(100% - 3px) calc(100% - 3px),
+    calc(100% - 35px) calc(100% - 3px),
+    calc(100% - 35px) 100%
+  );
+}
+
+/* ==========================================
+   CAMERA BUTTON
+========================================== */
 
 .painter-open-camera-btn {
-  width: min(255px, 100%);
-  min-height: 48px;
-  margin: 0 auto;
-  border: none;
-  border-radius: 9px;
-  background: #ff7918;
+  width: 100%;
+  height: 44px;
+  margin-top: 17px;
+  border: 1px solid #ff7a00;
+  border-radius: 8px;
+  background: #ff7a00;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -117,212 +259,298 @@
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: 0.2s ease;
 }
 
 .painter-open-camera-btn:hover {
-  background: #ed6810;
+  background: #ed6f00;
+  border-color: #ed6f00;
 }
 
-.painter-open-camera-btn:active {
-  transform: scale(0.98);
+.painter-open-camera-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
-/* =========================
-   MANUAL CODE BUTTON
-========================= */
+.painter-open-camera-btn.camera-open {
+  background: #ffffff;
+  color: #dc2626;
+  border-color: #e5e7eb;
+}
+
+.painter-open-camera-btn.camera-open:hover {
+  color: #b91c1c;
+  border-color: #fecaca;
+  background: #fff7f7;
+}
+
+/* ==========================================
+   MANUAL BUTTON
+========================================== */
 
 .painter-manual-code-btn {
-  margin-top: 24px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  color: #aeb8c3;
+  width: 100%;
+  height: 42px;
+  margin-top: 10px;
+  border: 1px solid #dfe5eb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #374151;
   font-size: 11px;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .painter-manual-code-btn:hover {
-  color: #ffffff;
+  border-color: #ff7a00;
+  color: #ff7a00;
 }
 
-/* =========================
-   MANUAL CODE FORM
-========================= */
+.painter-manual-code-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   MANUAL FORM
+========================================== */
 
 .painter-manual-code-form {
-  width: min(350px, 100%);
-  margin: 18px auto 0;
+  width: 100%;
   display: flex;
-  gap: 8px;
+  gap: 9px;
+  margin-top: 12px;
 }
 
 .painter-manual-code-form input {
   flex: 1;
   min-width: 0;
   height: 42px;
-  padding: 0 12px;
-  box-sizing: border-box;
-  border: 1px solid #39434e;
-  border-radius: 7px;
+  padding: 0 13px;
+  border: 1px solid #dfe5eb;
+  border-radius: 8px;
   outline: none;
-  background: #18212b;
-  color: #ffffff;
-  font-size: 13px;
-  text-align: center;
-}
-
-.painter-manual-code-form input::placeholder {
-  color: #8995a2;
+  background: #ffffff;
+  color: #111827;
+  font-size: 12px;
+  box-sizing: border-box;
 }
 
 .painter-manual-code-form input:focus {
-  border-color: #ff7918;
+  border-color: #ff7a00;
+  box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.08);
+}
+
+.painter-manual-code-form input::placeholder {
+  color: #a0a9b5;
 }
 
 .painter-manual-code-form button {
+  min-width: 105px;
   height: 42px;
-  padding: 0 16px;
+  padding: 0 15px;
   border: none;
-  border-radius: 7px;
-  background: #ff7918;
+  border-radius: 8px;
+  background: #ff7a00;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   cursor: pointer;
 }
 
 .painter-manual-code-form button:disabled {
-  opacity: 0.6;
+  opacity: 0.55;
   cursor: not-allowed;
 }
 
-/* =========================
+/* ==========================================
    MESSAGE
-========================= */
+========================================== */
 
 .painter-scan-message {
-  margin: 14px 0 0;
-  color: #d7dee6;
-  font-size: 12px;
+  margin: 13px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.4;
 }
 
-/* =========================
+.painter-scan-message.success {
+  background: #ecfdf3;
+  border: 1px solid #c9f0d8;
+  color: #15803d;
+}
+
+.painter-scan-message.error {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #be123c;
+}
+
+.painter-scan-message.info {
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  color: #2563eb;
+}
+
+/* ==========================================
+   CAMERA NOTE
+========================================== */
+
+.painter-camera-note {
+  width: min(100%, 620px);
+  margin: 12px auto 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 7px;
+  color: #8a95a3;
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.painter-camera-note svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ==========================================
+   LOADING SPIN
+========================================== */
+
+.painter-spin {
+  animation: painterScanSpin 0.9s linear infinite;
+}
+
+@keyframes painterScanSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================
    FOOTER
-========================= */
+========================================== */
 
 .painter-quick-scan-footer {
-  margin-top: 14px;
+  width: 100%;
+  margin-top: 28px;
+  text-align: center;
   font-size: 9px;
-  color: #7d8995;
+  color: #9aa4b2;
 }
 
-/* =========================
+/* ==========================================
    TABLET
-========================= */
-
-@media (max-width: 1024px) {
-  .painter-quick-scan {
-    padding: 18px 20px 12px;
-    padding-top: 88px;
-  }
-
-  .painter-quick-scan-card {
-    max-width: 650px;
-  }
-
-  .painter-scan-frame {
-    height: 290px;
-    margin-top: 45px;
-  }
-}
-
-/* =========================
-   MOBILE
-========================= */
+========================================== */
 
 @media (max-width: 768px) {
   .painter-quick-scan {
-    min-height: calc(100vh - 58px);
-    padding: 16px 14px 12px;
-    paddding-top: 88px;
-  }
-
-  .painter-quick-scan-header {
-    margin-bottom: 14px;
+    padding: 18px;
   }
 
   .painter-quick-scan-header h1 {
-    font-size: 22px;
-  }
-
-  .painter-quick-scan-header p {
-    font-size: 11px;
-  }
-
-  .painter-quick-scan-card {
-    padding: 22px 16px 20px;
-    border-radius: 15px;
-  }
-
-  .painter-scan-title h2 {
     font-size: 21px;
   }
 
-  .painter-scan-frame {
-    height: 260px;
-    margin: 38px auto 32px;
-    border-width: 3px;
-    border-radius: 18px;
+  .painter-quick-scan-card {
+    padding: 20px;
   }
 
-  .painter-scan-frame-content span {
+  .painter-scan-frame {
+    height: 320px;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 600px) {
+  .painter-quick-scan {
+    padding: 14px;
+  }
+
+  .painter-quick-scan-header {
+    margin-bottom: 16px;
+  }
+
+  .painter-quick-scan-header h1 {
     font-size: 19px;
   }
 
-  .painter-open-camera-btn {
-    width: 100%;
-    max-width: 260px;
+  .painter-quick-scan-header p {
+    font-size: 10px;
+  }
+
+  .painter-quick-scan-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .painter-scan-title h2 {
+    font-size: 16px;
+  }
+
+  .painter-scan-title p {
+    font-size: 10px;
+  }
+
+  .painter-scan-frame {
+    height: 300px;
+    border-radius: 10px;
+  }
+
+  .painter-scanner-corners {
+    width: 210px;
+    height: 155px;
   }
 
   .painter-manual-code-form {
     flex-direction: column;
   }
 
+  .painter-manual-code-form input,
   .painter-manual-code-form button {
     width: 100%;
   }
+
+  .painter-camera-note {
+    padding: 0 8px;
+  }
 }
 
-/* =========================
+/* ==========================================
    SMALL MOBILE
-========================= */
+========================================== */
 
-@media (max-width: 480px) {
+@media (max-width: 400px) {
   .painter-quick-scan {
-    padding: 12px 10px;
-    padding-top: 88px;
+    padding: 10px;
   }
 
   .painter-quick-scan-card {
-    padding: 20px 12px 18px;
+    padding: 13px;
   }
 
   .painter-scan-frame {
-    height: 220px;
-    margin-top: 32px;
-    margin-bottom: 28px;
+    height: 270px;
   }
 
-  .painter-scan-frame-content span {
-    font-size: 17px;
+  .painter-scanner-corners {
+    width: 190px;
+    height: 140px;
   }
 
-  .painter-scan-title h2 {
-    font-size: 20px;
-  }
-
-  .painter-scan-title p {
-    font-size: 11px;
+  .painter-open-camera-btn,
+  .painter-manual-code-btn {
+    height: 44px;
   }
 }

@@ -1,0 +1,228 @@
+.painter-performance-page {
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  padding-top: 88px;
+}
+
+.painter-performance-header {
+  margin-bottom: 24px;
+}
+
+.painter-performance-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.painter-performance-header p {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.painter-performance-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.painter-performance-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.painter-performance-card-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #f3f4f6;
+}
+
+.painter-performance-card span {
+  display: block;
+  color: #6b7280;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.painter-performance-card h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.painter-performance-section {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.painter-performance-section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.painter-performance-section-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.painter-performance-section-header p {
+  margin: 5px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.painter-performance-chart {
+  height: 260px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 14px;
+  padding: 20px 10px 0;
+  border-top: 1px solid #f0f0f0;
+  box-sizing: border-box;
+}
+
+.painter-performance-bar-wrapper {
+  height: 100%;
+  flex: 1;
+  max-width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.painter-performance-bar-area {
+  width: 100%;
+  height: 210px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.painter-performance-bar {
+  width: 42px;
+  min-height: 3px;
+  border-radius: 7px 7px 2px 2px;
+  background: #2563eb;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  transition: height 0.3s ease;
+}
+
+.painter-performance-bar span {
+  position: absolute;
+  top: -22px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.painter-performance-month {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.painter-performance-achievement {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.painter-performance-achievement-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #f3f4f6;
+}
+
+.painter-performance-achievement h4 {
+  margin: 0 0 5px;
+  font-size: 15px;
+}
+
+.painter-performance-achievement p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.painter-performance-loading,
+.painter-performance-empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+  .painter-performance-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .painter-performance-page {
+    padding: 16px;
+    padding-top: 88px;
+  }
+
+  .painter-performance-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .painter-performance-card {
+    padding: 16px;
+  }
+
+  .painter-performance-section {
+    padding: 16px;
+  }
+
+  .painter-performance-chart {
+    gap: 6px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .painter-performance-bar {
+    width: 30px;
+  }
+
+  .painter-performance-bar-area {
+    height: 190px;
+  }
+}

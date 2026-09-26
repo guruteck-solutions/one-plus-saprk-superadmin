@@ -1,182 +1,238 @@
+/* ==========================================
+   PAINTER DASHBOARD
+========================================== */
+
 .painter-dashboard {
   width: 100%;
-  min-height: calc(100vh - 64px);
-  padding: 14px 24px 10px;
-  background: #f5f6f8;
+  min-height: 100%;
+  padding: 22px;
+  background: #f5f7fa;
   box-sizing: border-box;
   color: #111827;
   padding-top: 88px;
 }
 
-/* =========================
+/* ==========================================
    PAGE HEADER
-========================= */
+========================================== */
 
 .painter-dashboard-header {
+  width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  margin-bottom: 28px;
+  gap: 18px;
+  margin-bottom: 22px;
 }
 
 .painter-dashboard-header h1 {
-  margin: 0;
-  font-size: 25px;
-  line-height: 1.2;
+  margin: 0 0 5px;
+  font-size: 24px;
+  line-height: 1.25;
   font-weight: 700;
   color: #111827;
 }
 
 .painter-dashboard-header p {
-  margin: 6px 0 0;
-  font-size: 11px;
+  margin: 0;
+  font-size: 12px;
   color: #7b8794;
 }
 
 .painter-notification-btn {
-  display: none;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #e6eaf0;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+  flex-shrink: 0;
 }
 
-/* =========================
-   SUMMARY CARDS
-========================= */
+.painter-notification-btn:hover {
+  border-color: #ff7a00;
+  color: #ff7a00;
+}
+
+/* ==========================================
+   SUMMARY GRID
+========================================== */
 
 .painter-summary-grid {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  margin-bottom: 28px;
+  gap: 14px;
+  margin-bottom: 22px;
 }
 
 .painter-summary-card {
   min-width: 0;
-  min-height: 108px;
-  padding: 14px 13px;
+  min-height: 118px;
+  padding: 16px 17px;
+  border: 1px solid #e1e6ec;
+  border-radius: 13px;
   background: #ffffff;
-  border: 1px solid #e2e6eb;
-  border-radius: 12px;
-  display: flex;
-  align-items: flex-start;
-  gap: 11px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.painter-summary-top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
 }
 
 .painter-summary-icon {
-  width: 30px;
-  height: 30px;
-  flex: 0 0 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: #f5f6f8;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ff7800;
+  flex-shrink: 0;
 }
 
-.painter-summary-content {
-  min-width: 0;
-  flex: 1;
+.reward-icon {
+  color: #ff7a00;
+  background: #fff1e5;
 }
 
-.painter-summary-content span {
-  display: block;
-  margin-bottom: 2px;
-  font-size: 10px;
+.cash-icon {
+  color: #16a34a;
+  background: #eaf8ef;
+}
+
+.pending-icon {
+  color: #2563eb;
+  background: #edf3ff;
+}
+
+.scan-icon {
+  color: #7c3aed;
+  background: #f2edff;
+}
+
+.painter-summary-label {
+  font-size: 11px;
   color: #7b8794;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.painter-summary-content strong {
+.painter-summary-value {
   display: block;
-  font-size: 22px;
-  line-height: 1.1;
+  margin-top: 3px;
+  font-size: 23px;
+  line-height: 1.15;
   font-weight: 700;
   color: #111827;
 }
 
-.painter-summary-content small {
+.painter-summary-card small {
   display: block;
-  margin-top: 20px;
-  font-size: 9px;
-  color: #10a36b;
+  margin-top: 5px;
+  min-height: 15px;
+  font-size: 10px;
+  line-height: 1.3;
 }
 
-.painter-summary-content .pending-text {
+.painter-summary-positive {
+  color: #16a34a;
+}
+
+.painter-summary-muted {
   color: #7b8794;
 }
 
-/* =========================
+/* ==========================================
    MIDDLE SECTION
-========================= */
+========================================== */
 
 .painter-dashboard-middle {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
-  margin-bottom: 28px;
+  margin-bottom: 22px;
 }
 
+/* ==========================================
+   COMMON CARD
+========================================== */
+
 .painter-dashboard-card {
+  min-width: 0;
+  border: 1px solid #e1e6ec;
+  border-radius: 13px;
   background: #ffffff;
-  border: 1px solid #e2e6eb;
-  border-radius: 12px;
   box-sizing: border-box;
 }
 
 .painter-dashboard-card h2 {
   margin: 0;
   font-size: 14px;
+  line-height: 1.3;
   font-weight: 700;
   color: #111827;
 }
 
-/* =========================
+/* ==========================================
    QUICK ACTIONS
-========================= */
+========================================== */
 
 .painter-quick-card {
-  padding: 17px 19px;
+  padding: 17px;
+  min-height: 168px;
 }
 
 .painter-quick-actions {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 13px;
 }
 
 .painter-quick-action {
-  height: 42px;
-  padding: 0 10px;
-  border: 1px solid #e1e5ea;
+  min-width: 0;
+  height: 40px;
+  padding: 0 19px;
+  border: 1px solid #e0e5eb;
   border-radius: 8px;
   background: #ffffff;
   color: #111827;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: 10px;
+  gap: 7px;
+  font-size: 11px;
   font-weight: 600;
   cursor: pointer;
   transition: 0.2s ease;
 }
 
 .painter-quick-action:hover {
-  border-color: #ff7800;
+  border-color: #ff7a00;
+  color: #ff7a00;
 }
 
 .painter-quick-action.active {
-  background: #ff7800;
-  border-color: #ff7800;
+  border-color: #ff7a00;
+  background: #ff7a00;
   color: #ffffff;
 }
 
-/* =========================
-   LOYALTY
-========================= */
-
 .painter-loyalty-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
   align-items: center;
   gap: 14px;
   margin-top: 27px;
@@ -184,104 +240,123 @@
 
 .painter-loyalty-label {
   font-size: 10px;
-  color: #7b8794;
+  color: #8994a2;
 }
 
 .painter-loyalty-badge {
-  min-width: 68px;
-  height: 27px;
-  padding: 0 14px;
+  min-width: 64px;
+  padding: 6px 12px;
   border-radius: 20px;
-  background: #fff2e6;
-  color: #f47a17;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 9px;
-  font-weight: 700;
-  box-sizing: border-box;
-}
-
-.painter-loyalty-row strong {
+  background: #fff0e4;
+  color: #e86f00;
+  text-align: center;
   font-size: 10px;
-  font-weight: 600;
-  color: #111827;
+  font-weight: 700;
 }
 
-/* =========================
+.painter-loyalty-progress {
+  font-size: 10px;
+  color: #111827;
+  font-weight: 600;
+}
+
+/* ==========================================
    LATEST REWARD
-========================= */
+========================================== */
 
 .painter-latest-card {
-  padding: 17px 19px;
+  min-height: 168px;
+  padding: 17px;
 }
 
 .painter-latest-points {
-  margin-top: 17px;
-  font-size: 25px;
-  line-height: 1;
+  margin-top: 15px;
+  font-size: 23px;
+  line-height: 1.2;
   font-weight: 700;
-  color: #f47700;
+  color: #f97316;
 }
 
 .painter-latest-description {
-  margin: 11px 0 17px;
+  margin: 7px 0 0;
   font-size: 10px;
+  line-height: 1.5;
   color: #7b8794;
 }
 
+.painter-latest-reference {
+  display: block;
+  margin-top: 4px;
+  font-size: 9px;
+  color: #9aa4b2;
+}
+
 .painter-view-reward-btn {
-  height: 36px;
-  min-width: 128px;
-  padding: 0 17px;
-  border: 1px solid #e1e5ea;
+  margin-top: 15px;
+  min-width: 120px;
+  height: 34px;
+  padding: 0 15px;
+  border: 1px solid #e0e5eb;
   border-radius: 8px;
   background: #ffffff;
   color: #111827;
   font-size: 10px;
   font-weight: 600;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .painter-view-reward-btn:hover {
-  border-color: #ff7800;
+  border-color: #ff7a00;
+  color: #ff7a00;
 }
 
-/* =========================
+/* ==========================================
    BOTTOM SECTION
-========================= */
+========================================== */
 
 .painter-dashboard-bottom {
+  width: 100%;
   display: grid;
-  grid-template-columns: 2fr 0.85fr;
+  grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.8fr);
   gap: 18px;
 }
 
-/* =========================
-   MONTHLY CHART
-========================= */
+/* ==========================================
+   MONTHLY REWARD SUMMARY
+========================================== */
 
 .painter-monthly-card {
-  height: 210px;
-  padding: 17px 19px 12px;
+  min-height: 197px;
+  padding: 17px 18px 14px;
+}
+
+.painter-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.painter-chart-max {
+  font-size: 9px;
+  color: #7b8794;
+  padding-right: 7px;
 }
 
 .painter-chart {
-  height: 145px;
-  margin-top: 10px;
-  padding: 0 15px 0 10px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  gap: 28px;
-  position: relative;
-  box-sizing: border-box;
+  height: 140px;
+  width: 100%;
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 18px;
+  align-items: end;
 }
 
 .painter-chart-column {
   height: 100%;
-  flex: 1;
-  max-width: 55px;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -290,93 +365,181 @@
 
 .painter-chart-bar-wrapper {
   width: 100%;
-  height: 118px;
+  max-width: 58px;
+  height: 112px;
   display: flex;
   align-items: flex-end;
+  justify-content: center;
+  position: relative;
 }
 
 .painter-chart-bar {
   width: 100%;
-  min-height: 10px;
-  border-radius: 6px 6px 4px 4px;
-  background: #e7ebf0;
+  height: 0;
+  min-height: 0;
+  border-radius: 5px 5px 4px 4px;
+  background: #e8edf3;
+  transition: height 0.3s ease;
 }
 
 .painter-chart-bar.current {
-  background: #ff7800;
-}
-
-.painter-chart-column span {
-  margin-top: 10px;
-  font-size: 9px;
-  color: #7b8794;
+  background: #ff7a00;
 }
 
 .painter-chart-value {
   position: absolute;
-  top: -1px;
-  right: 10px;
+  top: -16px;
+  font-size: 8px;
+  color: #7b8794;
+  font-weight: 500;
+}
+
+.painter-chart-month {
+  margin-top: 8px;
   font-size: 9px;
   color: #7b8794;
 }
 
-/* =========================
+/* ==========================================
    ACTIVE SCHEMES
-========================= */
+========================================== */
 
 .painter-schemes-card {
-  height: 210px;
-  padding: 17px 19px;
+  min-height: 197px;
+  padding: 17px;
+  overflow: hidden;
 }
 
 .painter-scheme-list {
-  margin-top: 23px;
+  width: 100%;
+  margin-top: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-height: 148px;
+  overflow-y: auto;
+  padding-right: 3px;
+}
+
+.painter-scheme-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.painter-scheme-list::-webkit-scrollbar-track {
+  background: #f1f3f5;
+  border-radius: 10px;
+}
+
+.painter-scheme-list::-webkit-scrollbar-thumb {
+  background: #d5dbe2;
+  border-radius: 10px;
 }
 
 .painter-scheme-item {
-  margin-bottom: 17px;
-}
-
-.painter-scheme-item:last-child {
-  margin-bottom: 0;
+  width: 100%;
+  min-width: 0;
 }
 
 .painter-scheme-header {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 7px;
 }
 
 .painter-scheme-header strong {
+  min-width: 0;
   font-size: 10px;
-  font-weight: 600;
+  line-height: 1.4;
   color: #111827;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .painter-scheme-header span {
+  flex-shrink: 0;
+  padding: 3px 7px;
+  border-radius: 10px;
+  background: #fff1e5;
+  color: #e86f00;
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.painter-scheme-item p {
+  margin: 5px 0 6px;
   font-size: 9px;
-  color: #657384;
-}
-
-.painter-progress-track {
-  width: 100%;
-  height: 7px;
-  background: #e5e9ee;
-  border-radius: 10px;
+  line-height: 1.4;
+  color: #7b8794;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.painter-progress-bar {
-  height: 100%;
-  background: #ff7800;
-  border-radius: 10px;
+.painter-scheme-dates {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 8px;
+  color: #9aa4b2;
 }
 
-/* =========================
+.painter-scheme-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #f0f2f5;
+  font-size: 8px;
+  color: #8a95a3;
+}
+
+.painter-scheme-status {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* ==========================================
+   EMPTY STATE
+========================================== */
+
+.painter-empty-state {
+  width: 100%;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #8a95a3;
+  font-size: 11px;
+}
+
+/* ==========================================
+   LOADING
+========================================== */
+
+.painter-dashboard-loading {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
+  padding: 9px 13px;
+  border: 1px solid #e1e6ec;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #6b7280;
+  font-size: 10px;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.08);
+}
+
+/* ==========================================
    RESPONSIVE
-========================= */
+========================================== */
 
 @media (max-width: 1200px) {
   .painter-summary-grid {
@@ -386,14 +549,13 @@
   .painter-dashboard-bottom {
     grid-template-columns: 1fr;
   }
+
+  .painter-schemes-card {
+    min-height: auto;
+  }
 }
 
 @media (max-width: 900px) {
-  .painter-dashboard {
-    padding: 16px;
-    padding-top:88px;
-  }
-
   .painter-dashboard-middle {
     grid-template-columns: 1fr;
   }
@@ -401,30 +563,37 @@
   .painter-dashboard-bottom {
     grid-template-columns: 1fr;
   }
+
+  .painter-quick-actions {
+    flex-wrap: wrap;
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .painter-dashboard {
-    padding: 14px;
+    padding: 15px;
     padding-top: 88px;
   }
 
+  .painter-dashboard-header {
+    align-items: flex-start;
+  }
+
   .painter-dashboard-header h1 {
-    font-size: 21px;
+    font-size: 20px;
   }
 
   .painter-summary-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
   }
 
   .painter-summary-card {
-    min-height: 100px;
+    min-height: 105px;
   }
 
   .painter-quick-actions {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 9px;
   }
 
   .painter-quick-action {
@@ -432,43 +601,68 @@
   }
 
   .painter-loyalty-row {
-    flex-wrap: wrap;
-    gap: 9px;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 20px;
   }
 
-  .painter-latest-points {
-    font-size: 23px;
-  }
-
-  .painter-monthly-card,
-  .painter-schemes-card {
-    height: auto;
-    min-height: 210px;
+  .painter-loyalty-badge {
+    width: fit-content;
   }
 
   .painter-chart {
-    gap: 10px;
-    padding: 0 5px;
+    gap: 8px;
   }
 
-  .painter-chart-column {
+  .painter-chart-bar-wrapper {
     max-width: 42px;
+  }
+
+  .painter-chart-month {
+    font-size: 8px;
+  }
+
+  .painter-scheme-dates {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
+  .painter-dashboard {
+    padding: 12px;
+    padding-top: 88px;
+  }
+
   .painter-dashboard-header h1 {
-    font-size: 19px;
+    font-size: 18px;
   }
 
-  .painter-summary-content strong {
-    font-size: 20px;
+  .painter-dashboard-header p {
+    font-size: 10px;
   }
 
-  .painter-quick-card,
-  .painter-latest-card,
-  .painter-monthly-card,
-  .painter-schemes-card {
-    padding: 15px;
+  .painter-summary-value {
+    font-size: 21px;
+  }
+
+  .painter-dashboard-card h2 {
+    font-size: 13px;
+  }
+
+  .painter-chart {
+    gap: 5px;
+  }
+
+  .painter-chart-bar-wrapper {
+    max-width: 34px;
+  }
+
+  .painter-chart-value {
+    font-size: 7px;
+  }
+
+  .painter-chart-month {
+    font-size: 7px;
   }
 }

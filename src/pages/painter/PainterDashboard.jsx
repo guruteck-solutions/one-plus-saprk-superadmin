@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   Award,
   Bell,
@@ -67,14 +67,56 @@ const PainterDashboard = () => {
     activeSchemes,
   } = dashboardData;
 
+  const currentMonthReward = useMemo(() => {
+    if (!monthlyRewardSummary?.length) {
+      return 0;
+    }
+
+    const currentMonth = monthlyRewardSummary.find(
+      (item) => item.current
+    );
+
+    return currentMonth?.points || 0;
+  }, [monthlyRewardSummary]);
+
+  const maxMonthlyPoints = useMemo(() => {
+    if (!monthlyRewardSummary?.length) {
+      return 0;
+    }
+
+    return Math.max(
+      ...monthlyRewardSummary.map(
+        (item) => Number(item.points) || 0
+      ),
+      0
+    );
+  }, [monthlyRewardSummary]);
+
+  const formatDate = (date) => {
+    if (!date) {
+      return "-";
+    }
+
+    return new Date(date).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    });
+  };
+
   return (
     <div className="painter-dashboard">
 
-      {/* Page Header */}
+      {/* ==========================================
+          PAGE HEADER
+      ========================================== */}
+
       <div className="painter-dashboard-header">
         <div>
           <h1>Painter Dashboard / Home</h1>
-          <p>Oneplus Spark PAINTS • Painter experience</p>
+          <p>
+            Oneplus Spark PAINTS • Painter experience
+          </p>
         </div>
 
         <button
@@ -82,85 +124,119 @@ const PainterDashboard = () => {
           className="painter-notification-btn"
           title="Notifications"
         >
-          <Bell size={19} />
+          <Bell size={18} />
         </button>
       </div>
 
-      {/* Summary Cards */}
+      {/* ==========================================
+          SUMMARY CARDS
+      ========================================== */}
+
       <div className="painter-summary-grid">
 
+        {/* Reward Points */}
         <div className="painter-summary-card">
-          <div className="painter-summary-icon">
-            <Star size={18} />
+          <div className="painter-summary-top">
+            <div className="painter-summary-icon reward-icon">
+              <Star size={17} />
+            </div>
+
+            <span className="painter-summary-label">
+              Reward Points
+            </span>
           </div>
 
-          <div className="painter-summary-content">
-            <span>Reward Points</span>
+          <strong className="painter-summary-value">
+            {Number(
+              summary?.totalRewardPoints || 0
+            ).toLocaleString()}
+          </strong>
 
-            <strong>
-              {summary?.totalRewardPoints || 0}
-            </strong>
-
-            <small>-</small>
-          </div>
+          <small className="painter-summary-positive">
+            {currentMonthReward > 0
+              ? `+ ${currentMonthReward} this month`
+              : "-"}
+          </small>
         </div>
 
+        {/* Cash Rewards */}
         <div className="painter-summary-card">
-          <div className="painter-summary-icon">
-            <Gift size={18} />
+          <div className="painter-summary-top">
+            <div className="painter-summary-icon cash-icon">
+              <Gift size={17} />
+            </div>
+
+            <span className="painter-summary-label">
+              Cash Rewards
+            </span>
           </div>
 
-          <div className="painter-summary-content">
-            <span>Cash Rewards</span>
+          <strong className="painter-summary-value">
+            ₹
+            {Number(
+              summary?.totalCashRewards || 0
+            ).toLocaleString()}
+          </strong>
 
-            <strong>
-              ₹
-              {Number(
-                summary?.totalCashRewards || 0
-              ).toLocaleString()}
-            </strong>
-
-            <small>-</small>
-          </div>
+          <small className="painter-summary-positive">
+            -
+          </small>
         </div>
 
+        {/* Pending Rewards */}
         <div className="painter-summary-card">
-          <div className="painter-summary-icon">
-            <Award size={18} />
+          <div className="painter-summary-top">
+            <div className="painter-summary-icon pending-icon">
+              <Award size={17} />
+            </div>
+
+            <span className="painter-summary-label">
+              Pending Rewards
+            </span>
           </div>
 
-          <div className="painter-summary-content">
-            <span>Pending Rewards</span>
+          <strong className="painter-summary-value">
+            {Number(
+              summary?.pendingRewards || 0
+            ).toLocaleString()}
+          </strong>
 
-            <strong>
-              {summary?.pendingRewards || 0}
-            </strong>
-
-            <small className="pending-text">
-              -
-            </small>
-          </div>
+          <small className="painter-summary-muted">
+            {summary?.pendingRewards > 0
+              ? "Under verification"
+              : "-"}
+          </small>
         </div>
 
+        {/* Product Scans */}
         <div className="painter-summary-card">
-          <div className="painter-summary-icon">
-            <QrCode size={18} />
+          <div className="painter-summary-top">
+            <div className="painter-summary-icon scan-icon">
+              <QrCode size={17} />
+            </div>
+
+            <span className="painter-summary-label">
+              Product Scans
+            </span>
           </div>
 
-          <div className="painter-summary-content">
-            <span>Product Scans</span>
+          <strong className="painter-summary-value">
+            {Number(
+              summary?.productScans || 0
+            ).toLocaleString()}
+          </strong>
 
-            <strong>
-              {summary?.productScans || 0}
-            </strong>
-
-            <small>-</small>
-          </div>
+          <small className="painter-summary-positive">
+            -
+          </small>
         </div>
 
       </div>
 
-      {/* Middle Section */}
+      {/* ==========================================
+          MIDDLE SECTION
+      ========================================== */}
+
       <div className="painter-dashboard-middle">
 
         {/* Quick Actions */}
@@ -207,7 +283,7 @@ const PainterDashboard = () => {
               {painter?.loyaltyTier || "-"}
             </span>
 
-            <strong>
+            <strong className="painter-loyalty-progress">
               {painter?.loyaltyProgress
                 ? `${painter.loyaltyProgress}% to ${
                     painter.nextTier || "-"
@@ -227,18 +303,24 @@ const PainterDashboard = () => {
           {latestReward ? (
             <>
               <div className="painter-latest-points">
-
                 {latestReward.rewardType === "POINTS"
-                  ? `+${latestReward.points || 0} Points`
+                  ? `+${Number(
+                      latestReward.points || 0
+                    ).toLocaleString()} Points`
                   : `₹${Number(
                       latestReward.cashAmount || 0
                     ).toLocaleString()}`}
-
               </div>
 
               <p className="painter-latest-description">
                 {latestReward.description || "-"}
               </p>
+
+              {latestReward.reference && (
+                <span className="painter-latest-reference">
+                  Reference: {latestReward.reference}
+                </span>
+              )}
 
               <button
                 type="button"
@@ -257,40 +339,75 @@ const PainterDashboard = () => {
 
       </div>
 
-      {/* Bottom Section */}
+      {/* ==========================================
+          BOTTOM SECTION
+      ========================================== */}
+
       <div className="painter-dashboard-bottom">
 
-        {/* Monthly Reward Summary */}
+        {/* ==========================================
+            MONTHLY REWARD SUMMARY
+        ========================================== */}
+
         <section className="painter-dashboard-card painter-monthly-card">
 
-          <h2>Monthly Reward Summary</h2>
+          <div className="painter-section-heading">
+            <h2>Monthly Reward Summary</h2>
+
+            {maxMonthlyPoints > 0 && (
+              <span className="painter-chart-max">
+                {maxMonthlyPoints}
+              </span>
+            )}
+          </div>
 
           {monthlyRewardSummary?.length > 0 ? (
             <div className="painter-chart">
 
-              {monthlyRewardSummary.map((item) => (
-                <div
-                  className="painter-chart-column"
-                  key={item.month}
-                >
+              {monthlyRewardSummary.map((item) => {
+                const points =
+                  Number(item.points) || 0;
 
-                  <div className="painter-chart-bar-wrapper">
+                const percentage =
+                  Number(item.percentage) || 0;
 
-                    <div
-                      className={`painter-chart-bar ${
-                        item.current ? "current" : ""
-                      }`}
-                      style={{
-                        height: `${item.percentage || 0}%`,
-                      }}
-                    />
+                return (
+                  <div
+                    className="painter-chart-column"
+                    key={`${item.month}-${item.year}`}
+                  >
+                    <div className="painter-chart-bar-wrapper">
 
+                      {points > 0 && (
+                        <span className="painter-chart-value">
+                          {points}
+                        </span>
+                      )}
+
+                      <div
+                        className={`painter-chart-bar ${
+                          item.current
+                            ? "current"
+                            : ""
+                        }`}
+                        style={{
+                          height: `${
+                            points > 0
+                              ? Math.max(percentage, 4)
+                              : 0
+                          }%`,
+                        }}
+                        title={`${item.month}: ${points} points`}
+                      />
+
+                    </div>
+
+                    <span className="painter-chart-month">
+                      {item.month}
+                    </span>
                   </div>
-
-                  <span>{item.month}</span>
-
-                </div>
-              ))}
+                );
+              })}
 
             </div>
           ) : (
@@ -301,7 +418,10 @@ const PainterDashboard = () => {
 
         </section>
 
-        {/* Active Schemes */}
+        {/* ==========================================
+            ACTIVE SCHEMES
+        ========================================== */}
+
         <section className="painter-dashboard-card painter-schemes-card">
 
           <h2>Active Schemes</h2>
@@ -312,29 +432,57 @@ const PainterDashboard = () => {
               {activeSchemes.map((scheme) => (
                 <div
                   className="painter-scheme-item"
-                  key={scheme._id || scheme.name}
+                  key={
+                    scheme._id ||
+                    scheme.schemeId
+                  }
                 >
 
                   <div className="painter-scheme-header">
 
                     <strong>
-                      {scheme.name || "-"}
+                      {scheme.schemeName || "-"}
                     </strong>
 
                     <span>
-                      {scheme.progress || 0}%
+                      {scheme.schemeType || "-"}
                     </span>
 
                   </div>
 
-                  <div className="painter-progress-track">
+                  <p>
+                    {scheme.description ||
+                      "No description available"}
+                  </p>
 
-                    <div
-                      className="painter-progress-bar"
-                      style={{
-                        width: `${scheme.progress || 0}%`,
-                      }}
-                    />
+                  <div className="painter-scheme-dates">
+
+                    <span>
+                      Start:{" "}
+                      {formatDate(
+                        scheme.startDate
+                      )}
+                    </span>
+
+                    <span>
+                      End:{" "}
+                      {formatDate(
+                        scheme.endDate
+                      )}
+                    </span>
+
+                  </div>
+
+                  <div className="painter-scheme-footer">
+
+                    <span>
+                      Applicable:{" "}
+                      {scheme.applicableTo || "-"}
+                    </span>
+
+                    <span className="painter-scheme-status">
+                      Active
+                    </span>
 
                   </div>
 
@@ -351,6 +499,13 @@ const PainterDashboard = () => {
         </section>
 
       </div>
+
+      {/* Loading Overlay */}
+      {loading && (
+        <div className="painter-dashboard-loading">
+          Loading dashboard...
+        </div>
+      )}
 
     </div>
   );

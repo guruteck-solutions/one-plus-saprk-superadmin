@@ -1,0 +1,173 @@
+.painter-leaderboard-page {
+  width: 100%;
+  min-width: 0;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #f8faff;
+  padding-top: 88px;
+}
+
+.painter-leaderboard-header {
+  margin-bottom: 30px;
+}
+
+.painter-leaderboard-header h2 {
+  margin: 0 0 7px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #192331;
+}
+
+.painter-leaderboard-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.painter-leaderboard-card {
+  width: 100%;
+  min-height: 575px;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #dce3ed;
+  border-radius: 14px;
+  box-sizing: border-box;
+}
+
+.painter-leaderboard-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.painter-leaderboard-card-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #192331;
+}
+
+.painter-leaderboard-future-badge {
+  padding: 8px 25px;
+  border-radius: 20px;
+  background: #f2eaff;
+  color: #7048d8;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.painter-leaderboard-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.painter-leaderboard-table {
+  width: 100%;
+  min-width: 650px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.painter-leaderboard-table thead {
+  background: #f1f4f8;
+}
+
+.painter-leaderboard-table th {
+  padding: 13px 12px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.painter-leaderboard-table td {
+  padding: 15px 12px;
+  border-bottom: 1px solid #edf0f4;
+  color: #253041;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.painter-leaderboard-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.painter-leaderboard-name {
+  font-weight: 600;
+}
+
+.painter-leaderboard-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 105px;
+  padding: 7px 13px;
+  border-radius: 20px;
+  background: #f1f4f8;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.painter-leaderboard-message {
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.painter-leaderboard-message h4 {
+  margin: 0 0 8px;
+  color: #253041;
+  font-size: 18px;
+}
+
+.painter-leaderboard-message p {
+  margin: 0;
+  font-size: 13px;
+}
+
+.painter-leaderboard-error {
+  color: #dc2626;
+}
+
+@media (max-width: 768px) {
+  .painter-leaderboard-page {
+    padding: 16px;
+    padding-top: 88px;
+  }
+
+  .painter-leaderboard-header h2 {
+    font-size: 22px;
+  }
+
+  .painter-leaderboard-card {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .painter-leaderboard-card-header {
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .painter-leaderboard-card-header {
+    flex-direction: column;
+  }
+
+  .painter-leaderboard-future-badge {
+    align-self: flex-start;
+  }
+
+  .painter-leaderboard-message {
+    min-height: 250px;
+  }
+}
