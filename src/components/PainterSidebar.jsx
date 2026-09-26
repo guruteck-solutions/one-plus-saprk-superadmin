@@ -111,6 +111,11 @@ const PainterSidebar = ({ isOpen, onClose }) => {
 
   const dashboardItems = [
     {
+      label: "Dashboard",
+      icon: Home,
+      path: "/painter/dashboard",
+    },
+    {
       label: "Quick Scan",
       icon: QrCode,
       path: "/painter/quick-scan",
@@ -142,11 +147,11 @@ const PainterSidebar = ({ isOpen, onClose }) => {
   ===================================================== */
 
   const scanRewardsItems = [
-    // {
-    //   label: "Barcode Scanner",
-    //   icon: QrCode,
-    //   path: "/painter/barcode-scanner",
-    // },
+    {
+      label: "Barcode Scanner",
+      icon: QrCode,
+      path: "/painter/barcode-scanner",
+    },
     {
       label: "Manual Code Entry",
       icon: QrCode,

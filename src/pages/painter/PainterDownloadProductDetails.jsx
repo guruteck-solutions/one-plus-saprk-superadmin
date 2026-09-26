@@ -7,6 +7,7 @@ import "../../css/painter/PainterDownloadProductDetails.css";
 const PRODUCT_API = "http://localhost:5000/api/painter/products";
 const DOCUMENT_API = "http://localhost:5000/api/painter/documents/categories";
 const DOWNLOAD_API = "http://localhost:5000/api/documents";
+const SERVER_URL = "http://localhost:5000";
 
 const DOCUMENT_TYPES = [
     {
@@ -149,7 +150,7 @@ const PainterDownloadProductDetails = () => {
 
             alert(
                 error?.response?.data?.message ||
-                    "Failed to download document."
+                "Failed to download document."
             );
         } finally {
             setDownloadingId(null);
@@ -245,8 +246,17 @@ const PainterDownloadProductDetails = () => {
                 {/* PRODUCT IMAGE */}
 
                 <div className="painter-product-details-image">
-                    <span>PRODUCT</span>
-                    <strong>IMAGE</strong>
+                    {product.image ? (
+                        <img
+                            src={`${SERVER_URL}${product.image}`}
+                            alt={product.productName || "Product"}
+                        />
+                    ) : (
+                        <>
+                            <span>PRODUCT</span>
+                            <strong>IMAGE</strong>
+                        </>
+                    )}
                 </div>
 
                 {/* PRODUCT CONTENT */}

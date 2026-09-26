@@ -5,6 +5,7 @@ import axios from "axios";
 import "../../css/painter/PainterShopProductListing.css";
 
 const PRODUCT_API = "http://localhost:5000/api/painter/products";
+const SERVER_URL = "http://localhost:5000";
 
 const PainterShopProductListing = () => {
     const navigate = useNavigate();
@@ -155,15 +156,21 @@ const PainterShopProductListing = () => {
 
                         return (
                             <div
-                                className={`painter-shop-product-card ${
-                                    selected
+                                className={`painter-shop-product-card ${selected
                                         ? "painter-shop-product-card-selected"
                                         : ""
-                                }`}
+                                    }`}
                                 key={product._id}
                             >
                                 <div className="painter-shop-product-image">
-                                    <Package size={34} />
+                                    {product.image ? (
+                                        <img
+                                            src={`${SERVER_URL}${product.image}`}
+                                            alt={product.productName || "Product"}
+                                        />
+                                    ) : (
+                                        <Package size={34} />
+                                    )}
 
                                     {selected && (
                                         <div className="painter-shop-product-selected-icon">
@@ -196,11 +203,10 @@ const PainterShopProductListing = () => {
 
                                         <button
                                             type="button"
-                                            className={`painter-shop-add-btn ${
-                                                selected
+                                            className={`painter-shop-add-btn ${selected
                                                     ? "painter-shop-add-btn-selected"
                                                     : ""
-                                            }`}
+                                                }`}
                                             onClick={() =>
                                                 handleAdd(product)
                                             }

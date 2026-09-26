@@ -8,6 +8,7 @@
   padding: 14px 24px 24px;
   box-sizing: border-box;
   background: #f5f6f8;
+  padding-top: 88px;
 }
 
 /* ==========================================
@@ -156,6 +157,8 @@
 @media (max-width: 768px) {
   .painter-tier-benefits-page {
     padding: 16px;
+      padding-top: 88px;
+
   }
 
   .painter-tier-benefits-header {
@@ -186,6 +189,7 @@
 @media (max-width: 480px) {
   .painter-tier-benefits-page {
     padding: 12px;
+      padding-top: 88px;
   }
 
   .painter-tier-benefits-header h1 {

@@ -18,6 +18,7 @@ const PainterQuickShop = () => {
     const [enquiryMessage, setEnquiryMessage] = useState("");
 
     const API_URL = "http://localhost:5000/api";
+    const SERVER_URL = "http://localhost:5000";
 
     useEffect(() => {
         fetchProducts();
@@ -139,7 +140,7 @@ const PainterQuickShop = () => {
                                 <div className="painter-shop-product-image">
                                     {product.image ? (
                                         <img
-                                            src={product.image}
+                                            src={`${SERVER_URL}${product.image}`}
                                             alt={product.productName || "Product"}
                                         />
                                     ) : (
@@ -209,7 +210,7 @@ const PainterQuickShop = () => {
                             <div className="painter-shop-modal-image">
                                 {selectedProduct.image ? (
                                     <img
-                                        src={selectedProduct.image}
+                                        src={`${SERVER_URL}${selectedProduct.image}`}
                                         alt={selectedProduct.productName || "Product"}
                                     />
                                 ) : (

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../../css/painter/PainterDownloadProductListing.css";
 
 const API_URL = "http://localhost:5000/api/painter/products";
+const SERVER_URL = "http://localhost:5000";
 
 const PainterDownloadProductListing = () => {
     const [products, setProducts] = useState([]);
@@ -69,7 +70,14 @@ const PainterDownloadProductListing = () => {
                             key={product._id}
                         >
                             <div className="painter-product-listing-image">
-                                <span>P</span>
+                                {product.image ? (
+                                    <img
+                                        src={`${SERVER_URL}${product.image}`}
+                                        alt={product.productName || "Product"}
+                                    />
+                                ) : (
+                                    <span>P</span>
+                                )}
                             </div>
 
                             <div className="painter-product-listing-info">
