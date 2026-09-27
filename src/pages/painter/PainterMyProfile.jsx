@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { User, Mail, Phone, MapPin, ShieldCheck, CalendarDays } from "lucide-react";
+import {
+  User,
+  Mail,
+  Phone,
+  MapPin,
+  ShieldCheck,
+  CalendarDays,
+} from "lucide-react";
 import "../../css/painter/PainterMyProfile.css";
 
 const PainterMyProfile = () => {
@@ -33,13 +40,17 @@ const PainterMyProfile = () => {
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.message || "Failed to fetch profile");
+        throw new Error(
+          result.message || "Failed to fetch profile"
+        );
       }
 
       setProfile(result.data);
     } catch (error) {
       console.error("Fetch Profile Error:", error);
-      setError(error.message || "Failed to load profile");
+      setError(
+        error.message || "Failed to load profile"
+      );
     } finally {
       setLoading(false);
     }
@@ -53,6 +64,16 @@ const PainterMyProfile = () => {
       month: "short",
       year: "numeric",
     });
+  };
+
+  const getProfileImageUrl = (image) => {
+    if (!image) return "";
+
+    if (image.startsWith("http")) {
+      return image;
+    }
+
+    return `${API_BASE_URL}${image}`;
   };
 
   if (loading) {
@@ -70,7 +91,9 @@ const PainterMyProfile = () => {
       <div className="painter-profile-page">
         <div className="painter-profile-error">
           <p>{error}</p>
-          <button onClick={fetchProfile}>Retry</button>
+          <button onClick={fetchProfile}>
+            Retry
+          </button>
         </div>
       </div>
     );
@@ -100,7 +123,9 @@ const PainterMyProfile = () => {
           <div className="painter-profile-image">
             {profile.profileImage ? (
               <img
-                src={profile.profileImage}
+                src={getProfileImageUrl(
+                  profile.profileImage
+                )}
                 alt={profile.name || "Painter"}
               />
             ) : (
@@ -135,9 +160,12 @@ const PainterMyProfile = () => {
             <div className="painter-profile-detail-icon">
               <Phone size={18} />
             </div>
+
             <div>
               <span>Mobile Number</span>
-              <strong>{profile.mobile || "-"}</strong>
+              <strong>
+                {profile.mobile || "-"}
+              </strong>
             </div>
           </div>
 
@@ -145,9 +173,12 @@ const PainterMyProfile = () => {
             <div className="painter-profile-detail-icon">
               <Mail size={18} />
             </div>
+
             <div>
               <span>Email Address</span>
-              <strong>{profile.email || "-"}</strong>
+              <strong>
+                {profile.email || "-"}
+              </strong>
             </div>
           </div>
 
@@ -155,9 +186,12 @@ const PainterMyProfile = () => {
             <div className="painter-profile-detail-icon">
               <MapPin size={18} />
             </div>
+
             <div>
               <span>City</span>
-              <strong>{profile.city || "-"}</strong>
+              <strong>
+                {profile.city || "-"}
+              </strong>
             </div>
           </div>
 
@@ -165,9 +199,12 @@ const PainterMyProfile = () => {
             <div className="painter-profile-detail-icon">
               <MapPin size={18} />
             </div>
+
             <div>
               <span>Serviceable Area</span>
-              <strong>{profile.serviceableArea || "-"}</strong>
+              <strong>
+                {profile.serviceableArea || "-"}
+              </strong>
             </div>
           </div>
 
@@ -175,9 +212,12 @@ const PainterMyProfile = () => {
             <div className="painter-profile-detail-icon">
               <CalendarDays size={18} />
             </div>
+
             <div>
               <span>Joined Date</span>
-              <strong>{formatDate(profile.joinedAt)}</strong>
+              <strong>
+                {formatDate(profile.joinedAt)}
+              </strong>
             </div>
           </div>
         </div>

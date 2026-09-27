@@ -2322,14 +2322,16 @@ const PainterSidebar = ({ isOpen, onClose }) => {
         ================================================= */}
 
         <div className="painter-sidebar-footer">
-
           <button
             type="button"
             className="painter-sidebar-collapse-btn"
             onClick={onClose}
           >
-            <ChevronLeft size={18} />
-            <span>Close Menu</span>
+           <span>
+  Need Help
+  <br />
+  WhatsApp Support
+</span>
           </button>
 
         </div>

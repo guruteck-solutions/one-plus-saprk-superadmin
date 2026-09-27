@@ -48,7 +48,7 @@
   box-sizing: border-box;
 }
 
-.painter-sidebar-header > div {
+.painter-sidebar-header>div {
   min-width: 0;
 }
 
@@ -260,10 +260,9 @@
 }
 
 
-/* Dashboard main button */
+/* Dashboard main button - DEFAULT (BLACK + WHITE) */
 
-.painter-sidebar-dashboard-row
-.painter-sidebar-dashboard-item {
+.painter-sidebar-dashboard-row .painter-sidebar-dashboard-item {
   flex: 1;
 
   width: auto;
@@ -272,33 +271,31 @@
 
   border-radius: 8px 0 0 8px;
 
-  background: #ff7818;
+  background: transparent;
 
   color: #ffffff;
 
-  font-weight: 600;
+  font-weight: 500;
 
-  box-shadow: 0 3px 8px rgba(255, 120, 24, 0.16);
+  box-shadow: none;
 }
 
-.painter-sidebar-dashboard-row
-.painter-sidebar-dashboard-item svg {
+.painter-sidebar-dashboard-row .painter-sidebar-dashboard-item svg {
   color: #ffffff;
 }
 
 
-/* Dashboard hover */
+/* Dashboard hover - DARK BACKGROUND */
 
-.painter-sidebar-dashboard-row
-.painter-sidebar-dashboard-item:hover {
-  background: #f56f10;
+.painter-sidebar-dashboard-row .painter-sidebar-dashboard-item:hover {
+  background: #1b2934;
 
   color: #ffffff;
 }
 
 
 /* =========================================================
-   DASHBOARD DROPDOWN BUTTON
+   DASHBOARD DROPDOWN BUTTON - DEFAULT (BLACK + WHITE)
 ========================================================= */
 
 .painter-sidebar-dropdown-btn {
@@ -314,7 +311,7 @@
 
   border-radius: 0 8px 8px 0;
 
-  background: #ff7818;
+  background: transparent;
 
   color: #ffffff;
 
@@ -324,7 +321,7 @@
 }
 
 .painter-sidebar-dropdown-btn:hover {
-  background: #f56f10;
+  background: #1b2934;
 }
 
 .painter-sidebar-dropdown-btn svg {
@@ -457,6 +454,7 @@
   background: #101a23;
 
   box-sizing: border-box;
+
 }
 
 
@@ -481,7 +479,7 @@
 
   background: #17232d;
 
-  color: #9daab6;
+  color: #ff7818;
 
   font-family: inherit;
 
@@ -493,6 +491,8 @@
   box-sizing: border-box;
 
   transition: all 0.2s ease;
+
+  justify-content: center;
 }
 
 .painter-sidebar-collapse-btn svg {
@@ -549,11 +549,6 @@
   .painter-sidebar {
     transform: translateX(0);
   }
-
-  /*
-    Desktop par close button optional hai.
-    Sidebar permanently visible rahega.
-  */
 
   .painter-sidebar-close-btn {
     display: none;
@@ -740,16 +735,17 @@
   }
 }
 
+
 /* =========================================================
-   ACTIVE DASHBOARD
+   🟠 ACTIVE STATES - SIRF ACTIVE PAGE KO ORANGE
 ========================================================= */
+
+/* Active Dashboard Item - ORANGE */
 
 .painter-sidebar-dashboard-item.painter-sidebar-active {
   background: #ff7818 !important;
   color: #ffffff !important;
-
   font-weight: 600;
-
   box-shadow: 0 3px 8px rgba(255, 120, 24, 0.16);
 }
 
@@ -758,9 +754,7 @@
 }
 
 
-/* =========================================================
-   DASHBOARD DROPDOWN ACTIVE
-========================================================= */
+/* Active Dropdown Button - ORANGE */
 
 .painter-sidebar-dropdown-active {
   background: #ff7818 !important;
@@ -772,32 +766,22 @@
 }
 
 
-/* =========================================================
-   ACTIVE SUBMENU
-========================================================= */
+/* Active Submenu Item - ORANGE */
 
 .painter-sidebar-subitem-active {
   background: rgba(255, 120, 24, 0.13) !important;
-
   color: #ff7818 !important;
-
   font-weight: 600 !important;
-
   border-left: 2px solid #ff7818;
 }
 
 .painter-sidebar-subitem-active svg {
   color: #ff7818 !important;
-
   stroke-width: 2;
 }
 
-
-/* Active submenu hover */
-
 .painter-sidebar-subitem-active:hover {
   background: rgba(255, 120, 24, 0.17) !important;
-
   color: #ff7818 !important;
 }
 
@@ -806,15 +790,11 @@
 }
 
 
-/* =========================================================
-   ACTIVE MAIN MENU
-========================================================= */
+/* Active Main Menu Item - ORANGE */
 
 .painter-sidebar-main-active {
   background: rgba(255, 120, 24, 0.13) !important;
-
   color: #ff7818 !important;
-
   font-weight: 600 !important;
 }
 
@@ -824,7 +804,6 @@
 
 .painter-sidebar-main-active:hover {
   background: rgba(255, 120, 24, 0.17) !important;
-
   color: #ff7818 !important;
 }
 

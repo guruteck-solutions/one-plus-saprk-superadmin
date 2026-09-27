@@ -41,10 +41,22 @@ const PainterShareProfile = () => {
       setProfile(result.data);
     } catch (error) {
       console.error("Fetch Share Profile Error:", error);
-      setError(error.message || "Failed to load profile");
+      setError(
+        error.message || "Failed to load profile"
+      );
     } finally {
       setLoading(false);
     }
+  };
+
+  const getProfileImageUrl = (image) => {
+    if (!image) return "";
+
+    if (image.startsWith("http")) {
+      return image;
+    }
+
+    return `${API_BASE_URL}${image}`;
   };
 
   const getProfileLink = () => {
@@ -58,7 +70,9 @@ const PainterShareProfile = () => {
 
     const message = `Check out my OnePlus Spark Painter Profile.\n\nName: ${profile.name}\nTier: ${profile.tier}\nRewards Earned: ${profile.rewardsEarned}\n\nView Profile: ${profileLink}`;
 
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(
+      message
+    )}`;
 
     window.open(whatsappUrl, "_blank");
   };
@@ -67,10 +81,17 @@ const PainterShareProfile = () => {
     if (!profile) return;
 
     try {
-      await navigator.clipboard.writeText(getProfileLink());
+      await navigator.clipboard.writeText(
+        getProfileLink()
+      );
+
       alert("Profile link copied successfully.");
     } catch (error) {
-      console.error("Copy Profile Link Error:", error);
+      console.error(
+        "Copy Profile Link Error:",
+        error
+      );
+
       alert("Failed to copy profile link.");
     }
   };
@@ -95,6 +116,16 @@ const PainterShareProfile = () => {
     );
   }
 
+  if (!profile) {
+    return (
+      <div className="painter-share-profile-page">
+        <div className="painter-share-profile-error">
+          Profile not found.
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="painter-share-profile-page">
       <div className="painter-share-profile-header">
@@ -108,8 +139,10 @@ const PainterShareProfile = () => {
         <div className="painter-share-profile-avatar">
           {profile.profileImage ? (
             <img
-              src={profile.profileImage}
-              alt={profile.name}
+              src={getProfileImageUrl(
+                profile.profileImage
+              )}
+              alt={profile.name || "Painter"}
             />
           ) : (
             <span>

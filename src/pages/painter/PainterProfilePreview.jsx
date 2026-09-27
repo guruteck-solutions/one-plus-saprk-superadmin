@@ -86,6 +86,16 @@ const PainterProfilePreview = () => {
     });
   };
 
+  const getProfileImageUrl = (image) => {
+    if (!image) return "";
+
+    if (image.startsWith("http")) {
+      return image;
+    }
+
+    return `${API_BASE_URL}${image}`;
+  };
+
   if (loading) {
     return (
       <div className="painter-profile-preview-page">
@@ -119,8 +129,8 @@ const PainterProfilePreview = () => {
         <div className="painter-profile-preview-avatar">
           {profile.profileImage ? (
             <img
-              src={profile.profileImage}
-              alt={profile.name}
+              src={getProfileImageUrl(profile.profileImage)}
+              alt={profile.name || "Painter"}
             />
           ) : (
             <span>
