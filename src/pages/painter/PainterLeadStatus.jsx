@@ -16,7 +16,16 @@ const PainterLeadStatus = () => {
     try {
       setLoading(true);
 
-      const response = await fetch(`${API_BASE_URL}/api/painter/leads`);
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(`${API_BASE_URL}/api/painter/leads`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
       const data = await response.json();
 
       if (data.success) {
@@ -41,8 +50,17 @@ const PainterLeadStatus = () => {
     try {
       setLoadingDetails(true);
 
+      const token = localStorage.getItem("token");
+
       const response = await fetch(
-        `${API_BASE_URL}/api/painter/leads/${leadId}`
+        `${API_BASE_URL}/api/painter/leads/${leadId}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
       );
 
       const data = await response.json();

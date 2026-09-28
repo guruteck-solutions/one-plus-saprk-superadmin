@@ -4,7 +4,6 @@ import {
   Clock3,
   Gift,
   TrendingUp,
-  UserPlus,
   Share2,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -23,6 +22,7 @@ const PainterReferralDashboard = () => {
   });
 
   const [loading, setLoading] = useState(true);
+  const [sharing, setSharing] = useState(false);
   const [error, setError] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
 
@@ -82,14 +82,48 @@ const PainterReferralDashboard = () => {
     );
   };
 
-  const handleShareReferral = () => {
-    if (selectedCategories.length === 0) return;
+  const handleShareReferral = async () => {
+    if (selectedCategories.length === 0 || sharing) return;
 
-    navigate("/painter/share-referral", {
-      state: {
-        categories: selectedCategories,
-      },
-    });
+    try {
+      setSharing(true);
+      setError("");
+
+      const token = localStorage.getItem("token");
+
+      const categories = selectedCategories.map((category) =>
+        category.toUpperCase().replace(/\s+/g, "_")
+      );
+
+      const response = await fetch(
+        `${API_BASE_URL}/api/painter/referrals`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            categories,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message || "Failed to create referral"
+        );
+      }
+
+      navigate("/painter/share-referral");
+    } catch (error) {
+      console.error("Create referral error:", error);
+      setError(error.message || "Failed to create referral");
+    } finally {
+      setSharing(false);
+    }
   };
 
   return (
@@ -210,11 +244,19 @@ const PainterReferralDashboard = () => {
                 type="button"
                 className="painter-share-referral-btn"
                 onClick={handleShareReferral}
-                disabled={selectedCategories.length === 0}
+                disabled={
+                  selectedCategories.length === 0 || sharing
+                }
               >
                 <Share2 size={15} />
-                Share Referral
+                {sharing ? "Creating Referral..." : "Share Referral"}
               </button>
+
+              {error && (
+                <div className="painter-referral-dashboard-state error">
+                  {error}
+                </div>
+              )}
             </div>
           </div>
         </>

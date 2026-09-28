@@ -4,6 +4,8 @@ import {
   Route,
 } from "react-router-dom";
 
+import { Toaster } from "sonner";
+
 import Login from "./pages/superadmin/Login";
 import ForgotPassword from "./pages/superadmin/ForgotPassword";
 import OTPVerification from "./pages/superadmin/OTPVerification";

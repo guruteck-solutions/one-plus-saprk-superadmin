@@ -110,7 +110,15 @@ const PainterReferralHistory = () => {
                     <td>{referral.referredName || "-"}</td>
 
                     <td>
-                      {referral.category || "-"}
+                      {Array.isArray(referral.category)
+                        ? referral.category
+                          .map((item) =>
+                            item
+                              .replace(/_/g, " ")
+                              .replace(/\b\w/g, (char) => char.toUpperCase())
+                          )
+                          .join(", ")
+                        : referral.category || "-"}
                     </td>
 
                     <td>

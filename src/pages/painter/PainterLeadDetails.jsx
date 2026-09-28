@@ -23,8 +23,17 @@ const PainterLeadDetails = () => {
       const API_BASE_URL =
         import.meta.env.VITE_API_URL || "http://localhost:5000";
 
+      const token = localStorage.getItem("token");
+
       const response = await fetch(
-        `${API_BASE_URL}/api/painter/leads/${selectedLeadId}`
+        `${API_BASE_URL}/api/painter/leads/${selectedLeadId}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
       );
 
       const data = await response.json();
@@ -53,11 +62,14 @@ const PainterLeadDetails = () => {
       const API_BASE_URL =
         import.meta.env.VITE_API_URL || "http://localhost:5000";
 
+      const token = localStorage.getItem("token");
+
       const response = await fetch(
         `${API_BASE_URL}/api/painter/leads/${lead._id}/status`,
         {
           method: "PUT",
           headers: {
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ status }),

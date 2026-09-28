@@ -18,7 +18,16 @@ const PainterFollowUpNotes = () => {
     try {
       setLoading(true);
 
-      const response = await fetch(`${API_BASE_URL}/api/painter/leads`);
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(`${API_BASE_URL}/api/painter/leads`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
       const data = await response.json();
 
       if (data.success) {
@@ -83,6 +92,8 @@ const PainterFollowUpNotes = () => {
     try {
       setSubmitting(true);
 
+      const token = localStorage.getItem("token");
+
       const nextFollowUp = `${followUpDate}T${followUpTime}`;
 
       const response = await fetch(
@@ -90,6 +101,7 @@ const PainterFollowUpNotes = () => {
         {
           method: "POST",
           headers: {
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({

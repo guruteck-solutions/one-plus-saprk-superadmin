@@ -3,7 +3,8 @@ import { ArrowLeft, Download, FileText } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../../css/painter/PainterSchemePdfPreview.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const PainterSchemePdfPreview = () => {
   const navigate = useNavigate();
@@ -49,7 +50,11 @@ const PainterSchemePdfPreview = () => {
 
       setScheme(data.scheme);
     } catch (error) {
-      console.error("Fetch scheme PDF preview error:", error);
+      console.error(
+        "Fetch scheme PDF preview error:",
+        error
+      );
+
       setError(
         error.message || "Failed to load scheme"
       );
@@ -59,33 +64,64 @@ const PainterSchemePdfPreview = () => {
   };
 
   const getPdfUrl = () => {
-    if (!scheme?.pdf) return "";
+    if (!scheme?.pdf) {
+      return "";
+    }
 
-    if (scheme.pdf.startsWith("http")) {
+    if (
+      scheme.pdf.startsWith("http://") ||
+      scheme.pdf.startsWith("https://")
+    ) {
       return scheme.pdf;
     }
 
     return `${API_URL}${scheme.pdf}`;
   };
 
-  const handleDownload = () => {
-    const pdfUrl = getPdfUrl();
+  const handleDownload = async () => {
+    try {
+      const token = localStorage.getItem("token");
 
-    if (!pdfUrl) return;
+      const response = await fetch(
+        `${API_URL}/api/painter/schemes/${id}/download`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-    const link = document.createElement("a");
-    link.href = pdfUrl;
-    link.target = "_blank";
-    link.download = `${scheme?.schemeName || "scheme"}.pdf`;
-    link.click();
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+
+        throw new Error(
+          data.message || "Failed to download PDF"
+        );
+      }
+
+      const blob = await response.blob();
+
+      const blobUrl = window.URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = `${scheme?.schemeName || "scheme"}.pdf`;
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (error) {
+      console.error("PDF download error:", error);
+    }
   };
 
   if (!id) {
     return (
       <div className="painter-pdf-preview-page">
-
         <div className="painter-pdf-select-message">
-
           <FileText size={38} />
 
           <h2>Please select a scheme first</h2>
@@ -103,9 +139,7 @@ const PainterSchemePdfPreview = () => {
           >
             Go to Scheme Listing
           </button>
-
         </div>
-
       </div>
     );
   }
@@ -123,7 +157,6 @@ const PainterSchemePdfPreview = () => {
   if (error) {
     return (
       <div className="painter-pdf-preview-page">
-
         <button
           type="button"
           className="painter-pdf-back-btn"
@@ -138,7 +171,6 @@ const PainterSchemePdfPreview = () => {
         <div className="painter-pdf-message painter-pdf-error">
           {error}
         </div>
-
       </div>
     );
   }
@@ -157,10 +189,9 @@ const PainterSchemePdfPreview = () => {
 
   return (
     <div className="painter-pdf-preview-page">
-
       {/* Header */}
-      <div className="painter-pdf-preview-header">
 
+      <div className="painter-pdf-preview-header">
         <button
           type="button"
           className="painter-pdf-back-btn"
@@ -177,24 +208,22 @@ const PainterSchemePdfPreview = () => {
         <p>
           Oneplus Spark PAINTS • Painter experience
         </p>
-
       </div>
 
-
       {/* Preview Card */}
-      <div className="painter-pdf-preview-card">
 
-        <h2>Scheme PDF Preview</h2>
+      <div className="painter-pdf-preview-card">
+        <h2>
+          {scheme.schemeName || "Scheme PDF Preview"}
+        </h2>
 
         {pdfUrl ? (
           <>
             <div className="painter-pdf-viewer">
-
               <iframe
                 src={pdfUrl}
-                title={`${scheme.schemeName} PDF`}
+                title={`${scheme.schemeName || "Scheme"} PDF`}
               />
-
             </div>
 
             <button
@@ -208,7 +237,6 @@ const PainterSchemePdfPreview = () => {
           </>
         ) : (
           <div className="painter-pdf-not-available">
-
             <FileText size={38} />
 
             <h3>PDF Not Available</h3>
@@ -220,17 +248,16 @@ const PainterSchemePdfPreview = () => {
             <button
               type="button"
               onClick={() =>
-                navigate(`/painter/scheme-details/${id}`)
+                navigate(
+                  `/painter/scheme-details/${id}`
+                )
               }
             >
               Back to Scheme Details
             </button>
-
           </div>
         )}
-
       </div>
-
     </div>
   );
 };
