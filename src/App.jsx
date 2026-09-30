@@ -131,6 +131,15 @@ import PainterMonthlyPerformance from "./pages/painter/PainterMonthlyPerformance
 import PainterMilestoneProgress from "./pages/painter/PainterMilestoneProgress";
 import PainterLeaderboard from "./pages/painter/PainterLeaderboard";
 
+// Dealer
+import DealerLayout from "./layouts/DealerLayout";
+import DealerDashboard from "./pages/dealer/DealerDashboard";
+import DealerProductOrdering from "./pages/dealer/DealerProductOrdering";
+import DealerProductDetails from "./pages/dealer/DealerProductDetails";
+import DealerShoppingCart from "./pages/dealer/DealerShoppingCart";
+import DealerOrderHistory from "./pages/dealer/DealerOrderHistory";
+import DealerOrderDetails from "./pages/dealer/DealerOrderDetails";
+
 
 const App = () => {
   return (
@@ -270,6 +279,18 @@ const App = () => {
         <Route path="/painter/analytics/monthly-performance" element={<PainterLayout><PainterMonthlyPerformance /></PainterLayout>} />
         <Route path="/painter/analytics/milestone-progress" element={<PainterLayout><PainterMilestoneProgress /></PainterLayout>} />
         <Route path="/painter/analytics/leaderboard" element={<PainterLayout><PainterLeaderboard /></PainterLayout>} />
+
+
+        {/* Dealer */}
+        <Route path="/dealer/dashboard" element={<DealerLayout><DealerDashboard /></DealerLayout>} />
+        <Route path="/dealer/dashboard" element={<DealerLayout><DealerDashboard /></DealerLayout>} />
+        <Route path="/dealer/product-ordering" element={<DealerLayout><DealerProductOrdering /></DealerLayout>} />
+        <Route path="/dealer/product-ordering/:id" element={<DealerLayout><DealerProductDetails /></DealerLayout>} />
+        <Route path="/dealer/shopping-cart" element={<DealerLayout><DealerShoppingCart /></DealerLayout>} />
+        <Route path="/dealer/order-history" element={<DealerLayout><DealerOrderHistory /></DealerLayout>} />
+        <Route path="/dealer/order-history/:id" element={<DealerLayout><DealerOrderDetails /></DealerLayout>} />
+
+        
       </Routes>
       <Toaster position="top-right" richColors />
     </BrowserRouter>

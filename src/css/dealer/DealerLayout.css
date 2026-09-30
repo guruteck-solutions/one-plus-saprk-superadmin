@@ -1,0 +1,18 @@
+.dealer-layout {
+  min-height: 100vh;
+  width: 100%;
+  background: #ffffff;
+}
+
+.dealer-layout-content {
+  margin-left: 254px;
+  min-height: calc(100vh - 70px);
+  padding-top: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .dealer-layout-content {
+    margin-left: 0;
+  }
+}

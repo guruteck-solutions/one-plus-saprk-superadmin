@@ -1,0 +1,132 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  LayoutDashboard,
+  ShoppingCart,
+  PackageCheck,
+  Gift,
+  Award,
+  Tag,
+  Package,
+  Download,
+  Users,
+  Wallet,
+  BarChart3,
+  UserPlus,
+  Bell,
+  MessageSquareWarning,
+  UserCircle,
+  X,
+} from "lucide-react";
+import "../css/dealer/DealerSidebar.css";
+
+const DealerSidebar = ({
+  activeMenu = "Dashboard",
+  onMenuClick,
+  isOpen = false,
+  onClose,
+}) => {
+  const navigate = useNavigate();
+
+  const menuItems = [
+    { label: "Dashboard", icon: LayoutDashboard },
+    { label: "Product Ordering", icon: ShoppingCart },
+    { label: "Order History & Tracking", icon: PackageCheck },
+    { label: "Rewards & Redemption", icon: Gift },
+    { label: "Loyalty Tier", icon: Award },
+    { label: "Schemes & Offers", icon: Tag },
+    { label: "Product Catalogue", icon: Package },
+    { label: "Download Center", icon: Download },
+    { label: "Painter Enquiries", icon: Users },
+    { label: "Payment & Outstanding", icon: Wallet },
+    { label: "Purchase Analytics", icon: BarChart3 },
+    { label: "Refer & Earn", icon: UserPlus },
+    { label: "Notification", icon: Bell },
+    { label: "Complaint Management", icon: MessageSquareWarning },
+    { label: "Profile & Support", icon: UserCircle },
+  ];
+
+  const handleMenuClick = (label) => {
+    onMenuClick?.(label);
+
+    if (label === "Dashboard") {
+      navigate("/dealer/dashboard");
+    }
+
+    if (label === "Product Ordering") {
+      navigate("/dealer/product-ordering");
+    }
+
+      if (label === "Order History & Tracking") {
+    navigate("/dealer/order-history");
+  }
+
+    onClose?.();
+  };
+
+  return (
+    <>
+      <div
+        className={`dealer-sidebar-overlay ${isOpen ? "show" : ""}`}
+        onClick={onClose}
+      />
+
+      <aside className={`dealer-sidebar ${isOpen ? "open" : ""}`}>
+        <div className="dealer-sidebar-header">
+          <div>
+            <h2>Dealer Portal</h2>
+            <span>OnePlus Spark</span>
+          </div>
+
+          <button
+            type="button"
+            className="dealer-sidebar-close-btn"
+            onClick={onClose}
+            aria-label="Close sidebar"
+          >
+            <X size={21} />
+          </button>
+        </div>
+
+        <div className="dealer-sidebar-menu-wrapper">
+          <nav className="dealer-sidebar-menu">
+            {menuItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = activeMenu === item.label;
+
+              return (
+                <button
+                  type="button"
+                  key={item.label}
+                  className={`dealer-sidebar-menu-item ${
+                    isActive ? "active" : ""
+                  }`}
+                  onClick={() => handleMenuClick(item.label)}
+                >
+                  <div className="dealer-sidebar-menu-left">
+                    <Icon size={19} strokeWidth={1.8} />
+                    <span>{item.label}</span>
+                  </div>
+                </button>
+              );
+            })}
+          </nav>
+        </div>
+
+        <div className="dealer-sidebar-footer">
+          <div className="dealer-sidebar-help-card">
+            <div className="dealer-sidebar-help-title">
+              Need Help
+            </div>
+
+            <div className="dealer-sidebar-help-text">
+              WhatsApp Support
+            </div>
+          </div>
+        </div>
+      </aside>
+    </>
+  );
+};
+
+export default DealerSidebar;
