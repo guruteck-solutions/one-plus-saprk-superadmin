@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Bell } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterNotificationDetails.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -11,7 +12,6 @@ const PainterNotificationDetails = () => {
 
   const [notification, setNotification] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     if (id) {
@@ -24,7 +24,6 @@ const PainterNotificationDetails = () => {
   const fetchNotificationDetails = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -42,13 +41,18 @@ const PainterNotificationDetails = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Failed to fetch notification");
+        throw new Error(
+          data.message || "Failed to fetch notification"
+        );
       }
 
       setNotification(data.notification);
     } catch (error) {
       console.error("Fetch notification details error:", error);
-      setError(error.message || "Failed to load notification details");
+
+      toast.error(
+        error.message || "Failed to load notification details"
+      );
     } finally {
       setLoading(false);
     }
@@ -72,6 +76,7 @@ const PainterNotificationDetails = () => {
       <div className="painter-notification-details-page">
         <div className="painter-notification-details-header">
           <h1>Notification Details</h1>
+
           <p>
             Oneplus Spark PAINTS <span>•</span> Painter experience
           </p>
@@ -82,7 +87,9 @@ const PainterNotificationDetails = () => {
 
           <button
             type="button"
-            onClick={() => navigate("/painter/notification-listing")}
+            onClick={() =>
+              navigate("/painter/notification-listing")
+            }
           >
             Back to Notifications
           </button>
@@ -96,16 +103,6 @@ const PainterNotificationDetails = () => {
       <div className="painter-notification-details-page">
         <div className="painter-notification-details-state">
           Loading notification...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-notification-details-page">
-        <div className="painter-notification-details-state error">
-          {error}
         </div>
       </div>
     );
@@ -139,7 +136,9 @@ const PainterNotificationDetails = () => {
         <h2>{notification.title}</h2>
 
         <div className="painter-notification-details-date">
-          {formatDateTime(notification.sentOn || notification.createdAt)}
+          {formatDateTime(
+            notification.sentOn || notification.createdAt
+          )}
         </div>
 
         <div className="painter-notification-details-message">
@@ -158,7 +157,9 @@ const PainterNotificationDetails = () => {
           <button
             type="button"
             className="painter-notification-details-button"
-            onClick={() => window.open(notification.link, "_blank")}
+            onClick={() =>
+              window.open(notification.link, "_blank")
+            }
           >
             View Details
           </button>

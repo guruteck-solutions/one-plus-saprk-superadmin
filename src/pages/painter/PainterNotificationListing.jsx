@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Bell } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterNotificationListing.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -11,7 +12,6 @@ const PainterNotificationListing = () => {
   const [notifications, setNotifications] = useState([]);
   const [activeTab, setActiveTab] = useState("ALL");
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchNotifications();
@@ -20,7 +20,6 @@ const PainterNotificationListing = () => {
   const fetchNotifications = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -38,13 +37,18 @@ const PainterNotificationListing = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Failed to fetch notifications");
+        throw new Error(
+          data.message || "Failed to fetch notifications"
+        );
       }
 
       setNotifications(data.notifications || []);
     } catch (error) {
       console.error("Fetch painter notifications error:", error);
-      setError(error.message || "Failed to load notifications");
+
+      toast.error(
+        error.message || "Failed to load notifications"
+      );
     } finally {
       setLoading(false);
     }
@@ -150,10 +154,6 @@ const PainterNotificationListing = () => {
           <div className="painter-notification-state">
             Loading notifications...
           </div>
-        ) : error ? (
-          <div className="painter-notification-state error">
-            {error}
-          </div>
         ) : filteredNotifications.length === 0 ? (
           <div className="painter-notification-state">
             No notifications available.
@@ -165,7 +165,9 @@ const PainterNotificationListing = () => {
                 type="button"
                 className="painter-notification-row"
                 key={notification._id}
-                onClick={() => handleNotificationClick(notification._id)}
+                onClick={() =>
+                  handleNotificationClick(notification._id)
+                }
               >
                 <div
                   className={getNotificationIconClass(

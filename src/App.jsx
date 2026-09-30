@@ -271,8 +271,9 @@ const App = () => {
         <Route path="/painter/analytics/milestone-progress" element={<PainterLayout><PainterMilestoneProgress /></PainterLayout>} />
         <Route path="/painter/analytics/leaderboard" element={<PainterLayout><PainterLeaderboard /></PainterLayout>} />
       </Routes>
-
+      <Toaster position="top-right" richColors />
     </BrowserRouter>
+
   );
 };
 

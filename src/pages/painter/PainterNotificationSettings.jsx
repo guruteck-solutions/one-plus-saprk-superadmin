@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterNotificationSettings.css";
 
 const PainterNotificationSettings = () => {
@@ -15,7 +16,6 @@ const PainterNotificationSettings = () => {
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchSettings();
@@ -24,7 +24,6 @@ const PainterNotificationSettings = () => {
   const fetchSettings = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -58,7 +57,9 @@ const PainterNotificationSettings = () => {
       });
     } catch (error) {
       console.error("Fetch Notification Settings Error:", error);
-      setError(error.message || "Failed to load notification settings");
+      toast.error(
+        error.message || "Failed to load notification settings"
+      );
     } finally {
       setLoading(false);
     }
@@ -72,7 +73,6 @@ const PainterNotificationSettings = () => {
 
     try {
       setSaving(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -104,9 +104,13 @@ const PainterNotificationSettings = () => {
         complaintUpdates: result.data.complaintUpdates,
         marketingCampaigns: result.data.marketingCampaigns,
       });
+
+      toast.success("Notification settings updated successfully.");
     } catch (error) {
       console.error("Update Notification Settings Error:", error);
-      setError(error.message || "Failed to update notification settings");
+      toast.error(
+        error.message || "Failed to update notification settings"
+      );
     } finally {
       setSaving(false);
     }
@@ -158,12 +162,6 @@ const PainterNotificationSettings = () => {
 
       <div className="painter-notification-settings-card">
         <h2>Notification Settings</h2>
-
-        {error && (
-          <div className="painter-notification-settings-error">
-            {error}
-          </div>
-        )}
 
         <div className="painter-notification-list">
           {notificationItems.map((item) => (

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MessageSquare, X, ArrowLeft } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterComplaintDetails.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -19,8 +20,6 @@ const PainterComplaintDetails = () => {
   const [commentLoading, setCommentLoading] = useState(false);
   const [closeLoading, setCloseLoading] = useState(false);
 
-  const [error, setError] = useState("");
-
   useEffect(() => {
     if (!complaintId) {
       setLoading(false);
@@ -33,7 +32,6 @@ const PainterComplaintDetails = () => {
   const fetchComplaintDetails = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -57,7 +55,8 @@ const PainterComplaintDetails = () => {
       setComplaint(result.data);
     } catch (err) {
       console.error("Complaint details error:", err);
-      setError(err.message || "Failed to load complaint details.");
+      toast.error(err.message || "Failed to load complaint details.");
+      setComplaint(null);
     } finally {
       setLoading(false);
     }
@@ -94,7 +93,7 @@ const PainterComplaintDetails = () => {
 
   const handleAddComment = async () => {
     if (!comment.trim()) {
-      alert("Please enter a comment.");
+      toast.error("Please enter a comment.");
       return;
     }
 
@@ -128,10 +127,10 @@ const PainterComplaintDetails = () => {
       setComplaint(result.data);
       setComment("");
 
-      alert("Comment added successfully.");
+      toast.success("Comment added successfully.");
     } catch (err) {
       console.error("Add comment error:", err);
-      alert(err.message || "Failed to add comment.");
+      toast.error(err.message || "Failed to add comment.");
     } finally {
       setCommentLoading(false);
     }
@@ -169,10 +168,10 @@ const PainterComplaintDetails = () => {
 
       setComplaint(result.data);
 
-      alert("Complaint closed successfully.");
+      toast.success("Complaint closed successfully.");
     } catch (err) {
       console.error("Close complaint error:", err);
-      alert(err.message || "Failed to close complaint.");
+      toast.error(err.message || "Failed to close complaint.");
     } finally {
       setCloseLoading(false);
     }
@@ -227,13 +226,13 @@ const PainterComplaintDetails = () => {
     );
   }
 
-  if (error || !complaint) {
+  if (!complaint) {
     return (
       <div className="painter-complaint-details-page">
         <div className="painter-complaint-details-state painter-complaint-details-error">
           <h2>Unable to load complaint</h2>
 
-          <p>{error || "Complaint not found."}</p>
+          <p>Complaint not found.</p>
 
           <button
             type="button"

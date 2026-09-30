@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Bell, RefreshCw } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterNotifications.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -7,12 +8,10 @@ const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const PainterNotifications = () => {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const fetchNotifications = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -36,8 +35,14 @@ const PainterNotifications = () => {
 
       setNotifications(data.notifications || []);
     } catch (err) {
-      console.error("Fetch painter notifications error:", err);
-      setError(err.message || "Failed to load notifications");
+      console.error(
+        "Fetch painter notifications error:",
+        err
+      );
+
+      toast.error(
+        err.message || "Failed to load notifications"
+      );
     } finally {
       setLoading(false);
     }
@@ -77,17 +82,14 @@ const PainterNotifications = () => {
           className="painter-notifications-refresh-btn"
           onClick={fetchNotifications}
           title="Refresh"
+          disabled={loading}
         >
-          <RefreshCw size={18} />
+          <RefreshCw
+            size={18}
+            className={loading ? "painter-spin" : ""}
+          />
         </button>
       </div>
-
-      {/* Error */}
-      {error && (
-        <div className="painter-notifications-error">
-          {error}
-        </div>
-      )}
 
       {/* Notifications Card */}
       <div className="painter-notifications-card">

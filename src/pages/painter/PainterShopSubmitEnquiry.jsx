@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "sonner";
 import "../../css/painter/PainterShopSubmitEnquiry.css";
 
 const PainterShopSubmitEnquiry = () => {
@@ -53,7 +54,7 @@ const PainterShopSubmitEnquiry = () => {
             } catch (error) {
                 console.error("Dealers fetch error:", error);
 
-                alert(
+                toast.error(
                     error.response?.data?.message ||
                     "Failed to load dealers"
                 );
@@ -105,7 +106,9 @@ const PainterShopSubmitEnquiry = () => {
             );
 
             if (response.data.success) {
-                alert("Shop enquiry submitted successfully");
+                toast.success(
+                    "Shop enquiry submitted successfully"
+                );
 
                 navigate("/painter/shop");
             }
@@ -115,7 +118,7 @@ const PainterShopSubmitEnquiry = () => {
                 error
             );
 
-            alert(
+            toast.error(
                 error.response?.data?.message ||
                 "Failed to submit shop enquiry"
             );
@@ -152,10 +155,11 @@ const PainterShopSubmitEnquiry = () => {
 
                         <input
                             type="text"
-                            value={`${cartItems.length} ${cartItems.length === 1
+                            value={`${cartItems.length} ${
+                                cartItems.length === 1
                                     ? "product"
                                     : "products"
-                                }`}
+                            }`}
                             readOnly
                         />
 

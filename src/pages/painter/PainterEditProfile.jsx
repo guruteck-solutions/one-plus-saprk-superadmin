@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Camera, Upload } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterEditProfile.css";
 
 const PainterEditProfile = () => {
@@ -17,7 +18,6 @@ const PainterEditProfile = () => {
   const [imagePreview, setImagePreview] = useState("");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchProfile();
@@ -26,7 +26,6 @@ const PainterEditProfile = () => {
   const fetchProfile = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -67,7 +66,9 @@ const PainterEditProfile = () => {
       }
     } catch (error) {
       console.error("Fetch Profile Error:", error);
-      setError(error.message || "Failed to load profile");
+      toast.error(
+        error.message || "Failed to load profile"
+      );
     } finally {
       setLoading(false);
     }
@@ -90,16 +91,15 @@ const PainterEditProfile = () => {
     }
 
     if (!file.type.startsWith("image/")) {
-      setError("Please select a valid image file.");
+      toast.error("Please select a valid image file.");
       return;
     }
 
     if (file.size > 5 * 1024 * 1024) {
-      setError("Image size must be less than 5MB.");
+      toast.error("Image size must be less than 5MB.");
       return;
     }
 
-    setError("");
     setSelectedImage(file);
 
     const previewUrl = URL.createObjectURL(file);
@@ -111,7 +111,6 @@ const PainterEditProfile = () => {
 
     try {
       setSaving(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -170,10 +169,10 @@ const PainterEditProfile = () => {
         );
       }
 
-      alert("Profile updated successfully.");
+      toast.success("Profile updated successfully.");
     } catch (error) {
       console.error("Update Profile Error:", error);
-      setError(
+      toast.error(
         error.message || "Failed to update profile"
       );
     } finally {
@@ -202,12 +201,6 @@ const PainterEditProfile = () => {
 
       <div className="painter-edit-profile-card">
         <h2>Edit Profile</h2>
-
-        {error && (
-          <div className="painter-edit-profile-error">
-            {error}
-          </div>
-        )}
 
         <form onSubmit={handleSubmit}>
           <div className="painter-edit-profile-grid">

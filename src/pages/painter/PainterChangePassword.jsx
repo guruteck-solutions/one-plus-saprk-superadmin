@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterChangePassword.css";
 
 const PainterChangePassword = () => {
@@ -11,7 +12,6 @@ const PainterChangePassword = () => {
   });
 
   const [saving, setSaving] = useState(false);
-  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,7 +27,6 @@ const PainterChangePassword = () => {
 
     try {
       setSaving(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -51,7 +50,7 @@ const PainterChangePassword = () => {
         );
       }
 
-      alert("Password updated successfully.");
+      toast.success("Password updated successfully.");
 
       setFormData({
         currentPassword: "",
@@ -60,7 +59,9 @@ const PainterChangePassword = () => {
       });
     } catch (error) {
       console.error("Change Password Error:", error);
-      setError(error.message || "Failed to update password");
+      toast.error(
+        error.message || "Failed to update password"
+      );
     } finally {
       setSaving(false);
     }
@@ -75,12 +76,6 @@ const PainterChangePassword = () => {
 
       <div className="painter-change-password-card">
         <h2>Change Password</h2>
-
-        {error && (
-          <div className="painter-change-password-error">
-            {error}
-          </div>
-        )}
 
         <form onSubmit={handleSubmit}>
           <div className="painter-change-password-field">

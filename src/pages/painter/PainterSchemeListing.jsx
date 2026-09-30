@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterSchemeListing.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -9,7 +10,6 @@ const PainterSchemeListing = () => {
 
   const [schemes, setSchemes] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchSchemes();
@@ -18,7 +18,6 @@ const PainterSchemeListing = () => {
   const fetchSchemes = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -38,7 +37,10 @@ const PainterSchemeListing = () => {
       setSchemes(data.schemes || []);
     } catch (error) {
       console.error("Fetch painter schemes error:", error);
-      setError(error.message || "Failed to load schemes");
+
+      toast.error(
+        error.message || "Failed to load schemes"
+      );
     } finally {
       setLoading(false);
     }
@@ -72,19 +74,13 @@ const PainterSchemeListing = () => {
         </div>
       )}
 
-      {!loading && error && (
-        <div className="painter-scheme-message painter-scheme-error">
-          {error}
-        </div>
-      )}
-
-      {!loading && !error && schemes.length === 0 && (
+      {!loading && schemes.length === 0 && (
         <div className="painter-scheme-message">
           No active schemes available.
         </div>
       )}
 
-      {!loading && !error && schemes.length > 0 && (
+      {!loading && schemes.length > 0 && (
         <div className="painter-scheme-grid">
 
           {schemes.map((scheme) => (

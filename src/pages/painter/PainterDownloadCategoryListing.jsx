@@ -10,6 +10,8 @@ import {
     Download,
     Search,
 } from "lucide-react";
+import { toast } from "sonner";
+
 import "../../css/painter/PainterDownloadCategoryListing.css";
 
 const API_URL = "http://localhost:5000/api/painter/documents/categories";
@@ -116,9 +118,9 @@ const PainterDownloadCategoryListing = () => {
         } catch (error) {
             console.error("Download document error:", error);
 
-            alert(
+            toast.error(
                 error?.response?.data?.message ||
-                    "Failed to download document."
+                "Failed to download document."
             );
         }
     };

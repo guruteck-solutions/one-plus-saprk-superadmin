@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterEmailSupport.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -44,7 +45,7 @@ const PainterEmailSupport = () => {
         throw new Error(result.message || "Failed to submit support request");
       }
 
-      alert("Support request submitted successfully.");
+      toast.success("Support request submitted successfully.");
 
       setFormData({
         subject: "",
@@ -53,7 +54,7 @@ const PainterEmailSupport = () => {
       });
     } catch (error) {
       console.error("Email Support Error:", error);
-      alert(error.message || "Failed to submit support request.");
+      toast.error(error.message || "Failed to submit support request.");
     } finally {
       setLoading(false);
     }

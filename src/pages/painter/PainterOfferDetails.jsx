@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, CalendarDays } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterOfferDetails.css";
 
 const API_URL =
@@ -12,7 +13,6 @@ const PainterOfferDetails = () => {
 
   const [offer, setOffer] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     if (!id) {
@@ -26,7 +26,6 @@ const PainterOfferDetails = () => {
   const fetchOfferDetails = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -52,7 +51,7 @@ const PainterOfferDetails = () => {
     } catch (error) {
       console.error("Fetch offer details error:", error);
 
-      setError(
+      toast.error(
         error.message || "Failed to load offer details"
       );
     } finally {
@@ -120,27 +119,6 @@ const PainterOfferDetails = () => {
       <div className="painter-offer-details-page">
         <div className="painter-offer-message">
           Loading offer details...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-offer-details-page">
-        <button
-          type="button"
-          className="painter-offer-back-btn"
-          onClick={() =>
-            navigate("/painter/offers-listing")
-          }
-        >
-          <ArrowLeft size={17} />
-          Back to Offers
-        </button>
-
-        <div className="painter-offer-message painter-offer-error">
-          {error}
         </div>
       </div>
     );

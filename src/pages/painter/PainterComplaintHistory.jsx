@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterComplaintHistory.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -6,7 +7,6 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 const PainterComplaintHistory = () => {
   const [complaints, setComplaints] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchComplaintHistory();
@@ -15,7 +15,6 @@ const PainterComplaintHistory = () => {
   const fetchComplaintHistory = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -39,7 +38,9 @@ const PainterComplaintHistory = () => {
       setComplaints(result.data || []);
     } catch (err) {
       console.error("Complaint history error:", err);
-      setError(err.message || "Failed to load complaint history.");
+      toast.error(
+        err.message || "Failed to load complaint history."
+      );
     } finally {
       setLoading(false);
     }
@@ -84,10 +85,6 @@ const PainterComplaintHistory = () => {
         {loading ? (
           <div className="painter-complaint-history-state">
             Loading complaint history...
-          </div>
-        ) : error ? (
-          <div className="painter-complaint-history-state painter-complaint-history-error">
-            {error}
           </div>
         ) : complaints.length === 0 ? (
           <div className="painter-complaint-history-state">

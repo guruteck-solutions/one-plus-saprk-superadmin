@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Check, X, Phone, User, Package, ClipboardList } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterLeadDetails.css";
 
 const PainterLeadDetails = () => {
@@ -42,10 +43,12 @@ const PainterLeadDetails = () => {
         setLead(data.lead);
       } else {
         setLead(null);
+        toast.error(data.message || "Failed to fetch lead details");
       }
     } catch (error) {
       console.error("Failed to fetch lead:", error);
       setLead(null);
+      toast.error(error.message || "Failed to fetch lead details");
     } finally {
       setLoading(false);
     }
@@ -80,12 +83,17 @@ const PainterLeadDetails = () => {
 
       if (data.success) {
         setLead(data.lead);
+        toast.success(
+          status === "Accepted"
+            ? "Lead accepted successfully"
+            : "Lead rejected successfully"
+        );
       } else {
-        alert(data.message || "Failed to update lead status");
+        toast.error(data.message || "Failed to update lead status");
       }
     } catch (error) {
       console.error("Failed to update lead status:", error);
-      alert("Failed to update lead status");
+      toast.error(error.message || "Failed to update lead status");
     }
   };
 

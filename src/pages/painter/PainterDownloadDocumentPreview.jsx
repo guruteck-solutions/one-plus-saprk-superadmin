@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Download, FileText } from "lucide-react";
 import "../../css/painter/PainterDownloadDocumentPreview.css";
+import { toast } from "sonner";
 
 const DOCUMENT_API =
     "http://localhost:5000/api/painter/documents/categories";
@@ -85,7 +86,7 @@ const PainterDownloadDocumentPreview = () => {
                 {
                     type:
                         response.headers[
-                            "content-type"
+                        "content-type"
                         ] || "application/pdf",
                 }
             );
@@ -116,9 +117,9 @@ const PainterDownloadDocumentPreview = () => {
                 error
             );
 
-            alert(
+            toast.error(
                 error?.response?.data?.message ||
-                    "Failed to download document."
+                "Failed to download document."
             );
         } finally {
             setDownloading(false);

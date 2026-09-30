@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterAddressDetails.css";
 
 const PainterAddressDetails = () => {
@@ -14,7 +15,6 @@ const PainterAddressDetails = () => {
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchAddressDetails();
@@ -23,7 +23,6 @@ const PainterAddressDetails = () => {
   const fetchAddressDetails = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -45,7 +44,9 @@ const PainterAddressDetails = () => {
           return;
         }
 
-        throw new Error(result.message || "Failed to fetch address details");
+        throw new Error(
+          result.message || "Failed to fetch address details"
+        );
       }
 
       const data = result.data;
@@ -59,7 +60,9 @@ const PainterAddressDetails = () => {
       });
     } catch (error) {
       console.error("Fetch Address Details Error:", error);
-      setError(error.message || "Failed to load address details");
+      toast.error(
+        error.message || "Failed to load address details"
+      );
     } finally {
       setLoading(false);
     }
@@ -79,7 +82,6 @@ const PainterAddressDetails = () => {
 
     try {
       setSaving(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -111,10 +113,12 @@ const PainterAddressDetails = () => {
         pinCode: result.data.pinCode || "",
       });
 
-      alert("Address details saved successfully.");
+      toast.success("Address details saved successfully.");
     } catch (error) {
       console.error("Save Address Details Error:", error);
-      setError(error.message || "Failed to save address details");
+      toast.error(
+        error.message || "Failed to save address details"
+      );
     } finally {
       setSaving(false);
     }
@@ -139,12 +143,6 @@ const PainterAddressDetails = () => {
 
       <div className="painter-address-details-card">
         <h2>Address Details</h2>
-
-        {error && (
-          <div className="painter-address-details-error">
-            {error}
-          </div>
-        )}
 
         <form onSubmit={handleSubmit}>
           <div className="painter-address-details-grid">

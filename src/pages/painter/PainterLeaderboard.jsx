@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterLeaderboard.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -6,7 +7,6 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 const PainterLeaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchLeaderboard();
@@ -15,7 +15,6 @@ const PainterLeaderboard = () => {
   const fetchLeaderboard = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -39,7 +38,7 @@ const PainterLeaderboard = () => {
       setLeaderboard(data.leaderboard || []);
     } catch (error) {
       console.error("Leaderboard Error:", error);
-      setError(error.message || "Failed to load leaderboard");
+      toast.error(error.message || "Failed to load leaderboard");
     } finally {
       setLoading(false);
     }
@@ -64,10 +63,6 @@ const PainterLeaderboard = () => {
         {loading ? (
           <div className="painter-leaderboard-message">
             Loading leaderboard...
-          </div>
-        ) : error ? (
-          <div className="painter-leaderboard-message painter-leaderboard-error">
-            {error}
           </div>
         ) : leaderboard.length === 0 ? (
           <div className="painter-leaderboard-message">

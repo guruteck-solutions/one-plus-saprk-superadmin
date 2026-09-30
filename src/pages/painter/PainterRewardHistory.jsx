@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterRewardHistory.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -6,12 +7,10 @@ const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const PainterRewardHistory = () => {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const fetchRewardHistory = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -28,13 +27,17 @@ const PainterRewardHistory = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Failed to fetch reward history");
+        throw new Error(
+          data.message || "Failed to fetch reward history"
+        );
       }
 
       setHistory(data.history || []);
     } catch (err) {
       console.error("Reward history error:", err);
-      setError(err.message || "Failed to fetch reward history");
+      toast.error(
+        err.message || "Failed to fetch reward history"
+      );
     } finally {
       setLoading(false);
     }
@@ -76,10 +79,6 @@ const PainterRewardHistory = () => {
         {loading ? (
           <div className="painter-reward-history-state">
             Loading reward history...
-          </div>
-        ) : error ? (
-          <div className="painter-reward-history-error">
-            {error}
           </div>
         ) : history.length === 0 ? (
           <div className="painter-reward-history-state">

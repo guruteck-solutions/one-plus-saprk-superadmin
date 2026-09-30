@@ -6,6 +6,7 @@ import {
   Gift,
   WalletCards,
 } from "lucide-react";
+import { toast } from "sonner";
 
 import "../../css/painter/PainterRewardDashboard.css";
 
@@ -28,7 +29,6 @@ const PainterRewardDashboard = () => {
   });
 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   /* =====================================================
      FETCH REWARD DASHBOARD
@@ -38,7 +38,6 @@ const PainterRewardDashboard = () => {
     const fetchRewardDashboard = async () => {
       try {
         setLoading(true);
-        setError("");
 
         const token = localStorage.getItem("token");
 
@@ -80,7 +79,7 @@ const PainterRewardDashboard = () => {
           error
         );
 
-        setError(
+        toast.error(
           error.message ||
             "Failed to load reward dashboard"
         );
@@ -140,16 +139,6 @@ const PainterRewardDashboard = () => {
           </p>
         </div>
       </div>
-
-      {/* =================================================
-          ERROR
-      ================================================= */}
-
-      {error && (
-        <div className="painter-reward-dashboard-error">
-          {error}
-        </div>
-      )}
 
       {/* =================================================
           SUMMARY CARDS
@@ -318,9 +307,9 @@ const PainterRewardDashboard = () => {
                     ? `conic-gradient(
                         #2563eb 0% ${pointsPercentage}%,
                         #16a34a ${pointsPercentage}% ${
-                        pointsPercentage +
-                        cashPercentage
-                      }%,
+                          pointsPercentage +
+                          cashPercentage
+                        }%,
                         #f59e0b ${
                           pointsPercentage +
                           cashPercentage

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Eye, MessageSquare } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterQuickShop.css";
 
 const PainterQuickShop = () => {
@@ -15,7 +16,6 @@ const PainterQuickShop = () => {
     const [quantity, setQuantity] = useState(1);
     const [message, setMessage] = useState("");
     const [enquiryLoading, setEnquiryLoading] = useState(false);
-    const [enquiryMessage, setEnquiryMessage] = useState("");
 
     const API_URL = "http://localhost:5000/api";
     const SERVER_URL = "http://localhost:5000";
@@ -62,21 +62,20 @@ const PainterQuickShop = () => {
         setEnquiryProduct(product);
         setQuantity(1);
         setMessage("");
-        setEnquiryMessage("");
         setShowEnquiryModal(true);
     };
 
     const handleSubmitEnquiry = async (e) => {
         e.preventDefault();
 
-        if (!enquiryProduct?._id) {
-            setEnquiryMessage("Product information is missing.");
-            return;
-        }
+      if (!enquiryProduct?._id) {
+    toast.error("Product information is missing.");
+    return;
+}
 
         try {
             setEnquiryLoading(true);
-            setEnquiryMessage("");
+            
 
             const token = localStorage.getItem("token");
 
@@ -96,18 +95,18 @@ const PainterQuickShop = () => {
             const data = await response.json();
 
             if (response.ok && data.success) {
-                setEnquiryMessage("Product enquiry submitted successfully.");
-                setQuantity(1);
-                setMessage("");
-            } else {
-                setEnquiryMessage(
-                    data.message || "Failed to submit product enquiry."
-                );
-            }
+    toast.success("Product enquiry submitted successfully.");
+    setQuantity(1);
+    setMessage("");
+} else {
+    toast.error(
+        data.message || "Failed to submit product enquiry."
+    );
+}
         } catch (error) {
-            console.error("Enquiry error:", error);
-            setEnquiryMessage("Unable to connect to server.");
-        } finally {
+    console.error("Enquiry error:", error);
+    toast.error("Unable to connect to server.");
+} finally {
             setEnquiryLoading(false);
         }
     };
@@ -353,13 +352,6 @@ const PainterQuickShop = () => {
                                     onChange={(e) => setMessage(e.target.value)}
                                 />
                             </div>
-
-                            {enquiryMessage && (
-                                <p className="painter-enquiry-message">
-                                    {enquiryMessage}
-                                </p>
-                            )}
-
                             <button
                                 type="submit"
                                 className="painter-submit-enquiry-btn"

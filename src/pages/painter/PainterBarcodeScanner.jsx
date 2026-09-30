@@ -7,6 +7,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterBarcodeScanner.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -16,7 +17,6 @@ const PainterBarcodeScanner = () => {
 
   const [scanCode, setScanCode] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const scanOptions = [
     {
@@ -49,13 +49,12 @@ const PainterBarcodeScanner = () => {
 
   const handleCaptureVerify = async () => {
     if (!scanCode.trim()) {
-      setError("Please enter or scan a barcode.");
+      toast.error("Please enter or scan a barcode.");
       return;
     }
 
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -97,7 +96,7 @@ const PainterBarcodeScanner = () => {
       }
     } catch (err) {
       console.error("Barcode verification error:", err);
-      setError(err.message || "Failed to verify barcode");
+      toast.error(err.message || "Failed to verify barcode");
     } finally {
       setLoading(false);
     }
@@ -133,18 +132,11 @@ const PainterBarcodeScanner = () => {
               value={scanCode}
               onChange={(e) => {
                 setScanCode(e.target.value);
-                setError("");
               }}
               placeholder="Scan barcode"
               className="painter-barcode-input"
             />
           </div>
-
-          {error && (
-            <p className="painter-barcode-error">
-              {error}
-            </p>
-          )}
 
           <button
             type="button"

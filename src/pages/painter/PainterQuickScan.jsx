@@ -6,6 +6,7 @@ import {
   X,
   RefreshCw,
 } from "lucide-react";
+import { toast } from "sonner";
 import {
   Html5Qrcode,
   Html5QrcodeSupportedFormats,
@@ -15,8 +16,6 @@ import "../../css/painter/PainterQuickScan.css";
 const PainterQuickScan = () => {
   const [showManualInput, setShowManualInput] = useState(false);
   const [manualCode, setManualCode] = useState("");
-  const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState("");
   const [loading, setLoading] = useState(false);
   const [cameraActive, setCameraActive] = useState(false);
   const [cameraLoading, setCameraLoading] = useState(false);
@@ -27,15 +26,6 @@ const PainterQuickScan = () => {
 
   const API_URL =
     import.meta.env.VITE_API_URL || "http://localhost:5000/api";
-
-  // ==========================================
-  // SHOW MESSAGE
-  // ==========================================
-
-  const showMessage = (text, type = "") => {
-    setMessage(text);
-    setMessageType(type);
-  };
 
   // ==========================================
   // SUBMIT SCAN TO BACKEND
@@ -53,7 +43,7 @@ const PainterQuickScan = () => {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `${API_URL}/painter/scan`,
+        `${API_URL}/api/painter/barcode-scan`,
         {
           method: "POST",
           headers: {
@@ -69,38 +59,33 @@ const PainterQuickScan = () => {
 
       const data = await response.json();
 
-      if (response.ok && data.success) {
-        showMessage(
-          "Product scanned successfully.",
-          "success"
-        );
+      if (data.scanStatus === "VALID") {
+        toast.success("Product scanned successfully.");
 
         setManualCode("");
         setShowManualInput(false);
 
         await stopCamera();
-      } else if (response.status === 409) {
-        showMessage(
-          data.message || "This code has already been scanned.",
-          "error"
+      } else if (data.scanStatus === "DUPLICATE") {
+        toast.error(
+          data.message || "This code has already been scanned."
         );
 
         await stopCamera();
+      } else if (data.scanStatus === "INVALID") {
+        toast.error(
+          data.message ||
+            "Invalid barcode. Product could not be verified."
+        );
       } else {
-        showMessage(
-          data.message || "Failed to process scan.",
-          "error"
+        toast.error(
+          data.message || "Failed to process scan."
         );
-
-        await stopCamera();
       }
     } catch (error) {
       console.error("Scan submission error:", error);
 
-      showMessage(
-        "Unable to connect to server.",
-        "error"
-      );
+      toast.error("Unable to connect to server.");
 
       await stopCamera();
     } finally {
@@ -162,8 +147,6 @@ const PainterQuickScan = () => {
 
     try {
       setCameraLoading(true);
-      setMessage("");
-      setMessageType("");
 
       const scannerId =
         "painter-quick-scan-reader";
@@ -209,9 +192,8 @@ const PainterQuickScan = () => {
       scannerRunningRef.current = true;
       setCameraActive(true);
 
-      showMessage(
-        "Camera is ready. Align the QR / barcode inside the frame.",
-        "info"
+      toast.info(
+        "Camera is ready. Align the QR / barcode inside the frame."
       );
     } catch (error) {
       console.error(
@@ -227,25 +209,22 @@ const PainterQuickScan = () => {
         "Unable to open camera.";
 
       if (
-        error?.message?.toLowerCase().includes(
-          "permission"
-        )
+        error?.message
+          ?.toLowerCase()
+          .includes("permission")
       ) {
         errorMessage =
           "Camera permission denied. Please allow camera access in your browser.";
       } else if (
-        error?.message?.toLowerCase().includes(
-          "not found"
-        )
+        error?.message
+          ?.toLowerCase()
+          .includes("not found")
       ) {
         errorMessage =
           "No camera found on this device.";
       }
 
-      showMessage(
-        errorMessage,
-        "error"
-      );
+      toast.error(errorMessage);
     } finally {
       setCameraLoading(false);
     }
@@ -290,10 +269,7 @@ const PainterQuickScan = () => {
     if (cameraActive) {
       await stopCamera();
 
-      showMessage(
-        "Camera scanner closed.",
-        "info"
-      );
+      toast.info("Camera scanner closed.");
     } else {
       await startCamera();
     }
@@ -307,16 +283,15 @@ const PainterQuickScan = () => {
     e.preventDefault();
 
     if (!/^\d{6}$/.test(manualCode)) {
-      showMessage(
-        "Please enter a valid 6-digit code.",
-        "error"
+      toast.error(
+        "Please enter a valid 6-digit code."
       );
       return;
     }
 
     await submitScan(
       manualCode,
-      "MANUAL"
+      "BARCODE"
     );
   };
 
@@ -348,6 +323,7 @@ const PainterQuickScan = () => {
       <div className="painter-quick-scan-header">
         <div>
           <h1>Quick Scan</h1>
+
           <p>
             Oneplus Spark PAINTS • Painter experience
           </p>
@@ -421,7 +397,9 @@ const PainterQuickScan = () => {
               : ""
           }`}
           onClick={handleCameraToggle}
-          disabled={cameraLoading || loading}
+          disabled={
+            cameraLoading || loading
+          }
         >
           {cameraActive ? (
             <>
@@ -434,12 +412,16 @@ const PainterQuickScan = () => {
                 size={17}
                 className="painter-spin"
               />
-              <span>Opening Camera...</span>
+              <span>
+                Opening Camera...
+              </span>
             </>
           ) : (
             <>
               <Camera size={17} />
-              <span>Open Camera</span>
+              <span>
+                Open Camera
+              </span>
             </>
           )}
         </button>
@@ -455,9 +437,6 @@ const PainterQuickScan = () => {
             setShowManualInput(
               (prev) => !prev
             );
-
-            setMessage("");
-            setMessageType("");
           }}
           disabled={loading}
         >
@@ -504,18 +483,6 @@ const PainterQuickScan = () => {
                 : "Scan Code"}
             </button>
           </form>
-        )}
-
-        {/* ==========================================
-            MESSAGE
-        ========================================== */}
-
-        {message && (
-          <div
-            className={`painter-scan-message ${messageType}`}
-          >
-            {message}
-          </div>
         )}
 
       </div>

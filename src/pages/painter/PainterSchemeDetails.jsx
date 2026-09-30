@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ArrowLeft, CalendarDays, CheckCircle2, Download } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterSchemeDetails.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -11,7 +12,6 @@ const PainterSchemeDetails = () => {
 
   const [scheme, setScheme] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     if (!id) {
@@ -25,7 +25,6 @@ const PainterSchemeDetails = () => {
   const fetchSchemeDetails = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -50,7 +49,8 @@ const PainterSchemeDetails = () => {
       setScheme(data.scheme);
     } catch (error) {
       console.error("Fetch scheme details error:", error);
-      setError(
+
+      toast.error(
         error.message || "Failed to load scheme details"
       );
     } finally {
@@ -135,42 +135,15 @@ const PainterSchemeDetails = () => {
   }
 
   /* ================================
-     ERROR
-  ================================= */
-
-  if (error) {
-    return (
-      <div className="painter-scheme-details-page">
-
-        <button
-          type="button"
-          className="painter-scheme-back-btn"
-          onClick={() => navigate("/painter/scheme-listing")}
-        >
-          <ArrowLeft size={17} />
-          Back to Schemes
-        </button>
-
-        <div className="painter-scheme-details-message painter-scheme-details-error">
-          {error}
-        </div>
-
-      </div>
-    );
-  }
-
-  /* ================================
      SCHEME NOT FOUND
   ================================= */
 
   if (!scheme) {
     return (
       <div className="painter-scheme-details-page">
-
         <div className="painter-scheme-details-message">
           Scheme not found.
         </div>
-
       </div>
     );
   }
@@ -195,8 +168,7 @@ const PainterSchemeDetails = () => {
           <h1>{scheme.schemeName}</h1>
 
           <span
-            className={`painter-scheme-status ${scheme.status?.toLowerCase()
-              }`}
+            className={`painter-scheme-status ${scheme.status?.toLowerCase()}`}
           >
             <CheckCircle2 size={14} />
             {scheme.status}
@@ -209,7 +181,6 @@ const PainterSchemeDetails = () => {
         </p>
 
       </div>
-
 
       {/* Main Content */}
       <div className="painter-scheme-details-layout">
@@ -232,7 +203,6 @@ const PainterSchemeDetails = () => {
             )}
 
           </div>
-
 
           {/* Scheme Information */}
           <div className="painter-scheme-info-card">
@@ -258,9 +228,7 @@ const PainterSchemeDetails = () => {
               <div className="painter-scheme-info-item">
                 <span>Eligibility</span>
                 <strong>
-                  {getApplicableText(
-                    scheme.applicableTo
-                  )}
+                  {getApplicableText(scheme.applicableTo)}
                 </strong>
               </div>
 
@@ -275,7 +243,6 @@ const PainterSchemeDetails = () => {
 
           </div>
 
-
           {/* Terms */}
           <div className="painter-scheme-terms-card">
 
@@ -289,7 +256,6 @@ const PainterSchemeDetails = () => {
           </div>
 
         </div>
-
 
         {/* RIGHT */}
         <div className="painter-scheme-details-right">
@@ -333,7 +299,6 @@ const PainterSchemeDetails = () => {
 
           </div>
 
-
           {/* Target & Reward */}
           <div className="painter-scheme-target-card">
 
@@ -350,7 +315,6 @@ const PainterSchemeDetails = () => {
             </div>
 
           </div>
-
 
           {/* PDF */}
           <div className="painter-scheme-pdf-card">
@@ -373,7 +337,6 @@ const PainterSchemeDetails = () => {
             )}
 
           </div>
-
 
           {/* Start Earning */}
           <button

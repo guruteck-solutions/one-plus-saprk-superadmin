@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ArrowLeft, Download, FileText } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterSchemePdfPreview.css";
 
 const API_URL =
@@ -12,7 +13,6 @@ const PainterSchemePdfPreview = () => {
 
   const [scheme, setScheme] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     if (!id) {
@@ -26,7 +26,6 @@ const PainterSchemePdfPreview = () => {
   const fetchScheme = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -55,7 +54,7 @@ const PainterSchemePdfPreview = () => {
         error
       );
 
-      setError(
+      toast.error(
         error.message || "Failed to load scheme"
       );
     } finally {
@@ -115,6 +114,10 @@ const PainterSchemePdfPreview = () => {
       window.URL.revokeObjectURL(blobUrl);
     } catch (error) {
       console.error("PDF download error:", error);
+
+      toast.error(
+        error.message || "Failed to download PDF"
+      );
     }
   };
 
@@ -149,27 +152,6 @@ const PainterSchemePdfPreview = () => {
       <div className="painter-pdf-preview-page">
         <div className="painter-pdf-message">
           Loading PDF preview...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-pdf-preview-page">
-        <button
-          type="button"
-          className="painter-pdf-back-btn"
-          onClick={() =>
-            navigate(`/painter/scheme-details/${id}`)
-          }
-        >
-          <ArrowLeft size={17} />
-          Back to Scheme Details
-        </button>
-
-        <div className="painter-pdf-message painter-pdf-error">
-          {error}
         </div>
       </div>
     );

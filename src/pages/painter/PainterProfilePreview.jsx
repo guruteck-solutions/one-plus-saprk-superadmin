@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Share2, QrCode } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterProfilePreview.css";
 
 const PainterProfilePreview = () => {
@@ -7,7 +8,6 @@ const PainterProfilePreview = () => {
 
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchProfilePreview();
@@ -16,7 +16,6 @@ const PainterProfilePreview = () => {
   const fetchProfilePreview = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -41,7 +40,9 @@ const PainterProfilePreview = () => {
       setProfile(result.data);
     } catch (error) {
       console.error("Fetch Profile Preview Error:", error);
-      setError(error.message || "Failed to load profile preview");
+      toast.error(
+        error.message || "Failed to load profile preview"
+      );
     } finally {
       setLoading(false);
     }
@@ -67,11 +68,12 @@ const PainterProfilePreview = () => {
         await navigator.share(shareData);
       } else {
         await navigator.clipboard.writeText(profileLink);
-        alert("Profile link copied successfully.");
+        toast.success("Profile link copied successfully.");
       }
     } catch (error) {
       if (error.name !== "AbortError") {
         console.error("Share Profile Error:", error);
+        toast.error("Failed to share profile.");
       }
     }
   };
@@ -106,11 +108,11 @@ const PainterProfilePreview = () => {
     );
   }
 
-  if (error) {
+  if (!profile) {
     return (
       <div className="painter-profile-preview-page">
         <div className="painter-profile-preview-error">
-          {error}
+          Profile not found.
         </div>
       </div>
     );

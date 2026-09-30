@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Share2, Copy } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterShareProfile.css";
 
 const PainterShareProfile = () => {
@@ -7,7 +8,6 @@ const PainterShareProfile = () => {
 
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchShareProfile();
@@ -16,7 +16,6 @@ const PainterShareProfile = () => {
   const fetchShareProfile = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -41,7 +40,7 @@ const PainterShareProfile = () => {
       setProfile(result.data);
     } catch (error) {
       console.error("Fetch Share Profile Error:", error);
-      setError(
+      toast.error(
         error.message || "Failed to load profile"
       );
     } finally {
@@ -85,14 +84,14 @@ const PainterShareProfile = () => {
         getProfileLink()
       );
 
-      alert("Profile link copied successfully.");
+      toast.success("Profile link copied successfully.");
     } catch (error) {
       console.error(
         "Copy Profile Link Error:",
         error
       );
 
-      alert("Failed to copy profile link.");
+      toast.error("Failed to copy profile link.");
     }
   };
 
@@ -101,16 +100,6 @@ const PainterShareProfile = () => {
       <div className="painter-share-profile-page">
         <div className="painter-share-profile-loading">
           Loading profile...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-share-profile-page">
-        <div className="painter-share-profile-error">
-          {error}
         </div>
       </div>
     );

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FileText, Clock3, CheckCircle2, List } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterComplaintListing.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -17,7 +18,6 @@ const PainterComplaintListing = () => {
   });
 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchComplaintData();
@@ -26,7 +26,6 @@ const PainterComplaintListing = () => {
   const fetchComplaintData = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -51,11 +50,19 @@ const PainterComplaintListing = () => {
       const complaintsResult = await complaintsResponse.json();
 
       console.log("COMPLAINT API RESULT:", complaintsResult);
-console.log("COMPLAINT DATA:", complaintsResult.data);
-console.log("COMPLAINT DATA LENGTH:", complaintsResult.data?.length);
+      console.log("COMPLAINT DATA:", complaintsResult.data);
+      console.log(
+        "COMPLAINT DATA LENGTH:",
+        complaintsResult.data?.length
+      );
+
       const statsResult = await statsResponse.json();
 
-      setComplaints(complaintsResult.data || complaintsResult.complaints || []);
+      setComplaints(
+        complaintsResult.data ||
+          complaintsResult.complaints ||
+          []
+      );
 
       const statsData = statsResult.data || statsResult.stats || {};
 
@@ -67,7 +74,7 @@ console.log("COMPLAINT DATA LENGTH:", complaintsResult.data?.length);
       });
     } catch (err) {
       console.error("Complaint listing error:", err);
-      setError("Failed to load complaints.");
+      toast.error("Failed to load complaints.");
     } finally {
       setLoading(false);
     }
@@ -188,10 +195,6 @@ console.log("COMPLAINT DATA LENGTH:", complaintsResult.data?.length);
         {loading ? (
           <div className="painter-complaint-state">
             Loading complaints...
-          </div>
-        ) : error ? (
-          <div className="painter-complaint-state painter-complaint-error">
-            {error}
           </div>
         ) : complaints.length === 0 ? (
           <div className="painter-complaint-state">

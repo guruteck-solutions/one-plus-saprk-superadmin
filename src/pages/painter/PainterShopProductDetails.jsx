@@ -176,8 +176,17 @@ const PainterShopProductDetails = () => {
 
                 {/* PRODUCT IMAGE */}
                 <div className="painter-shop-product-details-image">
-                    <span>PRODUCT</span>
-                    <strong>IMAGE</strong>
+                    {product.image ? (
+                        <img
+                            src={`http://localhost:5000${product.image}`}
+                            alt={product.productName || "Product"}
+                        />
+                    ) : (
+                        <>
+                            <span>PRODUCT</span>
+                            <strong>IMAGE</strong>
+                        </>
+                    )}
                 </div>
 
                 {/* PRODUCT CONTENT */}
@@ -237,8 +246,8 @@ const PainterShopProductDetails = () => {
                                 ₹
                                 {product.mrp
                                     ? product.mrp.toLocaleString(
-                                          "en-IN"
-                                      )
+                                        "en-IN"
+                                    )
                                     : "0"}
                             </span>
                         </p>
@@ -249,8 +258,8 @@ const PainterShopProductDetails = () => {
                                 ₹
                                 {product.discountPrice
                                     ? product.discountPrice.toLocaleString(
-                                          "en-IN"
-                                      )
+                                        "en-IN"
+                                    )
                                     : "0"}
                             </span>
                         </h3>

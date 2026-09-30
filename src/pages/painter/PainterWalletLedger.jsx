@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterWalletLedger.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -13,12 +14,10 @@ const PainterWalletLedger = () => {
 
   const [ledger, setLedger] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const fetchWalletLedger = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -35,20 +34,26 @@ const PainterWalletLedger = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Failed to fetch wallet ledger");
+        throw new Error(
+          data.message || "Failed to fetch wallet ledger"
+        );
       }
 
-      setSummary(data.summary || {
-        currentPoints: 0,
-        cashBalance: 0,
-        lifetimeEarned: 0,
-        redeemed: 0,
-      });
+      setSummary(
+        data.summary || {
+          currentPoints: 0,
+          cashBalance: 0,
+          lifetimeEarned: 0,
+          redeemed: 0,
+        }
+      );
 
       setLedger(data.ledger || []);
     } catch (err) {
       console.error("Wallet ledger error:", err);
-      setError(err.message || "Failed to fetch wallet ledger");
+      toast.error(
+        err.message || "Failed to fetch wallet ledger"
+      );
     } finally {
       setLoading(false);
     }
@@ -82,10 +87,6 @@ const PainterWalletLedger = () => {
       {loading ? (
         <div className="painter-wallet-ledger-state">
           Loading wallet ledger...
-        </div>
-      ) : error ? (
-        <div className="painter-wallet-ledger-error">
-          {error}
         </div>
       ) : (
         <>

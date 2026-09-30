@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterTierProgress.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -7,13 +8,11 @@ const PainterTierProgress = () => {
   const [progress, setProgress] = useState(null);
   const [milestones, setMilestones] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchTierProgress = async () => {
       try {
         setLoading(true);
-        setError("");
 
         const token = localStorage.getItem("token");
 
@@ -40,7 +39,10 @@ const PainterTierProgress = () => {
         setMilestones(data.milestones || []);
       } catch (err) {
         console.error("Tier Progress Error:", err);
-        setError(err.message || "Failed to load tier progress");
+
+        toast.error(
+          err.message || "Failed to load tier progress"
+        );
       } finally {
         setLoading(false);
       }
@@ -59,16 +61,6 @@ const PainterTierProgress = () => {
       <div className="painter-tier-progress-page">
         <div className="painter-tier-progress-state">
           Loading tier progress...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-tier-progress-page">
-        <div className="painter-tier-progress-error">
-          {error}
         </div>
       </div>
     );

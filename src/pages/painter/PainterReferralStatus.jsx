@@ -1,57 +1,22 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "../../css/painter/PainterReferralStatus.css";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "";
-
 const PainterReferralStatus = () => {
+  const location = useLocation();
+
   const [referral, setReferral] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
-    fetchReferralStatus();
-  }, []);
-
-  const fetchReferralStatus = async () => {
-    try {
-      setLoading(true);
-      setError("");
-
-      const token = localStorage.getItem("token");
-
-      const response = await fetch(
-        `${API_BASE_URL}/api/painter/referrals/history`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          data.message || "Failed to fetch referral status"
-        );
-      }
-
-      const referrals = data.referrals || [];
-
-      if (referrals.length > 0) {
-        setReferral(referrals[0]);
-      } else {
-        setReferral(null);
-      }
-    } catch (error) {
-      console.error("Fetch referral status error:", error);
-      setError(error.message || "Failed to load referral status");
-    } finally {
-      setLoading(false);
+    if (location.state?.referral) {
+      setReferral(location.state.referral);
+    } else {
+      setReferral(null);
     }
-  };
+
+    setLoading(false);
+  }, [location.state]);
 
   const statusSteps = [
     {
@@ -79,44 +44,38 @@ const PainterReferralStatus = () => {
   const getCategoryName = (category) => {
     if (!category) return "Painter";
 
+    if (Array.isArray(category)) {
+      return category
+        .map((item) =>
+          item
+            .toString()
+            .toLowerCase()
+            .split("_")
+            .map(
+              (word) =>
+                word.charAt(0).toUpperCase() + word.slice(1)
+            )
+            .join(" ")
+        )
+        .join(", ");
+    }
+
     return category
+      .toString()
       .toLowerCase()
       .split("_")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .map(
+        (word) =>
+          word.charAt(0).toUpperCase() + word.slice(1)
+      )
       .join(" ");
   };
-
-  const getCurrentStep = () => {
-    if (!referral) return -1;
-
-    let currentStep = -1;
-
-    statusSteps.forEach((step, index) => {
-      if (referral[step.key]) {
-        currentStep = index;
-      }
-    });
-
-    return currentStep;
-  };
-
-  const currentStep = getCurrentStep();
 
   if (loading) {
     return (
       <div className="painter-referral-status-page">
         <div className="painter-referral-status-state">
           Loading referral status...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-referral-status-page">
-        <div className="painter-referral-status-state error">
-          {error}
         </div>
       </div>
     );
@@ -137,7 +96,7 @@ const PainterReferralStatus = () => {
       {!referral ? (
         <div className="painter-referral-status-card">
           <div className="painter-referral-status-empty">
-            No referral found.
+            Please select referral.
           </div>
         </div>
       ) : (
@@ -145,21 +104,33 @@ const PainterReferralStatus = () => {
           <h2>Referral Status</h2>
 
           <div className="painter-referral-person">
-            <strong>{referral.referredName || "-"}</strong>
+            <strong>
+              {referral.referredName || "-"}
+            </strong>
+
             <span>•</span>
-            <span>{getCategoryName(referral.category)}</span>
+
+            <span>
+              {getCategoryName(referral.category)}
+            </span>
           </div>
 
           <div className="painter-referral-status-content">
             <div className="painter-referral-timeline">
               {statusSteps.map((step, index) => {
-                const isCompleted = Boolean(referral[step.key]);
-                const isLast = index === statusSteps.length - 1;
+                const isCompleted = Boolean(
+                  referral[step.key]
+                );
+
+                const isLast =
+                  index === statusSteps.length - 1;
 
                 return (
                   <div
                     className={`painter-referral-step ${
-                      isCompleted ? "completed" : "pending"
+                      isCompleted
+                        ? "completed"
+                        : "pending"
                     }`}
                     key={step.key}
                   >
@@ -189,7 +160,10 @@ const PainterReferralStatus = () => {
               </span>
 
               <strong>
-                ₹{Number(referral.reward || 0).toLocaleString("en-IN")}
+                ₹
+                {Number(
+                  referral.reward || 0
+                ).toLocaleString("en-IN")}
               </strong>
             </div>
           </div>

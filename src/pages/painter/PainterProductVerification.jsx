@@ -4,6 +4,7 @@ import {
   CheckCircle2,
   XCircle,
 } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterProductVerification.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -11,12 +12,10 @@ const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const PainterProductVerification = () => {
   const [verification, setVerification] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const fetchVerification = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -41,7 +40,9 @@ const PainterProductVerification = () => {
       const latestScan = historyData.history?.[0];
 
       if (!latestScan?.code) {
-        throw new Error("No scan record available for verification");
+        throw new Error(
+          "No scan record available for verification"
+        );
       }
 
       const verificationResponse = await fetch(
@@ -62,10 +63,14 @@ const PainterProductVerification = () => {
         );
       }
 
-      setVerification(verificationData.verification || null);
+      setVerification(
+        verificationData.verification || null
+      );
     } catch (err) {
       console.error("Product verification error:", err);
-      setError(err.message || "Failed to verify product");
+      toast.error(
+        err.message || "Failed to verify product"
+      );
     } finally {
       setLoading(false);
     }
@@ -121,23 +126,6 @@ const PainterProductVerification = () => {
 
         <div className="painter-product-verification-loading">
           Verifying product...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-product-verification-page">
-        <div className="painter-product-verification-header">
-          <div>
-            <h1>Product Verification</h1>
-            <p>Oneplus Spark PAINTS • Painter experience</p>
-          </div>
-        </div>
-
-        <div className="painter-product-verification-error">
-          {error}
         </div>
       </div>
     );

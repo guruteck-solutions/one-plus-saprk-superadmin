@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ShieldCheck } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterBankDetails.css";
 
 const PainterBankDetails = () => {
@@ -15,7 +16,6 @@ const PainterBankDetails = () => {
   const [verificationStatus, setVerificationStatus] = useState("Pending");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     fetchBankDetails();
@@ -24,7 +24,6 @@ const PainterBankDetails = () => {
   const fetchBankDetails = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -41,7 +40,9 @@ const PainterBankDetails = () => {
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.message || "Failed to fetch bank details");
+        throw new Error(
+          result.message || "Failed to fetch bank details"
+        );
       }
 
       const data = result.data;
@@ -53,10 +54,14 @@ const PainterBankDetails = () => {
         ifsc: data.ifsc || "",
       });
 
-      setVerificationStatus(data.verificationStatus || "Pending");
+      setVerificationStatus(
+        data.verificationStatus || "Pending"
+      );
     } catch (error) {
       console.error("Fetch Bank Details Error:", error);
-      setError(error.message || "Failed to load bank details");
+      toast.error(
+        error.message || "Failed to load bank details"
+      );
     } finally {
       setLoading(false);
     }
@@ -76,7 +81,6 @@ const PainterBankDetails = () => {
 
     try {
       setSaving(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -109,12 +113,16 @@ const PainterBankDetails = () => {
         ifsc: data.ifsc || "",
       });
 
-      setVerificationStatus(data.verificationStatus || "Pending");
+      setVerificationStatus(
+        data.verificationStatus || "Pending"
+      );
 
-      alert("Bank details saved successfully.");
+      toast.success("Bank details saved successfully.");
     } catch (error) {
       console.error("Update Bank Details Error:", error);
-      setError(error.message || "Failed to save bank details");
+      toast.error(
+        error.message || "Failed to save bank details"
+      );
     } finally {
       setSaving(false);
     }
@@ -141,12 +149,6 @@ const PainterBankDetails = () => {
 
       <div className="painter-bank-details-card">
         <h2>Bank Details</h2>
-
-        {error && (
-          <div className="painter-bank-details-error">
-            {error}
-          </div>
-        )}
 
         <form onSubmit={handleSubmit}>
           <div className="painter-bank-details-grid">

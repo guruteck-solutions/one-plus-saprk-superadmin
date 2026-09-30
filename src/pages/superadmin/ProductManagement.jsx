@@ -68,10 +68,10 @@ const ProductManagement = () => {
     });
     const [newProductImage, setNewProductImage] = useState(null);
     const [newProductImagePreview, setNewProductImagePreview] = useState(null);
-    
+
     const [editProductImage, setEditProductImage] = useState(null);
     const [editProductImagePreview, setEditProductImagePreview] = useState(null);
-    
+
     const API_URL = "http://localhost:5000/api/products";
     const SERVER_URL = "http://localhost:5000";
 
@@ -1037,13 +1037,21 @@ const ProductManagement = () => {
                                     <label>Barcode</label>
                                     <input
                                         type="text"
+                                        inputMode="numeric"
+                                        maxLength={6}
                                         value={editingProduct.barcode || ""}
-                                        onChange={(e) =>
-                                            setEditingProduct({
-                                                ...editingProduct,
-                                                barcode: e.target.value,
-                                            })
-                                        }
+                                        onChange={(e) => {
+                                            const value = e.target.value.replace(/\D/g, "");
+
+                                            if (value.length <= 6) {
+                                                setEditingProduct({
+                                                    ...editingProduct,
+                                                    barcode: value,
+                                                });
+                                            }
+                                        }}
+                                        pattern="\d{6}"
+                                        title="Barcode must be exactly 6 digits"
                                     />
                                 </div>
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterManualCodeEntry.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -10,22 +11,20 @@ const PainterManualCodeEntry = () => {
 
   const [verificationCode, setVerificationCode] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const handleVerifyCode = async () => {
     if (!verificationCode.trim()) {
-      setError("Please enter the 6-digit code.");
+      toast.error("Please enter the 6-digit code.");
       return;
     }
 
     if (!/^\d{6}$/.test(verificationCode.trim())) {
-      setError("Please enter a valid 6-digit code.");
+      toast.error("Please enter a valid 6-digit code.");
       return;
     }
 
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -68,7 +67,7 @@ const PainterManualCodeEntry = () => {
       }
     } catch (err) {
       console.error("Manual code verification error:", err);
-      setError(
+      toast.error(
         err.message || "Failed to verify code"
       );
     } finally {
@@ -119,17 +118,10 @@ const PainterManualCodeEntry = () => {
               );
 
               setVerificationCode(value);
-              setError("");
             }}
             placeholder="Enter 6-digit code"
           />
         </div>
-
-        {error && (
-          <p className="painter-manual-code-error">
-            {error}
-          </p>
-        )}
 
         <button
           type="button"

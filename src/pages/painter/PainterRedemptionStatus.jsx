@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Check } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterRedemptionStatus.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
@@ -11,17 +12,15 @@ const PainterRedemptionStatus = () => {
 
   const [redemption, setRedemption] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const requestId = location.state?.requestId;
 
   const fetchRedemptionStatus = async () => {
     try {
       setLoading(true);
-      setError("");
 
       if (!requestId) {
-        setError(
+        toast.error(
           "No redemption request selected. Please submit a redemption request first to view its status."
         );
         return;
@@ -44,7 +43,7 @@ const PainterRedemptionStatus = () => {
       if (!response.ok) {
         throw new Error(
           data.message ||
-          "Failed to fetch redemption status"
+            "Failed to fetch redemption status"
         );
       }
 
@@ -55,9 +54,9 @@ const PainterRedemptionStatus = () => {
         err
       );
 
-      setError(
+      toast.error(
         err.message ||
-        "Failed to load redemption status"
+          "Failed to load redemption status"
       );
     } finally {
       setLoading(false);
@@ -168,19 +167,6 @@ const PainterRedemptionStatus = () => {
               Loading redemption status...
             </div>
           </div>
-        ) : error ? (
-          <div className="painter-redemption-status-card">
-            <div className="painter-redemption-status-error">
-              <p>{error}</p>
-
-              <button
-                type="button"
-                onClick={fetchRedemptionStatus}
-              >
-                Try Again
-              </button>
-            </div>
-          </div>
         ) : redemption ? (
           <div className="painter-redemption-status-card">
 
@@ -215,13 +201,11 @@ const PainterRedemptionStatus = () => {
 
                 return (
                   <div
-                    className={`painter-redemption-status-step ${isCompleted
-                        ? "completed"
-                        : ""
-                      } ${isCurrent
-                        ? "current"
-                        : ""
-                      }`}
+                    className={`painter-redemption-status-step ${
+                      isCompleted ? "completed" : ""
+                    } ${
+                      isCurrent ? "current" : ""
+                    }`}
                     key={step.key}
                   >
                     <div className="painter-redemption-status-step-marker">
@@ -235,8 +219,8 @@ const PainterRedemptionStatus = () => {
 
                     {index <
                       statusSteps.length - 1 && (
-                        <div className="painter-redemption-status-step-line" />
-                      )}
+                      <div className="painter-redemption-status-step-line" />
+                    )}
 
                     <span>
                       {step.label}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterFollowUpNotes.css";
 
 const PainterFollowUpNotes = () => {
@@ -75,17 +76,17 @@ const PainterFollowUpNotes = () => {
     e.preventDefault();
 
     if (!selectedLeadId) {
-      alert("Please select a lead");
+      toast.error("Please select a lead");
       return;
     }
 
     if (!note.trim()) {
-      alert("Please enter follow-up notes");
+      toast.error("Please enter follow-up notes");
       return;
     }
 
     if (!followUpDate || !followUpTime) {
-      alert("Please select follow-up date and time");
+      toast.error("Please select follow-up date and time");
       return;
     }
 
@@ -115,7 +116,7 @@ const PainterFollowUpNotes = () => {
       const data = await response.json();
 
       if (data.success) {
-        alert("Follow-up saved successfully");
+        toast.success("Follow-up saved successfully");
 
         setSelectedLeadId("");
         setSearch("");
@@ -123,11 +124,11 @@ const PainterFollowUpNotes = () => {
         setFollowUpDate("");
         setFollowUpTime("");
       } else {
-        alert(data.message || "Failed to save follow-up");
+        toast.error(data.message || "Failed to save follow-up");
       }
     } catch (error) {
       console.error("Failed to save follow-up:", error);
-      alert("Failed to save follow-up");
+      toast.error("Failed to save follow-up");
     } finally {
       setSubmitting(false);
     }

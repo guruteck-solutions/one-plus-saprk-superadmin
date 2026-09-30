@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Upload } from "lucide-react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterSubmitFeedback.css";
 
 const PainterSubmitFeedback = () => {
@@ -50,7 +51,7 @@ const PainterSubmitFeedback = () => {
         });
 
         if (validFiles.length !== files.length) {
-            alert(
+            toast.error(
                 "Only JPG, JPEG, PNG, WEBP, MP4 and MOV files are allowed."
             );
         }
@@ -60,7 +61,7 @@ const PainterSubmitFeedback = () => {
         );
 
         if (oversizedFiles.length > 0) {
-            alert("Each attachment must be less than 50 MB.");
+            toast.error("Each attachment must be less than 50 MB.");
         }
 
         const finalFiles = validFiles.filter(
@@ -71,7 +72,7 @@ const PainterSubmitFeedback = () => {
             const combined = [...prev, ...finalFiles];
 
             if (combined.length > 10) {
-                alert("Maximum 10 attachments can be uploaded.");
+                toast.error("Maximum 10 attachments can be uploaded.");
                 return combined.slice(0, 10);
             }
 
@@ -83,12 +84,12 @@ const PainterSubmitFeedback = () => {
 
     const handleSubmit = async () => {
         if (!feedbackType) {
-            alert("Please select feedback type.");
+            toast.error("Please select feedback type.");
             return;
         }
 
         if (!title.trim()) {
-            alert("Please enter title.");
+            toast.error("Please enter title.");
             return;
         }
 
@@ -98,7 +99,7 @@ const PainterSubmitFeedback = () => {
             const token = localStorage.getItem("token");
 
             if (!token) {
-                alert("Please login again.");
+                toast.error("Please login again.");
                 return;
             }
 
@@ -131,7 +132,7 @@ const PainterSubmitFeedback = () => {
                 );
             }
 
-            alert("Feedback submitted successfully.");
+            toast.success("Feedback submitted successfully.");
 
             setTitle("");
             setDescription("");
@@ -141,9 +142,8 @@ const PainterSubmitFeedback = () => {
         } catch (error) {
             console.error("Submit Feedback Error:", error);
 
-            alert(
-                error.message ||
-                    "Failed to submit feedback."
+            toast.error(
+                error.message || "Failed to submit feedback."
             );
         } finally {
             setSubmitting(false);

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterRewardAnalytics.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -17,12 +18,10 @@ const PainterRewardAnalytics = () => {
   });
 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const fetchRewardAnalytics = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -60,7 +59,7 @@ const PainterRewardAnalytics = () => {
     } catch (err) {
       console.error("Reward analytics error:", err);
 
-      setError(
+      toast.error(
         err.message || "Failed to load reward analytics"
       );
     } finally {
@@ -95,16 +94,6 @@ const PainterRewardAnalytics = () => {
       <div className="painter-reward-analytics-page">
         <div className="painter-reward-analytics-loading">
           Loading reward analytics...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-reward-analytics-page">
-        <div className="painter-reward-analytics-error">
-          {error}
         </div>
       </div>
     );

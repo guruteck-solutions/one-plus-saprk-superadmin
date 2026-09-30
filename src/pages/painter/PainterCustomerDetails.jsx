@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterCustomerDetails.css";
 
 const PainterCustomerDetails = () => {
@@ -55,7 +56,7 @@ const PainterCustomerDetails = () => {
       const data = await response.json();
 
       if (data.success) {
-        alert("Customer details submitted successfully");
+        toast.success("Customer details submitted successfully");
 
         setCustomer({
           name: "",
@@ -66,11 +67,13 @@ const PainterCustomerDetails = () => {
           source: "",
         });
       } else {
-        alert(data.message || "Failed to submit customer details");
+        toast.error(
+          data.message || "Failed to submit customer details"
+        );
       }
     } catch (error) {
       console.error("Failed to submit customer:", error);
-      alert("Failed to submit customer details");
+      toast.error("Failed to submit customer details");
     } finally {
       setSubmitting(false);
     }

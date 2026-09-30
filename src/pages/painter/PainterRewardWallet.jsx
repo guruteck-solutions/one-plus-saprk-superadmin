@@ -6,6 +6,7 @@ import {
   ArrowDownLeft,
   ArrowUpRight,
 } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterRewardWallet.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -19,12 +20,10 @@ const PainterRewardWallet = () => {
 
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const fetchRewardWallet = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -61,7 +60,7 @@ const PainterRewardWallet = () => {
       );
     } catch (err) {
       console.error("Reward wallet error:", err);
-      setError(
+      toast.error(
         err.message || "Failed to load reward wallet"
       );
     } finally {
@@ -106,16 +105,6 @@ const PainterRewardWallet = () => {
       <div className="painter-reward-wallet-page">
         <div className="painter-reward-wallet-loading">
           Loading reward wallet...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-reward-wallet-page">
-        <div className="painter-reward-wallet-error">
-          {error}
         </div>
       </div>
     );

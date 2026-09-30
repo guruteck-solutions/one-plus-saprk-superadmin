@@ -40,7 +40,7 @@ const PainterShareReferral = () => {
                 );
             }
 
-            setReferral(data.referral || null);
+            setReferral(data.referral);
         } catch (error) {
             console.error("Fetch share referral error:", error);
             setError(error.message || "Failed to load referral details");
@@ -139,7 +139,6 @@ const PainterShareReferral = () => {
                             type="button"
                             className="painter-share-whatsapp-btn"
                             onClick={handleWhatsAppShare}
-                            disabled={!referralCode}
                         >
                             <Share2 size={16} />
                             Share on WhatsApp
@@ -149,7 +148,6 @@ const PainterShareReferral = () => {
                             type="button"
                             className="painter-copy-link-btn"
                             onClick={handleCopyLink}
-                            disabled={!referralLink}
                         >
                             <Copy size={16} />
                             {copied ? "Link Copied" : "Copy Link"}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterRewardLedger.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -6,12 +7,10 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 const PainterRewardLedger = () => {
   const [ledger, setLedger] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const fetchRewardLedger = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -38,7 +37,7 @@ const PainterRewardLedger = () => {
       );
     } catch (err) {
       console.error("Reward ledger error:", err);
-      setError(
+      toast.error(
         err.message || "Failed to load reward ledger"
       );
     } finally {
@@ -64,16 +63,6 @@ const PainterRewardLedger = () => {
       <div className="painter-reward-ledger-page">
         <div className="painter-reward-ledger-loading">
           Loading reward ledger...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-reward-ledger-page">
-        <div className="painter-reward-ledger-error">
-          {error}
         </div>
       </div>
     );

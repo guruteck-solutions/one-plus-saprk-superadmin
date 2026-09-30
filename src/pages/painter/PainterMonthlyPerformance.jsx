@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from "react";
 import { BarChart3 } from "lucide-react";
 import "../../css/painter/PainterMonthlyPerformance.css";
+import { toast } from "sonner";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 
 const PainterMonthlyPerformance = () => {
   const [monthlyData, setMonthlyData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+
 
   useEffect(() => {
     const fetchMonthlyPerformance = async () => {
@@ -35,7 +36,7 @@ const PainterMonthlyPerformance = () => {
         setMonthlyData(data.monthlyPerformance || []);
       } catch (err) {
         console.error("Monthly Performance Error:", err);
-        setError(err.message);
+        toast.error(err.message || "Failed to fetch monthly performance");
       } finally {
         setLoading(false);
       }
@@ -72,10 +73,6 @@ const PainterMonthlyPerformance = () => {
         <div className="painter-monthly-message">
           Loading monthly performance...
         </div>
-      ) : error ? (
-        <div className="painter-monthly-message painter-monthly-error">
-          {error}
-        </div>
       ) : (
         <>
           <div className="painter-monthly-chart-card">
@@ -97,9 +94,8 @@ const PainterMonthlyPerformance = () => {
                   >
                     <div className="painter-monthly-bar-area">
                       <div
-                        className={`painter-monthly-bar ${
-                          isLatest ? "painter-monthly-bar-active" : ""
-                        }`}
+                        className={`painter-monthly-bar ${isLatest ? "painter-monthly-bar-active" : ""
+                          }`}
                         style={{
                           height: scans > 0 ? `${height}%` : "3px",
                         }}

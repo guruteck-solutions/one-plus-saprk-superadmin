@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Check } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterTierBenefits.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -15,13 +16,11 @@ const benefitLabels = {
 const PainterTierBenefits = () => {
   const [benefits, setBenefits] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchTierBenefits = async () => {
       try {
         setLoading(true);
-        setError("");
 
         const token = localStorage.getItem("token");
 
@@ -47,7 +46,8 @@ const PainterTierBenefits = () => {
         setBenefits(data.benefits || []);
       } catch (err) {
         console.error("Tier Benefits Error:", err);
-        setError(
+
+        toast.error(
           err.message || "Failed to load tier benefits"
         );
       } finally {
@@ -63,16 +63,6 @@ const PainterTierBenefits = () => {
       <div className="painter-tier-benefits-page">
         <div className="painter-tier-benefits-state">
           Loading tier benefits...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-tier-benefits-page">
-        <div className="painter-tier-benefits-error">
-          {error}
         </div>
       </div>
     );

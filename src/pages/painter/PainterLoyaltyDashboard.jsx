@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterLoyaltyDashboard.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -11,13 +12,11 @@ const PainterLoyaltyDashboard = () => {
   const [loyalty, setLoyalty] = useState(null);
   const [tiers, setTiers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchLoyaltyDashboard = async () => {
       try {
         setLoading(true);
-        setError("");
 
         const token = localStorage.getItem("token");
 
@@ -44,7 +43,10 @@ const PainterLoyaltyDashboard = () => {
         setTiers(data.tiers || []);
       } catch (err) {
         console.error("Loyalty Dashboard Error:", err);
-        setError(err.message || "Failed to load loyalty dashboard");
+
+        toast.error(
+          err.message || "Failed to load loyalty dashboard"
+        );
       } finally {
         setLoading(false);
       }
@@ -75,16 +77,6 @@ const PainterLoyaltyDashboard = () => {
       <div className="painter-loyalty-dashboard">
         <div className="painter-loyalty-state">
           Loading loyalty dashboard...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-loyalty-dashboard">
-        <div className="painter-loyalty-error">
-          {error}
         </div>
       </div>
     );

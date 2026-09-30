@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { History, RefreshCw } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterScanHistory.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -7,12 +8,10 @@ const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 const PainterScanHistory = () => {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const fetchScanHistory = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -37,7 +36,9 @@ const PainterScanHistory = () => {
       setHistory(data.history || []);
     } catch (err) {
       console.error("Scan history error:", err);
-      setError(err.message || "Failed to fetch scan history");
+      toast.error(
+        err.message || "Failed to fetch scan history"
+      );
     } finally {
       setLoading(false);
     }
@@ -90,12 +91,6 @@ const PainterScanHistory = () => {
           <History size={18} />
           <h2>Previous Scans</h2>
         </div>
-
-        {error && (
-          <div className="painter-scan-history-error">
-            {error}
-          </div>
-        )}
 
         <div className="painter-scan-history-table-wrapper">
           <table className="painter-scan-history-table">

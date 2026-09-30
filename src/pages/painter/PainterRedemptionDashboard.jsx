@@ -8,6 +8,7 @@ import {
   Gift,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterRedemptionDashboard.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
@@ -26,12 +27,10 @@ const PainterRedemptionDashboard = () => {
   });
 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const fetchDashboard = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -71,7 +70,7 @@ const PainterRedemptionDashboard = () => {
         err
       );
 
-      setError(
+      toast.error(
         err.message ||
           "Failed to load redemption dashboard"
       );
@@ -103,23 +102,6 @@ const PainterRedemptionDashboard = () => {
       <div className="painter-redemption-page">
         <div className="painter-redemption-loading">
           Loading redemption dashboard...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-redemption-page">
-        <div className="painter-redemption-error">
-          <p>{error}</p>
-
-          <button
-            type="button"
-            onClick={fetchDashboard}
-          >
-            Try Again
-          </button>
         </div>
       </div>
     );

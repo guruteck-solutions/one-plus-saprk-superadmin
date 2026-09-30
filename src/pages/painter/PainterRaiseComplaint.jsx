@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Upload, X, Image, Video } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterRaiseComplaint.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -14,8 +15,6 @@ const PainterRaiseComplaint = () => {
 
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
-  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,11 +44,8 @@ const PainterRaiseComplaint = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setMessage("");
-    setError("");
-
     if (!formData.type || !formData.title || !formData.description) {
-      setError("Please fill all required fields.");
+      toast.error("Please fill all required fields.");
       return;
     }
 
@@ -83,10 +79,12 @@ const PainterRaiseComplaint = () => {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.message || "Failed to submit complaint.");
+        throw new Error(
+          result.message || "Failed to submit complaint."
+        );
       }
 
-     alert("Complaint submitted successfully.");
+      toast.success("Complaint submitted successfully.");
 
       setFormData({
         type: "",
@@ -98,7 +96,7 @@ const PainterRaiseComplaint = () => {
       setFiles([]);
     } catch (err) {
       console.error("Raise complaint error:", err);
-      setError(err.message || "Failed to submit complaint.");
+      toast.error(err.message || "Failed to submit complaint.");
     } finally {
       setLoading(false);
     }
@@ -227,18 +225,6 @@ const PainterRaiseComplaint = () => {
                   </button>
                 </div>
               ))}
-            </div>
-          )}
-
-          {message && (
-            <div className="painter-raise-success">
-              {message}
-            </div>
-          )}
-
-          {error && (
-            <div className="painter-raise-error">
-              {error}
             </div>
           )}
 

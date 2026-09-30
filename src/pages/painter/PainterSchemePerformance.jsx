@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterSchemePerformance.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -13,12 +14,10 @@ const PainterSchemePerformance = () => {
 
   const [performance, setPerformance] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const fetchSchemePerformance = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -61,7 +60,7 @@ const PainterSchemePerformance = () => {
         err
       );
 
-      setError(
+      toast.error(
         err.message ||
           "Failed to load scheme performance"
       );
@@ -85,16 +84,6 @@ const PainterSchemePerformance = () => {
       <div className="painter-scheme-performance-page">
         <div className="painter-scheme-performance-loading">
           Loading scheme performance...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-scheme-performance-page">
-        <div className="painter-scheme-performance-error">
-          {error}
         </div>
       </div>
     );

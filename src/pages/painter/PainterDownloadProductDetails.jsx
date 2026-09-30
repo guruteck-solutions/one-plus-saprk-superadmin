@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Download, FileText } from "lucide-react";
 import "../../css/painter/PainterDownloadProductDetails.css";
+import { toast } from "sonner";
 
 const PRODUCT_API = "http://localhost:5000/api/painter/products";
 const DOCUMENT_API = "http://localhost:5000/api/painter/documents/categories";
@@ -148,7 +149,7 @@ const PainterDownloadProductDetails = () => {
                 error
             );
 
-            alert(
+            toast.error(
                 error?.response?.data?.message ||
                 "Failed to download document."
             );

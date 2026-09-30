@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterRedemptionRequest.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
@@ -25,23 +26,18 @@ const PainterRedemptionRequest = () => {
   );
 
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
 
   const handleSubmitRequest = async () => {
-    setError("");
-    setSuccess("");
-
     if (
       !requestedAmount ||
       Number(requestedAmount) <= 0
     ) {
-      setError("Valid requested amount is required.");
+      toast.error("Valid requested amount is required.");
       return;
     }
 
     if (!payoutAccount.trim()) {
-      setError("Payout account is required.");
+      toast.error("Payout account is required.");
       return;
     }
 
@@ -76,7 +72,7 @@ const PainterRedemptionRequest = () => {
         );
       }
 
-      setSuccess(
+      toast.success(
         "Redemption request submitted successfully."
       );
 
@@ -94,7 +90,7 @@ const PainterRedemptionRequest = () => {
         err
       );
 
-      setError(
+      toast.error(
         err.message ||
           "Failed to submit redemption request"
       );
@@ -206,20 +202,6 @@ const PainterRedemptionRequest = () => {
               placeholder="Enter remarks"
             />
           </div>
-
-          {/* ERROR */}
-          {error && (
-            <div className="painter-redemption-request-message error">
-              {error}
-            </div>
-          )}
-
-          {/* SUCCESS */}
-          {success && (
-            <div className="painter-redemption-request-message success">
-              {success}
-            </div>
-          )}
 
           {/* SUBMIT */}
           <button

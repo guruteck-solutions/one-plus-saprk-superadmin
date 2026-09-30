@@ -7,12 +7,12 @@ import {
   ShieldCheck,
   CalendarDays,
 } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterMyProfile.css";
 
 const PainterMyProfile = () => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 
@@ -23,7 +23,6 @@ const PainterMyProfile = () => {
   const fetchProfile = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -48,7 +47,7 @@ const PainterMyProfile = () => {
       setProfile(result.data);
     } catch (error) {
       console.error("Fetch Profile Error:", error);
-      setError(
+      toast.error(
         error.message || "Failed to load profile"
       );
     } finally {
@@ -81,19 +80,6 @@ const PainterMyProfile = () => {
       <div className="painter-profile-page">
         <div className="painter-profile-loading">
           Loading profile...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-profile-page">
-        <div className="painter-profile-error">
-          <p>{error}</p>
-          <button onClick={fetchProfile}>
-            Retry
-          </button>
         </div>
       </div>
     );

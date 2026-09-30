@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Coins, IndianRupee, ArrowLeft } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterRedeemRewards.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
@@ -24,13 +25,10 @@ const PainterRedeemRewards = () => {
 
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
 
   const fetchWallet = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -61,7 +59,7 @@ const PainterRedeemRewards = () => {
     } catch (err) {
       console.error("Redeem Rewards Error:", err);
 
-      setError(
+      toast.error(
         err.message || "Failed to load reward balance"
       );
     } finally {
@@ -85,8 +83,6 @@ const PainterRedeemRewards = () => {
   const handleRewardTypeChange = (type) => {
     setRewardType(type);
     setAmount("");
-    setError("");
-    setSuccess("");
   };
 
   const handleAmountChange = (e) => {
@@ -94,25 +90,21 @@ const PainterRedeemRewards = () => {
 
     if (value === "" || Number(value) >= 0) {
       setAmount(value);
-      setError("");
     }
   };
 
   const handleContinue = async (e) => {
     e.preventDefault();
 
-    setError("");
-    setSuccess("");
-
     const requestedAmount = Number(amount);
 
     if (!amount || requestedAmount <= 0) {
-      setError("Please enter a valid redemption amount.");
+      toast.error("Please enter a valid redemption amount.");
       return;
     }
 
     if (requestedAmount > availableAmount) {
-      setError(
+      toast.error(
         rewardType === "POINTS"
           ? "Requested points exceed available points."
           : "Requested cash exceeds available cash rewards."
@@ -121,7 +113,7 @@ const PainterRedeemRewards = () => {
     }
 
     if (!payoutAccount.trim()) {
-      setError("Please enter Bank / Reward Account.");
+      toast.error("Please enter Bank / Reward Account.");
       return;
     }
 
@@ -156,7 +148,7 @@ const PainterRedeemRewards = () => {
         );
       }
 
-      setSuccess(
+      toast.success(
         "Redemption request created successfully."
       );
 
@@ -173,7 +165,7 @@ const PainterRedeemRewards = () => {
         err
       );
 
-      setError(
+      toast.error(
         err.message ||
           "Failed to create redemption request"
       );
@@ -368,21 +360,7 @@ const PainterRedeemRewards = () => {
             />
           </div>
 
-          {/* ERROR */}
-          {error && (
-            <div className="painter-redeem-message error">
-              {error}
-            </div>
-          )}
-
-          {/* SUCCESS */}
-          {success && (
-            <div className="painter-redeem-message success">
-              {success}
-            </div>
-          )}
-
-          {/* CONTINUE */}
+          {/* FORM ACTIONS */}
           <div className="painter-redeem-form-actions">
             <button
               type="button"

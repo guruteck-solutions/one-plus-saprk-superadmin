@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Gift, ArrowRight, LoaderCircle } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterOffersListing.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -11,7 +12,6 @@ const PainterOffersListing = () => {
 
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const getOfferTypeLabel = (type) => {
     const labels = {
@@ -37,7 +37,6 @@ const PainterOffersListing = () => {
     const fetchOffers = async () => {
       try {
         setLoading(true);
-        setError("");
 
         const token = localStorage.getItem("token");
 
@@ -54,11 +53,12 @@ const PainterOffersListing = () => {
           setOffers(response.data.offers || []);
         } else {
           setOffers([]);
-          setError("Failed to load offers.");
+          toast.error("Failed to load offers.");
         }
       } catch (err) {
         console.error("Fetch painter offers error:", err);
-        setError(
+
+        toast.error(
           err.response?.data?.message || "Failed to load offers."
         );
       } finally {
@@ -94,13 +94,7 @@ const PainterOffersListing = () => {
         </div>
       </div>
 
-      {error && (
-        <div className="painter-offers-error">
-          {error}
-        </div>
-      )}
-
-      {!error && offers.length === 0 ? (
+      {offers.length === 0 ? (
         <div className="painter-offers-empty">
           <Gift size={38} />
           <h3>No Offers Available</h3>

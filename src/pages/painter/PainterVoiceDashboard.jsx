@@ -239,8 +239,8 @@ const PainterVoiceDashboard = () => {
                                 {loading
                                     ? "..."
                                     : stats.rewardsEarned.toLocaleString(
-                                          "en-IN"
-                                      )}
+                                        "en-IN"
+                                    )}
                             </strong>
                             <small>From milestones</small>
                         </div>

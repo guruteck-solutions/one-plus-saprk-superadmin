@@ -7,6 +7,7 @@ import {
   Share2,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterReferralDashboard.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -23,7 +24,6 @@ const PainterReferralDashboard = () => {
 
   const [loading, setLoading] = useState(true);
   const [sharing, setSharing] = useState(false);
-  const [error, setError] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   const referralCategories = [
@@ -44,7 +44,6 @@ const PainterReferralDashboard = () => {
   const fetchDashboard = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -68,7 +67,7 @@ const PainterReferralDashboard = () => {
       setDashboard(data.dashboard || {});
     } catch (error) {
       console.error("Fetch referral dashboard error:", error);
-      setError(error.message || "Failed to load referral dashboard");
+      toast.error(error.message || "Failed to load referral dashboard");
     } finally {
       setLoading(false);
     }
@@ -87,7 +86,6 @@ const PainterReferralDashboard = () => {
 
     try {
       setSharing(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -120,7 +118,7 @@ const PainterReferralDashboard = () => {
       navigate("/painter/share-referral");
     } catch (error) {
       console.error("Create referral error:", error);
-      setError(error.message || "Failed to create referral");
+      toast.error(error.message || "Failed to create referral");
     } finally {
       setSharing(false);
     }
@@ -150,10 +148,6 @@ const PainterReferralDashboard = () => {
       {loading ? (
         <div className="painter-referral-dashboard-state">
           Loading referral dashboard...
-        </div>
-      ) : error ? (
-        <div className="painter-referral-dashboard-state error">
-          {error}
         </div>
       ) : (
         <>
@@ -251,12 +245,6 @@ const PainterReferralDashboard = () => {
                 <Share2 size={15} />
                 {sharing ? "Creating Referral..." : "Share Referral"}
               </button>
-
-              {error && (
-                <div className="painter-referral-dashboard-state error">
-                  {error}
-                </div>
-              )}
             </div>
           </div>
         </>

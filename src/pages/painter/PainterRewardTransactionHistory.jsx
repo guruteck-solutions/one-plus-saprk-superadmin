@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterRewardTransactionHistory.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -6,12 +7,10 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 const PainterRewardTransactionHistory = () => {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const fetchTransactionHistory = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -43,7 +42,7 @@ const PainterRewardTransactionHistory = () => {
         err
       );
 
-      setError(
+      toast.error(
         err.message ||
           "Failed to load reward transaction history"
       );
@@ -84,16 +83,6 @@ const PainterRewardTransactionHistory = () => {
       <div className="painter-reward-history-page">
         <div className="painter-reward-history-loading">
           Loading reward transaction history...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="painter-reward-history-page">
-        <div className="painter-reward-history-error">
-          {error}
         </div>
       </div>
     );

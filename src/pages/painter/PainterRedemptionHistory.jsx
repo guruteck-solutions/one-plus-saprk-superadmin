@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "sonner";
 import "../../css/painter/PainterRedemptionHistory.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
@@ -6,12 +7,10 @@ const API_URL = import.meta.env.VITE_API_URL || "";
 const PainterRedemptionHistory = () => {
   const [redemptions, setRedemptions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const fetchRedemptionHistory = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -41,7 +40,7 @@ const PainterRedemptionHistory = () => {
         err
       );
 
-      setError(
+      toast.error(
         err.message ||
           "Failed to load redemption history"
       );
@@ -104,17 +103,6 @@ const PainterRedemptionHistory = () => {
           {loading ? (
             <div className="painter-redemption-history-loading">
               Loading redemption history...
-            </div>
-          ) : error ? (
-            <div className="painter-redemption-history-error">
-              {error}
-
-              <button
-                type="button"
-                onClick={fetchRedemptionHistory}
-              >
-                Try Again
-              </button>
             </div>
           ) : (
             <div className="painter-redemption-history-table-wrapper">

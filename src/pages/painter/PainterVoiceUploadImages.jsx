@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Upload, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterVoiceUploadImages.css";
 
 const PainterVoiceUploadImages = () => {
@@ -27,9 +28,7 @@ const PainterVoiceUploadImages = () => {
                 .toLowerCase();
 
             if (
-                !["jpg", "jpeg", "png", "webp"].includes(
-                    extension
-                )
+                !["jpg", "jpeg", "png", "webp"].includes(extension)
             ) {
                 invalidFiles.push(
                     `${file.name} - unsupported format`
@@ -48,7 +47,7 @@ const PainterVoiceUploadImages = () => {
         });
 
         if (invalidFiles.length > 0) {
-            alert(
+            toast.error(
                 `Some images were not added:\n\n${invalidFiles.join(
                     "\n"
                 )}`
@@ -59,7 +58,7 @@ const PainterVoiceUploadImages = () => {
             const combined = [...prev, ...validImages];
 
             if (combined.length > 10) {
-                alert("Maximum 10 images can be uploaded.");
+                toast.error("Maximum 10 images can be uploaded.");
                 return combined.slice(0, 10);
             }
 
@@ -87,12 +86,12 @@ const PainterVoiceUploadImages = () => {
 
     const handleSubmit = async () => {
         if (!title.trim()) {
-            alert("Please enter image title.");
+            toast.error("Please enter image title.");
             return;
         }
 
         if (images.length === 0) {
-            alert("Please choose at least one image.");
+            toast.error("Please choose at least one image.");
             return;
         }
 
@@ -125,11 +124,11 @@ const PainterVoiceUploadImages = () => {
             if (!response.ok || !data.success) {
                 throw new Error(
                     data.message ||
-                        "Failed to upload images."
+                    "Failed to upload images."
                 );
             }
 
-            alert("Images uploaded successfully.");
+            toast.success("Images uploaded successfully.");
 
             setImages([]);
             setTitle("Site completion images");
@@ -141,9 +140,9 @@ const PainterVoiceUploadImages = () => {
                 error
             );
 
-            alert(
+            toast.error(
                 error.message ||
-                    "Failed to upload images."
+                "Failed to upload images."
             );
         } finally {
             setUploading(false);
@@ -174,9 +173,7 @@ const PainterVoiceUploadImages = () => {
 
                     <div
                         className={`painter-voice-images-dropzone ${
-                            dragActive
-                                ? "drag-active"
-                                : ""
+                            dragActive ? "drag-active" : ""
                         }`}
                         onDragOver={(e) => {
                             e.preventDefault();

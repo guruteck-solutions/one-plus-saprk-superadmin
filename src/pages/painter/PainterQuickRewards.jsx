@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Gift, IndianRupee, Clock, RotateCcw } from "lucide-react";
+import { toast } from "sonner";
 import "../../css/painter/PainterQuickRewards.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
@@ -13,12 +14,10 @@ const PainterQuickRewards = () => {
 
   const [recentRewards, setRecentRewards] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   const fetchRewards = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -44,7 +43,7 @@ const PainterQuickRewards = () => {
       setRecentRewards(data.recentRewards || []);
     } catch (err) {
       console.error("Fetch painter rewards error:", err);
-      setError(err.message || "Failed to load rewards");
+      toast.error(err.message || "Failed to load rewards");
     } finally {
       setLoading(false);
     }
@@ -92,12 +91,6 @@ const PainterQuickRewards = () => {
           Redeem Rewards
         </button>
       </div>
-
-      {error && (
-        <div className="painter-rewards-error">
-          {error}
-        </div>
-      )}
 
       <div className="painter-rewards-summary">
         <div className="painter-reward-summary-card">
@@ -153,8 +146,12 @@ const PainterQuickRewards = () => {
             onClick={fetchRewards}
             title="Refresh rewards"
             aria-label="Refresh rewards"
+            disabled={loading}
           >
-            <RotateCcw size={17} />
+            <RotateCcw
+              size={17}
+              className={loading ? "painter-spin" : ""}
+            />
           </button>
         </div>
 

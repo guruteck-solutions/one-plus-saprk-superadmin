@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Upload } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterVoiceUploadVideo.css";
 
 const PainterVoiceUploadVideo = () => {
@@ -21,12 +22,12 @@ const PainterVoiceUploadVideo = () => {
             .toLowerCase();
 
         if (!["mp4", "mov"].includes(extension)) {
-            alert("Only MP4 and MOV videos are allowed.");
+            toast.error("Only MP4 and MOV videos are allowed.");
             return;
         }
 
         if (file.size > 50 * 1024 * 1024) {
-            alert("Video size must be 50 MB or less.");
+            toast.error("Video size must be 50 MB or less.");
             return;
         }
 
@@ -52,12 +53,12 @@ const PainterVoiceUploadVideo = () => {
 
     const handleSubmit = async () => {
         if (!title.trim()) {
-            alert("Please enter video title.");
+            toast.error("Please enter video title.");
             return;
         }
 
         if (!video) {
-            alert("Please choose a video.");
+            toast.error("Please choose a video.");
             return;
         }
 
@@ -86,12 +87,11 @@ const PainterVoiceUploadVideo = () => {
 
             if (!response.ok || !data.success) {
                 throw new Error(
-                    data.message ||
-                        "Failed to upload video."
+                    data.message || "Failed to upload video."
                 );
             }
 
-            alert("Video uploaded successfully.");
+            toast.success("Video uploaded successfully.");
 
             setVideo(null);
             setTitle("Site completion video");
@@ -103,9 +103,8 @@ const PainterVoiceUploadVideo = () => {
                 error
             );
 
-            alert(
-                error.message ||
-                    "Failed to upload video."
+            toast.error(
+                error.message || "Failed to upload video."
             );
         } finally {
             setUploading(false);
@@ -136,9 +135,7 @@ const PainterVoiceUploadVideo = () => {
 
                     <div
                         className={`painter-voice-video-dropzone ${
-                            dragActive
-                                ? "drag-active"
-                                : ""
+                            dragActive ? "drag-active" : ""
                         }`}
                         onDragOver={(e) => {
                             e.preventDefault();

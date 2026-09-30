@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import "../../css/painter/PainterReferralHistory.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
@@ -6,7 +8,8 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 const PainterReferralHistory = () => {
   const [referrals, setReferrals] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchReferralHistory();
@@ -15,7 +18,6 @@ const PainterReferralHistory = () => {
   const fetchReferralHistory = async () => {
     try {
       setLoading(true);
-      setError("");
 
       const token = localStorage.getItem("token");
 
@@ -41,7 +43,8 @@ const PainterReferralHistory = () => {
       setReferrals(data.referrals || []);
     } catch (error) {
       console.error("Fetch referral history error:", error);
-      setError(
+
+      toast.error(
         error.message || "Failed to load referral history"
       );
     } finally {
@@ -61,9 +64,18 @@ const PainterReferralHistory = () => {
   const formatStatus = (status) => {
     if (!status) return "-";
 
-    return status
-      .charAt(0)
-      .toUpperCase() + status.slice(1).toLowerCase();
+    return (
+      status.charAt(0).toUpperCase() +
+      status.slice(1).toLowerCase()
+    );
+  };
+
+  const handleReferralClick = (referral) => {
+    navigate("/painter/referral-status", {
+      state: {
+        referral,
+      },
+    });
   };
 
   return (
@@ -82,10 +94,6 @@ const PainterReferralHistory = () => {
         {loading ? (
           <div className="painter-referral-history-state">
             Loading referral history...
-          </div>
-        ) : error ? (
-          <div className="painter-referral-history-state error">
-            {error}
           </div>
         ) : referrals.length === 0 ? (
           <div className="painter-referral-history-state">
@@ -106,24 +114,28 @@ const PainterReferralHistory = () => {
 
               <tbody>
                 {referrals.map((referral) => (
-                  <tr key={referral._id}>
+                  <tr
+                    key={referral._id}
+                    onClick={() => handleReferralClick(referral)}
+                    style={{ cursor: "pointer" }}
+                  >
                     <td>{referral.referredName || "-"}</td>
 
                     <td>
                       {Array.isArray(referral.category)
                         ? referral.category
-                          .map((item) =>
-                            item
-                              .replace(/_/g, " ")
-                              .replace(/\b\w/g, (char) => char.toUpperCase())
-                          )
-                          .join(", ")
+                            .map((item) =>
+                              item
+                                .replace(/_/g, " ")
+                                .replace(/\b\w/g, (char) =>
+                                  char.toUpperCase()
+                                )
+                            )
+                            .join(", ")
                         : referral.category || "-"}
                     </td>
 
-                    <td>
-                      {formatDate(referral.createdAt)}
-                    </td>
+                    <td>{formatDate(referral.createdAt)}</td>
 
                     <td>
                       <span
@@ -136,7 +148,10 @@ const PainterReferralHistory = () => {
                     </td>
 
                     <td>
-                      ₹{Number(referral.reward || 0).toLocaleString("en-IN")}
+                      ₹
+                      {Number(
+                        referral.reward || 0
+                      ).toLocaleString("en-IN")}
                     </td>
                   </tr>
                 ))}
