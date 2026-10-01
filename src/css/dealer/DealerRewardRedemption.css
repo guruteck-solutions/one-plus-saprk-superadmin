@@ -1,0 +1,241 @@
+.dealer-reward-redemption-page {
+  min-height: 100vh;
+  padding: 24px;
+  background: #f7f8fa;
+}
+
+.dealer-reward-redemption-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dealer-reward-redemption-header h1 {
+  margin: 0;
+  font-size: 26px;
+  color: #222;
+}
+
+.dealer-reward-redemption-header p {
+  margin: 5px 0 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.dealer-reward-redemption-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 15px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dealer-reward-redemption-success,
+.dealer-reward-redemption-error {
+  padding: 13px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.dealer-reward-redemption-success {
+  background: #eaf8ef;
+  border: 1px solid #bde8ca;
+  color: #238344;
+}
+
+.dealer-reward-redemption-error {
+  background: #fff0f0;
+  border: 1px solid #ffcaca;
+  color: #c62828;
+}
+
+.dealer-reward-redemption-balance-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.dealer-reward-redemption-balance-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dealer-reward-redemption-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #f1f4ff;
+  color: #3157d5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dealer-reward-redemption-balance-card span {
+  display: block;
+  color: #777;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.dealer-reward-redemption-balance-card strong {
+  font-size: 22px;
+  color: #222;
+}
+
+.dealer-reward-redemption-container {
+  max-width: 850px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.dealer-reward-redemption-title {
+  margin-bottom: 22px;
+}
+
+.dealer-reward-redemption-title h2 {
+  margin: 0 0 5px;
+  font-size: 20px;
+}
+
+.dealer-reward-redemption-title p {
+  margin: 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.dealer-reward-redemption-type {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.dealer-reward-redemption-type button {
+  
+  background: #fff;
+  border: 1px solid #ddd;
+  
+
+  height: 42px;
+  padding: 0 16px;
+  /* border: 1px solid #e8751a; */
+  border-radius: 8px;
+  /* background: #e8751a; */
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dealer-reward-redemption-type button.active {
+  background: #e8751a;
+  border-color: #e8751a;
+  color: #fff;
+}
+
+.dealer-reward-redemption-form-group {
+  margin-bottom: 20px;
+}
+
+.dealer-reward-redemption-form-group label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.dealer-reward-redemption-form-group input,
+.dealer-reward-redemption-form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 13px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  font-size: 14px;
+  outline: none;
+  font-family: inherit;
+}
+
+.dealer-reward-redemption-form-group input:focus,
+.dealer-reward-redemption-form-group textarea:focus {
+  border-color: #3157d5;
+}
+
+.dealer-reward-redemption-form-group small {
+  display: block;
+  margin-top: 6px;
+  color: #777;
+  font-size: 12px;
+}
+
+.dealer-reward-redemption-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 13px;
+  border: 0;
+  border-radius: 7px;
+  background: #d8660f;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dealer-reward-redemption-submit:hover {
+  background: #e8751a;
+  border-color: #e8751a;
+}
+
+
+.dealer-reward-redemption-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.dealer-reward-redemption-loading {
+  padding: 60px;
+  text-align: center;
+  color: #777;
+}
+
+@media (max-width: 700px) {
+  .dealer-reward-redemption-page {
+    padding: 15px;
+  }
+
+  .dealer-reward-redemption-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dealer-reward-redemption-balance-grid,
+  .dealer-reward-redemption-type {
+    grid-template-columns: 1fr;
+  }
+
+  .dealer-reward-redemption-container {
+    padding: 16px;
+  }
+}

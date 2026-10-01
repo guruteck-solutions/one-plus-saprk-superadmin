@@ -185,21 +185,23 @@
 }
 
 .dealer-order-view-btn {
-  border: 1px solid #d1d5db;
-  background: #ffffff;
-  color: #374151;
+   height: 34px;
+  padding: 0 11px;
+  border: 1px solid #e8751a;
   border-radius: 6px;
-  padding: 7px 11px;
+  background: #ffffff;
+  color: #e8751a;
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 11px;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
   cursor: pointer;
 }
 
 .dealer-order-view-btn:hover {
-  background: #f9fafb;
-  border-color: #bfc3c8;
+  background: #e8751a;
+  color: #ffffff;
 }
 
 .dealer-order-history-empty {

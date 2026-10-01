@@ -139,6 +139,16 @@ import DealerProductDetails from "./pages/dealer/DealerProductDetails";
 import DealerShoppingCart from "./pages/dealer/DealerShoppingCart";
 import DealerOrderHistory from "./pages/dealer/DealerOrderHistory";
 import DealerOrderDetails from "./pages/dealer/DealerOrderDetails";
+import DealerRewardWallet from "./pages/dealer/DealerRewardWallet";
+import DealerRewardRedemption from "./pages/dealer/DealerRewardRedemption";
+import DealerRedemptionHistory from "./pages/dealer/DealerRedemptionHistory";
+import DealerRedemptionDetails from "./pages/dealer/DealerRedemptionDetails";
+import DealerLoyaltyTier from "./pages/dealer/DealerLoyaltyTier";
+import DealerSchemes from "./pages/dealer/DealerSchemes";
+import DealerOffers from "./pages/dealer/DealerOffers";
+import DealerProductCatalogue from "./pages/dealer/DealerProductCatalogue";
+import DealerDownloadCentre from "./pages/dealer/DealerDownloadCentre";
+import DealerPainterEnquiries from "./pages/dealer/DealerPainterEnquiries";
 
 
 const App = () => {
@@ -289,6 +299,16 @@ const App = () => {
         <Route path="/dealer/shopping-cart" element={<DealerLayout><DealerShoppingCart /></DealerLayout>} />
         <Route path="/dealer/order-history" element={<DealerLayout><DealerOrderHistory /></DealerLayout>} />
         <Route path="/dealer/order-history/:id" element={<DealerLayout><DealerOrderDetails /></DealerLayout>} />
+        <Route path="/dealer/reward-wallet" element={<DealerLayout><DealerRewardWallet /></DealerLayout>} />
+        <Route path="/dealer/reward-redemption" element={<DealerLayout><DealerRewardRedemption /></DealerLayout>} />
+        <Route path="/dealer/reward-redemption-history" element={<DealerLayout><DealerRedemptionHistory /></DealerLayout>} />
+        <Route path="/dealer/reward-redemption-history/:id" element={<DealerLayout><DealerRedemptionDetails /></DealerLayout>} />
+        <Route path="/dealer/loyalty-tier" element={<DealerLayout><DealerLoyaltyTier /></DealerLayout>} />
+        <Route path="/dealer/schemes" element={<DealerLayout><DealerSchemes /></DealerLayout>} />
+        <Route path="/dealer/offers" element={<DealerLayout><DealerOffers /></DealerLayout>} />
+        <Route path="/dealer/product-catalogue" element={<DealerLayout><DealerProductCatalogue /></DealerLayout>} />
+        <Route path="/dealer/download-centre" element={<DealerLayout><DealerDownloadCentre /></DealerLayout>} />
+        <Route path="/dealer/painter-enquiries" element={<DealerLayout><DealerPainterEnquiries /></DealerLayout>} />
 
         
       </Routes>

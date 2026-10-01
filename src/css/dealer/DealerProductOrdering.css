@@ -200,13 +200,14 @@
 }
 
 .dealer-product-view-btn {
-  background: #ffffff;
-  border: 1px solid #d1d5db;
-  color: #374151;
+  background: #e8751a;
+  border: 1px solid #e8751a;
+  color: #ffffff;
 }
 
 .dealer-product-view-btn:hover {
-  background: #f9fafb;
+ background: #e8751a;
+  border-color: #e8751a;
 }
 
 .dealer-product-cart-btn {

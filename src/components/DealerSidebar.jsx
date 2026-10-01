@@ -57,9 +57,33 @@ const DealerSidebar = ({
       navigate("/dealer/product-ordering");
     }
 
-      if (label === "Order History & Tracking") {
-    navigate("/dealer/order-history");
-  }
+    if (label === "Order History & Tracking") {
+      navigate("/dealer/order-history");
+    }
+
+    if (label === "Rewards & Redemption") {
+      navigate("/dealer/reward-wallet");
+    }
+
+    if (label === "Loyalty Tier") {
+      navigate("/dealer/loyalty-tier");
+    }
+
+    if (label === "Schemes & Offers") {
+      navigate("/dealer/schemes");
+    }
+
+    if (label === "Product Catalogue") {
+      navigate("/dealer/product-catalogue");
+    }
+
+    if (label === "Download Center") {
+      navigate("/dealer/download-centre");
+    }
+
+    if (label === "Painter Enquiries") {
+      navigate("/dealer/painter-enquiries");
+    }
 
     onClose?.();
   };
@@ -98,9 +122,8 @@ const DealerSidebar = ({
                 <button
                   type="button"
                   key={item.label}
-                  className={`dealer-sidebar-menu-item ${
-                    isActive ? "active" : ""
-                  }`}
+                  className={`dealer-sidebar-menu-item ${isActive ? "active" : ""
+                    }`}
                   onClick={() => handleMenuClick(item.label)}
                 >
                   <div className="dealer-sidebar-menu-left">

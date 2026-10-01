@@ -19,7 +19,15 @@ const DealerLayout = ({ children }) => {
   };
 
   const getActiveMenu = () => {
+    if (location.pathname === "/dealer/dashboard") {
+      return "Dashboard";
+    }
+
     if (location.pathname === "/dealer/product-ordering") {
+      return "Product Ordering";
+    }
+
+    if (location.pathname.startsWith("/dealer/product-ordering/")) {
       return "Product Ordering";
     }
 
@@ -31,8 +39,48 @@ const DealerLayout = ({ children }) => {
       return "Order History & Tracking";
     }
 
-    if (location.pathname === "/dealer/dashboard") {
-      return "Dashboard";
+    if (location.pathname.startsWith("/dealer/order-history/")) {
+      return "Order History & Tracking";
+    }
+
+    if (location.pathname === "/dealer/reward-wallet") {
+      return "Rewards & Redemption";
+    }
+
+    if (location.pathname === "/dealer/reward-redemption") {
+      return "Rewards & Redemption";
+    }
+
+    if (location.pathname === "/dealer/reward-redemption-history") {
+      return "Rewards & Redemption";
+    }
+
+    if (location.pathname.startsWith("/dealer/reward-redemption-history/")) {
+      return "Rewards & Redemption";
+    }
+
+    if (location.pathname === "/dealer/loyalty-tier") {
+      return "Loyalty Tier";
+    }
+
+    if (location.pathname === "/dealer/schemes") {
+      return "Schemes & Offers";
+    }
+
+    if (location.pathname === "/dealer/offers") {
+      return "Schemes & Offers";
+    }
+
+    if (location.pathname === "/dealer/product-catalogue") {
+      return "Product Catalogue";
+    }
+
+    if (location.pathname === "/dealer/download-centre") {
+      return "Download Center";
+    }
+
+    if (location.pathname === "/dealer/painter-enquiries") {
+      return "Painter Enquiries";
     }
 
     return "Dashboard";
