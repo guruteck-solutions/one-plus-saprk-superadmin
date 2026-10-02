@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import DealerNavbar from "../components/DealerNavbar.jsx";
 import DealerSidebar from "../components/DealerSidebar.jsx";
+import DealerFooter from "../components/DealerFooter.jsx";
 
 import "../css/dealer/DealerLayout.css";
 
@@ -83,6 +84,34 @@ const DealerLayout = ({ children }) => {
       return "Painter Enquiries";
     }
 
+    if (location.pathname === "/dealer/payment-outstanding") {
+      return "Payment & Outstanding";
+    }
+
+    if (location.pathname === "/dealer/purchase-analytics") {
+      return "Purchase Analytics";
+    }
+
+    if (location.pathname === "/dealer/refer-earn") {
+      return "Refer & Earn";
+    }
+
+    if (location.pathname === "/dealer/notifications") {
+      return "Notification";
+    }
+
+    if (location.pathname === "/dealer/complaints") {
+      return "Complaint Management";
+    }
+
+    if (location.pathname === "/dealer/profile") {
+      return "Profile & Support";
+    }
+
+    if (location.pathname === "/dealer/contact-support") {
+      return "Contact Support";
+    }
+
     return "Dashboard";
   };
 
@@ -102,8 +131,8 @@ const DealerLayout = ({ children }) => {
       <main className="dealer-layout-content">
         {children}
       </main>
+      <DealerFooter />
     </div>
   );
 };
-
 export default DealerLayout;

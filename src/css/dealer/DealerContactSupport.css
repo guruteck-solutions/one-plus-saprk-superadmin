@@ -1,0 +1,162 @@
+.dealer-contact-support-page {
+    padding: 24px;
+    background: #f6f8fb;
+    min-height: 100vh;
+    color: #1f2937
+}
+
+.dealer-contact-support-header {
+    margin-bottom: 24px
+}
+
+.dealer-contact-support-header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700
+}
+
+.dealer-contact-support-header p {
+    margin: 6px 0 0;
+    color: #6b7280;
+    font-size: 14px
+}
+
+.dealer-support-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px
+}
+
+.dealer-support-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, .04)
+}
+
+.dealer-support-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0
+}
+
+.whatsapp-icon {
+    background: #e9f9ef;
+    color: #16a34a
+}
+
+.phone-icon {
+    background: #eef4ff;
+    color: #2563eb
+}
+
+.email-icon {
+    background: #fff5e8;
+    color: #ea580c
+}
+
+.address-icon {
+    background: #f3efff;
+    color: #7c3aed
+}
+
+.dealer-support-content {
+    flex: 1
+}
+
+.dealer-support-content h3 {
+    margin: 0 0 7px;
+    font-size: 18px
+}
+
+.dealer-support-content p {
+    margin: 0 0 16px;
+    color: #6b7280;
+    font-size: 14px;
+    word-break: break-word
+}
+
+.dealer-support-btn {
+    border: 0;
+    border-radius: 7px;
+    padding: 10px 15px;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer
+}
+
+.whatsapp-btn {
+    background: #16a34a
+}
+
+.phone-btn {
+    background: #2563eb
+}
+
+.email-btn {
+    background: #ea580c
+}
+
+.address-btn {
+    background: #7c3aed
+}
+
+.dealer-support-btn:disabled {
+    opacity: .55;
+    cursor: not-allowed
+}
+
+@media(max-width:768px) {
+    .dealer-contact-support-page {
+        padding: 16px
+    }
+
+    .dealer-support-grid {
+        grid-template-columns: 1fr
+    }
+
+    .dealer-support-card {
+        padding: 20px
+    }
+}
+
+@media(max-width:480px) {
+    .dealer-contact-support-page {
+        padding: 12px
+    }
+
+    .dealer-contact-support-header h1 {
+        font-size: 23px
+    }
+
+    .dealer-support-card {
+        padding: 17px;
+        gap: 13px
+    }
+
+    .dealer-support-icon {
+        width: 46px;
+        height: 46px
+    }
+
+    .dealer-support-btn {
+        width: 100%
+    }
+
+    .dealer-support-content {
+        min-width: 0
+    }
+}

@@ -1,164 +1,236 @@
 .dealer-navbar {
-  height: 70px;
-  width: 100%;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  height: 68px;
+  background: black;
+  border-bottom: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
-  box-sizing: border-box;
+  padding: 0 22px;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 1000
+}
+
+.dealer-navbar-left,
+.dealer-navbar-right {
+  display: flex;
+  align-items: center
 }
 
 .dealer-navbar-left {
+  gap: 14px
+}
+
+.dealer-navbar-menu-btn,
+.dealer-navbar-icon-btn {
+  border: 0;
+  background: transparent;
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
+  cursor: pointer;
+  color: #b9b9b9
 }
 
 .dealer-navbar-menu-btn {
   width: 40px;
   height: 40px;
-  border: none;
-  background: transparent;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #374151;
+  border-radius: 8px
 }
 
-.dealer-navbar-menu-btn:hover {
+.dealer-navbar-menu-btn:hover,
+.dealer-navbar-icon-btn:hover {
   background: #f3f4f6;
+  color: #e8751a;
 }
 
 .dealer-navbar-brand {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  line-height: 1.15
 }
 
 .dealer-navbar-brand h2 {
   margin: 0;
   font-size: 19px;
   font-weight: 700;
-  color: #111827;
-  line-height: 1.2;
+  color: #e8751a
 }
 
 .dealer-navbar-brand span {
-  font-size: 12px;
-  color: #6b7280;
-  line-height: 1.2;
+  margin-top: 3px;
+  font-size: 11px;
+  color: #fff
 }
 
 .dealer-navbar-right {
+  gap: 18px
+}
+
+.dealer-navbar-dealer-info {
   display: flex;
   align-items: center;
-  gap: 14px;
-}
-
-.dealer-navbar-icon-btn {
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: transparent;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #374151;
-}
-
-.dealer-navbar-icon-btn:hover {
-  background: #f3f4f6;
-}
-
-.dealer-navbar-profile {
-  border: none;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  cursor: pointer;
-  padding: 4px 6px;
-  border-radius: 8px;
-  color: #374151;
-}
-
-.dealer-navbar-profile:hover {
-  background: #f3f4f6;
+  gap: 10px
 }
 
 .dealer-navbar-profile-image {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   overflow: hidden;
+  background: #eef2f7;
+  color: #64748b;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f3f4f6;
-  color: #6b7280;
+  flex-shrink: 0;
+  border: 1px solid #e2e8f0
 }
 
 .dealer-navbar-profile-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  display: block;
+  object-fit: cover
 }
 
-.dealer-navbar-profile span {
-  font-size: 14px;
-  font-weight: 600;
+.dealer-navbar-details {
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+  max-width: 180px
+}
+
+.dealer-navbar-details strong {
+  font-size: 13px;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
+.dealer-navbar-details span {
+  font-size: 11px;
+  color: #cccccd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px
+}
+
+.dealer-navbar-loyalty {
+  padding: 5px 10px;
+  border-radius: 15px;
+  background: #f3f4f6;
   color: #374151;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap
 }
 
-@media (max-width: 768px) {
+.dealer-navbar-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  position: relative
+}
+
+.dealer-navbar-icon-btn::after {
+  content: "";
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 6px;
+  height: 6px;
+  background: #ef4444;
+  border-radius: 50%;
+  display: none
+}
+
+@media(max-width:768px) {
   .dealer-navbar {
-    padding: 0 16px;
+    height: 62px;
+    padding: 0 14px
   }
 
   .dealer-navbar-brand h2 {
-    font-size: 17px;
+    font-size: 17px
   }
 
   .dealer-navbar-brand span {
-    font-size: 11px;
-  }
-
-  .dealer-navbar-profile span {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .dealer-navbar {
-    padding: 0 12px;
-  }
-
-  .dealer-navbar-left {
-    gap: 8px;
+    font-size: 10px
   }
 
   .dealer-navbar-right {
-    gap: 6px;
+    gap: 10px
   }
 
-  .dealer-navbar-menu-btn,
-  .dealer-navbar-icon-btn {
-    width: 36px;
-    height: 36px;
+  .dealer-navbar-details {
+    max-width: 130px
+  }
+
+  .dealer-navbar-loyalty {
+    padding: 4px 8px;
+    font-size: 10px
+  }
+}
+
+@media(max-width:560px) {
+  .dealer-navbar {
+    padding: 0 10px
+  }
+
+  .dealer-navbar-left {
+    gap: 8px
+  }
+
+  .dealer-navbar-brand {
+    display: none
+  }
+
+  .dealer-navbar-details {
+    max-width: 105px
+  }
+
+  .dealer-navbar-details strong {
+    font-size: 12px
+  }
+
+  .dealer-navbar-details span {
+    font-size: 10px
   }
 
   .dealer-navbar-profile-image {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px
+  }
+
+  .dealer-navbar-loyalty {
+    display: none
+  }
+
+  .dealer-navbar-right {
+    gap: 6px
+  }
+
+  .dealer-navbar-icon-btn,
+  .dealer-navbar-menu-btn {
+    width: 36px;
+    height: 36px
+  }
+}
+
+@media(max-width:380px) {
+  .dealer-navbar-details {
+    max-width: 85px
+  }
+
+  .dealer-navbar-profile-image {
+    width: 34px;
+    height: 34px
+  }
+
+  .dealer-navbar-icon-btn {
+    width: 34px;
+    height: 34px
   }
 }

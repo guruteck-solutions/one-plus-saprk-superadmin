@@ -1,0 +1,581 @@
+.dealer-purchase-analytics {
+  min-height: calc(100vh - 70px);
+  padding: 24px;
+  background: #f8fafc;
+}
+
+/* ================= HEADER ================= */
+
+.purchase-analytics-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.purchase-analytics-header h1 {
+  margin: 0 0 6px;
+  color: #172033;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.purchase-analytics-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.purchase-refresh-btn {
+  border: none;
+  border-radius: 7px;
+  padding: 10px 18px;
+  border: 1px solid #dbe2ea;
+  background: #ffffff;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.purchase-refresh-btn:hover {
+    background: #f1f5f9;;
+}
+
+/* ================= MAIN MONTHLY CARD ================= */
+
+.purchase-main-card {
+  margin-bottom: 18px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.purchase-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #edf1f5;
+  padding: 20px;
+}
+
+.purchase-section-header h2 {
+  margin: 0 0 5px;
+  color: #172033;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.purchase-section-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.purchase-section-header > strong {
+  color: #e8751a;
+  font-size: 20px;
+}
+
+/* ================= MONTHLY BAR CHART ================= */
+
+.monthly-purchase-chart {
+  display: flex;
+  gap: 14px;
+  height: 310px;
+  padding-top: 22px;
+}
+
+.monthly-chart-y-axis {
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 5px 0 34px;
+}
+
+.monthly-chart-y-axis span {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.monthly-chart-area {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.monthly-chart-grid {
+  position: absolute;
+  inset: 5px 0 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.monthly-chart-grid span {
+  width: 100%;
+  border-top: 1px dashed #e2e8f0;
+}
+
+.monthly-bars {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-around;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 0 10px;
+}
+
+.monthly-bar-item {
+  min-width: 70px;
+  flex: 1;
+  max-width: 130px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.monthly-bar-value {
+  min-height: 20px;
+  margin-bottom: 5px;
+  color: #475569;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.monthly-bar-wrapper {
+  width: 42px;
+  height: 215px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.monthly-bar {
+  width: 100%;
+  min-height: 8px;
+  border-radius: 7px 7px 3px 3px;
+  background: #4f46e5;
+  transition: height 0.3s ease;
+}
+
+.monthly-bar:hover {
+  background: #4338ca;
+}
+
+.monthly-bar-label {
+  width: 90px;
+  margin-top: 10px;
+  color: #64748b;
+  font-size: 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ================= HIGHLIGHT CARDS ================= */
+
+.purchase-highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.purchase-highlight-card {
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.purchase-highlight-card span {
+  display: block;
+  margin-bottom: 8px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.purchase-highlight-card strong {
+  color: #172033;
+  font-size: 25px;
+}
+
+/* ================= CONTENT GRID ================= */
+
+.purchase-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.purchase-section-card {
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* ================= CATEGORY DONUT ================= */
+
+.category-chart-content {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  min-height: 310px;
+  padding: 25px;
+}
+
+.category-donut {
+  position: relative;
+  flex: 0 0 190px;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-donut::after {
+  content: "";
+  position: absolute;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.category-donut-center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-donut-center strong {
+  max-width: 95px;
+  color: #172033;
+  font-size: 15px;
+  text-align: center;
+}
+
+.category-donut-center span {
+  margin-top: 4px;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.category-legend {
+  flex: 1;
+  min-width: 0;
+}
+
+.category-legend-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 11px 0;
+  border-bottom: 1px solid #edf1f5;
+}
+
+.category-legend-item:last-child {
+  border-bottom: none;
+}
+
+.category-legend-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  color: #334155;
+  font-size: 13px;
+}
+
+.category-legend-name > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.category-dot {
+  width: 10px;
+  height: 10px;
+  flex: 0 0 10px;
+  border-radius: 50%;
+}
+
+.category-legend-value {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  white-space: nowrap;
+}
+
+.category-legend-value strong {
+  color: #172033;
+  font-size: 13px;
+}
+
+.category-legend-value span {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+/* ================= PRODUCT LIST ================= */
+
+.purchase-product-list {
+  padding: 8px 20px 18px;
+}
+
+.purchase-product-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 18px;
+  padding: 15px 0;
+  border-bottom: 1px solid #edf1f5;
+}
+
+.purchase-product-row:last-child {
+  border-bottom: none;
+}
+
+.purchase-product-row > div {
+  min-width: 0;
+}
+
+.product-name {
+  display: block;
+  margin-bottom: 8px;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.product-progress {
+  width: 100%;
+  height: 7px;
+  overflow: hidden;
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+.product-progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  background: #4f46e5;
+}
+
+.purchase-product-row > strong {
+  color: #172033;
+  font-size: 13px;
+}
+
+/* ================= SMALL CARDS ================= */
+
+.purchase-small-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.purchase-small-card {
+  padding: 18px 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.purchase-small-card span {
+  display: block;
+  margin-bottom: 8px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.purchase-small-card strong {
+  color: #172033;
+  font-size: 20px;
+}
+
+/* ================= ADDITIONAL ================= */
+
+.purchase-additional-card {
+  margin-bottom: 10px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.purchase-additional-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  padding: 18px 20px;
+}
+
+.purchase-additional-grid div {
+  padding: 15px;
+  background: #f8fafc;
+  border-radius: 8px;
+}
+
+.purchase-additional-grid span {
+  display: block;
+  margin-bottom: 6px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.purchase-additional-grid strong {
+  color: #334155;
+  font-size: 14px;
+}
+
+/* ================= EMPTY / LOADING ================= */
+
+.purchase-empty,
+.purchase-loading {
+  padding: 50px 20px;
+  color: #64748b;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1050px) {
+  .purchase-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-chart-content {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .dealer-purchase-analytics {
+    padding: 18px;
+  }
+
+  .purchase-small-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .monthly-purchase-chart {
+    height: 280px;
+  }
+
+  .monthly-bar-wrapper {
+    height: 185px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dealer-purchase-analytics {
+    padding: 14px;
+  }
+
+  .purchase-analytics-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .purchase-analytics-header h1 {
+    font-size: 22px;
+  }
+
+  .purchase-refresh-btn {
+    width: 100%;
+  }
+
+  .purchase-highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .purchase-section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .purchase-section-header > strong {
+    font-size: 18px;
+  }
+
+  .monthly-purchase-chart {
+    height: 270px;
+    gap: 7px;
+  }
+
+  .monthly-chart-y-axis {
+    width: 55px;
+  }
+
+  .monthly-bars {
+    gap: 12px;
+    padding: 0 5px;
+  }
+
+  .monthly-bar-item {
+    min-width: 58px;
+  }
+
+  .monthly-bar-wrapper {
+    width: 30px;
+    height: 170px;
+  }
+
+  .monthly-bar-label {
+    width: 70px;
+    font-size: 9px;
+  }
+
+  .monthly-bar-value {
+    font-size: 9px;
+  }
+
+  .category-chart-content {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .category-donut {
+    width: 170px;
+    height: 170px;
+    flex-basis: 170px;
+  }
+
+  .category-donut::after {
+    width: 100px;
+    height: 100px;
+  }
+
+  .category-legend {
+    width: 100%;
+  }
+
+  .purchase-additional-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,684 @@
+.dealer-refer-earn {
+    min-height: calc(100vh - 70px);
+    padding: 24px;
+    background: #f8fafc;
+}
+
+/* ================= HEADER ================= */
+
+.refer-earn-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.refer-earn-header h1 {
+    margin: 0 0 6px;
+    color: #172033;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.refer-earn-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.refer-share-btn {
+    height: 42px;
+    padding: 0 16px;
+    border: 1px solid #e8751a;
+    border-radius: 8px;
+    background: #e8751a;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.refer-share-btn:hover {
+    background: #d8660f;
+    border-color: #d8660f;
+}
+
+/* ================= CATEGORY ================= */
+
+.refer-category-card {
+    margin-bottom: 18px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+.refer-category-card h2,
+.refer-history-card h2 {
+    margin: 0 0 5px;
+    color: #172033;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.refer-category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.refer-category-item {
+    padding: 9px 14px;
+    border: 1px solid #dbe3ef;
+    border-radius: 7px;
+    background: #f8fafc;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* ================= HISTORY ================= */
+
+.refer-history-card {
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+}
+
+.refer-history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 20px;
+    border-bottom: 1px solid #edf1f5;
+}
+
+.refer-history-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.refer-count {
+    padding: 7px 11px;
+    border-radius: 6px;
+    background: #eef2ff;
+    color: #d8660f;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.refer-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.refer-table {
+    width: 100%;
+    min-width: 950px;
+    border-collapse: collapse;
+}
+
+.refer-table th,
+.refer-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #edf1f5;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.refer-table th {
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.refer-table td {
+    color: #334155;
+    font-size: 13px;
+}
+
+.refer-table tbody tr:hover {
+    background: #fafbff;
+}
+
+.refer-table td:first-child {
+    color: #4f46e5;
+    font-weight: 600;
+}
+
+.refer-code {
+    display: inline-block;
+    padding: 5px 8px;
+    border-radius: 5px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.refer-table-share-btn {
+    border: 1px solid #c7d2fe;
+    border-radius: 6px;
+    padding: 7px 12px;
+    background: #eef2ff;
+    color: #4f46e5;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.refer-table-share-btn:hover {
+    background: #e0e7ff;
+}
+
+/* ================= EMPTY ================= */
+
+.refer-empty {
+    padding: 50px 20px;
+    color: #64748b;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* ================= CREATE REFERRAL MODAL ================= */
+
+.refer-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.45);
+}
+
+.refer-modal {
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 22px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18);
+}
+
+.refer-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.refer-modal-header h2 {
+    margin: 0 0 5px;
+    color: #172033;
+    font-size: 19px;
+}
+
+.refer-modal-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.refer-modal-close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.refer-modal-close:hover {
+    background: #e2e8f0;
+}
+
+/* ================= FORM ================= */
+
+.refer-form-group {
+    margin-bottom: 16px;
+}
+
+.refer-form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.refer-form-group input,
+.refer-form-group select,
+.refer-form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border: 1px solid #dbe3ef;
+    border-radius: 7px;
+    outline: none;
+    background: #ffffff;
+    color: #334155;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.refer-form-group input:focus,
+.refer-form-group select:focus,
+.refer-form-group textarea:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
+}
+
+.refer-form-group textarea {
+    resize: vertical;
+}
+
+.refer-submit-btn {
+    width: 100%;
+    margin-top: 4px;
+    padding: 11px 16px;
+    border: 1px solid #e8751a;
+    border-radius: 7px;
+    background: #e8751a;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.refer-submit-btn:hover {
+    background: #d8660f;
+    border-color: #d8660f;
+}
+
+/* ================= SHARE REFERRAL OVERLAY ================= */
+
+.refer-share-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.55);
+}
+
+/* ================= SHARE CARD ================= */
+
+.refer-share-card {
+    position: relative;
+    width: 100%;
+    max-width: 470px;
+    overflow: hidden;
+    padding: 26px;
+    background: #ffffff;
+    border: 1px solid #dbe3ef;
+    border-radius: 18px;
+    box-shadow: 0 25px 70px rgba(15, 23, 42, 0.2);
+}
+
+/* ================= SHARE CLOSE ================= */
+
+.refer-share-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 21px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.refer-share-close:hover {
+    background: #e2e8f0;
+}
+
+/* ================= SHARE ILLUSTRATION ================= */
+
+.refer-share-illustration {
+    position: relative;
+    width: 100%;
+    height: 125px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: linear-gradient(135deg,
+            #eef6ff 0%,
+            #f8fbff 55%,
+            #eef2ff 100%);
+}
+
+.refer-person {
+    position: absolute;
+    bottom: 8px;
+    width: 72px;
+    height: 105px;
+}
+
+.refer-person-one {
+    left: 48px;
+}
+
+.refer-person-two {
+    left: 115px;
+}
+
+/* Person head */
+
+.person-head {
+    position: absolute;
+    top: 4px;
+    left: 22px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #f3c7a8;
+    border: 2px solid #d99d78;
+}
+
+/* Person body */
+
+.person-body {
+    position: absolute;
+    bottom: 0;
+    left: 9px;
+    width: 54px;
+    height: 68px;
+    border-radius: 20px 20px 8px 8px;
+}
+
+/* First person */
+
+.refer-person-one .person-body {
+    background: #1683d8;
+}
+
+.refer-person-one .person-head::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 3px;
+    width: 21px;
+    height: 12px;
+    border-radius: 50% 50% 30% 30%;
+    background: #1e293b;
+}
+
+/* Second person */
+
+.refer-person-two .person-body {
+    background: #f5b21b;
+    border-radius: 22px 22px 7px 7px;
+}
+
+.refer-person-two .person-head {
+    background: #f0bd9e;
+}
+
+.refer-person-two .person-head::before {
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: -2px;
+    width: 33px;
+    height: 16px;
+    border-radius: 50%;
+    background: #5b2c1d;
+}
+
+/* ================= SHARE CONTENT ================= */
+
+.refer-share-content {
+    padding: 4px 0 18px;
+}
+
+.refer-share-content h2 {
+    margin: 0;
+    color: #172033;
+    font-size: 26px;
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.refer-share-content h3 {
+    margin: 2px 0 7px;
+    color: #172033;
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.refer-share-content p {
+    max-width: 290px;
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* ================= REFERRAL LINK ================= */
+
+.refer-link-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    border: 2px solid #bfdbfe;
+    border-radius: 9px;
+    background: #f8fbff;
+}
+
+.refer-link-icon {
+    flex: 0 0 auto;
+    color: #2563eb;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.refer-link-text {
+    min-width: 0;
+    overflow: hidden;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ================= SHARE ACTIONS ================= */
+
+.refer-share-actions {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 12px;
+}
+
+.refer-copy-btn,
+.refer-whatsapp-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.refer-copy-btn {
+    background: #4f46e5;
+}
+
+.refer-copy-btn:hover {
+    background: #4338ca;
+}
+
+.refer-whatsapp-btn {
+    background: #16a34a;
+}
+
+.refer-whatsapp-btn:hover {
+    background: #15803d;
+}
+
+.refer-copy-btn span,
+.refer-whatsapp-btn span {
+    font-size: 16px;
+}
+
+.refer-copy-btn:active,
+.refer-whatsapp-btn:active {
+    transform: scale(0.98);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 700px) {
+    .dealer-refer-earn {
+        padding: 18px;
+    }
+
+    .refer-earn-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .refer-share-btn {
+        width: 100%;
+    }
+
+    .refer-history-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+    .dealer-refer-earn {
+        padding: 14px;
+    }
+
+    .refer-earn-header h1 {
+        font-size: 22px;
+    }
+
+    .refer-category-card {
+        padding: 16px;
+    }
+
+    .refer-history-header {
+        padding: 16px;
+    }
+
+    .refer-modal-overlay {
+        padding: 12px;
+    }
+
+    .refer-modal {
+        padding: 18px;
+    }
+
+    .refer-share-overlay {
+        padding: 12px;
+    }
+
+    .refer-share-card {
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .refer-share-illustration {
+        height: 115px;
+    }
+
+    .refer-person-one {
+        left: 25px;
+    }
+
+    .refer-person-two {
+        left: 90px;
+    }
+
+    .refer-share-content h2 {
+        font-size: 23px;
+    }
+
+    .refer-share-content h3 {
+        font-size: 19px;
+    }
+
+    .refer-share-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .refer-copy-btn,
+    .refer-whatsapp-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    .refer-share-card {
+        padding: 16px;
+    }
+
+    .refer-share-illustration {
+        height: 100px;
+    }
+
+    .refer-person {
+        transform: scale(0.85);
+        transform-origin: bottom left;
+    }
+
+    .refer-person-one {
+        left: 15px;
+    }
+
+    .refer-person-two {
+        left: 72px;
+    }
+
+    .refer-link-box {
+        padding: 10px;
+    }
+
+    .refer-link-text {
+        font-size: 11px;
+    }
+}

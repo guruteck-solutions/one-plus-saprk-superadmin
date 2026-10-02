@@ -44,6 +44,7 @@ const DealerSidebar = ({
     { label: "Notification", icon: Bell },
     { label: "Complaint Management", icon: MessageSquareWarning },
     { label: "Profile & Support", icon: UserCircle },
+    { label: "Contact Support", icon: MessageSquareWarning },
   ];
 
   const handleMenuClick = (label) => {
@@ -83,6 +84,34 @@ const DealerSidebar = ({
 
     if (label === "Painter Enquiries") {
       navigate("/dealer/painter-enquiries");
+    }
+
+    if (label === "Payment & Outstanding") {
+      navigate("/dealer/payment-outstanding");
+    }
+
+    if (label === "Purchase Analytics") {
+      navigate("/dealer/purchase-analytics");
+    }
+
+    if (label === "Refer & Earn") {
+      navigate("/dealer/refer-earn");
+    }
+
+    if (label === "Notification") {
+      navigate("/dealer/notifications");
+    }
+
+    if (label === "Complaint Management") {
+      navigate("/dealer/complaints");
+    }
+
+    if (label === "Profile & Support") {
+      navigate("/dealer/profile");
+    }
+
+    if (label === "Contact Support") {
+      navigate("/dealer/contact-support");
     }
 
     onClose?.();
@@ -134,18 +163,6 @@ const DealerSidebar = ({
               );
             })}
           </nav>
-        </div>
-
-        <div className="dealer-sidebar-footer">
-          <div className="dealer-sidebar-help-card">
-            <div className="dealer-sidebar-help-title">
-              Need Help
-            </div>
-
-            <div className="dealer-sidebar-help-text">
-              WhatsApp Support
-            </div>
-          </div>
         </div>
       </aside>
     </>

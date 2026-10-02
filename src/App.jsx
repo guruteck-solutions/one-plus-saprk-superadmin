@@ -149,6 +149,13 @@ import DealerOffers from "./pages/dealer/DealerOffers";
 import DealerProductCatalogue from "./pages/dealer/DealerProductCatalogue";
 import DealerDownloadCentre from "./pages/dealer/DealerDownloadCentre";
 import DealerPainterEnquiries from "./pages/dealer/DealerPainterEnquiries";
+import DealerPaymentOutstanding from "./pages/dealer/DealerPaymentOutstanding";
+import DealerPurchaseAnalytics from "./pages/dealer/DealerPurchaseAnalytics";
+import DealerReferEarn from "./pages/dealer/DealerReferEarn";
+import DealerNotifications from "./pages/dealer/DealerNotifications";
+import DealerComplaintManagement from "./pages/dealer/DealerComplaintManagement";
+import DealerProfileManagement from "./pages/dealer/DealerProfileManagement";
+import DealerContactSupport from "./pages/dealer/DealerContactSupport";
 
 
 const App = () => {
@@ -309,6 +316,13 @@ const App = () => {
         <Route path="/dealer/product-catalogue" element={<DealerLayout><DealerProductCatalogue /></DealerLayout>} />
         <Route path="/dealer/download-centre" element={<DealerLayout><DealerDownloadCentre /></DealerLayout>} />
         <Route path="/dealer/painter-enquiries" element={<DealerLayout><DealerPainterEnquiries /></DealerLayout>} />
+        <Route path="/dealer/payment-outstanding" element={<DealerLayout><DealerPaymentOutstanding /></DealerLayout>} />
+        <Route path="/dealer/purchase-analytics" element={<DealerLayout><DealerPurchaseAnalytics /></DealerLayout>} />
+        <Route path="/dealer/refer-earn" element={<DealerLayout><DealerReferEarn /></DealerLayout>} />
+        <Route path="/dealer/notifications" element={<DealerLayout><DealerNotifications /></DealerLayout>} />
+        <Route path="/dealer/complaints" element={<DealerLayout><DealerComplaintManagement /></DealerLayout>} />
+        <Route path="/dealer/profile" element={<DealerLayout><DealerProfileManagement /></DealerLayout>} />
+        <Route path="/dealer/contact-support" element={<DealerLayout><DealerContactSupport /></DealerLayout>} />
 
         
       </Routes>

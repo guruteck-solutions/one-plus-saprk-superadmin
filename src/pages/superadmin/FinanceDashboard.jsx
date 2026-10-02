@@ -77,6 +77,7 @@ const FinanceDashboard = () => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
 
+  const [dealers, setDealers] = useState([]);
   // MODALS
 
 
@@ -161,6 +162,32 @@ const FinanceDashboard = () => {
       setError("Failed to load transactions");
     }
   };
+  const fetchDealers = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await axios.get("http://localhost:5000/api/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const userList = Array.isArray(response.data.users)
+        ? response.data.users
+        : [];
+
+      const dealerList = userList.filter(
+        (user) =>
+          String(user.role || "").toLowerCase().trim() === "dealer"
+      );
+
+      setDealers(dealerList);
+    } catch (error) {
+      console.error("Fetch dealers error:", error);
+      setDealers([]);
+    }
+  };
+
 
 
   // INITIAL LOAD
@@ -171,7 +198,11 @@ const FinanceDashboard = () => {
       setLoading(true);
       setError("");
 
-      await Promise.all([fetchDashboard(), fetchTransactions()]);
+      await Promise.all([
+        fetchDashboard(),
+        fetchTransactions(),
+        fetchDealers(),
+      ]);
 
       setLoading(false);
     };
@@ -2002,6 +2033,28 @@ const FinanceDashboard = () => {
                       setEditForm({ ...editForm, vendor: e.target.value })
                     }
                   />
+                </div>
+
+                <div className="form-group">
+                  <label>Assign Dealer</label>
+
+                  <select
+                    value={editForm.assignedTo}
+                    onChange={(e) =>
+                      setEditForm({
+                        ...editForm,
+                        assignedTo: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="">Select Dealer</option>
+
+                    {dealers.map((dealer) => (
+                      <option key={dealer._id} value={dealer._id}>
+                        {dealer.name} - {dealer.email}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
               </div>
