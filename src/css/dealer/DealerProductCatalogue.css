@@ -641,14 +641,10 @@
   }
 
   .dealer-product-filter-select {
-    flex: 1;
     min-width: 0;
   }
 
-  .dealer-product-shade-btn,
-  .dealer-product-reset-btn {
-    flex: 1;
-  }
+  
 
   .dealer-product-modal-body {
     grid-template-columns: 1fr;

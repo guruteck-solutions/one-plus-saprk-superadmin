@@ -166,7 +166,6 @@ const DealerOrderHistory = () => {
       <div className="dealer-order-history-filter">
         <div className="dealer-order-history-search">
           <Search size={18} />
-
           <input
             type="text"
             placeholder="Search by Order ID..."

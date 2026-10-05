@@ -552,10 +552,10 @@
     width: 100%;
   }
 
-  .dealer-order-track-btn,
+  /* .dealer-order-track-btn,
   .dealer-order-cancel-btn {
     flex: 1;
-  }
+  } */
 
   .dealer-order-details-summary {
     grid-template-columns: repeat(2, 1fr);

@@ -187,23 +187,8 @@
   margin-top: 16px;
 }
 
-.dealer-product-actions button {
-  flex: 1;
-  height: 38px;
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  cursor: pointer;
-  font-size: 12px;
-}
 
-.dealer-product-view-btn {
-  background: #e8751a;
-  border: 1px solid #e8751a;
-  color: #ffffff;
-}
+
 
 .dealer-product-view-btn:hover {
   background: #e8751a;
@@ -285,3 +270,4 @@
     flex-direction: column;
   }
 }
+
