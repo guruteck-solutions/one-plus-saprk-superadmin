@@ -1,0 +1,70 @@
+.sales-executive-navbar {
+  height: 70px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.sales-executive-menu-btn,
+.sales-executive-navbar-icon,
+.sales-executive-navbar-profile {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sales-executive-menu-btn {
+  display: none;
+}
+
+.sales-executive-navbar-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-right: auto;
+  margin-left: 16px;
+}
+
+.sales-executive-navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sales-executive-navbar-icon,
+.sales-executive-navbar-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  color: #374151;
+}
+
+.sales-executive-navbar-icon:hover,
+.sales-executive-navbar-profile:hover {
+  background: #f3f4f6;
+}
+
+@media (max-width: 768px) {
+  .sales-executive-navbar {
+    height: 64px;
+    padding: 0 16px;
+  }
+
+  .sales-executive-menu-btn {
+    display: flex;
+  }
+
+  .sales-executive-navbar-title {
+    font-size: 18px;
+    margin-left: 12px;
+  }
+}

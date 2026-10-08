@@ -1,0 +1,702 @@
+/* Sales Executive Beat Plan */
+
+.sales-executive-beat-plan {
+  min-height: 100%;
+  padding: 24px;
+  background: #f6f8fb;
+  color: #111827;
+  box-sizing: border-box;
+}
+
+.sales-executive-beat-plan * {
+  box-sizing: border-box;
+}
+
+.sales-executive-beat-plan-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.sales-executive-beat-plan-header h1 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #111827;
+}
+
+.sales-executive-beat-plan-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.sales-executive-beat-plan-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sales-executive-beat-plan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sales-executive-beat-plan-card {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.04);
+}
+
+.sales-executive-beat-plan-sequence {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff1e6;
+  color: #e8751a;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.sales-executive-beat-plan-info {
+  min-width: 0;
+}
+
+.sales-executive-beat-plan-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.sales-executive-beat-plan-type,
+.sales-executive-beat-plan-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sales-executive-beat-plan-type {
+  background: #fff1e6;
+  color: #c45c0b;
+}
+
+.sales-executive-beat-plan-type.painter {
+  background: #f3e8ff;
+  color: #7e22ce;
+}
+
+.sales-executive-beat-plan-type.dealer {
+  background: #fff1e6;
+  color: #c45c0b;
+}
+
+.sales-executive-beat-plan-status {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.sales-executive-beat-plan-status.planned {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.sales-executive-beat-plan-status.in_progress {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.sales-executive-beat-plan-status.completed {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.sales-executive-beat-plan-status.cancelled {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.sales-executive-beat-plan-status.missed {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.sales-executive-beat-plan-status.rescheduled {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.sales-executive-beat-plan-info h3 {
+  margin: 0 0 10px;
+  color: #111827;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.sales-executive-beat-plan-details {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.sales-executive-beat-plan-details span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.sales-executive-beat-plan-details svg {
+  flex-shrink: 0;
+}
+
+.sales-executive-beat-plan-route {
+  margin-top: 9px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.sales-executive-beat-plan-route strong {
+  color: #374151;
+}
+
+.sales-executive-beat-plan-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.sales-executive-beat-plan-actions button,
+.sales-executive-beat-plan-modal-actions button,
+.sales-executive-beat-plan-gps-button,
+.sales-executive-beat-plan-photo-button,
+.sales-executive-beat-plan-start-button {
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  transition: 0.2s ease;
+}
+
+.sales-executive-beat-plan-details-button {
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sales-executive-beat-plan-details-button:hover {
+  background: #f9fafb;
+  border-color: #d1d5db !important;
+}
+
+.sales-executive-beat-plan-navigation {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 14px;
+  border-radius: 7px;
+  background: #e8751a;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sales-executive-beat-plan-navigation:hover {
+  background: #d9650d;
+}
+
+.sales-executive-beat-plan-empty {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  text-align: center;
+  color: #9ca3af;
+}
+
+.sales-executive-beat-plan-empty svg {
+  margin-bottom: 12px;
+}
+
+.sales-executive-beat-plan-empty h3 {
+  margin: 0 0 6px;
+  color: #374151;
+  font-size: 17px;
+}
+
+.sales-executive-beat-plan-empty p {
+  margin: 0;
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+/* Modal */
+
+.sales-executive-beat-plan-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(17, 24, 39, 0.55);
+  overflow-y: auto;
+}
+
+.sales-executive-beat-plan-modal {
+  width: min(680px, 100%);
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(17, 24, 39, 0.2);
+}
+
+.sales-executive-beat-plan-visit-modal {
+  width: min(760px, 100%);
+}
+
+.sales-executive-beat-plan-modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 22px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sales-executive-beat-plan-modal-header h2 {
+  margin: 0 0 4px;
+  color: #111827;
+  font-size: 20px;
+}
+
+.sales-executive-beat-plan-modal-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.sales-executive-beat-plan-modal-close {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.sales-executive-beat-plan-modal-close:hover {
+  background: #f9fafb;
+  color: #111827;
+}
+
+.sales-executive-beat-plan-modal-content {
+  padding: 20px 22px 24px;
+}
+
+.sales-executive-beat-plan-detail-row {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 15px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.sales-executive-beat-plan-detail-row span {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.sales-executive-beat-plan-detail-row strong {
+  color: #111827;
+  font-size: 13px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.sales-executive-beat-plan-during-visit {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.sales-executive-beat-plan-section-title {
+  margin-bottom: 16px;
+}
+
+.sales-executive-beat-plan-section-title h3 {
+  margin: 0 0 4px;
+  color: #111827;
+  font-size: 18px;
+}
+
+.sales-executive-beat-plan-section-title p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.sales-executive-beat-plan-start-button {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-bottom: 18px;
+  padding: 0 15px;
+  border-radius: 7px;
+  background: #e8751a;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sales-executive-beat-plan-start-button:hover {
+  background: #d9650d;
+}
+
+.sales-executive-beat-plan-start-button:disabled,
+.sales-executive-beat-plan-gps-button:disabled,
+.sales-executive-beat-plan-save-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.sales-executive-beat-plan-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.sales-executive-beat-plan-form-group {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.sales-executive-beat-plan-form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.sales-executive-beat-plan-form-group label {
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sales-executive-beat-plan-form-group input,
+.sales-executive-beat-plan-form-group select,
+.sales-executive-beat-plan-form-group textarea {
+  width: 100%;
+  border: 1px solid #dfe3e8;
+  border-radius: 7px;
+  outline: none;
+  background: #ffffff;
+  color: #111827;
+  font-family: inherit;
+  font-size: 13px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sales-executive-beat-plan-form-group input,
+.sales-executive-beat-plan-form-group select {
+  min-height: 40px;
+  padding: 0 11px;
+}
+
+.sales-executive-beat-plan-form-group textarea {
+  min-height: 88px;
+  padding: 10px 11px;
+  resize: vertical;
+}
+
+.sales-executive-beat-plan-form-group input:focus,
+.sales-executive-beat-plan-form-group select:focus,
+.sales-executive-beat-plan-form-group textarea:focus {
+  border-color: #e8751a;
+  box-shadow: 0 0 0 3px rgba(232, 117, 26, 0.1);
+}
+
+.sales-executive-beat-plan-gps-section,
+.sales-executive-beat-plan-photo-section {
+  margin-top: 18px;
+  padding: 15px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.sales-executive-beat-plan-gps-header,
+.sales-executive-beat-plan-photo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.sales-executive-beat-plan-gps-header h4,
+.sales-executive-beat-plan-photo-header h4 {
+  margin: 0 0 4px;
+  color: #111827;
+  font-size: 14px;
+}
+
+.sales-executive-beat-plan-gps-header p,
+.sales-executive-beat-plan-photo-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.sales-executive-beat-plan-gps-button,
+.sales-executive-beat-plan-photo-button {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  flex-shrink: 0;
+  padding: 0 13px;
+  border: 1px solid #e8751a;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #e8751a;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sales-executive-beat-plan-gps-button:hover,
+.sales-executive-beat-plan-photo-button:hover {
+  background: #fff7ed;
+}
+
+.sales-executive-beat-plan-photo-preview {
+  margin-top: 14px;
+  width: 100%;
+  max-height: 260px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+}
+
+.sales-executive-beat-plan-photo-preview img {
+  display: block;
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+}
+
+.sales-executive-beat-plan-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.sales-executive-beat-plan-save-button {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 7px;
+  background: #e8751a;
+  color: #ffffff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sales-executive-beat-plan-save-button:hover {
+  background: #d9650d;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .sales-executive-beat-plan-card {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+
+  .sales-executive-beat-plan-actions {
+    grid-column: 2;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 700px) {
+  .sales-executive-beat-plan {
+    padding: 16px;
+  }
+
+  .sales-executive-beat-plan-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sales-executive-beat-plan-header h1 {
+    font-size: 22px;
+  }
+
+  .sales-executive-beat-plan-date {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sales-executive-beat-plan-card {
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 12px;
+    padding: 14px;
+  }
+
+  .sales-executive-beat-plan-sequence {
+    width: 34px;
+    height: 34px;
+  }
+
+  .sales-executive-beat-plan-actions {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .sales-executive-beat-plan-actions button {
+    flex: 1;
+  }
+
+  .sales-executive-beat-plan-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sales-executive-beat-plan-form-group.full-width {
+    grid-column: auto;
+  }
+
+  .sales-executive-beat-plan-modal-overlay {
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .sales-executive-beat-plan-modal {
+    max-height: calc(100vh - 20px);
+  }
+
+  .sales-executive-beat-plan-modal-header,
+  .sales-executive-beat-plan-modal-content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .sales-executive-beat-plan-detail-row {
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .sales-executive-beat-plan-gps-header,
+  .sales-executive-beat-plan-photo-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sales-executive-beat-plan-gps-button,
+  .sales-executive-beat-plan-photo-button {
+    width: 100%;
+  }
+
+  .sales-executive-beat-plan-modal-actions {
+    flex-direction: column;
+  }
+
+  .sales-executive-beat-plan-modal-actions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .sales-executive-beat-plan {
+    padding: 12px;
+  }
+
+  .sales-executive-beat-plan-card {
+    grid-template-columns: 1fr;
+  }
+
+  .sales-executive-beat-plan-sequence {
+    width: 34px;
+  }
+
+  .sales-executive-beat-plan-details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+  }
+
+  .sales-executive-beat-plan-actions {
+    flex-direction: column;
+  }
+
+  .sales-executive-beat-plan-actions button {
+    width: 100%;
+  }
+}

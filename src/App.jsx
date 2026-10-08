@@ -157,6 +157,13 @@ import DealerComplaintManagement from "./pages/dealer/DealerComplaintManagement"
 import DealerProfileManagement from "./pages/dealer/DealerProfileManagement";
 import DealerContactSupport from "./pages/dealer/DealerContactSupport";
 
+// Sales Executive
+import SalesExecutiveLayout from "./layouts/SalesExecutiveLayout";
+import SalesExecutiveDashboard from "./pages/salesExecutive/SalesExecutiveDashboard";
+import SalesExecutiveAttendance from "./pages/salesExecutive/SalesExecutiveAttendance";
+import SalesExecutiveBeatPlan from "./pages/salesExecutive/SalesExecutiveBeatPlan";
+
+
 
 const App = () => {
   return (
@@ -324,7 +331,14 @@ const App = () => {
         <Route path="/dealer/profile" element={<DealerLayout><DealerProfileManagement /></DealerLayout>} />
         <Route path="/dealer/contact-support" element={<DealerLayout><DealerContactSupport /></DealerLayout>} />
 
-        
+
+        {/* Sales Executive */}
+        <Route path="/sales-executive/dashboard" element={<SalesExecutiveLayout><SalesExecutiveDashboard /></SalesExecutiveLayout>} />
+        <Route path="/sales-executive/attendance" element={<SalesExecutiveLayout><SalesExecutiveAttendance /></SalesExecutiveLayout>} />
+        <Route path="/sales-executive/beat-plan" element={<SalesExecutiveLayout><SalesExecutiveBeatPlan /></SalesExecutiveLayout>} />
+
+
+
       </Routes>
       <Toaster position="top-right" richColors />
     </BrowserRouter>

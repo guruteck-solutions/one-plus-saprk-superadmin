@@ -1,0 +1,653 @@
+.sales-executive-attendance {
+  padding: 24px;
+  background: #f6f8fb;
+  min-height: 100vh;
+  color: #1f2937;
+}
+
+.sales-executive-attendance-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.sales-executive-attendance-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.sales-executive-attendance-header p {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.sales-executive-attendance-refresh {
+  border: 1px solid #e8751a;
+  background: #e8751a;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sales-executive-attendance-refresh:hover {
+  background: #d8660f;
+  border-color: #d8660f;
+}
+
+.sales-executive-attendance-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 20px;
+}
+
+.sales-executive-attendance-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.sales-executive-attendance-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
+}
+
+.sales-executive-attendance-card-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #111827;
+}
+
+.sales-executive-attendance-card-header p {
+  margin: 5px 0 0;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.attendance-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.attendance-status.checked-in {
+  background: #ecfdf3;
+  color: #15803d;
+}
+
+.attendance-status.checked-out {
+  background: #eef4ff;
+  color: #2563eb;
+}
+
+.attendance-status.not-marked {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Attendance Details */
+
+.sales-executive-attendance-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.attendance-detail-item {
+  border: 1px solid #e5e7eb;
+  background: #fafbfc;
+  border-radius: 9px;
+  padding: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.attendance-detail-item > svg {
+  color: #ff7700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.attendance-detail-item span {
+  display: block;
+  color: #6b7280;
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+.attendance-detail-item strong {
+  display: block;
+  color: #111827;
+  font-size: 13px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+/* Saved Selfie */
+
+.attendance-saved-selfie {
+  margin-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 16px;
+}
+
+.attendance-saved-selfie > span {
+  display: block;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.attendance-saved-selfie img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Attendance Form */
+
+.sales-executive-attendance-form {
+  margin-top: 4px;
+}
+
+.attendance-camera-section {
+  margin-bottom: 16px;
+}
+
+.attendance-camera-button {
+  width: 100%;
+  min-height: 180px;
+  border: 1px dashed #d1d5db;
+  background: #fafbfc;
+  border-radius: 10px;
+  color: #ff7700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.attendance-camera-button:hover {
+  border-color: #e8751a;
+  background: #fffaf5;
+}
+
+.attendance-camera-button span {
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.attendance-camera-button small {
+  color: #6b7280;
+  font-size: 11px;
+}
+
+/* Camera */
+
+.attendance-camera-preview {
+  background: #111827;
+  border-radius: 10px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.attendance-camera-preview video {
+  width: 100%;
+  max-height: 330px;
+  display: block;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.attendance-camera-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.attendance-primary-button,
+.attendance-secondary-button {
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.attendance-primary-button {
+  flex: 1;
+  border: 1px solid #e8751a;
+  background: #e8751a;
+  color: #ffffff;
+}
+
+.attendance-primary-button:hover {
+  background: #d8660f;
+  border-color: #d8660f;
+}
+
+.attendance-secondary-button {
+  border: 1px solid #dbe3ef;
+  background: #f8fafc;
+  color: #1f2937;
+}
+
+.attendance-secondary-button:hover {
+  background: #eef2f7;
+}
+
+/* Selfie Preview */
+
+.attendance-selfie-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px;
+  background: #fafbfc;
+}
+
+.attendance-selfie-preview img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.attendance-hidden-canvas {
+  display: none;
+}
+
+/* Location */
+
+.attendance-location-status {
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+  background: #fafbfc;
+  padding: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.attendance-location-status > svg {
+  color: #ff7700;
+  flex-shrink: 0;
+}
+
+.attendance-location-status > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.attendance-location-status strong {
+  display: block;
+  color: #111827;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.attendance-location-status span {
+  display: block;
+  color: #6b7280;
+  font-size: 11px;
+  word-break: break-word;
+}
+
+.attendance-location-status button {
+  border: 1px solid #e8751a;
+  background: #ffffff;
+  color: #e8751a;
+  border-radius: 7px;
+  padding: 7px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.attendance-location-status button:hover {
+  background: #fff7ed;
+}
+
+/* Remarks */
+
+.attendance-remarks {
+  margin-bottom: 16px;
+}
+
+.attendance-remarks label {
+  display: block;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.attendance-remarks textarea {
+  width: 100%;
+  min-height: 85px;
+  resize: vertical;
+  box-sizing: border-box;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 11px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  color: #1f2937;
+  background: #ffffff;
+  outline: none;
+}
+
+.attendance-remarks textarea:focus {
+  border-color: #e8751a;
+  box-shadow: 0 0 0 3px rgba(232, 117, 26, 0.08);
+}
+
+.attendance-remarks textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* Check In / Check Out */
+
+.attendance-check-in-button,
+.attendance-check-out-button {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.attendance-check-in-button {
+  border: 1px solid #e8751a;
+  background: #e8751a;
+  color: #ffffff;
+}
+
+.attendance-check-in-button:hover:not(:disabled) {
+  background: #d8660f;
+  border-color: #d8660f;
+}
+
+.attendance-check-out-button {
+  margin-top: 18px;
+  border: 1px solid #e8751a;
+  background: #ffffff;
+  color: #e8751a;
+}
+
+.attendance-check-out-button:hover:not(:disabled) {
+  background: #fff7ed;
+}
+
+.attendance-check-in-button:disabled,
+.attendance-check-out-button:disabled,
+.attendance-location-status button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* History */
+
+.attendance-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.attendance-history-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 9px;
+  padding: 14px;
+  background: #fafbfc;
+}
+
+.attendance-history-date {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 13px;
+}
+
+.attendance-history-date strong {
+  color: #111827;
+  font-size: 14px;
+}
+
+.attendance-history-times {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.attendance-history-times div {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  padding: 9px;
+}
+
+.attendance-history-times span {
+  display: block;
+  color: #6b7280;
+  font-size: 10px;
+  margin-bottom: 4px;
+}
+
+.attendance-history-times strong {
+  display: block;
+  color: #111827;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.attendance-history-location {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.attendance-history-location svg {
+  color: #ff7700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.attendance-history-empty {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #64748b;
+  gap: 8px;
+}
+
+.attendance-history-empty svg {
+  color: #ff7700;
+}
+
+.attendance-history-empty p {
+  margin: 0;
+  font-size: 13px;
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+  .sales-executive-attendance-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .sales-executive-attendance {
+    padding: 16px;
+    padding-bottom: 90px;
+  }
+
+  .sales-executive-attendance-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .sales-executive-attendance-header h1 {
+    font-size: 23px;
+  }
+
+  .sales-executive-attendance-header p {
+    font-size: 13px;
+  }
+
+  .sales-executive-attendance-refresh {
+    padding: 9px 11px;
+  }
+
+  .sales-executive-attendance-card {
+    padding: 16px;
+  }
+
+  .sales-executive-attendance-details {
+    grid-template-columns: 1fr;
+  }
+
+  .attendance-location-status {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .attendance-location-status > div {
+    min-width: calc(100% - 40px);
+  }
+
+  .attendance-location-status button {
+    margin-left: 30px;
+  }
+}
+
+/* Small Mobile */
+
+@media (max-width: 480px) {
+  .sales-executive-attendance {
+    padding: 12px;
+    padding-bottom: 85px;
+  }
+
+  .sales-executive-attendance-header {
+    flex-direction: column;
+  }
+
+  .sales-executive-attendance-header h1 {
+    font-size: 21px;
+  }
+
+  .sales-executive-attendance-refresh {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .sales-executive-attendance-card {
+    padding: 14px;
+  }
+
+  .sales-executive-attendance-card-header {
+    align-items: flex-start;
+  }
+
+  .sales-executive-attendance-card-header h2 {
+    font-size: 16px;
+  }
+
+  .sales-executive-attendance-card-header p {
+    font-size: 11px;
+  }
+
+  .attendance-camera-button {
+    min-height: 155px;
+  }
+
+  .attendance-camera-actions {
+    flex-direction: column;
+  }
+
+  .attendance-primary-button,
+  .attendance-secondary-button {
+    width: 100%;
+  }
+
+  .attendance-selfie-preview img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .attendance-location-status {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+
+  .attendance-location-status button {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .attendance-history-times {
+    grid-template-columns: 1fr;
+  }
+
+  .attendance-history-date {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,17 @@
+.sales-executive-layout {
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+.sales-executive-layout-content {
+  min-height: calc(100vh - 70px);
+  margin-left: 260px;
+  padding: 24px;
+}
+
+@media (max-width: 768px) {
+  .sales-executive-layout-content {
+    margin-left: 0;
+    padding: 16px;
+  }
+}

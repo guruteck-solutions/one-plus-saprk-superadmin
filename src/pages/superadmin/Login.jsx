@@ -44,9 +44,15 @@ const Login = () => {
             localStorage.setItem("user", JSON.stringify(data.user));
 
             // Role based redirect
-            if (data.user?.role === "PAINTER") { navigate("/painter/dashboard"); }
-            else if (data.user?.role === "DEALER") { navigate("/dealer/dashboard"); }
-            else { navigate("/dashboard"); }
+            if (data.user?.role === "PAINTER") {
+                navigate("/painter/dashboard");
+            } else if (data.user?.role === "DEALER") {
+                navigate("/dealer/dashboard");
+            } else if (data.user?.role === "SALES_EXECUTIVE") {
+                navigate("/sales-executive/dashboard");
+            } else {
+                navigate("/dashboard");
+            }
 
         } catch (error) {
             console.error("Login error:", error);
