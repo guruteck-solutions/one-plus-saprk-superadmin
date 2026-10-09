@@ -6,6 +6,9 @@ import {
   LogOut,
   X,
   Map,
+  Users,
+  ShoppingCart,
+  History,
 } from "lucide-react";
 import "../css/salesExecutive/SalesExecutiveSidebar.css";
 
@@ -31,6 +34,21 @@ const SalesExecutiveSidebar = ({
       path: "/sales-executive/beat-plan",
       icon: Map,
     },
+    {
+      label: "Lead Management",
+      path: "/sales-executive/leads",
+      icon: Users,
+    },
+    {
+      label: "Order Booking",
+      path: "/sales-executive/order-booking",
+      icon: ShoppingCart,
+    },
+    {
+      label: "Order History",
+      path: "/sales-executive/order-history",
+      icon: History,
+    }
   ];
 
   return (

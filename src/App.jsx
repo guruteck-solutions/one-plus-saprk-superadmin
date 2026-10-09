@@ -162,6 +162,10 @@ import SalesExecutiveLayout from "./layouts/SalesExecutiveLayout";
 import SalesExecutiveDashboard from "./pages/salesExecutive/SalesExecutiveDashboard";
 import SalesExecutiveAttendance from "./pages/salesExecutive/SalesExecutiveAttendance";
 import SalesExecutiveBeatPlan from "./pages/salesExecutive/SalesExecutiveBeatPlan";
+import SalesExecutiveLeadManagement from "./pages/salesExecutive/SalesExecutiveLeadManagement";
+import SalesExecutiveOrderBooking from "./pages/salesExecutive/SalesExecutiveOrderBooking";
+import SalesExecutiveOrderHistory from "./pages/salesExecutive/SalesExecutiveOrderHistory";
+
 
 
 
@@ -336,6 +340,9 @@ const App = () => {
         <Route path="/sales-executive/dashboard" element={<SalesExecutiveLayout><SalesExecutiveDashboard /></SalesExecutiveLayout>} />
         <Route path="/sales-executive/attendance" element={<SalesExecutiveLayout><SalesExecutiveAttendance /></SalesExecutiveLayout>} />
         <Route path="/sales-executive/beat-plan" element={<SalesExecutiveLayout><SalesExecutiveBeatPlan /></SalesExecutiveLayout>} />
+        <Route path="/sales-executive/leads" element={<SalesExecutiveLayout><SalesExecutiveLeadManagement /></SalesExecutiveLayout>} />
+        <Route path="/sales-executive/order-booking" element={<SalesExecutiveLayout><SalesExecutiveOrderBooking /></SalesExecutiveLayout>} />
+        <Route path="/sales-executive/order-history" element={<SalesExecutiveLayout><SalesExecutiveOrderHistory /></SalesExecutiveLayout>} />
 
 
 

@@ -1,158 +1,239 @@
+
 .sales-executive-dashboard {
+  width: 100%;
+  min-height: 100vh;
   padding: 24px;
   background: #f6f8fb;
-  min-height: 100vh;
   color: #1f2937;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 }
 
+.sales-executive-dashboard *,
+.sales-executive-dashboard *::before,
+.sales-executive-dashboard *::after {
+  box-sizing: border-box;
+}
+
+/* Dashboard Header */
 .sales-executive-dashboard-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   margin-bottom: 22px;
 }
 
 .sales-executive-dashboard-header h1 {
   margin: 0;
+  color: #111827;
   font-size: 28px;
   font-weight: 700;
-  color: #111827;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
 }
 
 .sales-executive-dashboard-header p {
   margin: 6px 0 0;
   color: #6b7280;
   font-size: 14px;
+  line-height: 1.5;
 }
 
 /* Dashboard Widgets */
-
 .sales-executive-dashboard-widgets {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  width: 100%;
 }
 
 .sales-executive-dashboard-card {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+  min-height: 100px;
+  padding: 18px;
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  padding: 18px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  min-height: 82px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.025);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sales-executive-dashboard-card:hover {
+  border-color: #f2c6a5;
+  box-shadow: 0 4px 12px rgba(31, 41, 55, 0.05);
 }
 
 .sales-executive-dashboard-card-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 10px;
-  background: #eef4ff;
-  color: #ff7700;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: #fff1e6;
+  color: #e8751a;
 }
 
 .sales-executive-dashboard-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  flex: 1;
   min-width: 0;
 }
 
 .sales-executive-dashboard-card-content span {
   display: block;
-  font-size: 13px;
+  max-width: 100%;
   color: #6b7280;
-  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
 .sales-executive-dashboard-card-content strong {
   display: block;
-  font-size: 21px;
+  max-width: 100%;
   color: #111827;
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
-/* Quick Actions */
-
+/* Quick Actions Section */
 .sales-executive-quick-actions {
+  width: 100%;
+  min-width: 0;
+  padding: 22px;
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.025);
 }
 
 .sales-executive-section-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 15px;
+  margin-bottom: 18px;
   border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 14px;
-  margin-bottom: 16px;
 }
 
 .sales-executive-section-header h2 {
   margin: 0;
-  font-size: 18px;
   color: #111827;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
+/* Quick Action Buttons */
 .sales-executive-quick-actions-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
+  gap: 14px;
+  width: 100%;
 }
 
 .sales-executive-quick-action {
-  border: 1px solid #dbe3ef;
-  background: #f8fafc;
-  color: #1f2937;
-  border-radius: 9px;
-  padding: 13px 12px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  justify-content: flex-start;
+  gap: 11px;
+  min-width: 0;
+  min-height: 62px;
+  padding: 14px;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #1f2937;
+  font-family: inherit;
   font-size: 13px;
   font-weight: 600;
+  line-height: 1.45;
+  text-align: left;
   cursor: pointer;
-  transition: 0.2s;
+  overflow-wrap: anywhere;
+  transition: background 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease, transform 0.2s ease;
+}
+
+.sales-executive-quick-action svg {
+  flex-shrink: 0;
+  color: #e8751a;
+  transition: color 0.2s ease;
+}
+
+.sales-executive-quick-action span {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .sales-executive-quick-action:hover {
-  background: #e27217;
+  background: #e8751a;
   border-color: #e8751a;
   color: #ffffff;
 }
 
-/* Tablet */
+.sales-executive-quick-action:hover svg {
+  color: #ffffff;
+}
 
-@media (max-width: 1100px) {
+.sales-executive-quick-action:focus-visible {
+  outline: 3px solid rgba(232, 117, 26, 0.3);
+  outline-offset: 3px;
+}
+
+.sales-executive-quick-action:active {
+  transform: scale(0.98);
+}
+
+/* Small Desktop and Large Tablets */
+@media (max-width: 1200px) {
   .sales-executive-dashboard-widgets {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
   }
 
   .sales-executive-quick-actions-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .sales-executive-dashboard-card {
+    padding: 16px;
+  }
+
+  .sales-executive-quick-actions {
+    padding: 20px;
   }
 }
 
-/* Mobile */
-
+/* Tablets */
 @media (max-width: 768px) {
   .sales-executive-dashboard {
-    padding: 16px;
-    padding-bottom: 90px;
+    min-height: 100vh;
+    padding: 18px;
+    padding-bottom: 100px;
   }
 
   .sales-executive-dashboard-header {
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
 
   .sales-executive-dashboard-header h1 {
-    font-size: 23px;
+    font-size: 25px;
   }
 
   .sales-executive-dashboard-header p {
@@ -160,84 +241,213 @@
   }
 
   .sales-executive-dashboard-widgets {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+    margin-bottom: 18px;
   }
 
   .sales-executive-dashboard-card {
+    min-height: 88px;
+    gap: 11px;
     padding: 14px;
-    gap: 10px;
+    border-radius: 11px;
   }
 
   .sales-executive-dashboard-card-icon {
     width: 40px;
     height: 40px;
+    border-radius: 9px;
+  }
+
+  .sales-executive-dashboard-card-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .sales-executive-dashboard-card-content {
+    gap: 6px;
+  }
+
+  .sales-executive-dashboard-card-content span {
+    font-size: 12px;
   }
 
   .sales-executive-dashboard-card-content strong {
+    font-size: 21px;
+  }
+
+  .sales-executive-quick-actions {
+    padding: 18px;
+    border-radius: 11px;
+  }
+
+  .sales-executive-section-header {
+    padding-bottom: 13px;
+    margin-bottom: 15px;
+  }
+
+  .sales-executive-section-header h2 {
     font-size: 18px;
+  }
+
+  .sales-executive-quick-actions-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+  }
+
+  .sales-executive-quick-action {
+    min-height: 58px;
+    gap: 9px;
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .sales-executive-quick-action svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  .sales-executive-dashboard {
+    padding: 13px;
+    padding-bottom: 90px;
+  }
+
+  .sales-executive-dashboard-header {
+    margin-bottom: 17px;
+  }
+
+  .sales-executive-dashboard-header h1 {
+    font-size: 23px;
+  }
+
+  .sales-executive-dashboard-header p {
+    margin-top: 5px;
+    font-size: 12px;
+  }
+
+  .sales-executive-dashboard-widgets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .sales-executive-dashboard-card {
+    min-height: 94px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .sales-executive-dashboard-card-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+  }
+
+  .sales-executive-dashboard-card-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .sales-executive-dashboard-card-content {
+    width: 100%;
+    gap: 4px;
   }
 
   .sales-executive-dashboard-card-content span {
     font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .sales-executive-dashboard-card-content strong {
+    font-size: 19px;
   }
 
   .sales-executive-quick-actions {
-    padding: 16px;
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .sales-executive-section-header {
+    padding-bottom: 12px;
+    margin-bottom: 13px;
   }
 
   .sales-executive-section-header h2 {
-    font-size: 16px;
+    font-size: 17px;
   }
 
   .sales-executive-quick-actions-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .sales-executive-quick-action {
+    min-height: 64px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 7px;
+    padding: 11px;
+    border-radius: 9px;
+    font-size: 12px;
+  }
+
+  .sales-executive-quick-action svg {
+    width: 19px;
+    height: 19px;
   }
 }
 
-/* Small Mobile */
-
-@media (max-width: 480px) {
+/* Extra Small Phones */
+@media (max-width: 350px) {
   .sales-executive-dashboard {
-    padding: 12px;
+    padding: 10px;
     padding-bottom: 85px;
   }
 
   .sales-executive-dashboard-widgets {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 8px;
   }
 
   .sales-executive-dashboard-card {
-    min-height: 68px;
+    padding: 10px;
+    min-height: 88px;
   }
 
-  .sales-executive-dashboard-card-icon {
-    width: 38px;
-    height: 38px;
+  .sales-executive-dashboard-card-content span {
+    font-size: 10px;
   }
 
   .sales-executive-dashboard-card-content strong {
     font-size: 17px;
   }
 
-  .sales-executive-dashboard-section {
-    padding: 14px;
-  }
-
-  .sales-executive-section-header h2 {
-    font-size: 16px;
-  }
-
   .sales-executive-quick-actions {
-    padding: 14px;
+    padding: 11px;
   }
 
   .sales-executive-quick-actions-grid {
-    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .sales-executive-quick-action {
-    padding: 12px;
+    padding: 9px;
+    font-size: 11px;
+  }
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .sales-executive-dashboard-card,
+  .sales-executive-quick-action,
+  .sales-executive-quick-action svg {
+    transition: none;
   }
 }
