@@ -9,6 +9,7 @@ import {
   Users,
   ShoppingCart,
   History,
+  CreditCard,
 } from "lucide-react";
 import "../css/salesExecutive/SalesExecutiveSidebar.css";
 
@@ -48,7 +49,12 @@ const SalesExecutiveSidebar = ({
       label: "Order History",
       path: "/sales-executive/order-history",
       icon: History,
-    }
+    },
+    {
+      label: "Collection Management",
+      path: "/sales-executive/collection-management",
+      icon: CreditCard,
+    },
   ];
 
   return (

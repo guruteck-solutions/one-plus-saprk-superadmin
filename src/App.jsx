@@ -165,6 +165,7 @@ import SalesExecutiveBeatPlan from "./pages/salesExecutive/SalesExecutiveBeatPla
 import SalesExecutiveLeadManagement from "./pages/salesExecutive/SalesExecutiveLeadManagement";
 import SalesExecutiveOrderBooking from "./pages/salesExecutive/SalesExecutiveOrderBooking";
 import SalesExecutiveOrderHistory from "./pages/salesExecutive/SalesExecutiveOrderHistory";
+import SalesExecutiveCollectionManagement from "./pages/salesExecutive/SalesExecutiveCollectionManagement";
 
 
 
@@ -343,6 +344,7 @@ const App = () => {
         <Route path="/sales-executive/leads" element={<SalesExecutiveLayout><SalesExecutiveLeadManagement /></SalesExecutiveLayout>} />
         <Route path="/sales-executive/order-booking" element={<SalesExecutiveLayout><SalesExecutiveOrderBooking /></SalesExecutiveLayout>} />
         <Route path="/sales-executive/order-history" element={<SalesExecutiveLayout><SalesExecutiveOrderHistory /></SalesExecutiveLayout>} />
+        <Route path="/sales-executive/collection-management" element={<SalesExecutiveLayout><SalesExecutiveCollectionManagement /></SalesExecutiveLayout>}/>
 
 
 
