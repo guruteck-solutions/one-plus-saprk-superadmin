@@ -1,0 +1,508 @@
+.dealer-loyalty-page {
+  width: 100%;
+  padding: 24px;
+  background: #f8fafc;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.dealer-loyalty-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dealer-loyalty-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.dealer-loyalty-header p {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.dealer-loyalty-refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #dbe2ea;
+  background: #ffffff;
+  color: #334155;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dealer-loyalty-refresh-btn:hover {
+  background: #f1f5f9;
+}
+
+/* TOP GRID */
+
+.dealer-loyalty-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.dealer-current-tier-card,
+.dealer-loyalty-stat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 22px;
+  min-height: 130px;
+  box-sizing: border-box;
+}
+
+.dealer-current-tier-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.dealer-tier-icon {
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.dealer-tier-content span,
+.dealer-loyalty-stat-card span {
+  display: block;
+  color: #64748b;
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+
+.dealer-tier-content h2 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.dealer-tier-content p {
+  margin: 5px 0 0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.dealer-loyalty-stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dealer-loyalty-stat-card strong {
+  color: #1e293b;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.dealer-loyalty-stat-card small {
+  margin-top: 5px;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* COMMON SECTION */
+
+.dealer-loyalty-progress-card,
+.dealer-tier-benefits-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.dealer-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.dealer-section-header h2 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.dealer-section-header p {
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.dealer-section-header > strong {
+  color: #334155;
+  font-size: 22px;
+}
+
+/* PROGRESS */
+
+.dealer-progress-track {
+  width: 100%;
+  height: 12px;
+  background: #e2e8f0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.dealer-progress-fill {
+  height: 100%;
+  border-radius: 20px;
+  background: #475569;
+  transition: width 0.4s ease;
+}
+
+.dealer-progress-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 18px;
+}
+
+.dealer-progress-details div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.dealer-progress-details span {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.dealer-progress-details strong {
+  color: #1e293b;
+  font-size: 14px;
+}
+
+.dealer-progress-details svg {
+  color: #94a3b8;
+}
+
+.dealer-next-tier-target {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: 9px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.dealer-next-tier-target span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.dealer-next-tier-target strong {
+  color: #1e293b;
+  font-size: 16px;
+}
+
+/* BENEFITS */
+
+.dealer-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.dealer-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 11px;
+  background: #ffffff;
+}
+
+.dealer-benefit-item.enabled {
+  background: #f8fafc;
+}
+
+.dealer-benefit-item.disabled {
+  opacity: 0.65;
+}
+
+.dealer-benefit-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.dealer-benefit-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.dealer-benefit-content strong {
+  display: block;
+  color: #1e293b;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.dealer-benefit-content span {
+  display: block;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.dealer-benefit-status {
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.dealer-benefit-item.enabled .dealer-benefit-status {
+  color: #334155;
+}
+
+/* EXTRA BENEFITS */
+
+.dealer-benefit-extra {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.dealer-benefit-extra div {
+  padding: 14px;
+  border-radius: 9px;
+  background: #f8fafc;
+}
+
+.dealer-benefit-extra span {
+  display: block;
+  color: #64748b;
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+
+.dealer-benefit-extra strong {
+  color: #1e293b;
+  font-size: 15px;
+}
+
+/* LOADING */
+
+.dealer-loyalty-loading {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+}
+
+.dealer-loyalty-loading-icon {
+  animation: dealer-loyalty-spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes dealer-loyalty-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ERROR */
+
+.dealer-loyalty-error {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 25px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.dealer-loyalty-error p {
+  margin: 0 0 15px;
+  color: #dc2626;
+  font-size: 14px;
+}
+
+.dealer-loyalty-error button {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 7px;
+  background: #334155;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* TABLET */
+
+@media (max-width: 1000px) {
+  .dealer-loyalty-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dealer-current-tier-card {
+    grid-column: 1 / -1;
+  }
+
+  .dealer-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dealer-benefit-extra {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+  .dealer-loyalty-page {
+    padding: 15px;
+  }
+
+  .dealer-loyalty-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dealer-loyalty-header h1 {
+    font-size: 23px;
+  }
+
+  .dealer-loyalty-refresh-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dealer-loyalty-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .dealer-current-tier-card {
+    grid-column: auto;
+  }
+
+  .dealer-current-tier-card,
+  .dealer-loyalty-stat-card {
+    padding: 18px;
+  }
+
+  .dealer-tier-icon {
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+  }
+
+  .dealer-tier-content h2 {
+    font-size: 22px;
+  }
+
+  .dealer-loyalty-stat-card strong {
+    font-size: 22px;
+  }
+
+  .dealer-loyalty-progress-card,
+  .dealer-tier-benefits-card {
+    padding: 18px;
+  }
+
+  .dealer-section-header {
+    align-items: flex-start;
+  }
+
+  .dealer-section-header h2 {
+    font-size: 17px;
+  }
+
+  .dealer-progress-details {
+    gap: 10px;
+  }
+
+  .dealer-next-tier-target {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dealer-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dealer-benefit-item {
+    align-items: flex-start;
+  }
+
+  .dealer-benefit-status {
+    font-size: 10px;
+  }
+
+  .dealer-benefit-extra {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .dealer-loyalty-page {
+    padding: 12px;
+  }
+
+  .dealer-benefit-extra {
+    grid-template-columns: 1fr;
+  }
+
+  .dealer-progress-details {
+    flex-wrap: wrap;
+  }
+
+  .dealer-progress-details svg {
+    display: none;
+  }
+
+  .dealer-section-header > strong {
+    font-size: 18px;
+  }
+}

@@ -30,7 +30,7 @@ import {
     BadgeCheck,
 } from "lucide-react";
 
-import "../../css/EmployeeHRManagement.css";
+import "../../css/superadmin/EmployeeHRManagement.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
 
@@ -1821,7 +1821,7 @@ const EmployeeHRManagement = () => {
 
                         <div className="details-footer">
 
-                            <button type="button" className="save-employee-button" onClick={() => setShowEmployeeDetails(false)}>
+                            <button type="button" className="close-emp-btn" onClick={() => setShowEmployeeDetails(false)}>
                                 Close
                             </button>
                         </div>

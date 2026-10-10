@@ -1,0 +1,224 @@
+.painter-raise-complaint-page {
+    width: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+.painter-raise-complaint-header {
+    margin-bottom: 24px;
+}
+
+.painter-raise-complaint-header h1 {
+    margin: 0;
+    font-size: 28px;
+    color: #172033;
+}
+
+.painter-raise-complaint-header p {
+    margin: 7px 0 0;
+    color: #667085;
+    font-size: 14px;
+}
+
+.painter-raise-complaint-card {
+    width: 100%;
+    max-width: 850px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 28px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.painter-raise-form-group {
+    margin-bottom: 20px;
+}
+
+.painter-raise-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #344054;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.painter-raise-form-group label span {
+    color: #ef4444;
+}
+
+.painter-raise-form-group input,
+.painter-raise-form-group select,
+.painter-raise-form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    padding: 11px 13px;
+    font-size: 14px;
+    color: #1d2939;
+    background: #ffffff;
+    outline: none;
+    font-family: inherit;
+}
+
+.painter-raise-form-group input:focus,
+.painter-raise-form-group select:focus,
+.painter-raise-form-group textarea:focus {
+    border-color: #ff7a00;
+    box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.1);
+}
+
+.painter-raise-form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.painter-raise-upload-box {
+    min-height: 110px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 10px;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    cursor: pointer;
+    color: #475467 !important;
+    background: #f8fafc;
+}
+
+.painter-raise-upload-box span {
+    color: #344054 !important;
+    font-size: 14px;
+}
+
+.painter-raise-upload-box small {
+    color: #667085;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.painter-raise-upload-box input {
+    display: none;
+}
+
+.painter-raise-file-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: -5px;
+    margin-bottom: 20px;
+}
+
+.painter-raise-file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 1px solid #e4e7ec;
+    border-radius: 8px;
+    background: #f9fafb;
+}
+
+.painter-raise-file-info {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+    color: #475467;
+}
+
+.painter-raise-file-info span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+.painter-raise-remove-file {
+    border: none;
+    background: transparent;
+    color: #667085;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+}
+
+.painter-raise-remove-file:hover {
+    color: #ef4444;
+}
+
+.painter-raise-success,
+.painter-raise-error {
+    padding: 11px 13px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.painter-raise-success {
+    background: #ecfdf3;
+    color: #027a48;
+    border: 1px solid #abefc6;
+}
+
+.painter-raise-error {
+    background: #fef3f2;
+    color: #b42318;
+    border: 1px solid #fecdca;
+}
+
+.painter-raise-submit-btn {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 13px 18px;
+    background: #ff7a00;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.painter-raise-submit-btn:hover {
+    background: #e96f00;
+}
+
+.painter-raise-submit-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .painter-raise-complaint-page {
+        padding: 16px;
+        padding-top: 88px;
+
+    }
+
+    .painter-raise-complaint-header h1 {
+        font-size: 24px;
+    }
+
+    .painter-raise-complaint-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .painter-raise-complaint-page {
+        padding: 12px;
+        padding-top: 88px;
+
+    }
+
+    .painter-raise-complaint-card {
+        padding: 16px;
+        border-radius: 10px;
+    }
+}

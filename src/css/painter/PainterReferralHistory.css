@@ -1,0 +1,190 @@
+.painter-referral-history-page {
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  padding: 24px;
+  background: #ffffff;
+  box-sizing: border-box;
+  padding-top: 88px;
+}
+
+.painter-referral-history-header {
+  margin-bottom: 28px;
+}
+
+.painter-referral-history-header h1 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #17202a;
+}
+
+.painter-referral-history-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.painter-referral-history-header p span {
+  margin: 0 6px;
+  color: #94a3b8;
+}
+
+/* Table Card */
+.painter-referral-history-table-card {
+  width: 100%;
+  margin-top: 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Table Wrapper */
+.painter-referral-history-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Table */
+.painter-referral-history-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.painter-referral-history-table thead {
+  background: #f4f7fa;
+}
+
+.painter-referral-history-table th {
+  height: 42px;
+  padding: 0 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.painter-referral-history-table td {
+  height: 48px;
+  padding: 0 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 500;
+  color: #17202a;
+  border-bottom: 1px solid #eef1f4;
+  white-space: nowrap;
+}
+
+.painter-referral-history-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.painter-referral-history-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* Column Widths */
+.painter-referral-history-table th:nth-child(1),
+.painter-referral-history-table td:nth-child(1) {
+  width: 24%;
+}
+
+.painter-referral-history-table th:nth-child(2),
+.painter-referral-history-table td:nth-child(2) {
+  width: 16%;
+}
+
+.painter-referral-history-table th:nth-child(3),
+.painter-referral-history-table td:nth-child(3) {
+  width: 16%;
+}
+
+.painter-referral-history-table th:nth-child(4),
+.painter-referral-history-table td:nth-child(4) {
+  width: 24%;
+}
+
+.painter-referral-history-table th:nth-child(5),
+.painter-referral-history-table td:nth-child(5) {
+  width: 20%;
+}
+
+/* Status */
+.painter-referral-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 82px;
+  height: 24px;
+  padding: 0 12px;
+  border-radius: 14px;
+  font-size: 10px;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+
+.painter-referral-status.pending {
+  background: #fff1e6;
+  color: #f97316;
+}
+
+.painter-referral-status.converted {
+  background: #eaf8f0;
+  color: #16a34a;
+}
+
+.painter-referral-status.rejected {
+  background: #fef0f0;
+  color: #dc2626;
+}
+
+.painter-referral-status.new {
+  background: #eef4ff;
+  color: #2563eb;
+}
+
+/* Loading / Error / Empty */
+.painter-referral-history-state {
+  padding: 50px 20px;
+  text-align: center;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.painter-referral-history-state.error {
+  color: #dc2626;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .painter-referral-history-page {
+    padding: 18px;
+    padding-top: 88px;
+
+  }
+
+  .painter-referral-history-header {
+    margin-bottom: 24px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .painter-referral-history-page {
+    padding: 14px;
+    padding-top: 88px;
+
+  }
+
+  .painter-referral-history-header h1 {
+    font-size: 22px;
+  }
+
+  .painter-referral-history-table {
+    min-width: 650px;
+  }
+}

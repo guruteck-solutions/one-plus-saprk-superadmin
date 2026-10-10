@@ -16,7 +16,7 @@ import {
   UserPlus,
 } from "lucide-react";
 
-import "../../css/addUser.css";
+import "../../css/superadmin/addUser.css";
 
 const AddUser = () => {
   const navigate = useNavigate();
@@ -180,7 +180,7 @@ const AddUser = () => {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${id}`,
+        `http://localhost:5000/api/users/${id}`,
         {
           method: "GET",
           headers: {
@@ -270,7 +270,7 @@ const AddUser = () => {
         setProfilePreview(
           user.profilePicture.startsWith("http")
             ? user.profilePicture
-            : `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}${user.profilePicture}`
+            : `http://localhost:5000${user.profilePicture}`
         );
       }
 
@@ -590,8 +590,8 @@ const AddUser = () => {
       // ==========================================
 
       const url = isEditMode
-        ? `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${id}`
-        : (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/users";
+        ? `http://localhost:5000/api/users/${id}`
+        : "http://localhost:5000/api/users";
 
       const method = isEditMode
         ? "PUT"

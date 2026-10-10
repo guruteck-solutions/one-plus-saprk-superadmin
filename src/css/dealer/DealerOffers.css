@@ -1,0 +1,587 @@
+.dealer-offers-page {
+    width: 100%;
+    min-height: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+    background: #f8fafc;
+}
+
+.dealer-offers-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+
+.dealer-offers-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.dealer-offers-back-btn,
+.dealer-offers-refresh-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s
+}
+
+.dealer-offers-back-btn {
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #dbe2ea;
+}
+
+.dealer-offers-back-btn:hover {
+    background: #e2e8f0;
+    border-color: #cbd5e1;
+}
+
+.dealer-offers-refresh-btn {
+    background: #111827;
+    color: #fff
+}
+
+.dealer-offers-refresh-btn:hover {
+    background: #1f2937
+}
+
+@media(max-width:600px) {
+    .dealer-offers-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px
+    }
+
+    .dealer-offers-header-actions {
+        width: 100%
+    }
+
+    .dealer-offers-back-btn,
+    .dealer-offers-refresh-btn {
+        flex: 1
+    }
+}
+
+.dealer-offers-header h1 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.dealer-offers-header p {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.dealer-offers-refresh-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid #dbe2ea;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.dealer-offers-refresh-btn:hover {
+    background: #f1f5f9;
+}
+
+/* GRID */
+
+.dealer-offers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.dealer-offer-card {
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dealer-offer-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+}
+
+/* BANNER */
+
+.dealer-offer-banner {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+    background: #f1f5f9;
+}
+
+.dealer-offer-banner img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.dealer-offer-banner-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+}
+
+.dealer-offer-status {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: #dcfce7;
+    color: #15803d;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* CONTENT */
+
+.dealer-offer-content {
+    padding: 18px;
+}
+
+.dealer-offer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.dealer-offer-type {
+    padding: 5px 9px;
+    border-radius: 6px;
+    background: #eff6ff;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.dealer-offer-id {
+    color: #94a3b8;
+    font-size: 11px;
+}
+
+.dealer-offer-content h2 {
+    margin: 0 0 8px;
+    color: #1e293b;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.dealer-offer-description {
+    min-height: 42px;
+    margin: 0 0 16px;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* DATES */
+
+.dealer-offer-dates {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.dealer-offer-dates>div {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #64748b;
+}
+
+.dealer-offer-dates svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.dealer-offer-dates span {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dealer-offer-dates small {
+    color: #94a3b8;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+/* ACTIONS */
+
+.dealer-offer-actions {
+    display: flex;
+    gap: 9px;
+}
+
+.dealer-offer-view-btn,
+.dealer-offer-download-btn {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.dealer-offer-view-btn {
+    flex: 1;
+    border: 1px solid #dbe2ea;
+    background: #ffffff;
+    color: #334155;
+}
+
+.dealer-offer-view-btn:hover {
+    background: #f8fafc;
+}
+
+.dealer-offer-download-btn {
+    flex: 1;
+    border: 1px solid #e8751a;
+    background: #e8751a;
+    color: #ffffff;
+}
+
+.dealer-offer-download-btn:hover {
+    background: #d8660f;
+}
+
+/* LOADING */
+
+.dealer-offers-loading {
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+}
+
+.dealer-offers-spinner {
+    margin-bottom: 10px;
+    animation: dealer-offer-spin 1s linear infinite;
+}
+
+@keyframes dealer-offer-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* EMPTY */
+
+.dealer-offers-empty {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    background: #ffffff;
+    text-align: center;
+    color: #94a3b8;
+}
+
+.dealer-offers-empty h3 {
+    margin: 14px 0 5px;
+    color: #334155;
+    font-size: 18px;
+}
+
+.dealer-offers-empty p {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* ERROR */
+
+.dealer-offers-error {
+    margin-bottom: 20px;
+    padding: 16px;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    background: #fef2f2;
+    text-align: center;
+}
+
+.dealer-offers-error p {
+    margin: 0 0 10px;
+    color: #dc2626;
+    font-size: 14px;
+}
+
+.dealer-offers-error button {
+    padding: 8px 14px;
+    border: 0;
+    border-radius: 7px;
+    background: #334155;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* MODAL */
+
+.dealer-offer-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.55);
+}
+
+.dealer-offer-modal {
+    width: 100%;
+    max-width: 720px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
+}
+
+.dealer-offer-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 20px 22px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.dealer-offer-modal-header h2 {
+    margin: 0 0 5px;
+    color: #1e293b;
+    font-size: 20px;
+}
+
+.dealer-offer-modal-header span {
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.dealer-offer-modal-header button {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    border-radius: 7px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.dealer-offer-modal-banner {
+    width: 100%;
+    max-height: 280px;
+    display: block;
+    object-fit: cover;
+}
+
+.dealer-offer-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    padding: 22px;
+}
+
+.dealer-offer-details>div {
+    padding: 13px;
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+    background: #f8fafc;
+}
+
+.dealer-offer-details span {
+    display: block;
+    margin-bottom: 6px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+.dealer-offer-details strong {
+    color: #1e293b;
+    font-size: 13px;
+}
+
+.dealer-offer-full-detail {
+    grid-column: 1 / -1;
+}
+
+.dealer-offer-full-detail p {
+    margin: 0;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+.dealer-offer-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 18px 22px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.dealer-offer-close-btn {
+    min-height: 40px;
+    padding: 0 18px;
+    border: 1px solid #dbe2ea;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+    .dealer-offers-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+    .dealer-offers-page {
+        padding: 15px;
+    }
+
+    .dealer-offers-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .dealer-offers-header h1 {
+        font-size: 23px;
+    }
+
+    .dealer-offers-refresh-btn {
+        width: 100%;
+    }
+
+    .dealer-offers-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .dealer-offer-banner {
+        height: 180px;
+    }
+
+    .dealer-offer-dates {
+        grid-template-columns: 1fr;
+    }
+
+    .dealer-offer-actions {
+        flex-direction: column;
+    }
+
+    .dealer-offer-modal-overlay {
+        padding: 10px;
+    }
+
+    .dealer-offer-modal {
+        max-height: 94vh;
+    }
+
+    .dealer-offer-details {
+        grid-template-columns: 1fr;
+        padding: 16px;
+    }
+
+    .dealer-offer-full-detail {
+        grid-column: auto;
+    }
+
+    .dealer-offer-modal-footer {
+        flex-direction: column;
+        padding: 15px 16px;
+    }
+
+    .dealer-offer-modal-footer button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+    .dealer-offers-page {
+        padding: 12px;
+    }
+
+    .dealer-offer-content {
+        padding: 15px;
+    }
+
+    .dealer-offer-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .dealer-offer-id {
+        font-size: 10px;
+    }
+
+    .dealer-offer-banner {
+        height: 160px;
+    }
+}

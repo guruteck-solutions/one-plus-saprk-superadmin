@@ -1,0 +1,254 @@
+.painter-notification-listing-page {
+    width: 100%;
+    padding: 24px;
+    background: #ffffff;
+    min-height: calc(100vh - 70px);
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+.painter-notification-page-header {
+    margin-bottom: 22px;
+}
+
+.painter-notification-page-header h1 {
+    margin: 0 0 6px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.painter-notification-page-header p {
+    margin: 0;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.painter-notification-page-header p span {
+    margin: 0 6px;
+}
+
+.painter-notification-card {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.painter-notification-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 22px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.painter-notification-card-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.painter-notification-tabs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.painter-notification-tab {
+    border: none;
+    background: transparent;
+    padding: 9px 15px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.painter-notification-tab:hover {
+    background: #f8fafc;
+    color: #374151;
+}
+
+.painter-notification-tab.active {
+    background: #fff1e8;
+    color: #e87524;
+}
+
+.painter-notification-list {
+    width: 100%;
+}
+
+.painter-notification-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px 22px;
+    border: none;
+    border-bottom: 1px solid #eef0f3;
+    background: #ffffff;
+    text-align: left;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background 0.2s ease;
+}
+
+.painter-notification-row:last-child {
+    border-bottom: none;
+}
+
+.painter-notification-row:hover {
+    background: #fafafa;
+}
+
+.painter-notification-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.painter-notification-icon.push {
+    background: #fff1e8;
+    color: #e87524;
+}
+
+.painter-notification-icon.email {
+    background: #eef4ff;
+    color: #4f73c9;
+}
+
+.painter-notification-icon.sms {
+    background: #ecfdf5;
+    color: #16a34a;
+}
+
+.painter-notification-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.painter-notification-content h3 {
+    margin: 0 0 5px;
+    font-size: 14px;
+    font-weight: 650;
+    color: #1f2937;
+}
+
+.painter-notification-content p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #64748b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.painter-notification-category {
+    flex-shrink: 0;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.painter-notification-state {
+    padding: 45px 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.painter-notification-state.error {
+    color: #dc2626;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .painter-notification-listing-page {
+        padding: 20px;
+        padding-top: 88px;
+
+    }
+
+    .painter-notification-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .painter-notification-tabs {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    .painter-notification-tab {
+        white-space: nowrap;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .painter-notification-listing-page {
+        padding: 14px;
+        padding-top: 88px;
+
+    }
+
+    .painter-notification-page-header h1 {
+        font-size: 22px;
+    }
+
+    .painter-notification-page-header p {
+        font-size: 12px;
+    }
+
+    .painter-notification-card-header {
+        padding: 16px;
+    }
+
+    .painter-notification-card-header h2 {
+        font-size: 16px;
+    }
+
+    .painter-notification-row {
+        align-items: flex-start;
+        padding: 16px;
+        gap: 11px;
+    }
+
+    .painter-notification-icon {
+        width: 38px;
+        height: 38px;
+        min-width: 38px;
+    }
+
+    .painter-notification-content h3 {
+        font-size: 13px;
+    }
+
+    .painter-notification-content p {
+        font-size: 12px;
+        white-space: normal;
+    }
+
+    .painter-notification-category {
+        font-size: 9px;
+        padding: 4px 7px;
+    }
+}

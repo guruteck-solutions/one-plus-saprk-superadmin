@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { Upload, Download, Filter, Search, Pencil, Eye, Trash2, X, ChevronRight, ChevronLeft, } from "lucide-react";
-import "../../css/pricemanagement.css";
+import "../../css/superadmin/pricemanagement.css";
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api";
+const API_BASE_URL = "http://localhost:5000/api";
 
 const PriceManagement = () => {
 
@@ -1785,7 +1785,7 @@ const PriceManagement = () => {
               <div className="price-modal-footer">
                 <button
                   type="button"
-                  className="price-modal-cancel"
+                  className="price-modal-close"
                   onClick={handleCloseViewModal}
                 >
                   Close

@@ -1,0 +1,327 @@
+.painter-lead-status-page {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    padding: 18px 28px 40px;
+    box-sizing: border-box;
+    padding-top: 88px;
+
+}
+
+.painter-lead-status-header {
+    margin-bottom: 40px;
+}
+
+.painter-lead-status-header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-lead-status-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #718096;
+}
+
+.painter-lead-status-card {
+    width: 100%;
+    min-height: 500px;
+    padding: 28px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+.painter-lead-status-card h2 {
+    margin: 0 0 32px;
+    font-size: 21px;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* Search */
+.painter-lead-status-search-section {
+    width: 100%;
+    max-width: 520px;
+    margin-bottom: 20px;
+}
+
+.painter-lead-status-search-section label,
+.painter-lead-status-select-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #718096;
+}
+
+.painter-lead-status-search-section input {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    border: 1px solid #dfe5eb;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 12px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.painter-lead-status-search-section input::placeholder {
+    color: #a0aec0;
+}
+
+.painter-lead-status-search-section input:focus {
+    border-color: #ff7a00;
+    box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.08);
+}
+
+/* Select */
+.painter-lead-status-select-section {
+    width: 100%;
+    max-width: 520px;
+}
+
+.painter-lead-status-select-section select {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    border: 1px solid #dfe5eb;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 12px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.painter-lead-status-select-section select:focus {
+    border-color: #ff7a00;
+    box-shadow: 0 0 0 2px rgba(255, 122, 0, 0.08);
+}
+
+.painter-lead-status-select-section select:disabled {
+    background: #f8fafc;
+    cursor: not-allowed;
+}
+
+/* Messages */
+.painter-lead-status-select-message,
+.painter-lead-status-no-results {
+    margin-top: 35px;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #718096;
+    border: 1px dashed #dfe5eb;
+    border-radius: 10px;
+}
+
+.painter-lead-status-loading {
+    margin-top: 35px;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #718096;
+}
+
+/* Selected Lead Information */
+.painter-lead-status-selected-info {
+    width: 100%;
+    margin-top: 40px;
+    padding: 18px 20px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #fafbfc;
+}
+
+.painter-lead-status-selected-info span {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 11px;
+    color: #718096;
+}
+
+.painter-lead-status-selected-info strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* Timeline */
+.painter-lead-status-timeline {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 55px;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.painter-lead-status-step {
+    width: 150px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.painter-lead-status-dot {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 14px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 3px solid #e5e7eb;
+    background: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.painter-lead-status-step.completed .painter-lead-status-dot {
+    border-color: #ff7a00;
+    background: #ff7a00;
+}
+
+.painter-lead-status-step.completed .painter-lead-status-dot::after {
+    content: "";
+    position: absolute;
+    width: 7px;
+    height: 12px;
+    left: 10px;
+    top: 6px;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    transform: rotate(45deg);
+}
+
+.painter-lead-status-step strong {
+    margin-bottom: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+    white-space: nowrap;
+}
+
+.painter-lead-status-step span {
+    font-size: 10px;
+    color: #9ca3af;
+    white-space: nowrap;
+}
+
+.painter-lead-status-line {
+    flex: 1;
+    height: 2px;
+    margin-top: 16px;
+    background: #e5e7eb;
+}
+
+.painter-lead-status-line.completed {
+    background: #ff7a00;
+}
+
+/* Current Status */
+.painter-lead-current-status {
+    margin-top: 45px;
+    padding: 11px 16px;
+    width: fit-content;
+    border-radius: 8px;
+    background: #fff4e8;
+    color: #ff7a00;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .painter-lead-status-page {
+        padding: 18px 20px 35px;
+        padding-top: 88px;
+
+    }
+
+    .painter-lead-status-card {
+        padding: 22px;
+    }
+
+    .painter-lead-status-selected-info {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .painter-lead-status-timeline {
+        min-width: 700px;
+    }
+}
+
+@media (max-width: 700px) {
+    .painter-lead-status-page {
+        padding: 16px 14px 30px;
+        padding-top: 88px;
+    }
+
+    .painter-lead-status-header {
+        margin-bottom: 28px;
+    }
+
+    .painter-lead-status-header h1 {
+        font-size: 24px;
+    }
+
+    .painter-lead-status-card {
+        padding: 20px 16px;
+        min-height: auto;
+        overflow-x: auto;
+    }
+
+    .painter-lead-status-card h2 {
+        margin-bottom: 28px;
+        font-size: 18px;
+    }
+
+    .painter-lead-status-search-section,
+    .painter-lead-status-select-section {
+        max-width: 100%;
+    }
+
+    .painter-lead-status-selected-info {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 28px;
+    }
+
+    .painter-lead-status-timeline {
+        min-width: 700px;
+        margin-top: 40px;
+        padding: 0 10px;
+    }
+
+    .painter-lead-current-status {
+        margin-top: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .painter-lead-status-search-section input,
+    .painter-lead-status-select-section select {
+        height: 40px;
+    }
+
+    .painter-lead-status-select-message,
+    .painter-lead-status-no-results {
+        margin-top: 28px;
+        padding: 26px 15px;
+    }
+}

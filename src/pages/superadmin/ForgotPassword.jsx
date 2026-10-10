@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowLeft, Mail, Smartphone } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../css/forgetpassword.css";
+import "../../css/superadmin/forgetpassword.css";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ const ForgotPassword = () => {
       setLoading(true);
 
       const response = await axios.post(
-        (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/auth/forgot-password/send-otp",
+        "http://localhost:5000/api/auth/forgot-password/send-otp",
         {
           identifier: identifier.trim(),
         }

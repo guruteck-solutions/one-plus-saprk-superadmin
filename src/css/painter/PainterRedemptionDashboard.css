@@ -1,0 +1,501 @@
+/* =====================================================
+   REWARD REDEMPTION DASHBOARD
+===================================================== */
+
+.painter-redemption-page {
+    width: 100%;
+    min-height: calc(100vh - 64px);
+    padding: 28px 30px 40px;
+    box-sizing: border-box;
+    background: #ffffff;
+    padding-top: 88px;
+}
+
+.painter-redemption-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.painter-redemption-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.painter-redemption-header h1 {
+    margin: 0 0 6px;
+    font-size: 25px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.painter-redemption-header p {
+    margin: 0;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* =====================================================
+   SUMMARY CARDS
+===================================================== */
+
+.painter-redemption-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.painter-redemption-summary-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 105px;
+    padding: 18px;
+    background: #ffffff;
+    border: 1px solid #e7ebf0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    box-sizing: border-box;
+}
+
+.painter-redemption-card-icon {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #eef4ff;
+    color: #2563eb;
+}
+
+.painter-redemption-summary-card:nth-child(2) .painter-redemption-card-icon {
+    background: #ecfdf3;
+    color: #16a34a;
+}
+
+.painter-redemption-summary-card:nth-child(3) .painter-redemption-card-icon {
+    background: #fff7ed;
+    color: #ea580c;
+}
+
+.painter-redemption-summary-card:nth-child(4) .painter-redemption-card-icon {
+    background: #f3e8ff;
+    color: #9333ea;
+}
+
+.painter-redemption-summary-card span {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.painter-redemption-summary-card strong {
+    display: block;
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* =====================================================
+   REDEEM ACTION CARD
+===================================================== */
+
+.painter-redemption-action-card {
+    margin-bottom: 24px;
+    padding: 22px;
+    background: #ffffff;
+    border: 1px solid #e7ebf0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.painter-redemption-action-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.painter-redemption-action-header h2 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.painter-redemption-action-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.painter-redemption-action-header>svg {
+    color: #2563eb;
+}
+
+.painter-redemption-action-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.painter-redemption-action-btn {
+    width: 100%;
+    min-height: 82px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border: 1px solid #dbe3ef;
+    border-radius: 10px;
+    background: #f9fbff;
+    color: #1f2937;
+    cursor: pointer;
+    text-align: left;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.painter-redemption-action-btn:hover {
+    border-color: #2563eb;
+    background: #f4f8ff;
+    transform: translateY(-1px);
+}
+
+.painter-redemption-action-btn>div {
+    min-width: 0;
+}
+
+.painter-redemption-action-btn strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 650;
+    color: #1f2937;
+}
+
+.painter-redemption-action-btn span {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.painter-redemption-action-btn>svg {
+    flex: 0 0 auto;
+    color: #2563eb;
+}
+
+/* =====================================================
+   RECENT REDEMPTION TABLE
+===================================================== */
+
+.painter-redemption-table-card {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e7ebf0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    overflow: hidden;
+}
+
+.painter-redemption-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 20px 22px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.painter-redemption-section-header h2 {
+    margin: 0 0 5px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.painter-redemption-section-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.painter-redemption-section-header button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 11px;
+    border: 0;
+    background: transparent;
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.painter-redemption-section-header button:hover {
+    color: #1d4ed8;
+}
+
+.painter-redemption-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.painter-redemption-table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+}
+
+.painter-redemption-table th,
+.painter-redemption-table td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid #eef1f5;
+    white-space: nowrap;
+}
+
+.painter-redemption-table th {
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.painter-redemption-table td {
+    color: #374151;
+    font-size: 13px;
+}
+
+.painter-redemption-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.painter-redemption-table tbody tr:hover {
+    background: #fafcff;
+}
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.painter-redemption-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 82px;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 650;
+    text-transform: capitalize;
+}
+
+.painter-redemption-status-pending {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.painter-redemption-status-under_verification {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.painter-redemption-status-approved {
+    background: #ecfdf3;
+    color: #15803d;
+}
+
+.painter-redemption-status-processed {
+    background: #eef2ff;
+    color: #4338ca;
+}
+
+.painter-redemption-status-completed {
+    background: #ecfdf3;
+    color: #15803d;
+}
+
+.painter-redemption-status-rejected {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.painter-redemption-empty {
+    height: 100px;
+    text-align: center !important;
+    vertical-align: middle;
+    color: #9ca3af !important;
+    font-size: 13px !important;
+}
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.painter-redemption-loading {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.painter-redemption-error {
+    max-width: 500px;
+    margin: 70px auto;
+    padding: 24px;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+}
+
+.painter-redemption-error p {
+    margin: 0 0 15px;
+    color: #dc2626;
+    font-size: 14px;
+}
+
+.painter-redemption-error button {
+    padding: 9px 16px;
+    border: 0;
+    border-radius: 7px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+    .painter-redemption-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+    .painter-redemption-page {
+        padding: 16px;
+        padding-top: 88px;
+    }
+
+    .painter-redemption-header {
+        margin-bottom: 18px;
+    }
+
+    .painter-redemption-header h1 {
+        font-size: 21px;
+    }
+
+    .painter-redemption-header p {
+        font-size: 13px;
+    }
+
+    .painter-redemption-summary-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .painter-redemption-summary-card {
+        min-height: 90px;
+        padding: 15px;
+    }
+
+    .painter-redemption-summary-card strong {
+        font-size: 20px;
+    }
+
+    .painter-redemption-action-card {
+        padding: 16px;
+    }
+
+    .painter-redemption-action-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .painter-redemption-section-header {
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    .painter-redemption-section-header button {
+        flex: 0 0 auto;
+    }
+
+    .painter-redemption-table th,
+    .painter-redemption-table td {
+        padding: 12px 14px;
+    }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+    .painter-redemption-page {
+        padding: 12px;
+        padding-top: 88px;
+    }
+
+    .painter-redemption-header h1 {
+        font-size: 19px;
+    }
+
+    .painter-redemption-summary-card {
+        gap: 11px;
+    }
+
+    .painter-redemption-card-icon {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+    }
+
+    .painter-redemption-action-header h2,
+    .painter-redemption-section-header h2 {
+        font-size: 16px;
+    }
+
+    .painter-redemption-section-header {
+        flex-direction: column;
+    }
+
+    .painter-redemption-section-header button {
+        padding-left: 0;
+    }
+}

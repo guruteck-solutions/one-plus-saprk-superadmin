@@ -1,0 +1,270 @@
+.painter-referral-status-page {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    padding: 24px;
+    background: #ffffff;
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+.painter-referral-status-header {
+    margin-bottom: 28px;
+}
+
+.painter-referral-status-header h1 {
+    margin: 0 0 6px;
+    font-size: 26px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #17202a;
+}
+
+.painter-referral-status-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.painter-referral-status-header p span {
+    margin: 0 7px;
+    color: #94a3b8;
+}
+
+/* Card */
+
+.painter-referral-status-card {
+    width: 100%;
+    min-height: 585px;
+    padding: 30px 28px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+
+.painter-referral-status-card h2 {
+    margin: 0 0 22px;
+    font-size: 21px;
+    font-weight: 700;
+    color: #17202a;
+}
+
+.painter-referral-person {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 58px;
+    font-size: 13px;
+    color: #17202a;
+}
+
+.painter-referral-person strong {
+    font-weight: 700;
+}
+
+.painter-referral-person span {
+    color: #64748b;
+}
+
+/* Content */
+
+.painter-referral-status-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 0 50px 0 44px;
+}
+
+/* Timeline */
+
+.painter-referral-timeline {
+    width: 360px;
+}
+
+.painter-referral-step {
+    position: relative;
+    display: flex;
+    min-height: 71px;
+}
+
+.painter-referral-step-left {
+    position: relative;
+    width: 28px;
+    flex-shrink: 0;
+}
+
+.painter-referral-step-dot {
+    position: relative;
+    z-index: 2;
+    width: 17px;
+    height: 17px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: #e5e9ee;
+    box-sizing: border-box;
+}
+
+.painter-referral-step.completed .painter-referral-step-dot {
+    background: #18a957;
+}
+
+.painter-referral-step.completed .painter-referral-step-dot span {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.painter-referral-step-line {
+    position: absolute;
+    top: 17px;
+    left: 13px;
+    width: 2px;
+    height: 54px;
+    background: #e5e9ee;
+}
+
+.painter-referral-step.completed .painter-referral-step-line {
+    background: #42c77d;
+}
+
+.painter-referral-step-label {
+    padding-left: 24px;
+    padding-top: 0;
+    font-size: 12px;
+    line-height: 17px;
+    font-weight: 600;
+    color: #94a3b8;
+}
+
+.painter-referral-step.completed .painter-referral-step-label {
+    color: #17202a;
+}
+
+/* Reward */
+
+.painter-referral-reward-box {
+    width: 230px;
+    min-height: 43px;
+    margin-top: 185px;
+    padding: 0 18px;
+    border-radius: 18px;
+    background: #fff1e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    box-sizing: border-box;
+    color: #f97316;
+    font-size: 11px;
+}
+
+.painter-referral-reward-box span {
+    font-weight: 600;
+}
+
+.painter-referral-reward-box strong {
+    font-weight: 700;
+}
+
+/* Empty / Loading */
+
+.painter-referral-status-state {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.painter-referral-status-state.error {
+    color: #dc2626;
+}
+
+.painter-referral-status-empty {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+    .painter-referral-status-page {
+        padding: 20px;
+    }
+
+    .painter-referral-status-content {
+        padding: 0 20px;
+    }
+
+    .painter-referral-reward-box {
+        width: 210px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+    .painter-referral-status-page {
+        padding: 16px;
+    }
+
+    .painter-referral-status-header {
+        margin-bottom: 22px;
+    }
+
+    .painter-referral-status-header h1 {
+        font-size: 22px;
+    }
+
+    .painter-referral-status-card {
+        min-height: auto;
+        padding: 24px 18px;
+    }
+
+    .painter-referral-status-card h2 {
+        font-size: 19px;
+    }
+
+    .painter-referral-person {
+        margin-bottom: 40px;
+    }
+
+    .painter-referral-status-content {
+        display: block;
+        padding: 0;
+    }
+
+    .painter-referral-timeline {
+        width: 100%;
+    }
+
+    .painter-referral-reward-box {
+        width: 100%;
+        margin-top: 22px;
+    }
+}
+
+@media (max-width: 380px) {
+    .painter-referral-status-page {
+        padding: 12px;
+    }
+
+    .painter-referral-status-card {
+        padding: 20px 15px;
+    }
+
+    .painter-referral-step-label {
+        padding-left: 17px;
+        font-size: 11px;
+    }
+}

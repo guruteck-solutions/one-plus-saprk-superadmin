@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ShieldCheck } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../css/otpverification.css";
+import "../../css/superadmin/otpverification.css";
 
 const OTPVerification = () => {
   const navigate = useNavigate();
@@ -100,7 +100,7 @@ const OTPVerification = () => {
       setError("");
 
       const response = await axios.post(
-        (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/auth/forgot-password/verify-otp",
+        "http://localhost:5000/api/auth/forgot-password/verify-otp",
         {
           identifier,
           otp: otpValue,
@@ -135,7 +135,7 @@ const OTPVerification = () => {
       setError("");
 
       await axios.post(
-        (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/auth/forgot-password/send-otp",
+        "http://localhost:5000/api/auth/forgot-password/send-otp",
         {
           identifier,
         }

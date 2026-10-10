@@ -1,0 +1,812 @@
+/* =========================================================
+   PAINTER SIDEBAR
+========================================================= */
+
+.painter-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 220px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #101a23;
+  color: #c5ced7;
+
+  border-right: 1px solid #1e2a34;
+
+  z-index: 1000;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  transition: transform 0.25s ease;
+}
+
+
+/* =========================================================
+   SIDEBAR HEADER
+========================================================= */
+
+.painter-sidebar-header {
+  min-height: 78px;
+
+  padding: 17px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #1e2a34;
+
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+}
+
+.painter-sidebar-header>div {
+  min-width: 0;
+}
+
+.painter-sidebar-header h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+.painter-sidebar-header span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #7f8d9a;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.painter-sidebar-close-btn {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: #8794a0;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+
+  transition: all 0.2s ease;
+}
+
+.painter-sidebar-close-btn:hover {
+  background: #1d2a35;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   SIDEBAR MENU
+========================================================= */
+
+.painter-sidebar-menu {
+  flex: 1;
+
+  padding: 10px 9px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  box-sizing: border-box;
+
+  scrollbar-width: thin;
+  scrollbar-color: #34434f transparent;
+}
+
+
+/* Chrome / Edge scrollbar */
+
+.painter-sidebar-menu::-webkit-scrollbar {
+  width: 5px;
+}
+
+.painter-sidebar-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.painter-sidebar-menu::-webkit-scrollbar-thumb {
+  background: #33424e;
+  border-radius: 10px;
+}
+
+.painter-sidebar-menu::-webkit-scrollbar-thumb:hover {
+  background: #455664;
+}
+
+
+/* =========================================================
+   NORMAL SIDEBAR ITEM
+========================================================= */
+
+.painter-sidebar-item {
+  width: 100%;
+  min-height: 42px;
+
+  padding: 0 13px;
+
+  margin: 2px 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #aeb9c4;
+
+  font-family: inherit;
+
+  font-size: 12.5px;
+  font-weight: 500;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+/* Icons */
+
+.painter-sidebar-item svg {
+  width: 16px;
+  height: 16px;
+
+  flex-shrink: 0;
+
+  color: #9ca9b5;
+
+  stroke-width: 1.8;
+
+  transition: color 0.2s ease;
+}
+
+
+/* Text */
+
+.painter-sidebar-item span {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+
+/* Hover */
+
+.painter-sidebar-item:hover {
+  background: #1b2934;
+
+  color: #ffffff;
+}
+
+.painter-sidebar-item:hover svg {
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   DASHBOARD GROUP
+========================================================= */
+
+.painter-sidebar-group {
+  width: 100%;
+
+  margin-bottom: 3px;
+}
+
+
+/* =========================================================
+   DASHBOARD ROW
+========================================================= */
+
+.painter-sidebar-dashboard-row {
+  width: 100%;
+
+  display: flex;
+  align-items: stretch;
+
+  box-sizing: border-box;
+}
+
+
+/* Dashboard main button - DEFAULT (BLACK + WHITE) */
+
+.painter-sidebar-dashboard-row .painter-sidebar-dashboard-item {
+  flex: 1;
+
+  width: auto;
+
+  margin: 0;
+
+  border-radius: 8px 0 0 8px;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  font-weight: 500;
+
+  box-shadow: none;
+}
+
+.painter-sidebar-dashboard-row .painter-sidebar-dashboard-item svg {
+  color: #ffffff;
+}
+
+
+/* Dashboard hover - DARK BACKGROUND */
+
+.painter-sidebar-dashboard-row .painter-sidebar-dashboard-item:hover {
+  background: #1b2934;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   DASHBOARD DROPDOWN BUTTON - DEFAULT (BLACK + WHITE)
+========================================================= */
+
+.painter-sidebar-dropdown-btn {
+  width: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 0 8px 8px 0;
+
+  background: transparent;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.painter-sidebar-dropdown-btn:hover {
+  background: #1b2934;
+}
+
+.painter-sidebar-dropdown-btn svg {
+  stroke-width: 2;
+
+  transition: transform 0.25s ease;
+}
+
+
+/* =========================================================
+   DROPDOWN CHEVRON
+========================================================= */
+
+.painter-sidebar-chevron-open {
+  transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   SUBMENU
+========================================================= */
+
+.painter-sidebar-submenu {
+  margin: 4px 0 5px 7px;
+
+  padding: 3px 0;
+
+  border-left: 1px solid #34434f;
+
+  box-sizing: border-box;
+
+  animation: painterSubmenuOpen 0.2s ease;
+}
+
+@keyframes painterSubmenuOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   SUBMENU ITEM
+========================================================= */
+
+.painter-sidebar-subitem {
+  width: calc(100% - 5px);
+
+  min-height: 36px;
+
+  margin: 1px 0 1px 5px;
+
+  padding: 0 9px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: transparent;
+
+  color: #8f9ca8;
+
+  font-family: inherit;
+
+  font-size: 11.5px;
+  font-weight: 400;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.painter-sidebar-subitem svg {
+  width: 14px;
+  height: 14px;
+
+  flex-shrink: 0;
+
+  color: #7e8c99;
+
+  stroke-width: 1.8;
+}
+
+.painter-sidebar-subitem span {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+.painter-sidebar-subitem:hover {
+  background: #1b2934;
+
+  color: #ffffff;
+}
+
+.painter-sidebar-subitem:hover svg {
+  color: #ff7818;
+}
+
+
+/* =========================================================
+   SIDEBAR FOOTER
+========================================================= */
+
+.painter-sidebar-footer {
+  padding: 10px 9px 14px;
+
+  flex-shrink: 0;
+
+  border-top: 1px solid #1e2a34;
+
+  background: #101a23;
+
+  box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   CLOSE MENU BUTTON
+========================================================= */
+
+.painter-sidebar-collapse-btn {
+  width: 100%;
+  height: 40px;
+
+  padding: 0 12px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  border: 1px solid #273641;
+
+  border-radius: 8px;
+
+  background: #17232d;
+
+  color: #ff7818;
+
+  font-family: inherit;
+
+  font-size: 11.5px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition: all 0.2s ease;
+
+  justify-content: center;
+}
+
+.painter-sidebar-collapse-btn svg {
+  width: 16px;
+  height: 16px;
+
+  flex-shrink: 0;
+}
+
+.painter-sidebar-collapse-btn:hover {
+  background: #1d2b36;
+
+  border-color: #3a4a57;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.painter-sidebar-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(5, 11, 17, 0.55);
+
+  z-index: 999;
+
+  backdrop-filter: blur(2px);
+
+  animation: painterOverlayFade 0.2s ease;
+}
+
+@keyframes painterOverlayFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 769px) {
+
+  .painter-sidebar {
+    transform: translateX(0);
+  }
+
+  .painter-sidebar-close-btn {
+    display: none;
+  }
+
+  .painter-sidebar-overlay {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .painter-sidebar {
+    width: 220px;
+  }
+
+  .painter-sidebar-menu {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .painter-sidebar-item {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .painter-sidebar {
+    width: 250px;
+
+    transform: translateX(-100%);
+
+    box-shadow: 8px 0 30px rgba(0, 0, 0, 0.28);
+  }
+
+  .painter-sidebar.painter-sidebar-open {
+    transform: translateX(0);
+  }
+
+  .painter-sidebar-close-btn {
+    display: flex;
+  }
+
+  .painter-sidebar-header {
+    min-height: 68px;
+
+    padding: 15px;
+  }
+
+  .painter-sidebar-header h2 {
+    font-size: 16px;
+  }
+
+  .painter-sidebar-header span {
+    font-size: 10px;
+  }
+
+  .painter-sidebar-menu {
+    padding: 11px 10px;
+  }
+
+  .painter-sidebar-item {
+    min-height: 44px;
+
+    padding: 0 13px;
+
+    font-size: 13px;
+
+    gap: 12px;
+  }
+
+  .painter-sidebar-item svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .painter-sidebar-subitem {
+    min-height: 38px;
+
+    font-size: 12px;
+  }
+
+  .painter-sidebar-footer {
+    padding: 10px 10px 14px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .painter-sidebar {
+    width: 235px;
+  }
+
+  .painter-sidebar-header {
+    padding: 14px;
+  }
+
+  .painter-sidebar-header h2 {
+    font-size: 15px;
+  }
+
+  .painter-sidebar-menu {
+    padding: 9px 8px;
+  }
+
+  .painter-sidebar-item {
+    min-height: 42px;
+
+    padding: 0 11px;
+
+    gap: 10px;
+
+    font-size: 12px;
+  }
+
+  .painter-sidebar-item svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .painter-sidebar-dropdown-btn {
+    width: 34px;
+  }
+
+  .painter-sidebar-submenu {
+    margin-left: 6px;
+  }
+
+  .painter-sidebar-subitem {
+    min-height: 36px;
+
+    margin-left: 4px;
+
+    padding: 0 8px;
+
+    gap: 9px;
+
+    font-size: 11.5px;
+  }
+
+  .painter-sidebar-subitem svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .painter-sidebar-footer {
+    padding: 9px 8px 12px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .painter-sidebar {
+    width: 220px;
+  }
+
+  .painter-sidebar-item {
+    font-size: 11.5px;
+  }
+
+  .painter-sidebar-subitem {
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   🟠 ACTIVE STATES - SIRF ACTIVE PAGE KO ORANGE
+========================================================= */
+
+/* Active Dashboard Item - ORANGE */
+
+.painter-sidebar-dashboard-item.painter-sidebar-active {
+  background: #ff7818 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(255, 120, 24, 0.16);
+}
+
+.painter-sidebar-dashboard-item.painter-sidebar-active svg {
+  color: #ffffff !important;
+}
+
+
+/* Active Dropdown Button - ORANGE */
+
+.painter-sidebar-dropdown-active {
+  background: #ff7818 !important;
+  color: #ffffff !important;
+}
+
+.painter-sidebar-dropdown-active svg {
+  color: #ffffff !important;
+}
+
+
+/* Active Submenu Item - ORANGE */
+
+.painter-sidebar-subitem-active {
+  background: rgba(255, 120, 24, 0.13) !important;
+  color: #ff7818 !important;
+  font-weight: 600 !important;
+  border-left: 2px solid #ff7818;
+}
+
+.painter-sidebar-subitem-active svg {
+  color: #ff7818 !important;
+  stroke-width: 2;
+}
+
+.painter-sidebar-subitem-active:hover {
+  background: rgba(255, 120, 24, 0.17) !important;
+  color: #ff7818 !important;
+}
+
+.painter-sidebar-subitem-active:hover svg {
+  color: #ff7818 !important;
+}
+
+
+/* Active Main Menu Item - ORANGE */
+
+.painter-sidebar-main-active {
+  background: rgba(255, 120, 24, 0.13) !important;
+  color: #ff7818 !important;
+  font-weight: 600 !important;
+}
+
+.painter-sidebar-main-active svg {
+  color: #ff7818 !important;
+}
+
+.painter-sidebar-main-active:hover {
+  background: rgba(255, 120, 24, 0.17) !important;
+  color: #ff7818 !important;
+}
+
+.painter-sidebar-main-active:hover svg {
+  color: #ff7818 !important;
+}

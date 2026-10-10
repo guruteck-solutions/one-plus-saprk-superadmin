@@ -1,0 +1,214 @@
+.painter-reward-ledger-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #ffffff;
+  padding-top: 88px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.painter-reward-ledger-header {
+  margin-bottom: 24px;
+}
+
+.painter-reward-ledger-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.painter-reward-ledger-header p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* =========================
+   LEDGER CARD
+========================= */
+
+.painter-reward-ledger-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.painter-reward-ledger-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.painter-reward-ledger-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+.painter-reward-ledger-table th {
+  padding: 14px 18px;
+  text-align: left;
+  white-space: nowrap;
+  background: #f1f4f7;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.painter-reward-ledger-table td {
+  padding: 15px 18px;
+  border-bottom: 1px solid #eef0f3;
+  font-size: 13px;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.painter-reward-ledger-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.painter-reward-ledger-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* =========================
+   REFERENCE
+========================= */
+
+.painter-reward-ledger-reference {
+  font-weight: 600;
+  color: #374151;
+}
+
+/* =========================
+   CREDIT
+========================= */
+
+.painter-reward-ledger-credit {
+  font-weight: 600;
+  color: #059669;
+}
+
+/* =========================
+   DEBIT
+========================= */
+
+.painter-reward-ledger-debit {
+  font-weight: 600;
+  color: #dc2626;
+}
+
+/* =========================
+   BALANCE
+========================= */
+
+.painter-reward-ledger-balance {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.painter-reward-ledger-empty {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+}
+
+.painter-reward-ledger-empty h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #374151;
+}
+
+.painter-reward-ledger-empty p {
+  margin: 7px 0 0;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* =========================
+   LOADING / ERROR
+========================= */
+
+.painter-reward-ledger-loading,
+.painter-reward-ledger-error {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.painter-reward-ledger-loading {
+  color: #6b7280;
+}
+
+.painter-reward-ledger-error {
+  color: #dc2626;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .painter-reward-ledger-page {
+    padding: 20px;
+    padding-top: 88px;
+  }
+
+  .painter-reward-ledger-table {
+    min-width: 680px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .painter-reward-ledger-page {
+    padding: 14px;
+    padding-top: 88px;
+  }
+
+  .painter-reward-ledger-header {
+    margin-bottom: 18px;
+  }
+
+  .painter-reward-ledger-header h1 {
+    font-size: 21px;
+  }
+
+  .painter-reward-ledger-header p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .painter-reward-ledger-table th,
+  .painter-reward-ledger-table td {
+    padding: 13px 14px;
+  }
+}

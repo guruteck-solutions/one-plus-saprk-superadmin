@@ -27,9 +27,9 @@ import {
     Search,
 } from "lucide-react";
 
-import "../../css/CommissionManagement.css";
+import "../../css/superadmin/CommissionManagement.css";
 
-const API_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/commissions";
+const API_URL = "http://localhost:5000/api/commissions";
 
 const STATUS_OPTIONS = [
     "PENDING_CALCULATION",
@@ -2156,7 +2156,7 @@ export default function CommissionManagement() {
                         <div className="commission-modal-footer">
                             <button
                                 type="button"
-                                className="commission-cancel-btn"
+                                className="commission-close-btn"
                                 onClick={() => {
                                     setShowViewModal(false);
                                     setSelectedCommission(null);

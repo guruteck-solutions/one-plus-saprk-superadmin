@@ -23,9 +23,9 @@ import {
     ChevronLeft,
 } from "lucide-react";
 
-import "../../css/ManufacturingManagement.css";
+import "../../css/superadmin/manufacturingManagement.css";
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/manufacturing";
+const API_BASE_URL = "http://localhost:5000/api/manufacturing";
 
 const ManufacturingBatchManagement = () => {
 
@@ -219,7 +219,7 @@ const ManufacturingBatchManagement = () => {
     const fetchProducts = async () => {
         try {
             const response = await axios.get(
-                (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/products",
+                "http://localhost:5000/api/products",
                 authConfig()
             );
 
@@ -243,7 +243,7 @@ const ManufacturingBatchManagement = () => {
     const fetchUsers = async () => {
         try {
             const response = await axios.get(
-                (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/users",
+                "http://localhost:5000/api/users",
                 authConfig()
             );
 

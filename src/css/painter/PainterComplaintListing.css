@@ -1,0 +1,241 @@
+.painter-complaint-listing-page {
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  padding-top: 88px;
+}
+
+.painter-complaint-listing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.painter-complaint-listing-header h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.painter-complaint-listing-header p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.painter-complaint-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.painter-complaint-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.painter-complaint-stat-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #f3f6fb;
+  color: #2563eb;
+}
+
+.painter-complaint-stat-card span {
+  display: block;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 5px;
+}
+
+.painter-complaint-stat-card strong {
+  display: block;
+  font-size: 22px;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.painter-complaint-table-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.painter-complaint-table-header {
+  padding: 18px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.painter-complaint-table-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.painter-complaint-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.painter-complaint-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+.painter-complaint-table th {
+  padding: 14px 20px;
+  text-align: left;
+  background: #f8fafc;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.painter-complaint-table td {
+  padding: 16px 20px;
+  color: #374151;
+  font-size: 14px;
+  border-bottom: 1px solid #eef0f3;
+  white-space: nowrap;
+}
+
+.painter-complaint-table tbody tr {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.painter-complaint-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.painter-complaint-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.painter-complaint-id {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.painter-complaint-priority,
+.painter-complaint-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.painter-complaint-priority-high {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.painter-complaint-priority-medium {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.painter-complaint-priority-low {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.painter-complaint-status-open {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.painter-complaint-status-review {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.painter-complaint-status-resolved {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.painter-complaint-state {
+  padding: 50px 20px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.painter-complaint-error {
+  color: #dc2626;
+}
+
+@media (max-width: 1100px) {
+  .painter-complaint-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .painter-complaint-listing-page {
+    padding: 18px;
+  }
+
+  .painter-complaint-listing-header h1 {
+    font-size: 22px;
+  }
+
+  .painter-complaint-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .painter-complaint-stat-card {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 520px) {
+  .painter-complaint-listing-page {
+    padding: 14px;
+  }
+
+  .painter-complaint-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .painter-complaint-listing-header {
+    margin-bottom: 18px;
+  }
+
+  .painter-complaint-listing-header h1 {
+    font-size: 20px;
+  }
+
+  .painter-complaint-stat-card {
+    padding: 16px;
+  }
+
+  .painter-complaint-table th,
+  .painter-complaint-table td {
+    padding: 12px 14px;
+  }
+}

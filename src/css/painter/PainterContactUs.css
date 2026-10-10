@@ -1,0 +1,232 @@
+.painter-contact-us-page {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    padding: 18px 28px 40px;
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+.painter-contact-us-header {
+    margin-bottom: 76px;
+}
+
+.painter-contact-us-header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-contact-us-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #718096;
+}
+
+.painter-contact-us-card {
+    width: 100%;
+    min-height: 545px;
+    padding: 24px 32px 32px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+}
+
+.painter-contact-us-card h2 {
+    margin: 0 0 68px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-contact-us-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 38px 42px;
+}
+
+.painter-contact-item {
+    min-height: 124px;
+    padding: 24px 26px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    background: #f7f8fa;
+    border-radius: 14px;
+}
+
+.painter-contact-icon {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.painter-phone-icon {
+    color: #ff7a00;
+}
+
+.painter-whatsapp-icon {
+    color: #16a34a;
+}
+
+.painter-email-icon {
+    color: #2563eb;
+}
+
+.painter-office-icon {
+    color: #7c3aed;
+}
+
+.painter-contact-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.painter-contact-info h3 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-contact-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #718096;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.painter-contact-button {
+    width: 98px;
+    height: 30px;
+    flex: 0 0 98px;
+    border: none;
+    border-radius: 18px;
+    background: #fff0e3;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.painter-contact-button:hover {
+    background: #ffe4cf;
+    transform: translateY(-1px);
+}
+
+.painter-phone-button {
+    color: #ff7a00;
+}
+
+.painter-whatsapp-button {
+    color: #16a34a;
+}
+
+.painter-email-button {
+    color: #2563eb;
+}
+
+.painter-office-button {
+    color: #7c3aed;
+}
+
+@media (max-width: 1000px) {
+    .painter-contact-us-page {
+        padding: 18px 20px 35px;
+        padding-top: 88px;
+    }
+
+    .painter-contact-us-header {
+        margin-bottom: 50px;
+    }
+
+    .painter-contact-us-card {
+        padding: 24px;
+    }
+
+    .painter-contact-us-grid {
+        gap: 24px;
+    }
+
+    .painter-contact-item {
+        padding: 20px;
+        gap: 14px;
+    }
+}
+
+@media (max-width: 750px) {
+    .painter-contact-us-header h1 {
+        font-size: 24px;
+    }
+
+    .painter-contact-us-card {
+        min-height: auto;
+    }
+
+    .painter-contact-us-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .painter-contact-us-card h2 {
+        margin-bottom: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .painter-contact-us-page {
+        padding: 16px 14px 30px;
+        padding-top: 88px;
+    }
+
+    .painter-contact-us-header {
+        margin-bottom: 30px;
+    }
+
+    .painter-contact-us-header h1 {
+        font-size: 22px;
+    }
+
+    .painter-contact-us-card {
+        padding: 20px 16px;
+        border-radius: 10px;
+    }
+
+    .painter-contact-us-card h2 {
+        font-size: 19px;
+        margin-bottom: 28px;
+    }
+
+    .painter-contact-item {
+        min-height: 105px;
+        padding: 18px 16px;
+        gap: 10px;
+    }
+
+    .painter-contact-icon {
+        width: 28px;
+        height: 28px;
+        flex-basis: 28px;
+    }
+
+    .painter-contact-info h3 {
+        font-size: 13px;
+    }
+
+    .painter-contact-info p {
+        font-size: 11px;
+    }
+
+    .painter-contact-button {
+        width: 82px;
+        flex-basis: 82px;
+        height: 29px;
+    }
+}

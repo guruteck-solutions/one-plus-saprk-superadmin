@@ -1,0 +1,248 @@
+.painter-reward-history-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #ffffff;
+  padding-top: 88px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.painter-reward-history-header {
+  margin-bottom: 24px;
+}
+
+.painter-reward-history-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.painter-reward-history-header p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.painter-reward-history-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.painter-reward-history-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.painter-reward-history-table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+.painter-reward-history-table th {
+  padding: 14px 18px;
+  text-align: left;
+  white-space: nowrap;
+  background: #f1f4f7;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.painter-reward-history-table td {
+  padding: 16px 18px;
+  border-bottom: 1px solid #eef0f3;
+  font-size: 13px;
+  color: #374151;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.painter-reward-history-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.painter-reward-history-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* =========================
+   TRANSACTION
+========================= */
+
+.painter-reward-history-reference {
+  font-weight: 600;
+  color: #374151;
+}
+
+/* =========================
+   AMOUNT
+========================= */
+
+.painter-reward-history-positive {
+  font-weight: 600;
+  color: #059669;
+}
+
+.painter-reward-history-negative {
+  font-weight: 600;
+  color: #dc2626;
+}
+
+/* =========================
+   STATUS
+========================= */
+
+.painter-reward-history-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+
+.painter-reward-history-status.completed {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.painter-reward-history-status.pending {
+  background: #fffbeb;
+  color: #b45309;
+}
+
+.painter-reward-history-status.approved {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.painter-reward-history-status.released {
+  background: #f0fdf4;
+  color: #15803d;
+}
+
+.painter-reward-history-status.rejected {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.painter-reward-history-status.reversed {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.painter-reward-history-empty {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+}
+
+.painter-reward-history-empty h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #374151;
+}
+
+.painter-reward-history-empty p {
+  margin: 7px 0 0;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* =========================
+   LOADING / ERROR
+========================= */
+
+.painter-reward-history-loading,
+.painter-reward-history-error {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.painter-reward-history-loading {
+  color: #6b7280;
+}
+
+.painter-reward-history-error {
+  color: #dc2626;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .painter-reward-history-page {
+    padding: 20px;
+    padding-top: 88px;
+  }
+
+  .painter-reward-history-table {
+    min-width: 680px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .painter-reward-history-page {
+    padding: 14px;
+    padding-top: 88px;
+  }
+
+  .painter-reward-history-header {
+    margin-bottom: 18px;
+  }
+
+  .painter-reward-history-header h1 {
+    font-size: 21px;
+  }
+
+  .painter-reward-history-header p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .painter-reward-history-table th,
+  .painter-reward-history-table td {
+    padding: 13px 14px;
+  }
+}

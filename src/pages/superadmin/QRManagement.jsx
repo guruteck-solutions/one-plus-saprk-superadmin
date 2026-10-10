@@ -28,9 +28,9 @@ import {
   RefreshCw,
   Trash2,
 } from "lucide-react";
-import "../../css/QRCodeManagement.css";
+import "../../css/superadmin/QRCodeManagement.css";
 
-const API_BASE = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api";
+const API_BASE = "http://localhost:5000/api";
 
 const QR_STATUS = [
   "Unused",
@@ -2184,7 +2184,7 @@ const QRManagement = () => {
 
 
                 <button
-                  className="qr-primary-btn"
+                  className="qr-close-btn"
                   onClick={() =>
                     setShowViewModal(false)
                   }

@@ -1,0 +1,320 @@
+.dealer-redemption-history-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 24px;
+  background: #f7f8fa;
+  box-sizing: border-box;
+}
+
+.dealer-redemption-history-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dealer-redemption-history-header h1 {
+  margin: 0;
+  font-size: 26px;
+  color: #222;
+}
+
+.dealer-redemption-history-header p {
+  margin: 5px 0 0;
+  color: #777;
+  font-size: 14px;
+}
+
+.dealer-redemption-history-back-btn {
+  height: 38px;
+  padding: 0 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #374151;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.dealer-redemption-history-back-btn:hover {
+  background: #f9fafb;
+}
+
+.dealer-redemption-history-section {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e7e7e7;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.dealer-redemption-history-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.dealer-redemption-history-title h2 {
+  margin: 0;
+  font-size: 19px;
+  color: #222;
+}
+
+.dealer-redemption-history-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.dealer-redemption-history-table {
+  width: 100%;
+  min-width: 750px;
+  border-collapse: collapse;
+}
+
+.dealer-redemption-history-table th,
+.dealer-redemption-history-table td {
+  padding: 13px 12px;
+  border-bottom: 1px solid #eeeeee;
+  text-align: left;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.dealer-redemption-history-table th {
+  background: #f8f9fb;
+  color: #555;
+  font-weight: 600;
+}
+
+.dealer-redemption-history-table td {
+  color: #333;
+}
+
+.dealer-redemption-history-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.dealer-redemption-history-status-pending {
+  background: #fff5df;
+  color: #a66a00;
+}
+
+.dealer-redemption-history-status-under-verification {
+  background: #eef4ff;
+  color: #3157d5;
+}
+
+.dealer-redemption-history-status-approved,
+.dealer-redemption-history-status-processed,
+.dealer-redemption-history-status-completed {
+  background: #e9f8ef;
+  color: #208344;
+}
+
+.dealer-redemption-history-status-rejected {
+  background: #ffeaea;
+  color: #c62828;
+}
+
+.dealer-redemption-history-view-btn {
+  height: 34px;
+  padding: 0 11px;
+  border: 1px solid #e8751a;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #e8751a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.dealer-redemption-history-view-btn:hover {
+  background: #e8751a;
+  color: #ffffff;
+}
+
+.dealer-redemption-history-loading,
+.dealer-redemption-history-empty {
+  padding: 45px 20px;
+  text-align: center;
+  color: #777;
+  font-size: 14px;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .dealer-redemption-history-page {
+    padding: 18px;
+  }
+
+  .dealer-redemption-history-section {
+    padding: 16px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .dealer-redemption-history-page {
+    padding: 12px;
+  }
+
+  .dealer-redemption-history-header {
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .dealer-redemption-history-header h1 {
+    font-size: 21px;
+  }
+
+  .dealer-redemption-history-header p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .dealer-redemption-history-back-btn {
+    height: 36px;
+    padding: 0 10px;
+  }
+
+  .dealer-redemption-history-section {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .dealer-redemption-history-title {
+    margin-bottom: 14px;
+  }
+
+  .dealer-redemption-history-title h2 {
+    font-size: 16px;
+  }
+
+  /*
+    Mobile table converted into cards
+  */
+
+  .dealer-redemption-history-table-wrapper {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .dealer-redemption-history-table {
+    width: 100%;
+    min-width: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  .dealer-redemption-history-table thead {
+    display: none;
+  }
+
+  .dealer-redemption-history-table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .dealer-redemption-history-table tbody tr {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #fafafa;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  .dealer-redemption-history-table tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .dealer-redemption-history-table tbody td {
+    width: 100%;
+    min-height: 30px;
+    padding: 7px 4px;
+    border: none;
+    border-bottom: 1px solid #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    text-align: right;
+    white-space: normal;
+    font-size: 12px;
+    box-sizing: border-box;
+  }
+
+  .dealer-redemption-history-table tbody td:last-child {
+    border-bottom: none;
+  }
+
+  .dealer-redemption-history-table tbody td::before {
+    font-weight: 600;
+    color: #555;
+    text-align: left;
+    flex-shrink: 0;
+  }
+
+  .dealer-redemption-history-table tbody td:nth-child(1)::before {
+    content: "Redemption ID";
+  }
+
+  .dealer-redemption-history-table tbody td:nth-child(2)::before {
+    content: "Date";
+  }
+
+  .dealer-redemption-history-table tbody td:nth-child(3)::before {
+    content: "Reward Type";
+  }
+
+  .dealer-redemption-history-table tbody td:nth-child(4)::before {
+    content: "Amount";
+  }
+
+  .dealer-redemption-history-table tbody td:nth-child(5)::before {
+    content: "Status";
+  }
+
+  .dealer-redemption-history-table tbody td:nth-child(6)::before {
+    content: "Action";
+  }
+
+  .dealer-redemption-history-view-btn {
+    height: 32px;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .dealer-redemption-history-status {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+
+  .dealer-redemption-history-loading,
+  .dealer-redemption-history-empty {
+    padding: 30px 10px;
+    font-size: 13px;
+  }
+}

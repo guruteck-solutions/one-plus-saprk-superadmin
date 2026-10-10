@@ -24,10 +24,10 @@ import {
     ChevronRight,
 } from "lucide-react";
 
-import "../../css/loyaltyTierManagement.css";
+import "../../css/superadmin/loyaltyTierManagement.css";
 
 
-const API_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/loyalty-tiers";
+const API_URL = "http://localhost:5000/api/loyalty-tiers";
 
 const initialForm = {
     tierName: "",
@@ -1916,7 +1916,7 @@ const LoyaltyTierManagement = () => {
 
                             </div>
 
-                            <div className="modal-footer">
+                            <div className="modal-lt-footer">
 
                                 <button
                                     type="button"
@@ -1990,15 +1990,6 @@ const LoyaltyTierManagement = () => {
                                     Loyalty tier details
                                 </p>
                             </div>
-
-                            <button
-                                className="modal-close"
-                                onClick={() =>
-                                    setShowViewModal(false)
-                                }
-                            >
-                                <X size={20} />
-                            </button>
 
                         </div>
 
@@ -2163,7 +2154,7 @@ const LoyaltyTierManagement = () => {
 
                         </div>
 
-                        <div className="modal-footer">
+                        <div className="modal-lt-footer">
 
                             <button
                                 className="btn-secondary"

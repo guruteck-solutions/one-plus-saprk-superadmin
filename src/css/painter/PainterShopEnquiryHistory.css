@@ -1,0 +1,269 @@
+/* =========================================================
+   SHOP ENQUIRY HISTORY
+========================================================= */
+
+.painter-shop-enquiry-history-page {
+    width: 100%;
+    min-height: 100%;
+    padding: 24px;
+    background: #ffffff;
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.painter-shop-enquiry-history-header {
+    margin-bottom: 22px;
+}
+
+.painter-shop-enquiry-history-header h1 {
+    margin: 0 0 6px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #222;
+}
+
+.painter-shop-enquiry-history-header p {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.painter-shop-enquiry-history-header p span {
+    margin: 0 6px;
+    color: #aaa;
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.painter-shop-enquiry-history-card {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.painter-shop-enquiry-history-card-header {
+    padding: 18px 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.painter-shop-enquiry-history-card-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #222;
+}
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.painter-shop-enquiry-history-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.painter-shop-enquiry-history-table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+}
+
+.painter-shop-enquiry-history-table th {
+    padding: 14px 20px;
+    text-align: left;
+    background: #fff7ef;
+    border-bottom: 1px solid #eeeeee;
+    color: #555;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.painter-shop-enquiry-history-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #eeeeee;
+    color: #444;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.painter-shop-enquiry-history-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.painter-shop-enquiry-history-table tbody tr:hover {
+    background: #fffaf5;
+}
+
+/* =========================================================
+   ENQUIRY ID
+========================================================= */
+
+.painter-shop-enquiry-history-table td:first-child {
+    color: #f28c28;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   VALUE
+========================================================= */
+
+.painter-shop-enquiry-history-table td:nth-child(4) {
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.painter-shop-enquiry-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 78px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* New / Pending */
+
+.painter-shop-enquiry-status-pending {
+    color: #b76a00;
+    background: #fff1dc;
+}
+
+/* Accepted */
+
+.painter-shop-enquiry-status-accepted {
+    color: #278044;
+    background: #e8f7ed;
+}
+
+/* Rejected */
+
+.painter-shop-enquiry-status-rejected {
+    color: #c0392b;
+    background: #fdebea;
+}
+
+/* Converted */
+
+.painter-shop-enquiry-status-converted_to_order {
+    color: #2869a6;
+    background: #eaf3fb;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.painter-shop-enquiry-history-loading {
+    padding: 50px 20px;
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+}
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.painter-shop-enquiry-history-empty {
+    padding: 50px 20px;
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+    .painter-shop-enquiry-history-page {
+        padding: 20px;
+        padding-top: 88px;
+    }
+
+    .painter-shop-enquiry-history-header h1 {
+        font-size: 24px;
+    }
+
+    .painter-shop-enquiry-history-table th,
+    .painter-shop-enquiry-history-table td {
+        padding: 13px 16px;
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+    .painter-shop-enquiry-history-page {
+        padding: 14px;
+        padding-top: 88px;
+    }
+
+    .painter-shop-enquiry-history-header {
+        margin-bottom: 16px;
+    }
+
+    .painter-shop-enquiry-history-header h1 {
+        font-size: 21px;
+    }
+
+    .painter-shop-enquiry-history-header p {
+        font-size: 12px;
+    }
+
+    .painter-shop-enquiry-history-card {
+        border-radius: 8px;
+    }
+
+    .painter-shop-enquiry-history-card-header {
+        padding: 15px;
+    }
+
+    .painter-shop-enquiry-history-card-header h2 {
+        font-size: 16px;
+    }
+
+    .painter-shop-enquiry-history-table {
+        min-width: 700px;
+    }
+
+    .painter-shop-enquiry-history-table th,
+    .painter-shop-enquiry-history-table td {
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+
+    .painter-shop-enquiry-status {
+        min-width: 70px;
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+}
+.painter-shop-enquiry-history-clickable-row {
+    cursor: pointer;
+}
+
+.painter-shop-enquiry-history-clickable-row:hover {
+    background: #fff7ef;
+}

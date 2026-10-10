@@ -1,0 +1,296 @@
+.painter-pdf-preview-page {
+  width: 100%;
+  min-height: calc(100vh - 88px);
+  padding: 18px 26px 30px;
+  box-sizing: border-box;
+  background: #ffffff;
+  padding-top: 88px;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.painter-pdf-preview-header {
+  margin-bottom: 20px;
+}
+
+.painter-pdf-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #657080;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.painter-pdf-back-btn:hover {
+  color: #f56f00;
+}
+
+.painter-pdf-preview-header h1 {
+  margin: 15px 0 0;
+  color: #111827;
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.painter-pdf-preview-header p {
+  margin: 6px 0 0;
+  color: #7b8492;
+  font-size: 13px;
+}
+
+
+/* ================================
+   PREVIEW CARD
+================================ */
+
+.painter-pdf-preview-card {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #e1e6eb;
+  border-radius: 14px;
+  background: #ffffff;
+}
+
+.painter-pdf-preview-card h2 {
+  margin: 0 0 20px;
+  color: #1f2937;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+}
+
+
+/* ================================
+   PDF VIEWER
+================================ */
+
+.painter-pdf-viewer {
+  width: 100%;
+  height: 650px;
+  overflow: hidden;
+  background: #eef0f3;
+  border: 1px solid #e1e5ea;
+  box-sizing: border-box;
+}
+
+.painter-pdf-viewer iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+}
+
+
+/* ================================
+   DOWNLOAD
+================================ */
+
+.painter-pdf-download-btn {
+  width: 240px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 18px auto 0;
+  border: none;
+  border-radius: 8px;
+  background: #f56f00;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.painter-pdf-download-btn:hover {
+  background: #dc5f00;
+}
+
+
+/* ================================
+   SELECT SCHEME MESSAGE
+================================ */
+
+.painter-pdf-select-message {
+  width: 100%;
+  max-width: 500px;
+  margin: 100px auto 0;
+  padding: 35px 25px;
+  box-sizing: border-box;
+  border: 1px solid #e1e6eb;
+  border-radius: 14px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.painter-pdf-select-message svg {
+  color: #f56f00;
+}
+
+.painter-pdf-select-message h2 {
+  margin: 14px 0 8px;
+  color: #1f2937;
+  font-size: 20px;
+}
+
+.painter-pdf-select-message p {
+  margin: 0;
+  color: #7b8492;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.painter-pdf-select-message button,
+.painter-pdf-not-available button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: #f56f00;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.painter-pdf-select-message button:hover,
+.painter-pdf-not-available button:hover {
+  background: #dc5f00;
+}
+
+
+/* ================================
+   PDF NOT AVAILABLE
+================================ */
+
+.painter-pdf-not-available {
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.painter-pdf-not-available svg {
+  color: #9ca3af;
+}
+
+.painter-pdf-not-available h3 {
+  margin: 14px 0 7px;
+  color: #374151;
+  font-size: 18px;
+}
+
+.painter-pdf-not-available p {
+  margin: 0;
+  color: #7b8492;
+  font-size: 13px;
+}
+
+
+/* ================================
+   LOADING / ERROR
+================================ */
+
+.painter-pdf-message {
+  width: 100%;
+  padding: 45px 20px;
+  box-sizing: border-box;
+  border: 1px solid #e1e6eb;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #718096;
+  text-align: center;
+  font-size: 14px;
+}
+
+.painter-pdf-error {
+  margin-top: 20px;
+  color: #dc2626;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 800px) {
+  .painter-pdf-preview-page {
+    padding: 16px 18px 25px;
+    padding-top: 88px;
+  }
+
+  .painter-pdf-preview-card {
+    max-width: 100%;
+  }
+
+  .painter-pdf-viewer {
+    height: 560px;
+  }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+  .painter-pdf-preview-page {
+    padding: 15px 14px 25px;
+    padding-top: 88px;
+  }
+
+  .painter-pdf-preview-header h1 {
+    font-size: 23px;
+  }
+
+  .painter-pdf-preview-card {
+    padding: 14px;
+    border-radius: 10px;
+  }
+
+  .painter-pdf-preview-card h2 {
+    font-size: 15px;
+    margin-bottom: 14px;
+  }
+
+  .painter-pdf-viewer {
+    height: 500px;
+  }
+
+  .painter-pdf-download-btn {
+    width: 100%;
+  }
+
+  .painter-pdf-select-message {
+    margin-top: 60px;
+    padding: 28px 18px;
+  }
+}
+
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 400px) {
+  .painter-pdf-preview-header h1 {
+    font-size: 21px;
+  }
+
+  .painter-pdf-viewer {
+    height: 450px;
+  }
+}

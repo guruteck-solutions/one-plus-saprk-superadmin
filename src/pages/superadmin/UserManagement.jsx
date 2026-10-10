@@ -15,7 +15,7 @@ import {
     ChevronRight,
 } from "lucide-react";
 
-import "../../css/usermanagement.css";
+import "../../css/superadmin/usermanagement.css";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -59,7 +59,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/users",
+                "http://localhost:5000/api/users",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -252,7 +252,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}`,
+                `http://localhost:5000/api/users/${userId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -306,7 +306,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.delete(
-                `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}`,
+                `http://localhost:5000/api/users/${userId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -357,7 +357,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}/kyc/approve`,
+                `http://localhost:5000/api/users/${userId}/kyc/approve`,
                 {},
                 {
                     headers: {
@@ -372,7 +372,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const userResponse = await axios.get(
-                    `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}`,
+                    `http://localhost:5000/api/users/${userId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -427,7 +427,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}/kyc/reject`,
+                `http://localhost:5000/api/users/${userId}/kyc/reject`,
                 {
                     remarks: remarks.trim(),
                 },
@@ -444,7 +444,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const userResponse = await axios.get(
-                    `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}`,
+                    `http://localhost:5000/api/users/${userId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -501,7 +501,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}/kyc/correction`,
+                `http://localhost:5000/api/users/${userId}/kyc/correction`,
                 {
                     remarks: remarks.trim(),
                 },
@@ -520,7 +520,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const userResponse = await axios.get(
-                    `${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/users/${userId}`,
+                    `http://localhost:5000/api/users/${userId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -959,7 +959,7 @@ const UserManagement = () => {
                                                 <div className="table-user-avatar">
                                                     {user.profilePicture ? (
                                                         <img
-                                                            src={`${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}${user.profilePicture}`}
+                                                            src={`http://localhost:5000${user.profilePicture}`}
                                                             alt={user.name}
                                                         />
                                                     ) : (
@@ -1273,7 +1273,7 @@ const UserManagement = () => {
                                         {selectedUser.profilePicture ? (
 
                                             <img
-                                                src={`${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}${selectedUser.profilePicture}`}
+                                                src={`http://localhost:5000${selectedUser.profilePicture}`}
                                                 alt={selectedUser.name}
                                             />
 
@@ -1673,11 +1673,10 @@ const UserManagement = () => {
 
                                 <div className="view-user-footer">
 
-                                    <button
+                                    <button className="view-user-close-bottom"
                                         onClick={() =>
                                             setShowViewUser(false)
                                         }
-                                        className="view-user-close-bottom"
                                     >
                                         Close
                                     </button>

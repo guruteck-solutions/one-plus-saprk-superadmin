@@ -22,7 +22,7 @@ import {
     Upload,
 } from "lucide-react";
 
-import "../../css/orderManagement.css";
+import "../../css/superadmin/orderManagement.css";
 
 const ORDERS_PER_PAGE = 10;
 
@@ -94,7 +94,7 @@ const OrderManagement = () => {
             setLoading(true);
             const token = localStorage.getItem("token");
 
-            const response = await axios.get((import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/orders", {
+            const response = await axios.get("http://localhost:5000/api/orders", {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -114,7 +114,7 @@ const OrderManagement = () => {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await axios.get((import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/users", {
+            const response = await axios.get("http://localhost:5000/api/users", {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -148,7 +148,7 @@ const OrderManagement = () => {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await axios.get((import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/products", {
+            const response = await axios.get("http://localhost:5000/api/products", {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -255,7 +255,7 @@ const OrderManagement = () => {
         try {
             const token = localStorage.getItem("token");
 
-            await axios.delete(`${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/orders/${id}`, {
+            await axios.delete(`http://localhost:5000/api/orders/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -334,7 +334,7 @@ const OrderManagement = () => {
                 paymentStatus: orderForm.paymentStatus,
             };
 
-            await axios.post((import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/orders", payload, {
+            await axios.post("http://localhost:5000/api/orders", payload, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -432,7 +432,7 @@ const OrderManagement = () => {
                 paymentStatus: editOrderForm.paymentStatus,
             };
 
-            await axios.put(`${import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com'}/api/orders/${editOrderId}`, payload, {
+            await axios.put(`http://localhost:5000/api/orders/${editOrderId}`, payload, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -1363,7 +1363,7 @@ const OrderManagement = () => {
                         </div>
 
                         <div className="order-view-footer">
-                            <button type="button" className="order-modal-cancel" onClick={closeViewOrderModal}>
+                            <button type="button" className="order-modal-om-close" onClick={closeViewOrderModal}>
                                 Close
                             </button>
                         </div>

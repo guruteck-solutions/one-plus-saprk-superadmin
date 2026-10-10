@@ -1,0 +1,644 @@
+/* =========================================
+   PAINTER QUICK SHOP
+========================================= */
+
+.painter-quick-shop {
+    width: 100%;
+    min-height: calc(100vh - 64px);
+    box-sizing: border-box;
+    background: #ffffff;
+    padding-top: 88px;
+}
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.painter-quick-shop-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+
+.painter-quick-shop-header h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    color: #172554;
+}
+
+.painter-quick-shop-header p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.painter-quick-shop-card {
+    width: 100%;
+    min-height: 300px;
+    padding: 28px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+}
+
+/* =========================================
+   EMPTY / LOADING
+========================================= */
+
+.painter-shop-empty {
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* =========================================
+   PRODUCT GRID
+========================================= */
+
+.painter-shop-product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+}
+
+/* =========================================
+   PRODUCT CARD
+========================================= */
+
+.painter-shop-product-card {
+    min-width: 0;
+    background: #ffffff;
+    border: 1px solid #dfe5ec;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.painter-shop-product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+}
+
+/* =========================================
+   PRODUCT IMAGE
+========================================= */
+
+.painter-shop-product-image {
+    width: 100%;
+    height: 185px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+    overflow: hidden;
+}
+
+.painter-shop-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 14px;
+    box-sizing: border-box;
+}
+
+.painter-shop-product-image span {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* =========================================
+   PRODUCT INFO
+========================================= */
+
+.painter-shop-product-info {
+    padding: 16px;
+}
+
+.painter-shop-product-info h3 {
+    margin: 0 0 8px;
+    min-height: 22px;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: #172554;
+}
+
+.painter-shop-product-info>p {
+    margin: 0 0 15px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.painter-shop-product-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.painter-shop-view-btn,
+.painter-shop-enquire-btn {
+    min-height: 42px;
+    padding: 0 12px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.painter-shop-view-btn {
+    border: 1px solid #d7dee8;
+    background: #ffffff;
+    color: #172554;
+}
+
+.painter-shop-view-btn:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.painter-shop-enquire-btn {
+    border: 1px solid #ff7100;
+    background: #ff7100;
+    color: #ffffff;
+}
+
+.painter-shop-enquire-btn:hover {
+    background: #e96300;
+    border-color: #e96300;
+}
+
+/* =========================================
+   MODAL OVERLAY
+========================================= */
+
+.painter-shop-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.55);
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+/* =========================================
+   MODAL
+========================================= */
+
+.painter-shop-modal {
+    width: min(620px, 100%);
+    max-height: calc(100vh - 48px);
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   MODAL HEADER
+========================================= */
+
+.painter-shop-modal-header {
+    min-height: 68px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-bottom: 1px solid #e2e8f0;
+    box-sizing: border-box;
+}
+
+.painter-shop-modal-header h2 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+    color: #172554;
+}
+
+.painter-shop-modal-header p {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.painter-shop-modal-header button {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dbe2ea;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.painter-shop-modal-header button:hover {
+    background: #f8fafc;
+    color: #172554;
+}
+
+/* =========================================
+   MODAL BODY
+========================================= */
+
+.painter-shop-modal-body {
+    padding: 22px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+/* Custom scrollbar */
+
+.painter-shop-modal-body::-webkit-scrollbar,
+.painter-shop-modal-overlay::-webkit-scrollbar {
+    width: 7px;
+}
+
+.painter-shop-modal-body::-webkit-scrollbar-track,
+.painter-shop-modal-overlay::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.painter-shop-modal-body::-webkit-scrollbar-thumb,
+.painter-shop-modal-overlay::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+/* =========================================
+   MODAL PRODUCT IMAGE
+========================================= */
+
+.painter-shop-modal-image {
+    width: 100%;
+    height: 220px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.painter-shop-modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 18px;
+    box-sizing: border-box;
+}
+
+.painter-shop-modal-image span {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+/* =========================================
+   MODAL PRODUCT NAME / MRP
+========================================= */
+
+.painter-shop-modal-body>h3 {
+    margin: 0 0 7px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #172554;
+}
+
+.painter-shop-modal-body>p {
+    margin: 0 0 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ff7100;
+}
+
+/* =========================================
+   PRODUCT DETAILS
+========================================= */
+
+.painter-shop-product-details {
+    width: 100%;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.painter-shop-detail-row {
+    min-height: 48px;
+    padding: 10px 14px;
+    display: grid;
+    grid-template-columns: 42% 58%;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.painter-shop-detail-row:last-child {
+    border-bottom: none;
+}
+
+.painter-shop-detail-row span {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.painter-shop-detail-row strong {
+    min-width: 0;
+    font-size: 13px;
+    color: #172554;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   ENQUIRY MODAL
+========================================= */
+
+.painter-enquiry-modal {
+    width: min(520px, 100%);
+}
+
+.painter-enquiry-form {
+    padding: 22px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.painter-enquiry-product {
+    margin-bottom: 20px;
+    padding: 13px 15px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.painter-enquiry-product span {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+.painter-enquiry-product strong {
+    display: block;
+    font-size: 15px;
+    color: #172554;
+}
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.painter-form-group {
+    margin-bottom: 17px;
+}
+
+.painter-form-group label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #172554;
+}
+
+.painter-form-group input,
+.painter-form-group textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #d7dee8;
+    border-radius: 7px;
+    outline: none;
+    background: #ffffff;
+    color: #172554;
+    font-family: inherit;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.painter-form-group input {
+    height: 42px;
+}
+
+.painter-form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.painter-form-group input:focus,
+.painter-form-group textarea:focus {
+    border-color: #ff7100;
+    box-shadow: 0 0 0 3px rgba(255, 113, 0, 0.1);
+}
+
+/* =========================================
+   ENQUIRY MESSAGE
+========================================= */
+
+.painter-enquiry-message {
+    margin: 0 0 15px;
+    padding: 10px 12px;
+    border-radius: 7px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    font-size: 13px;
+    color: #475569;
+}
+
+/* =========================================
+   SUBMIT ENQUIRY
+========================================= */
+
+.painter-submit-enquiry-btn {
+    width: 100%;
+    height: 44px;
+    border: 1px solid #ff7100;
+    border-radius: 7px;
+    background: #ff7100;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.painter-submit-enquiry-btn:hover {
+    background: #e96300;
+}
+
+.painter-submit-enquiry-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1200px) {
+    .painter-shop-product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* =========================================
+   SMALL TABLET
+========================================= */
+
+@media (max-width: 900px) {
+    .painter-quick-shop {
+        padding: 24px;
+        padding-top: 88px;
+    }
+
+    .painter-shop-product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .painter-quick-shop-card {
+        padding: 22px;
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+    .painter-quick-shop {
+        min-height: calc(100vh - 58px);
+        padding: 18px 14px;
+        padding-top: 88px;
+    }
+
+    .painter-quick-shop-header {
+        margin-bottom: 16px;
+    }
+
+    .painter-quick-shop-header h1 {
+        font-size: 22px;
+    }
+
+    .painter-quick-shop-header p {
+        font-size: 13px;
+    }
+
+    .painter-quick-shop-card {
+        padding: 14px;
+        border-radius: 10px;
+    }
+
+    .painter-shop-product-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .painter-shop-product-image {
+        height: 190px;
+    }
+
+    .painter-shop-product-info {
+        padding: 14px;
+    }
+
+    .painter-shop-product-actions {
+        gap: 8px;
+    }
+
+    .painter-shop-modal-overlay {
+        padding: 12px;
+        align-items: flex-start;
+    }
+
+    .painter-shop-modal {
+        max-height: calc(100vh - 24px);
+        border-radius: 11px;
+    }
+
+    .painter-shop-modal-header {
+        padding: 13px 15px;
+    }
+
+    .painter-shop-modal-header h2 {
+        font-size: 17px;
+    }
+
+    .painter-shop-modal-body {
+        padding: 15px;
+    }
+
+    .painter-shop-modal-image {
+        height: 180px;
+    }
+
+    .painter-shop-modal-body>h3 {
+        font-size: 18px;
+    }
+
+    .painter-shop-detail-row {
+        grid-template-columns: 40% 60%;
+        padding: 10px 11px;
+    }
+
+    .painter-enquiry-form {
+        padding: 15px;
+    }
+}
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+    .painter-shop-product-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .painter-shop-view-btn,
+    .painter-shop-enquire-btn {
+        width: 100%;
+    }
+
+    .painter-shop-detail-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+
+    .painter-shop-detail-row strong {
+        font-size: 13px;
+    }
+}

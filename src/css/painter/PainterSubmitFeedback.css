@@ -1,0 +1,228 @@
+.painter-submit-feedback-page {
+    min-height: 100vh;
+    background: #ffffff;
+    padding-top: 88px;
+}
+
+.painter-submit-feedback-header {
+    padding: 10px 24px 0;
+}
+
+.painter-submit-feedback-header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-submit-feedback-header p {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: #8a96a6;
+}
+
+.painter-submit-feedback-header p span {
+    margin: 0 7px;
+}
+
+.painter-submit-feedback-content {
+    padding: 0 24px 30px;
+}
+
+.painter-submit-feedback-subtitle {
+    margin: 4px 0 8px;
+    font-size: 13px;
+    color: #8a96a6;
+}
+
+.painter-submit-feedback-card {
+    width: min(830px, 100%);
+    margin: 0 auto;
+    padding: 32px 42px 45px;
+    background: #ffffff;
+    border: 1px solid #e3e8ee;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.painter-submit-feedback-card h2 {
+    margin: 0 0 38px;
+    font-size: 23px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-submit-feedback-field {
+    margin-bottom: 30px;
+}
+
+.painter-submit-feedback-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.painter-submit-feedback-field label span {
+    color: #f97316;
+}
+
+.painter-submit-feedback-field input,
+.painter-submit-feedback-field select,
+.painter-submit-feedback-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #dfe5eb;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #263244;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.painter-submit-feedback-field input,
+.painter-submit-feedback-field select {
+    height: 34px;
+    padding: 0 12px;
+}
+
+.painter-submit-feedback-field textarea {
+    min-height: 70px;
+    padding: 10px 12px;
+    resize: vertical;
+}
+
+.painter-submit-feedback-field input:focus,
+.painter-submit-feedback-field select:focus,
+.painter-submit-feedback-field textarea:focus {
+    border-color: #ff7a18;
+    box-shadow: 0 0 0 2px rgba(255, 122, 24, 0.08);
+}
+
+.painter-submit-feedback-attachment-box {
+    min-height: 34px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    border: 1px solid #dfe5eb;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #263244;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.painter-submit-feedback-attachment-box:hover {
+    border-color: #ff7a18;
+}
+
+.painter-submit-feedback-attachment-box svg {
+    color: #ff7a18;
+    flex-shrink: 0;
+}
+
+.painter-submit-feedback-file-list {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.painter-submit-feedback-file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 6px 9px;
+    border-radius: 6px;
+    background: #f8fafc;
+    font-size: 11px;
+    color: #475569;
+}
+
+.painter-submit-feedback-file-item span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.painter-submit-feedback-file-item button {
+    border: 0;
+    background: transparent;
+    color: #ef4444;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.painter-submit-feedback-btn {
+    width: 100%;
+    height: 49px;
+    border: none;
+    border-radius: 8px;
+    background: #ff7a18;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.painter-submit-feedback-btn:hover {
+    background: #ed6c0d;
+}
+
+.painter-submit-feedback-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .painter-submit-feedback-header {
+        padding: 15px 16px 0;
+    }
+
+    .painter-submit-feedback-header h1 {
+        font-size: 24px;
+    }
+
+    .painter-submit-feedback-content {
+        padding: 0 16px 25px;
+    }
+
+    .painter-submit-feedback-card {
+        padding: 25px 20px 30px;
+        border-radius: 14px;
+    }
+
+    .painter-submit-feedback-card h2 {
+        margin-bottom: 28px;
+        font-size: 20px;
+    }
+
+    .painter-submit-feedback-field {
+        margin-bottom: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .painter-submit-feedback-header h1 {
+        font-size: 21px;
+    }
+
+    .painter-submit-feedback-header p {
+        line-height: 20px;
+    }
+
+    .painter-submit-feedback-card {
+        padding: 20px 15px 25px;
+    }
+
+    .painter-submit-feedback-file-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

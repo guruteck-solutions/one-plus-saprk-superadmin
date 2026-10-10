@@ -1,0 +1,364 @@
+/* ==========================================
+   TIER PROGRESS PAGE
+   ========================================== */
+
+.painter-tier-progress-page {
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    padding: 14px 24px 24px;
+    box-sizing: border-box;
+    background: #ffffff;
+    padding-top: 88px;
+}
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.painter-tier-progress-header {
+    margin-bottom: 34px;
+}
+
+.painter-tier-progress-header h1 {
+    margin: 0;
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-tier-progress-header p {
+    margin: 7px 0 0;
+    font-size: 13px;
+    color: #7b8794;
+}
+
+.painter-tier-progress-header p span {
+    margin: 0 5px;
+}
+
+/* ==========================================
+   MAIN PROGRESS CARD
+   ========================================== */
+
+.painter-tier-progress-main-card {
+    width: 100%;
+    padding: 30px 32px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e3e7eb;
+    border-radius: 14px;
+    margin-bottom: 24px;
+}
+
+.painter-tier-progress-main-card h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-tier-progress-main-card h2 span {
+    color: #ff7f19;
+}
+
+/* ==========================================
+   STATS
+   ========================================== */
+
+.painter-tier-progress-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.painter-tier-progress-stat {
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid #e7eaee;
+    border-radius: 10px;
+    background: #fafbfc;
+}
+
+.painter-tier-progress-stat span {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: #7b8794;
+}
+
+.painter-tier-progress-stat strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    color: #111827;
+    text-transform: capitalize;
+}
+
+/* ==========================================
+   MAIN PROGRESS BAR
+   ========================================== */
+
+.painter-tier-progress-track {
+    width: 100%;
+    height: 11px;
+    margin-top: 28px;
+    background: #e8ebee;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.painter-tier-progress-fill {
+    height: 100%;
+    background: #ff7f19;
+    border-radius: inherit;
+    transition: width 0.35s ease;
+}
+
+.painter-tier-progress-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 9px;
+}
+
+.painter-tier-progress-bottom span {
+    font-size: 12px;
+    color: #7b8794;
+}
+
+/* ==========================================
+   TIER MILESTONES CARD
+   ========================================== */
+
+.painter-tier-milestones-card {
+    width: 100%;
+    padding: 30px 32px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e3e7eb;
+    border-radius: 14px;
+}
+
+.painter-tier-milestones-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-tier-milestones-header p {
+    margin: 6px 0 0;
+    font-size: 13px;
+    color: #7b8794;
+}
+
+/* ==========================================
+   MILESTONES LIST
+   ========================================== */
+
+.painter-tier-milestones-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 32px;
+}
+
+.painter-tier-milestone {
+    width: 100%;
+}
+
+.painter-tier-milestone-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 12px;
+}
+
+.painter-tier-milestone-name {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.painter-tier-milestone-number {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border-radius: 50%;
+    background: #f5f6f8;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.painter-tier-milestone-name h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+    text-transform: capitalize;
+}
+
+.painter-tier-milestone-name span {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    color: #8a96a3;
+}
+
+.painter-tier-milestone-top>strong {
+    flex-shrink: 0;
+    font-size: 14px;
+    color: #111827;
+}
+
+/* ==========================================
+   MILESTONE PROGRESS
+   ========================================== */
+
+.painter-tier-milestone-track {
+    width: 100%;
+    height: 9px;
+    background: #e8ebee;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.painter-tier-milestone-fill {
+    height: 100%;
+    background: #ff7f19;
+    border-radius: inherit;
+    transition: width 0.35s ease;
+}
+
+.painter-tier-milestone-empty {
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #7b8794;
+}
+
+/* ==========================================
+   LOADING / ERROR
+   ========================================== */
+
+.painter-tier-progress-state {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.painter-tier-progress-error {
+    padding: 16px 18px;
+    border-radius: 10px;
+    background: #fff1f1;
+    border: 1px solid #f2caca;
+    color: #b42318;
+    font-size: 14px;
+}
+
+/* ==========================================
+   TABLET
+   ========================================== */
+
+@media (max-width: 1000px) {
+    .painter-tier-progress-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 768px) {
+    .painter-tier-progress-page {
+        padding: 16px;
+        padding-top: 88px;
+    }
+
+    .painter-tier-progress-header {
+        margin-bottom: 24px;
+    }
+
+    .painter-tier-progress-header h1 {
+        font-size: 23px;
+    }
+
+    .painter-tier-progress-main-card,
+    .painter-tier-milestones-card {
+        padding: 22px 20px;
+        border-radius: 12px;
+    }
+
+    .painter-tier-progress-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .painter-tier-progress-stat {
+        padding: 14px;
+    }
+
+    .painter-tier-progress-stat strong {
+        font-size: 16px;
+    }
+
+    .painter-tier-milestones-list {
+        gap: 25px;
+    }
+}
+
+/* ==========================================
+   SMALL MOBILE
+   ========================================== */
+
+@media (max-width: 480px) {
+    .painter-tier-progress-page {
+        padding: 12px;
+        padding-top: 88px;
+    }
+
+    .painter-tier-progress-header h1 {
+        font-size: 21px;
+    }
+
+    .painter-tier-progress-header p {
+        font-size: 12px;
+    }
+
+    .painter-tier-progress-main-card,
+    .painter-tier-milestones-card {
+        padding: 20px 16px;
+    }
+
+    .painter-tier-progress-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .painter-tier-progress-main-card h2,
+    .painter-tier-milestones-header h2 {
+        font-size: 18px;
+    }
+
+    .painter-tier-milestone-name {
+        gap: 10px;
+    }
+
+    .painter-tier-milestone-number {
+        width: 38px;
+        height: 38px;
+        flex-basis: 38px;
+    }
+}

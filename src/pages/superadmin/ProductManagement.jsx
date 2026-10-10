@@ -17,7 +17,7 @@ import {
     Search,
     ChevronLeft,
 } from "lucide-react";
-import "../../css/productmanagement.css";
+import "../../css/superadmin/productmanagement.css";
 
 
 const ProductManagement = () => {
@@ -66,10 +66,14 @@ const ProductManagement = () => {
         stockQuantity: "",
         status: "ACTIVE",
     });
+    const [newProductImage, setNewProductImage] = useState(null);
+    const [newProductImagePreview, setNewProductImagePreview] = useState(null);
 
+    const [editProductImage, setEditProductImage] = useState(null);
+    const [editProductImagePreview, setEditProductImagePreview] = useState(null);
 
-
-    const API_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/products";
+    const API_URL = "http://localhost:5000/api/products";
+    const SERVER_URL = "http://localhost:5000";
 
     //     =
     // FETCH PRODUCTS
@@ -148,6 +152,8 @@ const ProductManagement = () => {
             });
 
             setEditingProduct(response.data.product);
+            setEditProductImage(null);
+            setEditProductImagePreview(null);
             setShowEditModal(true);
         } catch (error) {
             console.error("Edit product fetch error:", error);
@@ -162,18 +168,35 @@ const ProductManagement = () => {
 
             const token = localStorage.getItem("token");
 
+            const formData = new FormData();
+
+            // Add product fields
+            Object.entries(editingProduct).forEach(([key, value]) => {
+                if (key !== 'image' && value !== null && value !== undefined) {
+                    formData.append(key, value);
+                }
+            });
+
+            // Add new image if selected
+            if (editProductImage) {
+                formData.append("image", editProductImage);
+            }
+
             await axios.put(
                 `${API_URL}/${editingProduct._id}`,
-                editingProduct,
+                formData,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
+                        'Content-Type': 'multipart/form-data',
                     },
                 }
             );
 
             setShowEditModal(false);
             setEditingProduct(null);
+            setEditProductImage(null);
+            setEditProductImagePreview(null);
 
             await fetchProducts();
             await fetchProductStats();
@@ -220,12 +243,28 @@ const ProductManagement = () => {
 
             const token = localStorage.getItem("token");
 
+            const formData = new FormData();
+
+            Object.entries(newProduct).forEach(
+                ([key, value]) => {
+                    formData.append(key, value);
+                }
+            );
+
+            if (newProductImage) {
+                formData.append(
+                    "image",
+                    newProductImage
+                );
+            }
+
             await axios.post(
                 API_URL,
-                newProduct,
+                formData,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
+                        'Content-Type': 'multipart/form-data',
                     },
                 }
             );
@@ -246,13 +285,43 @@ const ProductManagement = () => {
                 status: "ACTIVE",
             });
 
+            setNewProductImage(null);
+            setNewProductImagePreview(null);
+
             await fetchProducts();
             await fetchProductStats();
 
         } catch (error) {
-            console.error("Add product error:", error);
+            console.error(
+                "Add product error:",
+                error
+            );
         } finally {
             setAddLoading(false);
+        }
+    };
+
+    const handleNewProductImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setNewProductImage(file);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setNewProductImagePreview(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const handleEditProductImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setEditProductImage(file);
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setEditProductImagePreview(reader.result);
+            };
+            reader.readAsDataURL(file);
         }
     };
 
@@ -572,6 +641,7 @@ const ProductManagement = () => {
                                             }}
                                         />
                                     </th>
+                                    <th>Image</th>
                                     <th>Product Details</th>
                                     <th>SKU / Barcode</th>
                                     <th>Category</th>
@@ -588,7 +658,7 @@ const ProductManagement = () => {
                                 {filteredProducts.length === 0 ?
                                     (
                                         <tr>
-                                            <td colSpan="9">
+                                            <td colSpan="11">
                                                 No products found
                                             </td>
                                         </tr>
@@ -613,6 +683,20 @@ const ProductManagement = () => {
                                                             }
                                                         }}
                                                     />
+                                                </td>
+
+                                                <td>
+                                                    {product.image ? (
+                                                        <img
+                                                            src={`${SERVER_URL}${product.image}`}
+                                                            alt={product.productName}
+                                                            className="product-table-image"
+                                                        />
+                                                    ) : (
+                                                        <div className="product-table-image-placeholder">
+                                                            No Image
+                                                        </div>
+                                                    )}
                                                 </td>
 
                                                 <td className="product-name-cell">
@@ -750,15 +834,41 @@ const ProductManagement = () => {
 
             </div>
 
+            {/* ============ VIEW MODAL ============ */}
             {showViewModal && selectedProduct && (
                 <div className="product-modal-overlay">
                     <div className="product-view-modal">
 
                         <div className="product-modal-header">
                             <h2>Product Details</h2>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setShowViewModal(false);
+                                    setSelectedProduct(null);
+                                }}
+                            >
+                                ×
+                            </button>
                         </div>
 
                         <div className="product-details-grid">
+
+                            <div className="product-view-image-section">
+                                <label>Product Image</label>
+
+                                {selectedProduct.image ? (
+                                    <img
+                                        src={`${SERVER_URL}${selectedProduct.image}`}
+                                        alt={selectedProduct.productName}
+                                        className="product-view-image"
+                                    />
+                                ) : (
+                                    <div className="product-view-no-image">
+                                        No Image Available
+                                    </div>
+                                )}
+                            </div>
 
                             <div>
                                 <label>Product Name</label>
@@ -786,6 +896,11 @@ const ProductManagement = () => {
                             </div>
 
                             <div>
+                                <label>Group</label>
+                                <strong>{selectedProduct.group || "-"}</strong>
+                            </div>
+
+                            <div>
                                 <label>Packing Size</label>
                                 <strong>{selectedProduct.packingSize || "-"}</strong>
                             </div>
@@ -801,7 +916,7 @@ const ProductManagement = () => {
                             </div>
 
                             <div>
-                                <label>Stock</label>
+                                <label>Stock Quantity</label>
                                 <strong>{selectedProduct.stockQuantity || 0}</strong>
                             </div>
 
@@ -814,6 +929,7 @@ const ProductManagement = () => {
 
                         <div className="product-modal-footer">
                             <button
+                                className="product-modal-close-btn"
                                 type="button"
                                 onClick={() => {
                                     setShowViewModal(false);
@@ -828,6 +944,7 @@ const ProductManagement = () => {
                 </div>
             )}
 
+            {/* ============ EDIT MODAL ============ */}
             {showEditModal && editingProduct && (
                 <div className="product-modal-overlay">
                     <div className="product-view-modal">
@@ -840,6 +957,8 @@ const ProductManagement = () => {
                                 onClick={() => {
                                     setShowEditModal(false);
                                     setEditingProduct(null);
+                                    setEditProductImage(null);
+                                    setEditProductImagePreview(null);
                                 }}
                             >
                                 ×
@@ -849,6 +968,42 @@ const ProductManagement = () => {
                         <form onSubmit={handleUpdateProduct}>
 
                             <div className="product-edit-grid">
+
+                                <div className="product-image-upload-section">
+                                    <label>Product Image</label>
+
+                                    {editProductImagePreview ? (
+                                        <div className="product-edit-image-preview">
+                                            <img src={editProductImagePreview} alt="Preview" />
+                                            <small className="product-new-image-label">New Image</small>
+                                        </div>
+                                    ) : editingProduct.image ? (
+                                        <div className="product-edit-image-preview">
+                                            <img
+                                                src={`${SERVER_URL}${editingProduct.image}`}
+                                                alt={editingProduct.productName}
+                                            />
+                                            <small className="product-current-image-label">Current Image</small>
+                                        </div>
+                                    ) : (
+                                        <div className="product-no-image-placeholder">
+                                            No Image
+                                        </div>
+                                    )}
+
+                                    <input
+                                        type="file"
+                                        accept="image/jpeg,image/jpg,image/png,image/webp"
+                                        onChange={handleEditProductImageChange}
+                                        className="product-file-input"
+                                    />
+
+                                    {editProductImage && (
+                                        <small className="product-selected-image-name">
+                                            Selected: {editProductImage.name}
+                                        </small>
+                                    )}
+                                </div>
 
                                 <div>
                                     <label>Product Name</label>
@@ -882,13 +1037,21 @@ const ProductManagement = () => {
                                     <label>Barcode</label>
                                     <input
                                         type="text"
+                                        inputMode="numeric"
+                                        maxLength={6}
                                         value={editingProduct.barcode || ""}
-                                        onChange={(e) =>
-                                            setEditingProduct({
-                                                ...editingProduct,
-                                                barcode: e.target.value,
-                                            })
-                                        }
+                                        onChange={(e) => {
+                                            const value = e.target.value.replace(/\D/g, "");
+
+                                            if (value.length <= 6) {
+                                                setEditingProduct({
+                                                    ...editingProduct,
+                                                    barcode: value,
+                                                });
+                                            }
+                                        }}
+                                        pattern="\d{6}"
+                                        title="Barcode must be exactly 6 digits"
                                     />
                                 </div>
 
@@ -1007,7 +1170,6 @@ const ProductManagement = () => {
                                         onChange={(e) => {
                                             const value = e.target.value;
 
-                                            // Only positive numbers with up to 2 decimal places
                                             if (/^\d*(\.\d{0,2})?$/.test(value)) {
                                                 setEditingProduct({
                                                     ...editingProduct,
@@ -1029,7 +1191,6 @@ const ProductManagement = () => {
                                         onChange={(e) => {
                                             const value = e.target.value;
 
-                                            // Only whole numbers allowed
                                             if (/^\d*$/.test(value)) {
                                                 setEditingProduct({
                                                     ...editingProduct,
@@ -1065,6 +1226,8 @@ const ProductManagement = () => {
                                     onClick={() => {
                                         setShowEditModal(false);
                                         setEditingProduct(null);
+                                        setEditProductImage(null);
+                                        setEditProductImagePreview(null);
                                     }}
                                 >
                                     Cancel
@@ -1086,17 +1249,55 @@ const ProductManagement = () => {
                 </div>
             )}
 
+            {/* ============ ADD MODAL ============ */}
             {showAddModal && (
                 <div className="product-modal-overlay">
                     <div className="product-view-modal">
 
                         <div className="product-modal-header">
                             <h2>Add Product</h2>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setShowAddModal(false);
+                                    setNewProductImage(null);
+                                    setNewProductImagePreview(null);
+                                }}
+                            >
+                                ×
+                            </button>
                         </div>
 
                         <form onSubmit={handleAddProduct}>
 
                             <div className="product-edit-grid">
+
+                                <div className="product-image-upload-section">
+                                    <label>Product Image</label>
+
+                                    {newProductImagePreview ? (
+                                        <div className="product-edit-image-preview">
+                                            <img src={newProductImagePreview} alt="Preview" />
+                                        </div>
+                                    ) : (
+                                        <div className="product-no-image-placeholder">
+                                            No Image Selected
+                                        </div>
+                                    )}
+
+                                    <input
+                                        type="file"
+                                        accept="image/jpeg,image/jpg,image/png,image/webp"
+                                        onChange={handleNewProductImageChange}
+                                        className="product-file-input"
+                                    />
+
+                                    {newProductImage && (
+                                        <small className="product-selected-image-name">
+                                            Selected: {newProductImage.name}
+                                        </small>
+                                    )}
+                                </div>
 
                                 <div>
                                     <label>Product Name</label>
@@ -1264,7 +1465,6 @@ const ProductManagement = () => {
                                         onChange={(e) => {
                                             const value = e.target.value;
 
-                                            // Only positive numbers with up to 2 decimal places
                                             if (/^\d*(\.\d{0,2})?$/.test(value)) {
                                                 setNewProduct({
                                                     ...newProduct,
@@ -1287,7 +1487,6 @@ const ProductManagement = () => {
                                         onChange={(e) => {
                                             const value = e.target.value;
 
-                                            // Only whole numbers allowed
                                             if (/^\d*$/.test(value)) {
                                                 setNewProduct({
                                                     ...newProduct,
@@ -1320,7 +1519,11 @@ const ProductManagement = () => {
 
                                 <button
                                     type="button"
-                                    onClick={() => setShowAddModal(false)}
+                                    onClick={() => {
+                                        setShowAddModal(false);
+                                        setNewProductImage(null);
+                                        setNewProductImagePreview(null);
+                                    }}
                                 >
                                     Cancel
                                 </button>

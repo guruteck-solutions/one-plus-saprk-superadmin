@@ -40,7 +40,7 @@ import {
 
 import { NavLink, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "../css/sidebar.css";
+import "../css/superadmin/sidebar.css";
 
 const Sidebar = () => {
   const location = useLocation();

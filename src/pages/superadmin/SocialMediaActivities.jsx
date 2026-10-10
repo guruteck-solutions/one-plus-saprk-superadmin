@@ -21,10 +21,10 @@ import {
     BarChart3,
     Share2,
 } from "lucide-react";
-import "../../css/SocialMediaActivities.css";
+import "../../css/superadmin/SocialMediaActivities.css";
 
-const API_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/social-media";
-const SERVER_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "";
+const API_URL = "http://localhost:5000/api/social-media";
+const SERVER_URL = "http://localhost:5000";
 
 const platforms = [
     "Facebook",
@@ -1860,12 +1860,6 @@ export default function SocialMediaActivities() {
                                 </p>
                             </div>
 
-                            <button
-                                onClick={() => setShowView(false)}
-                            >
-                                <X size={20} />
-                            </button>
-
                         </div>
 
                         <div className="view-content">
@@ -1977,7 +1971,15 @@ export default function SocialMediaActivities() {
                                 </div>
 
                             </div>
+                        </div>
 
+                        <div className="view-sm-footer">
+                            <button
+                                className="view-sm-close-bottom"
+                                onClick={() => setShowView(false)}
+                            >
+                                Close
+                            </button>
                         </div>
 
                     </div>

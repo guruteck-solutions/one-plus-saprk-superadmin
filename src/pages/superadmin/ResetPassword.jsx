@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Eye, EyeOff, Lock, ShieldCheck } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../../css/resetpassword.css";
+import "../../css/superadmin/resetpassword.css";
 
 const ResetPassword = () => {
   const navigate = useNavigate();
@@ -70,7 +70,7 @@ const ResetPassword = () => {
       setLoading(true);
 
       const response = await axios.post(
-        (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/auth/forgot-password/reset",
+        "http://localhost:5000/api/auth/forgot-password/reset",
         {
           resetToken,
           newPassword: formData.newPassword,

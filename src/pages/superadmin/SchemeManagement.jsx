@@ -27,9 +27,23 @@ import {
   X,
 } from "lucide-react";
 
-import "../../css/schemeManagement.css";
+import "../../css/superadmin/schemeManagement.css";
 
-const API_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/schemes";
+const API_URL = "http://localhost:5000/api/schemes";
+const SERVER_URL = "http://localhost:5000";
+
+const getFileUrl = (filePath) => {
+  if (!filePath) return "";
+
+  if (
+    filePath.startsWith("http://") ||
+    filePath.startsWith("https://")
+  ) {
+    return filePath;
+  }
+
+  return `${SERVER_URL}${filePath.startsWith("/") ? "" : "/"}${filePath}`;
+};
 
 
 const FALLBACK_SCHEMES = [
@@ -71,7 +85,7 @@ const SchemeForm = ({ formData, onChange, onSubmit, onCancel, saving, submitText
           required
         >
           <option value="CASHBACK">Cashback Offer</option>
-          <option value="REWARD">Reward Scheme</option>
+          <option value="REWARD">Reward Offer</option>
           <option value="DISCOUNT">Discount Offer</option>
         </select>
       </div>
@@ -225,6 +239,8 @@ const SchemeManagement = () => {
     termsAndConditions: "",
     banner: null,
     pdf: null,
+    existingBanner: null,
+    existingPdf: null,
   };
 
   const [formData, setFormData] = useState(initialForm);
@@ -479,7 +495,13 @@ const SchemeManagement = () => {
         const newScheme = {
           _id: `local-${Date.now()}`,
           schemeId: `SCHM-2026-${String(schemes.length + 1).padStart(4, "0")}`,
-          ...formData,
+          schemeName: formData.schemeName,
+          description: formData.description,
+          schemeType: formData.schemeType,
+          applicableTo: formData.applicableTo,
+          startDate: formData.startDate,
+          endDate: formData.endDate,
+          termsAndConditions: formData.termsAndConditions,
           banner: null,
           pdf: null,
           status: "DRAFT",
@@ -519,6 +541,8 @@ const SchemeManagement = () => {
       termsAndConditions: scheme.termsAndConditions || "",
       banner: null,
       pdf: null,
+      existingBanner: scheme.banner || null,
+      existingPdf: scheme.pdf || null,
     });
 
     setShowEditModal(true);
@@ -535,10 +559,10 @@ const SchemeManagement = () => {
     try {
       setSaving(true);
 
-      const hasFile = formData.banner || formData.pdf;
+      const hasNewFile = formData.banner || formData.pdf;
       let response;
 
-      if (hasFile) {
+      if (hasNewFile) {
         const data = new FormData();
         data.append("schemeName", formData.schemeName);
         data.append("description", formData.description);
@@ -561,6 +585,8 @@ const SchemeManagement = () => {
           startDate: formData.startDate,
           endDate: formData.endDate,
           termsAndConditions: formData.termsAndConditions,
+          existingBanner: formData.existingBanner,
+          existingPdf: formData.existingPdf,
         });
       }
 
@@ -580,7 +606,18 @@ const SchemeManagement = () => {
         setSchemes((prev) =>
           prev.map((item) =>
             item._id === selectedScheme._id
-              ? { ...item, ...formData, banner: item.banner, pdf: item.pdf }
+              ? {
+                  ...item,
+                  schemeName: formData.schemeName,
+                  description: formData.description,
+                  schemeType: formData.schemeType,
+                  applicableTo: formData.applicableTo,
+                  startDate: formData.startDate,
+                  endDate: formData.endDate,
+                  termsAndConditions: formData.termsAndConditions,
+                  banner: formData.existingBanner || item.banner,
+                  pdf: formData.existingPdf || item.pdf,
+                }
               : item
           )
         );
@@ -741,7 +778,7 @@ const SchemeManagement = () => {
   function getSchemeTypeLabel(type) {
     const labels = {
       CASHBACK: "Cashback Offer",
-      REWARD: "Reward Scheme",
+      REWARD: "Reward Offer",
       DISCOUNT: "Discount Offer",
       PROMOTIONAL: "Promotional",
       SEASONAL: "Seasonal",
@@ -1057,7 +1094,7 @@ const SchemeManagement = () => {
                           <div className="scheme-name-cell">
                             {scheme.banner ? (
                               <img
-                                src={scheme.banner}
+                                src={getFileUrl(scheme.banner)}
                                 alt={scheme.schemeName}
                                 className="scheme-banner-thumb"
                                 onError={(e) => {
@@ -1238,7 +1275,7 @@ const SchemeManagement = () => {
                   >
                     {scheme.banner ? (
                       <img
-                        src={scheme.banner}
+                        src={getFileUrl(scheme.banner)}
                         alt={scheme.schemeName}
                         onError={(e) => {
                           e.currentTarget.style.display = "none";
@@ -1395,10 +1432,11 @@ const SchemeManagement = () => {
               {selectedScheme.banner && (
                 <div className="scheme-view-banner">
                   <img
-                    src={selectedScheme.banner}
+                    src={getFileUrl(selectedScheme.banner)}
                     alt={selectedScheme.schemeName}
+                    className="scheme-banner-image"
                     onError={(e) => {
-                      e.currentTarget.parentElement.style.display = "none";
+                      e.currentTarget.style.display = "none";
                     }}
                   />
                 </div>
@@ -1458,7 +1496,7 @@ const SchemeManagement = () => {
 
               {selectedScheme.pdf && (
                 <a
-                  href={selectedScheme.pdf}
+                  href={getFileUrl(selectedScheme.pdf)}
                   target="_blank"
                   rel="noreferrer"
                   className="scheme-pdf-link"

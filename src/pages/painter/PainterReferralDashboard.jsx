@@ -1,0 +1,256 @@
+import React, { useEffect, useState } from "react";
+import {
+  Users,
+  Clock3,
+  Gift,
+  TrendingUp,
+  Share2,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import "../../css/painter/PainterReferralDashboard.css";
+
+const API_BASE_URL = import.meta.env.VITE_API_URL || "";
+
+const PainterReferralDashboard = () => {
+  const navigate = useNavigate();
+
+  const [dashboard, setDashboard] = useState({
+    totalReferrals: 0,
+    pending: 0,
+    rewardsEarned: 0,
+    successRate: 0,
+  });
+
+  const [loading, setLoading] = useState(true);
+  const [sharing, setSharing] = useState(false);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+
+  const referralCategories = [
+    "Painter",
+    "Dealer",
+    "Contractor",
+    "Engineer",
+    "Architect",
+    "Builder",
+    "Interior Designer",
+    "Other",
+  ];
+
+  useEffect(() => {
+    fetchDashboard();
+  }, []);
+
+  const fetchDashboard = async () => {
+    try {
+      setLoading(true);
+
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(
+        `${API_BASE_URL}/api/painter/referrals/dashboard`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to fetch dashboard");
+      }
+
+      setDashboard(data.dashboard || {});
+    } catch (error) {
+      console.error("Fetch referral dashboard error:", error);
+      toast.error(error.message || "Failed to load referral dashboard");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCategoryToggle = (category) => {
+    setSelectedCategories((prev) =>
+      prev.includes(category)
+        ? prev.filter((item) => item !== category)
+        : [...prev, category]
+    );
+  };
+
+  const handleShareReferral = async () => {
+    if (selectedCategories.length === 0 || sharing) return;
+
+    try {
+      setSharing(true);
+
+      const token = localStorage.getItem("token");
+
+      const categories = selectedCategories.map((category) =>
+        category.toUpperCase().replace(/\s+/g, "_")
+      );
+
+      const response = await fetch(
+        `${API_BASE_URL}/api/painter/referrals`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            categories,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message || "Failed to create referral"
+        );
+      }
+
+      navigate("/painter/share-referral");
+    } catch (error) {
+      console.error("Create referral error:", error);
+      toast.error(error.message || "Failed to create referral");
+    } finally {
+      setSharing(false);
+    }
+  };
+
+  return (
+    <div className="painter-referral-dashboard-page">
+      <div className="painter-referral-dashboard-header">
+        <div>
+          <h1>Referral Dashboard</h1>
+
+          <p>
+            Oneplus Spark PAINTS <span>•</span> Painter experience
+          </p>
+        </div>
+
+        <button
+          type="button"
+          className="painter-referral-history-btn"
+          onClick={() => navigate("/painter/referral-history")}
+        >
+          <Clock3 size={17} />
+          Referral History
+        </button>
+      </div>
+
+      {loading ? (
+        <div className="painter-referral-dashboard-state">
+          Loading referral dashboard...
+        </div>
+      ) : (
+        <>
+          <div className="painter-referral-stats-grid">
+            <div className="painter-referral-stat-card">
+              <div className="painter-referral-stat-icon blue">
+                <Users size={21} />
+              </div>
+
+              <div>
+                <span>Total Referrals</span>
+                <strong>{dashboard.totalReferrals}</strong>
+
+                <small>
+                  {dashboard.totalReferrals - dashboard.pending} converted
+                </small>
+              </div>
+            </div>
+
+            <div className="painter-referral-stat-card">
+              <div className="painter-referral-stat-icon orange">
+                <Clock3 size={21} />
+              </div>
+
+              <div>
+                <span>Pending</span>
+                <strong>{dashboard.pending}</strong>
+
+                <small>Awaiting activation</small>
+              </div>
+            </div>
+
+            <div className="painter-referral-stat-card">
+              <div className="painter-referral-stat-icon green">
+                <Gift size={21} />
+              </div>
+
+              <div>
+                <span>Rewards Earned</span>
+                <strong>₹{dashboard.rewardsEarned}</strong>
+
+                <small>Lifetime</small>
+              </div>
+            </div>
+
+            <div className="painter-referral-stat-card">
+              <div className="painter-referral-stat-icon purple">
+                <TrendingUp size={21} />
+              </div>
+
+              <div>
+                <span>Success Rate</span>
+                <strong>{dashboard.successRate}%</strong>
+
+                <small>Strong performance</small>
+              </div>
+            </div>
+          </div>
+
+          <div className="painter-refer-new-card">
+            <div className="painter-refer-new-content">
+              <h2>Refer a new customer</h2>
+
+              <p className="painter-refer-subtitle">
+                Choose a referral category
+              </p>
+
+              <div className="painter-refer-category-grid">
+                {referralCategories.map((item) => {
+                  const isSelected = selectedCategories.includes(item);
+
+                  return (
+                    <button
+                      type="button"
+                      key={item}
+                      className={`painter-refer-category-btn ${
+                        isSelected ? "selected" : ""
+                      }`}
+                      onClick={() => handleCategoryToggle(item)}
+                    >
+                      {item}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <button
+                type="button"
+                className="painter-share-referral-btn"
+                onClick={handleShareReferral}
+                disabled={
+                  selectedCategories.length === 0 || sharing
+                }
+              >
+                <Share2 size={15} />
+                {sharing ? "Creating Referral..." : "Share Referral"}
+              </button>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default PainterReferralDashboard;

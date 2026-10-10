@@ -23,9 +23,9 @@ import {
     Pencil,
     Trash2,
 } from "lucide-react";
-import "../../css/ApprovalWorkflow.css";
+import "../../css/superadmin/ApprovalWorkflow.css";
 
-const API_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/approvals";
+const API_URL = "http://localhost:5000/api/approvals";
 
 const MODULE_TYPES = [
     "Reward Point Release",
@@ -1757,14 +1757,6 @@ const ApprovalWorkflow = () => {
                                         {selectedRequest.requestId}
                                     </p>
                                 </div>
-
-                                <button
-                                    onClick={() =>
-                                        setShowView(false)
-                                    }
-                                >
-                                    <X size={20} />
-                                </button>
                             </div>
 
                             <div className="approval-detail-grid">
@@ -1891,6 +1883,8 @@ const ApprovalWorkflow = () => {
                                     )}
                             </div>
 
+
+
                             {selectedRequest.status ===
                                 "Pending" && (
                                     <div className="approval-modal-footer">
@@ -1921,7 +1915,18 @@ const ApprovalWorkflow = () => {
                                         </button>
                                     </div>
                                 )}
+                            <div className="view-aw-footer">
+                                <button
+                                    className="view-aw-footer-bottom"
+                                    onClick={() =>
+                                        setShowView(false)
+                                    }
+                                >
+                                    Close
+                                </button>
+                            </div>
                         </div>
+
                     </div>
                 )}
 

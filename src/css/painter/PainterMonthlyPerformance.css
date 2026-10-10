@@ -1,0 +1,203 @@
+
+.painter-monthly-page {
+  width: 100%;
+  min-width: 0;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #ffffff;
+  padding-top: 88px;
+}
+
+.painter-monthly-header {
+  margin-bottom: 30px;
+}
+
+.painter-monthly-header h2 {
+  margin: 0 0 7px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #192331;
+}
+
+.painter-monthly-header p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.painter-monthly-chart-card {
+  width: 100%;
+  max-width: 850px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #dce3ed;
+  border-radius: 14px;
+  box-sizing: border-box;
+}
+
+.painter-monthly-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #253041;
+}
+
+.painter-monthly-card-heading h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.painter-monthly-chart {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  height: 280px;
+  padding-top: 20px;
+}
+
+.painter-monthly-chart-item {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  max-width: 100px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.painter-monthly-bar-area {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 230px;
+}
+
+.painter-monthly-bar {
+  position: relative;
+  width: 65%;
+  max-width: 72px;
+  min-height: 3px;
+  background: #e9eef6;
+  border-radius: 7px 7px 3px 3px;
+  transition: height 0.3s ease;
+}
+
+.painter-monthly-bar-active {
+  background: #ff7a1a;
+}
+
+.painter-monthly-bar-value {
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.painter-monthly-chart-label {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.painter-monthly-table-card {
+  width: 100%;
+  margin-top: 45px;
+  background: #fff;
+  border: 1px solid #e5eaf2;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.painter-monthly-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.painter-monthly-table {
+  width: 100%;
+  min-width: 570px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.painter-monthly-table thead {
+  background: #f4f7fb;
+}
+
+.painter-monthly-table th {
+  padding: 16px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.painter-monthly-table td {
+  padding: 18px 16px;
+  border-top: 1px solid #edf0f5;
+  color: #253041;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.painter-monthly-table tbody tr:hover {
+  background: #fafcff;
+}
+
+.painter-monthly-empty,
+.painter-monthly-message {
+  padding: 40px 20px;
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.painter-monthly-error {
+  color: #dc2626;
+}
+
+@media (max-width: 768px) {
+  .painter-monthly-page {
+    padding: 16px;
+    padding-top: 88px;
+  }
+
+  .painter-monthly-header h2 {
+    font-size: 22px;
+  }
+
+  .painter-monthly-chart-card {
+    padding: 15px;
+  }
+
+  .painter-monthly-chart {
+    height: 230px;
+    gap: 8px;
+  }
+
+  .painter-monthly-bar-area {
+    height: 185px;
+  }
+
+  .painter-monthly-table-card {
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .painter-monthly-chart {
+    gap: 5px;
+  }
+
+  .painter-monthly-bar {
+    width: 75%;
+  }
+
+  .painter-monthly-chart-label {
+    font-size: 11px;
+  }
+}

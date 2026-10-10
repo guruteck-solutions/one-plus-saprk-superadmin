@@ -2,7 +2,7 @@ import { useState } from "react";
 import { loginUser } from "../../services/authService";
 import { Eye, EyeOff, User, Lock, ShieldCheck, Smartphone } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import "../../css/login.css";
+import "../../css/superadmin/login.css";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -43,8 +43,16 @@ const Login = () => {
             // User information save
             localStorage.setItem("user", JSON.stringify(data.user));
 
-            // Dashboard par redirect
-            navigate("/dashboard");
+            // Role based redirect
+            if (data.user?.role === "PAINTER") {
+                navigate("/painter/dashboard");
+            } else if (data.user?.role === "DEALER") {
+                navigate("/dealer/dashboard");
+            } else if (data.user?.role === "SALES_EXECUTIVE") {
+                navigate("/sales-executive/dashboard");
+            } else {
+                navigate("/dashboard");
+            }
 
         } catch (error) {
             console.error("Login error:", error);
@@ -165,6 +173,7 @@ const Login = () => {
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
+                                    autoComplete="username"
                                 />
                             </div>
                         </div>
@@ -183,6 +192,7 @@ const Login = () => {
                                     value={formData.password}
                                     onChange={handleChange}
                                     required
+                                    autoComplete="current-password"
                                 />
 
                                 <button

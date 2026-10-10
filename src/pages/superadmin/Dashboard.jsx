@@ -29,7 +29,7 @@ import {
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "../../css/admindashboard.css";
+import "../../css/superadmin/admindashboard.css";
 
 const Dashboard = () => {
   const [stats, setStats] = useState({
@@ -66,7 +66,7 @@ const Dashboard = () => {
       }
 
       const res = await axios.get(
-        (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/users/stats",
+        "http://localhost:5000/api/users/stats",
         {
           headers: {
             Authorization: `Bearer ${token}`,

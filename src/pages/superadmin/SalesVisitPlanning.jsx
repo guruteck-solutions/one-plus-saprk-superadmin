@@ -29,9 +29,9 @@ import {
   AlertCircle,
   ClipboardList,
 } from "lucide-react";
-import "../../css/salesVisitPlanning.css";
+import "../../css/superadmin/salesVisitPlanning.css";
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/sales-visits";
+const API_BASE_URL = "http://localhost:5000/api/sales-visits";
 
 const initialVisitForm = {
   visitType: "DEALER",
@@ -130,6 +130,7 @@ function SalesVisitPlanning() {
   const [beats, setBeats] = useState([]);
   const [territories, setTerritories] = useState([]);
   const [routes, setRoutes] = useState([]);
+  const [salesExecutives, setSalesExecutives] = useState([]);
 
   const [loading, setLoading] = useState(false);
 
@@ -254,6 +255,33 @@ function SalesVisitPlanning() {
     }
   };
 
+  const fetchSalesExecutives = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await axios.get(
+        "http://localhost:5000/api/users",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (response.data.success) {
+        setSalesExecutives(
+          (response.data.users || []).filter(
+            (user) =>
+              user.role === "SALES_EXECUTIVE" &&
+              user.status === "ACTIVE"
+          )
+        );
+      }
+    } catch (error) {
+      console.error("Sales Executives error:", error);
+    }
+  };
+
   const loadAllData = async () => {
     setLoading(true);
 
@@ -263,6 +291,7 @@ function SalesVisitPlanning() {
       fetchBeats(),
       fetchTerritories(),
       fetchRoutes(),
+      fetchSalesExecutives(),
     ]);
 
     setLoading(false);
@@ -2519,12 +2548,19 @@ function SalesVisitPlanning() {
               </FormField>
 
               <FormField label="Assigned To">
-                <input
+                <select
                   name="assignedTo"
                   value={visitForm.assignedTo}
-                  onChange={(e) => /^[A-Za-z\s]*$/.test(e.target.value) && handleVisitChange(e)}
-                  placeholder="Sales user"
-                />
+                  onChange={handleVisitChange}
+                >
+                  <option value="">Select Sales Executive</option>
+
+                  {salesExecutives.map((user) => (
+                    <option key={user._id} value={user.name}>
+                      {user.name}
+                    </option>
+                  ))}
+                </select>
               </FormField>
 
               <FormField label="Visit Status">
@@ -3434,13 +3470,6 @@ function Modal({
         <div className="sales-modal-header">
 
           <h2>{title}</h2>
-
-          <button
-            onClick={onClose}
-            className="modal-close-btn"
-          >
-            <X size={19} />
-          </button>
 
         </div>
 

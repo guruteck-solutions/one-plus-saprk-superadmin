@@ -18,9 +18,9 @@ import {
   ChevronRight,
   Plus,
 } from "lucide-react";
-import "../../css/Directory.css";
+import "../../css/superadmin/Directory.css";
 
-const API_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/contacts";
+const API_URL = "http://localhost:5000/api/contacts";
 
 const Directory = () => {
   const [contacts, setContacts] = useState([]);
@@ -839,14 +839,6 @@ const Directory = () => {
                 <h2>Contact Details</h2>
                 <p>Contact information</p>
               </div>
-
-              <button
-                className="modal-close-btn"
-                onClick={() => setShowViewModal(false)}
-                aria-label="Close"
-              >
-                <X size={20} />
-              </button>
             </div>
 
             <div className="contact-form">
@@ -902,7 +894,7 @@ const Directory = () => {
                   className="cancel-btn"
                   onClick={() => setShowViewModal(false)}
                 >
-                  <X size={16} />
+
                   Close
                 </button>
               </div>
@@ -1082,7 +1074,6 @@ const Directory = () => {
                     setShowModal(false)
                   }
                 >
-                  <X size={16} />
                   Cancel
                 </button>
 

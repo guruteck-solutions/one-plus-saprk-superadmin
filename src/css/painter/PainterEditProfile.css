@@ -1,0 +1,294 @@
+.painter-edit-profile-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  padding-top: 88px;
+}
+
+.painter-edit-profile-header {
+  margin-bottom: 22px;
+}
+
+.painter-edit-profile-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.painter-edit-profile-header p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.painter-edit-profile-card {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.painter-edit-profile-card h2 {
+  margin: 0 0 24px;
+  font-size: 19px;
+  font-weight: 650;
+  color: #1f2937;
+}
+
+.painter-edit-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.painter-edit-profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.painter-edit-profile-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.painter-edit-profile-field input[type="text"],
+.painter-edit-profile-field input[type="email"] {
+  width: 100%;
+  height: 44px;
+  padding: 0 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  color: #1f2937;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.painter-edit-profile-field input::placeholder {
+  color: #9ca3af;
+}
+
+.painter-edit-profile-field input[type="text"]:focus,
+.painter-edit-profile-field input[type="email"]:focus {
+  border-color: #64748b;
+  box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.1);
+}
+
+.painter-edit-profile-full {
+  grid-column: 1 / -1;
+}
+
+/* Profile Image Upload */
+
+.painter-edit-profile-upload-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 16px;
+  border: 1px dashed #d1d5db;
+  border-radius: 8px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.painter-edit-profile-preview {
+  width: 82px;
+  height: 82px;
+  min-width: 82px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  color: #64748b;
+  box-sizing: border-box;
+}
+
+.painter-edit-profile-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.painter-edit-profile-upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.painter-edit-profile-upload-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 8px;
+  background: #cbced2;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-sizing: border-box;
+}
+
+.painter-edit-profile-upload-btn:hover {
+  opacity: 0.92;
+}
+
+.painter-edit-profile-upload-btn:active {
+  transform: translateY(1px);
+}
+
+.painter-edit-profile-file-input {
+  display: none;
+}
+
+.painter-edit-profile-upload-content p {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.painter-edit-profile-upload-content span {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.painter-edit-profile-save-btn {
+  margin-top: 28px;
+  min-width: 130px;
+  height: 44px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 8px;
+  background: #1f2937;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.painter-edit-profile-save-btn:hover {
+  opacity: 0.92;
+}
+
+.painter-edit-profile-save-btn:active {
+  transform: translateY(1px);
+}
+
+.painter-edit-profile-save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.painter-edit-profile-error {
+  margin-bottom: 20px;
+  padding: 11px 13px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 13px;
+}
+
+.painter-edit-profile-loading {
+  width: 100%;
+  padding: 60px 20px;
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Tablet */
+
+@media (max-width: 768px) {
+  .painter-edit-profile-page {
+    padding: 18px;
+    padding-top: 88px;
+  }
+
+  .painter-edit-profile-card {
+    padding: 22px;
+  }
+
+  .painter-edit-profile-grid {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+
+  .painter-edit-profile-full {
+    grid-column: auto;
+  }
+
+  .painter-edit-profile-upload-wrapper {
+    gap: 15px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .painter-edit-profile-page {
+    padding: 14px;
+    padding-top: 88px;
+  }
+
+  .painter-edit-profile-header h1 {
+    font-size: 21px;
+  }
+
+  .painter-edit-profile-header p {
+    font-size: 13px;
+  }
+
+  .painter-edit-profile-card {
+    padding: 18px;
+    border-radius: 11px;
+  }
+
+  .painter-edit-profile-card h2 {
+    font-size: 17px;
+    margin-bottom: 20px;
+  }
+
+  .painter-edit-profile-field input[type="text"],
+  .painter-edit-profile-field input[type="email"] {
+    height: 42px;
+    font-size: 13px;
+  }
+
+  .painter-edit-profile-upload-wrapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .painter-edit-profile-upload-content {
+    align-items: center;
+  }
+
+  .painter-edit-profile-save-btn {
+    width: 100%;
+    margin-top: 22px;
+  }
+}

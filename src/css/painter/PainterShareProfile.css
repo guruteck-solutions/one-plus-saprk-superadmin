@@ -1,0 +1,222 @@
+.painter-share-profile-page {
+    width: 100%;
+    min-height: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+    padding-top: 88px;
+}
+
+.painter-share-profile-header {
+    margin-bottom: 24px;
+}
+
+.painter-share-profile-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-share-profile-header p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.painter-share-profile-card {
+    width: 100%;
+    max-width: 620px;
+    min-height: 640px;
+    margin: 0 auto;
+    padding: 42px 40px;
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+.painter-share-profile-card h2 {
+    margin: 0 0 34px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-share-profile-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: #fff0e4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.painter-share-profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.painter-share-profile-avatar span {
+    font-size: 30px;
+    font-weight: 700;
+    color: #ff7617;
+}
+
+.painter-share-profile-card h3 {
+    margin: 0;
+    font-size: 21px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.painter-share-profile-tier {
+    width: fit-content;
+    margin: 8px auto 24px;
+    padding: 7px 22px;
+    border-radius: 20px;
+    background: #fff0e4;
+    color: #f97316;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.painter-share-profile-rewards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 46px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.painter-share-profile-rewards strong {
+    color: #64748b;
+    font-weight: 700;
+}
+
+.painter-share-profile-actions {
+    width: 100%;
+    max-width: 375px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.painter-share-whatsapp-btn,
+.painter-copy-profile-btn {
+    width: 100%;
+    height: 52px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: 0.2s ease;
+}
+
+.painter-share-whatsapp-btn {
+    border: none;
+    background: #ff7617;
+    color: #ffffff;
+}
+
+.painter-share-whatsapp-btn:hover {
+    background: #ed6a0c;
+}
+
+.painter-copy-profile-btn {
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    color: #111827;
+}
+
+.painter-copy-profile-btn:hover {
+    background: #f8fafc;
+}
+
+.painter-share-profile-loading {
+    padding: 70px 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.painter-share-profile-error {
+    max-width: 620px;
+    margin: 30px auto;
+    padding: 14px;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 14px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .painter-share-profile-page {
+        padding: 18px;
+        padding-top: 88px;
+    }
+
+    .painter-share-profile-card {
+        min-height: auto;
+        padding: 34px 28px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .painter-share-profile-page {
+        padding: 14px;
+        padding-top: 88px;
+    }
+
+    .painter-share-profile-header h1 {
+        font-size: 21px;
+    }
+
+    .painter-share-profile-header p {
+        font-size: 13px;
+    }
+
+    .painter-share-profile-card {
+        padding: 28px 18px;
+        border-radius: 12px;
+    }
+
+    .painter-share-profile-card h2 {
+        font-size: 19px;
+        margin-bottom: 28px;
+    }
+
+    .painter-share-profile-avatar {
+        width: 105px;
+        height: 105px;
+    }
+
+    .painter-share-profile-card h3 {
+        font-size: 19px;
+    }
+
+    .painter-share-profile-rewards {
+        margin-bottom: 34px;
+    }
+
+    .painter-share-whatsapp-btn,
+    .painter-copy-profile-btn {
+        height: 48px;
+    }
+}

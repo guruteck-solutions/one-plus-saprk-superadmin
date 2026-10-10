@@ -1,0 +1,27 @@
+.painter-layout {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+.painter-layout-content {
+  margin-left: 260px;
+  min-height: calc(100vh - 64px);
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .painter-layout-content {
+    margin-left: 240px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .painter-layout-content {
+    margin-left: 0;
+    min-height: calc(100vh - 58px);
+  }
+}

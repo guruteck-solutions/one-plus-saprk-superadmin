@@ -24,9 +24,9 @@ import {
     ChevronRight,
 } from "lucide-react";
 
-import "../../css/inventoryManagement.css";
+import "../../css/superadmin/inventoryManagement.css";
 
-const API_BASE_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api";
+const API_BASE_URL = "http://localhost:5000/api";
 
 const EMPTY_STATS = {
     totalInventoryValue: 0,

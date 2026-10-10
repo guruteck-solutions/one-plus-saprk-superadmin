@@ -27,9 +27,9 @@ import {
   Trash2,
 } from "lucide-react";
 
-import "../../css/financeDashboard.css";
+import "../../css/superadmin/financeDashboard.css";
 
-const API_URL = (import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com") + "/api/finance";
+const API_URL = "http://localhost:5000/api/finance";
 
 const FinanceDashboard = () => {
 
@@ -77,6 +77,7 @@ const FinanceDashboard = () => {
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
 
+  const [dealers, setDealers] = useState([]);
   // MODALS
 
 
@@ -161,6 +162,32 @@ const FinanceDashboard = () => {
       setError("Failed to load transactions");
     }
   };
+  const fetchDealers = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await axios.get("http://localhost:5000/api/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const userList = Array.isArray(response.data.users)
+        ? response.data.users
+        : [];
+
+      const dealerList = userList.filter(
+        (user) =>
+          String(user.role || "").toLowerCase().trim() === "dealer"
+      );
+
+      setDealers(dealerList);
+    } catch (error) {
+      console.error("Fetch dealers error:", error);
+      setDealers([]);
+    }
+  };
+
 
 
   // INITIAL LOAD
@@ -171,7 +198,11 @@ const FinanceDashboard = () => {
       setLoading(true);
       setError("");
 
-      await Promise.all([fetchDashboard(), fetchTransactions()]);
+      await Promise.all([
+        fetchDashboard(),
+        fetchTransactions(),
+        fetchDealers(),
+      ]);
 
       setLoading(false);
     };
@@ -1847,13 +1878,6 @@ const FinanceDashboard = () => {
           <div className="finance-modal">
             <div className="finance-modal-header">
               <h2>Edit Transaction</h2>
-              <button
-                type="button"
-                onClick={() => setShowEditModal(false)}
-                className="finance-modal-close"
-              >
-                ×
-              </button>
             </div>
 
             <form onSubmit={handleEditSubmit}>
@@ -2011,17 +2035,40 @@ const FinanceDashboard = () => {
                   />
                 </div>
 
+                <div className="form-group">
+                  <label>Assign Dealer</label>
+
+                  <select
+                    value={editForm.assignedTo}
+                    onChange={(e) =>
+                      setEditForm({
+                        ...editForm,
+                        assignedTo: e.target.value,
+                      })
+                    }
+                  >
+                    <option value="">Select Dealer</option>
+
+                    {dealers.map((dealer) => (
+                      <option key={dealer._id} value={dealer._id}>
+                        {dealer.name} - {dealer.email}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
               </div>
 
               <div className="finance-modal-actions">
-                <button
+                <button className="finance-cancel-update-btn"
                   type="button"
                   onClick={() => setShowEditModal(false)}
                 >
                   Cancel
                 </button>
 
-                <button type="submit">
+                <button className="finance-update-btn"
+                  type="submit">
                   Update Transaction
                 </button>
               </div>
