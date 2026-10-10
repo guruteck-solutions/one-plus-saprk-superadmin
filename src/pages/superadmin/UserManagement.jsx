@@ -277,6 +277,94 @@ const UserManagement = () => {
         }
     };
 
+
+    const handleRegistrationReview = async (user, status) => {
+        if (!user?.isRegistrationRequest || !user?._id) {
+            alert("Invalid registration request.");
+            return;
+        }
+
+        if (status === "APPROVED" && user.registrationStatus !== "KYC_VERIFIED") {
+            alert("Pehle KYC verify karo.");
+            return;
+        }
+
+        let adminRemarks = "";
+
+        if (status === "REJECTED" || status === "CORRECTION_REQUIRED") {
+            adminRemarks = window.prompt(
+                status === "REJECTED"
+                    ? "Enter rejection reason:"
+                    : "Enter correction remarks:"
+            );
+
+            if (!adminRemarks?.trim()) return;
+        } else {
+            adminRemarks = window.prompt(
+                "Enter admin remarks (optional):",
+                ""
+            ) ?? null;
+
+            if (adminRemarks === null) return;
+        }
+
+        const confirmed = window.confirm(
+            `Are you sure you want to change registration status to ${status.replaceAll("_", " ")}?`
+        );
+
+        if (!confirmed) return;
+
+        try {
+            setKycActionLoading(true);
+
+            const token = localStorage.getItem("token");
+            const registrationType = user.registrationType;
+
+            const endpoint =
+                registrationType === "DEALER"
+                    ? `http://localhost:5000/api/superadmin/dealer-registrations/${user._id}/review`
+                    : `http://localhost:5000/api/superadmin/painter-registrations/${user._id}/review`;
+
+            const response = await axios.patch(
+                endpoint,
+                { status, adminRemarks: adminRemarks.trim() },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+
+            if (response.data.success) {
+                alert(`Registration ${status.replaceAll("_", " ").toLowerCase()} successfully.`);
+                await fetchUsers();
+
+                const updatedUserResponse = await axios.get(
+                    `http://localhost:5000/api/users/${user._id}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+
+                if (updatedUserResponse.data.success) {
+                    setSelectedUser(updatedUserResponse.data.user);
+                }
+            }
+        } catch (error) {
+            console.error("Registration review error:", error);
+            alert(
+                error.response?.data?.message ||
+                "Failed to update registration status."
+            );
+        } finally {
+            setKycActionLoading(false);
+        }
+    };
+
+
     // ==========================================
     // EDIT USER
     // ==========================================
@@ -1110,35 +1198,34 @@ const UserManagement = () => {
 
                                                 {/* EDIT */}
 
-                                                <button
-                                                    className="user-action-edit"
-                                                    title="Edit User"
-                                                    onClick={() =>
-                                                        handleEditUser(
-                                                            user._id
-                                                        )
-                                                    }
-                                                >
-                                                    <Pencil size={17} />
-                                                </button>
+
+                                                {!user.isRegistrationRequest && (
+                                                    <button
+                                                        className="user-action-edit"
+                                                        title="Edit User"
+                                                        onClick={() => handleEditUser(user._id)}
+                                                    >
+                                                        <Pencil size={17} />
+                                                    </button>
+                                                )}
+
 
                                                 {/* DELETE */}
 
-                                                <button
-                                                    className="user-action-delete"
-                                                    title="Delete User"
-                                                    onClick={() =>
-                                                        handleDeleteUser(
-                                                            user._id,
-                                                            user.name
-                                                        )
-                                                    }
-                                                    disabled={
-                                                        deletingUser
-                                                    }
-                                                >
-                                                    <UserX size={17} />
-                                                </button>
+
+                                                {!user.isRegistrationRequest && (
+                                                    <button
+                                                        className="user-action-delete"
+                                                        title="Delete User"
+                                                        onClick={() =>
+                                                            handleDeleteUser(user._id, user.name)
+                                                        }
+                                                        disabled={deletingUser}
+                                                    >
+                                                        <UserX size={17} />
+                                                    </button>
+                                                )}
+
 
                                                 {/* MORE */}
 
@@ -1615,6 +1702,112 @@ const UserManagement = () => {
                                         )}
 
                                 </div>
+
+
+                                {selectedUser?.isRegistrationRequest && (
+                                    <div className="view-user-section">
+                                        <h4>Registration & KYC Documents</h4>
+
+                                        <div className="view-user-grid">
+                                            <div>
+                                                <label>Registration ID</label>
+                                                <strong>{selectedUser.registrationId || selectedUser.userId || "-"}</strong>
+                                            </div>
+
+                                            <div>
+                                                <label>Registration Type</label>
+                                                <strong>{selectedUser.registrationType || "-"}</strong>
+                                            </div>
+
+                                            <div>
+                                                <label>Registration Status</label>
+                                                <strong>{(selectedUser.registrationStatus || selectedUser.status || "-").replaceAll("_", " ")}</strong>
+                                            </div>
+
+                                            {(
+                                                selectedUser.registrationType === "DEALER"
+                                                    ? [
+                                                        ["GST Certificate", selectedUser.gstCertificate],
+                                                        ["PAN Card", selectedUser.panCard],
+                                                        ["Aadhaar", selectedUser.aadhaar],
+                                                        ["Shop Photograph", selectedUser.shopPhotograph],
+                                                        ["Business Licence", selectedUser.businessLicence],
+                                                        ["Cancelled Cheque", selectedUser.cancelledCheque],
+                                                        ["Bank Passbook", selectedUser.bankPassbook],
+                                                    ]
+                                                    : [
+                                                        ["Aadhaar", selectedUser.aadhaar],
+                                                        ["PAN Card", selectedUser.panCard],
+                                                        ["Profile Photo", selectedUser.profilePhoto],
+                                                        ["Passbook", selectedUser.passbook],
+                                                        ["Cancelled Cheque", selectedUser.cancelledCheque],
+                                                    ]
+                                            ).map(([label, filePath]) => (
+                                                <div className="document-section" key={label}>
+                                                    <label>{label}</label>
+                                                    {filePath ? (
+                                                        <a
+                                                            href={`http://localhost:5000/${String(filePath).replace(/^\/+/, "")}`}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                        >
+                                                            View Document
+                                                        </a>
+                                                    ) : (
+                                                        <strong>Not uploaded</strong>
+                                                    )}
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="kyc-action-buttons">
+                                            {selectedUser.registrationStatus === "PENDING" && (
+                                                <button
+                                                    type="button"
+                                                    className="kyc-approve-btn"
+                                                    disabled={kycActionLoading}
+                                                    onClick={() => handleRegistrationReview(selectedUser, "KYC_VERIFIED")}
+                                                >
+                                                    Verify KYC
+                                                </button>
+                                            )}
+
+                                            {selectedUser.registrationStatus === "KYC_VERIFIED" && (
+                                                <button
+                                                    type="button"
+                                                    className="kyc-approve-btn"
+                                                    disabled={kycActionLoading}
+                                                    onClick={() => handleRegistrationReview(selectedUser, "APPROVED")}
+                                                >
+                                                    Approve Registration
+                                                </button>
+                                            )}
+
+                                            {["PENDING", "KYC_VERIFIED"].includes(selectedUser.registrationStatus) && (
+                                                <>
+                                                    <button
+                                                        type="button"
+                                                        className="kyc-reject-btn"
+                                                        disabled={kycActionLoading}
+                                                        onClick={() => handleRegistrationReview(selectedUser, "REJECTED")}
+                                                    >
+                                                        Reject
+                                                    </button>
+
+                                                    <button
+                                                        type="button"
+                                                        className="kyc-correction-btn"
+                                                        disabled={kycActionLoading}
+                                                        onClick={() => handleRegistrationReview(selectedUser, "CORRECTION_REQUIRED")}
+                                                    >
+                                                        Request Correction
+                                                    </button>
+                                                </>
+                                            )}
+                                        </div>
+                                    </div>
+                                )}
+
 
                                 {/* EMERGENCY CONTACT */}
 

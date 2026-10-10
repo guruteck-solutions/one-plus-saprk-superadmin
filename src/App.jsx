@@ -166,6 +166,8 @@ import SalesExecutiveLeadManagement from "./pages/salesExecutive/SalesExecutiveL
 import SalesExecutiveOrderBooking from "./pages/salesExecutive/SalesExecutiveOrderBooking";
 import SalesExecutiveOrderHistory from "./pages/salesExecutive/SalesExecutiveOrderHistory";
 import SalesExecutiveCollectionManagement from "./pages/salesExecutive/SalesExecutiveCollectionManagement";
+import SalesExecutiveDealerRegistration from "./pages/salesExecutive/SalesExecutiveDealerRegistration";
+import SalesExecutivePainterRegistration from "./pages/salesExecutive/SalesExecutivePainterRegistration";
 
 
 
@@ -344,7 +346,9 @@ const App = () => {
         <Route path="/sales-executive/leads" element={<SalesExecutiveLayout><SalesExecutiveLeadManagement /></SalesExecutiveLayout>} />
         <Route path="/sales-executive/order-booking" element={<SalesExecutiveLayout><SalesExecutiveOrderBooking /></SalesExecutiveLayout>} />
         <Route path="/sales-executive/order-history" element={<SalesExecutiveLayout><SalesExecutiveOrderHistory /></SalesExecutiveLayout>} />
-        <Route path="/sales-executive/collection-management" element={<SalesExecutiveLayout><SalesExecutiveCollectionManagement /></SalesExecutiveLayout>}/>
+        <Route path="/sales-executive/collection-management" element={<SalesExecutiveLayout><SalesExecutiveCollectionManagement /></SalesExecutiveLayout>} />
+        <Route path="/sales-executive/dealer-registration" element={<SalesExecutiveLayout><SalesExecutiveDealerRegistration /></SalesExecutiveLayout>} />
+        <Route path="/sales-executive/painter-registration" element={<SalesExecutiveLayout><SalesExecutivePainterRegistration /></SalesExecutiveLayout>} />
 
 
 

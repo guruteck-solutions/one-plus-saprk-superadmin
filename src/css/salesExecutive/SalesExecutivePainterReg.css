@@ -1,0 +1,1621 @@
+
+/* ==========================================
+   Sales Executive - Painter Registration
+   Theme: Orange + White
+   Fully Responsive CSS
+========================================== */
+
+.painter-registration-page {
+  --painter-primary: #f47721;
+  --painter-primary-dark: #df6415;
+  --painter-primary-light: #fff1e6;
+  --painter-bg: #f7f8fa;
+  --painter-card: #ffffff;
+  --painter-text: #253247;
+  --painter-muted: #718096;
+  --painter-border: #e5eaf0;
+  --painter-shadow: 0 4px 18px rgba(30, 41, 59, 0.06);
+
+  width: 100%;
+  min-width: 0;
+  padding: 24px;
+  box-sizing: border-box;
+  background: var(--painter-bg);
+  color: var(--painter-text);
+  font-family: inherit;
+}
+
+.painter-registration-page *,
+.painter-registration-page *::before,
+.painter-registration-page *::after {
+  box-sizing: border-box;
+}
+
+/* .painter-registration-page button,
+.painter-registration-page input,
+.painter-registration-page select,
+.painter-registration-page textarea {
+  font: inherit;
+} */
+
+/* ==========================================
+   Page Header
+========================================== */
+
+.painter-registration-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.painter-registration-header > div {
+  min-width: 0;
+}
+
+.painter-registration-header h1 {
+  margin: 0 0 7px;
+  color: var(--painter-text);
+  font-size: 27px;
+  font-weight: 750;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+.painter-registration-header p {
+  margin: 0;
+  color: var(--painter-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   Buttons
+========================================== */
+
+.painter-primary-btn,
+.painter-secondary-btn,
+.painter-view-btn,
+.painter-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.painter-primary-btn {
+  min-height: 43px;
+  padding: 11px 18px;
+  border: 1px solid var(--painter-primary);
+  border-radius: 9px;
+  background: var(--painter-primary);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 650;
+  box-shadow: 0 3px 8px rgba(244, 119, 33, 0.14);
+}
+
+.painter-primary-btn:hover:not(:disabled) {
+  border-color: var(--painter-primary-dark);
+  background: var(--painter-primary-dark);
+  box-shadow: 0 5px 12px rgba(244, 119, 33, 0.2);
+  transform: translateY(-1px);
+}
+
+.painter-secondary-btn {
+  min-height: 39px;
+  padding: 9px 14px;
+  border: 1px solid var(--painter-border);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.painter-secondary-btn:hover:not(:disabled) {
+  border-color: var(--painter-primary);
+  background: var(--painter-primary-light);
+  color: var(--painter-primary-dark);
+}
+
+.painter-view-btn {
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid #ffd6bb;
+  border-radius: 7px;
+  background: var(--painter-primary-light);
+  color: var(--painter-primary-dark);
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.painter-view-btn:hover {
+  border-color: var(--painter-primary);
+  background: var(--painter-primary);
+  color: #ffffff;
+}
+
+.painter-icon-btn {
+  width: 37px;
+  height: 37px;
+  padding: 0;
+  border: 1px solid var(--painter-border);
+  border-radius: 9px;
+  background: #ffffff;
+  color: #64748b;
+}
+
+.painter-icon-btn:hover {
+  border-color: #ffc9a7;
+  background: var(--painter-primary-light);
+  color: var(--painter-primary-dark);
+}
+
+.painter-primary-btn:disabled,
+.painter-secondary-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==========================================
+   Statistics Cards
+========================================== */
+
+.painter-registration-stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.painter-stat-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 12px;
+  min-width: 0;
+  min-height: 125px;
+  padding: 19px;
+  overflow: hidden;
+  border: 1px solid var(--painter-border);
+  border-radius: 12px;
+  background: var(--painter-card);
+  box-shadow: var(--painter-shadow);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.painter-stat-card:hover {
+  border-color: #ffd0ad;
+  box-shadow: 0 7px 22px rgba(30, 41, 59, 0.08);
+  transform: translateY(-2px);
+}
+
+.painter-stat-card > span {
+  max-width: calc(100% - 34px);
+  color: var(--painter-muted);
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.painter-stat-card > strong {
+  color: var(--painter-text);
+  font-size: 28px;
+  font-weight: 750;
+  line-height: 1.1;
+}
+
+.painter-stat-card > svg {
+  position: absolute;
+  top: 17px;
+  right: 15px;
+  width: 22px;
+  height: 22px;
+  padding: 8px;
+  box-sizing: content-box;
+  border-radius: 10px;
+  background: var(--painter-primary-light);
+  color: var(--painter-primary);
+}
+
+/* ==========================================
+   Registration List Card
+========================================== */
+
+.painter-registration-list-card {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--painter-border);
+  border-radius: 13px;
+  background: var(--painter-card);
+  box-shadow: var(--painter-shadow);
+}
+
+.painter-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.painter-list-header > div {
+  min-width: 0;
+}
+
+.painter-list-header h2 {
+  margin: 0 0 6px;
+  color: var(--painter-text);
+  font-size: 19px;
+  font-weight: 720;
+}
+
+.painter-list-header p {
+  margin: 0;
+  color: var(--painter-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   Search and Status Filter
+========================================== */
+
+.painter-registration-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 13px;
+  margin-bottom: 20px;
+}
+
+.painter-search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 13px;
+  border: 1px solid var(--painter-border);
+  border-radius: 9px;
+  background: #ffffff;
+  color: #94a3b8;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.painter-search-box:focus-within {
+  border-color: var(--painter-primary);
+  box-shadow: 0 0 0 3px rgba(244, 119, 33, 0.1);
+}
+
+.painter-search-box > svg {
+  flex-shrink: 0;
+}
+
+.painter-search-box input {
+  width: 100%;
+  min-width: 0;
+  height: 42px;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--painter-text);
+  font-size: 13px;
+}
+
+.painter-search-box input::placeholder {
+  color: #9aa5b5;
+}
+
+.painter-registration-filters > select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--painter-border);
+  border-radius: 9px;
+  outline: none;
+  background: #ffffff;
+  color: var(--painter-text);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.painter-registration-filters > select:focus {
+  border-color: var(--painter-primary);
+  box-shadow: 0 0 0 3px rgba(244, 119, 33, 0.1);
+}
+
+/* ==========================================
+   Desktop Registration Table
+========================================== */
+
+.painter-registration-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--painter-border);
+  border-radius: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #d5dce5 #f7f8fa;
+}
+
+.painter-registration-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+}
+
+.painter-registration-table thead {
+  background: #fff5ed;
+}
+
+.painter-registration-table th {
+  padding: 14px 13px;
+  border-bottom: 1px solid #f1d9c8;
+  color: #7a4b2c;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.25px;
+  white-space: nowrap;
+}
+
+.painter-registration-table td {
+  padding: 14px 13px;
+  border-bottom: 1px solid #edf0f4;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.6;
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+}
+
+.painter-registration-table tbody tr {
+  transition: background-color 0.18s ease;
+}
+
+.painter-registration-table tbody tr:hover {
+  background: #fffaf6;
+}
+
+.painter-registration-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==========================================
+   Registration Status Badges
+========================================== */
+
+.painter-status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  padding: 5px 9px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1.4;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.painter-status-badge.pending {
+  border-color: #f4d89b;
+  background: #fff7df;
+  color: #946200;
+}
+
+.painter-status-badge.kyc-verified {
+  border-color: #b9dcff;
+  background: #edf6ff;
+  color: #1765a3;
+}
+
+.painter-status-badge.approved {
+  border-color: #b8e6cb;
+  background: #eaf9ef;
+  color: #187644;
+}
+
+.painter-status-badge.rejected {
+  border-color: #f4c3c3;
+  background: #fff0f0;
+  color: #bd3030;
+}
+
+.painter-status-badge.correction-required {
+  border-color: #f4c6a6;
+  background: #fff1e8;
+  color: #b45309;
+}
+
+/* ==========================================
+   Loading / Empty State
+========================================== */
+
+.painter-empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 210px;
+  padding: 28px 18px;
+  color: var(--painter-muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ==========================================
+   Mobile Registration Cards
+========================================== */
+
+.painter-registration-mobile-list {
+  display: none;
+}
+
+.painter-registration-mobile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--painter-border);
+  border-radius: 11px;
+  background: #ffffff;
+  box-shadow: 0 2px 9px rgba(30, 41, 59, 0.04);
+}
+
+.painter-mobile-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.painter-mobile-card-header > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.painter-mobile-card-header > div strong {
+  color: var(--painter-text);
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.painter-mobile-card-header > div > span {
+  color: var(--painter-muted);
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+.painter-mobile-card-header > .painter-status-badge {
+  flex-shrink: 0;
+  max-width: 48%;
+}
+
+.painter-registration-mobile-card > p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.painter-registration-mobile-card > p strong {
+  color: #334155;
+  font-weight: 700;
+}
+
+.painter-registration-mobile-card > .painter-view-btn {
+  align-self: flex-start;
+  margin-top: 3px;
+}
+
+/* ==========================================
+   Modal Overlay
+========================================== */
+
+.painter-modal-overlay {
+  position: fixed;
+  z-index: 1200;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  background: rgba(15, 23, 42, 0.56);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.painter-modal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 900px;
+  max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.25);
+  animation: painter-modal-in 0.2s ease-out;
+}
+
+@keyframes painter-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.painter-registration-form-modal {
+  max-width: 900px;
+}
+
+.painter-registration-details-modal {
+  max-width: 760px;
+}
+
+/* ==========================================
+   Modal Header
+========================================== */
+
+.painter-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--painter-border);
+  background: #ffffff;
+}
+
+.painter-modal-header > div {
+  min-width: 0;
+}
+
+.painter-modal-header h2 {
+  margin: 0 0 6px;
+  color: var(--painter-text);
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.painter-modal-header p {
+  margin: 0;
+  color: var(--painter-muted);
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   Registration Form
+========================================== */
+
+.painter-registration-form-modal > form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.painter-registration-form-modal > form > .painter-form-section {
+  flex-shrink: 0;
+}
+
+.painter-form-section {
+  padding: 22px 24px 0;
+}
+
+.painter-form-section > h3 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 17px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f2e4da;
+  color: var(--painter-text);
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.painter-form-section > h3 svg {
+  flex-shrink: 0;
+  color: var(--painter-primary);
+}
+
+.painter-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 17px;
+}
+
+.painter-form-grid > label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.painter-form-grid > .painter-form-full {
+  grid-column: 1 / -1;
+}
+
+.painter-form-grid input,
+.painter-form-grid select,
+.painter-form-grid textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 43px;
+  padding: 11px 12px;
+  border: 1px solid #dfe5ec;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  color: var(--painter-text);
+  font-size: 13px;
+  font-weight: 400;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.painter-form-grid textarea {
+  min-height: 85px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.painter-form-grid input::placeholder,
+.painter-form-grid textarea::placeholder {
+  color: #9aa5b5;
+  opacity: 1;
+}
+
+.painter-form-grid input:focus,
+.painter-form-grid select:focus,
+.painter-form-grid textarea:focus {
+  border-color: var(--painter-primary);
+  box-shadow: 0 0 0 3px rgba(244, 119, 33, 0.1);
+}
+
+.painter-form-grid select {
+  cursor: pointer;
+}
+
+/* ==========================================
+   Document Instructions
+========================================== */
+
+.painter-form-help {
+  margin: -3px 0 16px;
+  padding: 12px 14px;
+  border: 1px solid #f4d9c4;
+  border-radius: 8px;
+  background: #fff8f2;
+  color: #89532f;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+/* ==========================================
+   Document Upload Grid
+========================================== */
+
+.painter-document-upload-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.painter-upload-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px dashed #e7c4ab;
+  border-radius: 10px;
+  background: #fffbf8;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.painter-upload-field:hover {
+  border-color: var(--painter-primary);
+  background: #fff6ef;
+}
+
+.painter-upload-field > span {
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.painter-upload-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 9px;
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--painter-primary);
+}
+
+.painter-upload-control > svg {
+  flex-shrink: 0;
+}
+
+.painter-upload-control input[type="file"] {
+  width: 100%;
+  min-width: 0;
+  color: #64748b;
+  font-size: 10px;
+}
+
+.painter-upload-control input[type="file"]::file-selector-button {
+  max-width: 100%;
+  margin-right: 6px;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 5px;
+  background: var(--painter-primary-light);
+  color: var(--painter-primary-dark);
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.painter-upload-control input[type="file"]::file-selector-button:hover {
+  background: #ffe1cd;
+}
+
+.painter-upload-field small {
+  display: block;
+  color: var(--painter-muted);
+  font-size: 10px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   Modal Footer
+========================================== */
+
+.painter-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 24px;
+  margin-top: 22px;
+  border-top: 1px solid var(--painter-border);
+  background: #ffffff;
+}
+
+.painter-modal-footer .painter-primary-btn,
+.painter-modal-footer .painter-secondary-btn {
+  min-width: 120px;
+}
+
+.painter-registration-form-modal .painter-modal-footer {
+  flex-shrink: 0;
+}
+
+/* ==========================================
+   Painter Details Modal
+========================================== */
+
+.painter-details-content {
+  flex: 1;
+  min-height: 0;
+  padding: 22px 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #d5dce5 #f8fafc;
+}
+
+.painter-details-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 14px 15px;
+  border: 1px solid #f2e2d6;
+  border-radius: 9px;
+  background: #fffaf6;
+}
+
+.painter-details-status > span:first-child {
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.painter-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.painter-details-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--painter-border);
+  border-radius: 9px;
+  background: #ffffff;
+}
+
+.painter-details-grid > .painter-details-full {
+  grid-column: 1 / -1;
+}
+
+.painter-details-grid > div > span {
+  color: var(--painter-muted);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.painter-details-grid > div > strong {
+  color: var(--painter-text);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* ==========================================
+   Submitted Documents
+========================================== */
+
+.painter-details-documents {
+  margin-top: 25px;
+}
+
+.painter-details-documents > h3 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f2e4da;
+  color: var(--painter-text);
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.painter-details-documents > h3 svg {
+  flex-shrink: 0;
+  color: var(--painter-primary);
+}
+
+.painter-document-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  padding: 13px 14px;
+  border: 1px solid var(--painter-border);
+  border-radius: 9px;
+  background: #ffffff;
+}
+
+.painter-document-item + .painter-document-item {
+  margin-top: 9px;
+}
+
+.painter-document-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.painter-document-info > svg {
+  flex-shrink: 0;
+  color: var(--painter-primary);
+}
+
+.painter-document-info > span {
+  color: #475569;
+  font-size: 12px;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+.painter-document-item > a {
+  flex-shrink: 0;
+  color: var(--painter-primary-dark);
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.painter-document-item > a:hover {
+  color: #b94d08;
+  text-decoration: underline;
+}
+
+.painter-document-missing {
+  flex-shrink: 0;
+  color: #9aa5b5;
+  font-size: 11px;
+}
+
+/* ==========================================
+   Admin Remarks
+========================================== */
+
+.painter-admin-remarks {
+  margin-top: 18px;
+  padding: 15px;
+  border: 1px solid #f4d9c4;
+  border-radius: 9px;
+  background: #fff8f2;
+}
+
+.painter-admin-remarks > strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #89532f;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.painter-admin-remarks > p {
+  margin: 0;
+  color: #6b5b50;
+  font-size: 12px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   Submitted By
+========================================== */
+
+.painter-submitted-by {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--painter-border);
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.painter-submitted-by > svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--painter-primary);
+}
+
+.painter-submitted-by > span {
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   Focus Accessibility
+========================================== */
+
+.painter-registration-page button:focus-visible,
+.painter-modal button:focus-visible {
+  outline: 3px solid rgba(244, 119, 33, 0.35);
+  outline-offset: 2px;
+}
+
+/* ==========================================
+   Tablet
+========================================== */
+
+@media (max-width: 1100px) {
+  .painter-registration-page {
+    padding: 20px;
+  }
+
+  .painter-registration-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 13px;
+  }
+
+  .painter-stat-card {
+    min-height: 110px;
+  }
+
+  .painter-registration-list-card {
+    padding: 18px;
+  }
+
+  .painter-registration-table {
+    min-width: 850px;
+  }
+
+  .painter-modal {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .painter-registration-page {
+    padding: 16px;
+  }
+
+  .painter-registration-header {
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .painter-registration-header h1 {
+    font-size: 23px;
+  }
+
+  .painter-registration-header p {
+    font-size: 12px;
+  }
+
+  .painter-registration-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+    margin-bottom: 19px;
+  }
+
+  .painter-stat-card {
+    min-height: 100px;
+    padding: 15px;
+  }
+
+  .painter-stat-card > strong {
+    font-size: 25px;
+  }
+
+  .painter-stat-card > svg {
+    top: 14px;
+    right: 12px;
+    padding: 6px;
+  }
+
+  .painter-registration-list-card {
+    padding: 16px;
+  }
+
+  .painter-registration-filters {
+    grid-template-columns: minmax(0, 1fr) 190px;
+    gap: 10px;
+  }
+
+  .painter-modal-overlay {
+    padding: 16px;
+  }
+
+  .painter-modal {
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+  }
+
+  .painter-modal-header {
+    padding: 17px 18px;
+  }
+
+  .painter-modal-header h2 {
+    font-size: 18px;
+  }
+
+  .painter-form-section {
+    padding: 19px 18px 0;
+  }
+
+  .painter-details-content {
+    padding: 18px;
+  }
+
+  .painter-modal-footer {
+    padding: 14px 18px;
+  }
+}
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width: 600px) {
+  .painter-registration-page {
+    padding: 13px;
+  }
+
+  .painter-registration-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 13px;
+  }
+
+  .painter-registration-header h1 {
+    font-size: 22px;
+  }
+
+  .painter-registration-header > .painter-primary-btn {
+    align-self: flex-start;
+    min-height: 40px;
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+
+  .painter-registration-stats {
+    gap: 9px;
+  }
+
+  .painter-stat-card {
+    min-height: 93px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .painter-stat-card > span {
+    max-width: calc(100% - 23px);
+    font-size: 10px;
+  }
+
+  .painter-stat-card > strong {
+    font-size: 23px;
+  }
+
+  .painter-stat-card > svg {
+    top: 11px;
+    right: 9px;
+    width: 18px;
+    height: 18px;
+    padding: 5px;
+  }
+
+  .painter-registration-list-card {
+    padding: 13px;
+    border-radius: 11px;
+  }
+
+  .painter-list-header {
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .painter-list-header h2 {
+    font-size: 16px;
+  }
+
+  .painter-list-header p {
+    font-size: 11px;
+  }
+
+  .painter-list-header > .painter-secondary-btn {
+    min-height: 36px;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .painter-registration-filters {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .painter-search-box,
+  .painter-registration-filters > select {
+    min-height: 42px;
+  }
+
+  .painter-search-box input {
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .painter-registration-table-wrapper {
+    display: none;
+  }
+
+  .painter-registration-mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .painter-registration-mobile-card {
+    padding: 14px;
+  }
+
+  .painter-modal-overlay {
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .painter-modal {
+    max-height: calc(100vh - 20px);
+    max-height: calc(100dvh - 20px);
+    border-radius: 11px;
+  }
+
+  .painter-modal-header {
+    padding: 14px;
+  }
+
+  .painter-modal-header h2 {
+    font-size: 16px;
+  }
+
+  .painter-modal-header p {
+    font-size: 11px;
+  }
+
+  .painter-icon-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .painter-form-section {
+    padding: 17px 14px 0;
+  }
+
+  .painter-form-section > h3 {
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+
+  .painter-form-grid,
+  .painter-document-upload-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .painter-form-grid > .painter-form-full {
+    grid-column: auto;
+  }
+
+  .painter-form-grid > label {
+    font-size: 12px;
+  }
+
+  .painter-form-grid input,
+  .painter-form-grid select,
+  .painter-form-grid textarea {
+    min-height: 42px;
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .painter-form-help {
+    font-size: 10px;
+    line-height: 1.8;
+  }
+
+  .painter-upload-field {
+    padding: 12px;
+  }
+
+  .painter-upload-control input[type="file"] {
+    font-size: 10px;
+  }
+
+  .painter-modal-footer {
+    gap: 8px;
+    padding: 12px 14px;
+  }
+
+  .painter-modal-footer .painter-primary-btn,
+  .painter-modal-footer .painter-secondary-btn {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 9px;
+    font-size: 12px;
+  }
+
+  .painter-details-content {
+    padding: 14px;
+  }
+
+  .painter-details-status {
+    padding: 12px;
+  }
+
+  .painter-details-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 9px;
+  }
+
+  .painter-details-grid > .painter-details-full {
+    grid-column: auto;
+  }
+
+  .painter-details-grid > div {
+    padding: 12px;
+  }
+
+  .painter-details-documents {
+    margin-top: 21px;
+  }
+
+  .painter-details-documents > h3 {
+    font-size: 14px;
+  }
+
+  .painter-document-item {
+    gap: 8px;
+    padding: 11px;
+  }
+
+  .painter-document-info {
+    gap: 7px;
+  }
+
+  .painter-document-info > span {
+    font-size: 11px;
+  }
+
+  .painter-document-item > a,
+  .painter-document-missing {
+    font-size: 10px;
+  }
+}
+
+/* ==========================================
+   Extra Small Mobile
+========================================== */
+
+@media (max-width: 380px) {
+  .painter-registration-page {
+    padding: 10px;
+  }
+
+  .painter-registration-header h1 {
+    font-size: 20px;
+  }
+
+  .painter-registration-stats {
+    gap: 8px;
+  }
+
+  .painter-stat-card {
+    min-height: 87px;
+    padding: 10px;
+  }
+
+  .painter-stat-card > span {
+    font-size: 9px;
+  }
+
+  .painter-stat-card > strong {
+    font-size: 21px;
+  }
+
+  .painter-stat-card > svg {
+    top: 9px;
+    right: 8px;
+    width: 16px;
+    height: 16px;
+    padding: 4px;
+  }
+
+  .painter-registration-list-card {
+    padding: 10px;
+  }
+
+  .painter-list-header h2 {
+    font-size: 15px;
+  }
+
+  .painter-mobile-card-header {
+    flex-wrap: wrap;
+  }
+
+  .painter-mobile-card-header > .painter-status-badge {
+    max-width: 100%;
+  }
+
+  .painter-modal-overlay {
+    padding: 7px;
+  }
+
+  .painter-modal {
+    max-height: calc(100vh - 14px);
+    max-height: calc(100dvh - 14px);
+  }
+
+  .painter-modal-header {
+    padding: 12px;
+  }
+
+  .painter-form-section {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .painter-details-content {
+    padding: 12px;
+  }
+
+  .painter-modal-footer {
+    padding: 10px 12px;
+  }
+
+  .painter-document-item {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .painter-document-item > a,
+  .painter-document-missing {
+    margin-left: 25px;
+  }
+}
+
+/* ==========================================
+   Reduced Motion
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .painter-registration-page *,
+  .painter-registration-page *::before,
+  .painter-registration-page *::after,
+  .painter-modal,
+  .painter-modal * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Fix: Painter Registration Form Modal Scrolling */
+
+.painter-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.painter-registration-form-modal {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+  min-height: 0;
+  margin: auto 0;
+  overflow: hidden;
+}
+
+.painter-registration-form-modal > .painter-modal-header {
+  position: relative;
+  flex-shrink: 0;
+  background: #ffffff;
+}
+
+.painter-registration-form-modal > form {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.painter-registration-form-modal > form > .painter-form-section {
+  flex-shrink: 0;
+}
+
+.painter-registration-form-modal > form > .painter-form-section:first-child {
+  padding-top: 22px;
+}
+
+.painter-registration-form-modal > form {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+}
+
+.painter-registration-form-modal > form > .painter-modal-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  flex-shrink: 0;
+  margin-top: 22px;
+  background: #ffffff;
+  box-shadow: 0 -4px 12px rgba(30, 41, 59, 0.04);
+}
+
+@media (max-width: 600px) {
+  .painter-modal-overlay {
+    padding: 8px;
+  }
+
+  .painter-registration-form-modal {
+    max-height: calc(100vh - 16px);
+    max-height: calc(100dvh - 16px);
+    margin: auto 0;
+  }
+
+  .painter-registration-form-modal > form > .painter-form-section {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .painter-registration-form-modal > form > .painter-modal-footer {
+    gap: 8px;
+    padding: 12px 14px;
+  }
+}

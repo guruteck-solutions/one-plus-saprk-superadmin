@@ -10,6 +10,7 @@ import {
   ShoppingCart,
   History,
   CreditCard,
+  UserPlus,
 } from "lucide-react";
 import "../css/salesExecutive/SalesExecutiveSidebar.css";
 
@@ -55,6 +56,16 @@ const SalesExecutiveSidebar = ({
       path: "/sales-executive/collection-management",
       icon: CreditCard,
     },
+    {
+      label: "Dealer Registration",
+      path: "/sales-executive/dealer-registration",
+      icon: UserPlus,
+    },
+    {
+      label: "Painter Registration",
+      path: "/sales-executive/painter-registration",
+      icon: UserPlus,
+    }
   ];
 
   return (
