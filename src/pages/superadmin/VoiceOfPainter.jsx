@@ -26,7 +26,7 @@ import {
     ChevronLeft,
     ChevronRight,
 } from "lucide-react";
-import "../../css/superadmin/VoiceOfPainter.css";
+import "../../css/superadmin/voiceOfPainter.css";
 
 const API_BASE = "http://localhost:5000/api/feedback";
 
