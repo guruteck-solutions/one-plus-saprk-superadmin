@@ -25,7 +25,7 @@ import {
 
 import "../../css/superadmin/ManufacturingManagement.css";
 
-const API_BASE_URL = "http://localhost:5000/api/manufacturing";
+const API_BASE_URL = "https://one-plus-saprk-backend.onrender.com/api/manufacturing";
 
 const ManufacturingBatchManagement = () => {
 
@@ -219,7 +219,7 @@ const ManufacturingBatchManagement = () => {
     const fetchProducts = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:5000/api/products",
+                "https://one-plus-saprk-backend.onrender.com/api/products",
                 authConfig()
             );
 
@@ -243,7 +243,7 @@ const ManufacturingBatchManagement = () => {
     const fetchUsers = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:5000/api/users",
+                "https://one-plus-saprk-backend.onrender.com/api/users",
                 authConfig()
             );
 
@@ -3647,15 +3647,15 @@ const ManufacturingBatchManagement = () => {
                                     </div>
                                 </div>
                                 <div className="view-mb-footer">
-                                <button
-                                    type="button"
-                                    className="view-mb-close-bottom"
-                                    onClick={() =>
-                                        setShowViewModal(false)
-                                    }
-                                >
-                                    Close
-                                </button>
+                                    <button
+                                        type="button"
+                                        className="view-mb-close-bottom"
+                                        onClick={() =>
+                                            setShowViewModal(false)
+                                        }
+                                    >
+                                        Close
+                                    </button>
                                 </div>
 
                             </div>

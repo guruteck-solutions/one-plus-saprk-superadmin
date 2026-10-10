@@ -30,7 +30,7 @@ import {
 
 import "../../css/superadmin/followUpManagement.css";
 
-const API_BASE_URL = "http://localhost:5000/api/follow-ups";
+const API_BASE_URL = "https://one-plus-saprk-backend.onrender.com/api/follow-ups";
 
 const TRIGGER_OPTIONS = [
     {

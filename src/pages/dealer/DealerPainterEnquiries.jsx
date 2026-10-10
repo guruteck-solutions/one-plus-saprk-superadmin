@@ -3,7 +3,7 @@ import { Eye, Mail, Phone, UserRound } from "lucide-react";
 import "../../css/dealer/DealerPainterEnquiries.css";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000";
+  import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
 
 const DealerPainterEnquiries = () => {
   const [enquiries, setEnquiries] = useState([]);
@@ -115,9 +115,9 @@ const DealerPainterEnquiries = () => {
         prev.map((item) =>
           item._id === selectedEnquiry._id
             ? {
-                ...item,
-                status: newStatus,
-              }
+              ...item,
+              status: newStatus,
+            }
             : item
         )
       );
@@ -129,7 +129,7 @@ const DealerPainterEnquiries = () => {
 
       alert(
         error.message ||
-          "Failed to update enquiry status"
+        "Failed to update enquiry status"
       );
     } finally {
       setUpdatingStatus(false);

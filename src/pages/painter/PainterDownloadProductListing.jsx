@@ -3,8 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../css/painter/PainterDownloadProductListing.css";
 
-const API_URL = "http://localhost:5000/api/painter/products";
-const SERVER_URL = "http://localhost:5000";
+const API_URL = "https://one-plus-saprk-backend.onrender.com/api/painter/products";
+const SERVER_URL = "https://one-plus-saprk-backend.onrender.com";
 
 const PainterDownloadProductListing = () => {
     const [products, setProducts] = useState([]);

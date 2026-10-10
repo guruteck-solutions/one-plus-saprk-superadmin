@@ -70,7 +70,7 @@ const ResetPassword = () => {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:5000/api/auth/forgot-password/reset",
+        "https://one-plus-saprk-backend.onrender.com/api/auth/forgot-password/reset",
         {
           resetToken,
           newPassword: formData.newPassword,

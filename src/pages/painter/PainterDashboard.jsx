@@ -26,7 +26,7 @@ const PainterDashboard = () => {
   const [loading, setLoading] = useState(false);
 
   const API_URL =
-    import.meta.env.VITE_API_URL || "http://localhost:5000";
+    import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
 
   useEffect(() => {
     fetchDashboard();
@@ -285,9 +285,8 @@ const PainterDashboard = () => {
 
             <strong className="painter-loyalty-progress">
               {painter?.loyaltyProgress
-                ? `${painter.loyaltyProgress}% to ${
-                    painter.nextTier || "-"
-                  }`
+                ? `${painter.loyaltyProgress}% to ${painter.nextTier || "-"
+                }`
                 : "-"}
             </strong>
 
@@ -305,11 +304,11 @@ const PainterDashboard = () => {
               <div className="painter-latest-points">
                 {latestReward.rewardType === "POINTS"
                   ? `+${Number(
-                      latestReward.points || 0
-                    ).toLocaleString()} Points`
+                    latestReward.points || 0
+                  ).toLocaleString()} Points`
                   : `₹${Number(
-                      latestReward.cashAmount || 0
-                    ).toLocaleString()}`}
+                    latestReward.cashAmount || 0
+                  ).toLocaleString()}`}
               </div>
 
               <p className="painter-latest-description">
@@ -385,17 +384,15 @@ const PainterDashboard = () => {
                       )}
 
                       <div
-                        className={`painter-chart-bar ${
-                          item.current
+                        className={`painter-chart-bar ${item.current
                             ? "current"
                             : ""
-                        }`}
+                          }`}
                         style={{
-                          height: `${
-                            points > 0
+                          height: `${points > 0
                               ? Math.max(percentage, 4)
                               : 0
-                          }%`,
+                            }%`,
                         }}
                         title={`${item.month}: ${points} points`}
                       />
