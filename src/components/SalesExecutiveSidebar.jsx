@@ -11,6 +11,9 @@ import {
   History,
   CreditCard,
   UserPlus,
+  MessageSquare,
+  Package,
+  Target,
 } from "lucide-react";
 import "../css/salesExecutive/SalesExecutiveSidebar.css";
 
@@ -65,7 +68,22 @@ const SalesExecutiveSidebar = ({
       label: "Painter Registration",
       path: "/sales-executive/painter-registration",
       icon: UserPlus,
-    }
+    },
+    {
+      label: "Complaint Management",
+      path: "/sales-executive/complaint-management",
+      icon: MessageSquare,
+    },
+    {
+      label: "Product Catalogue",
+      path: "/sales-executive/product-catalogue",
+      icon: Package,
+    },
+    {
+      label: "Target Management",
+      path: "/sales-executive/target-management",
+      icon: Target,
+    },
   ];
 
   return (
