@@ -14,6 +14,8 @@ import {
   MessageSquare,
   Package,
   Target,
+  BarChart,
+  Download,
 } from "lucide-react";
 import "../css/salesExecutive/SalesExecutiveSidebar.css";
 
@@ -83,6 +85,16 @@ const SalesExecutiveSidebar = ({
       label: "Target Management",
       path: "/sales-executive/target-management",
       icon: Target,
+    },
+    {
+      label: "Reports",
+      path: "/sales-executive/reports",
+      icon: BarChart,
+    },
+    {
+      label: "Download Centre",
+      path: "/sales-executive/download-centre",
+      icon: Download,
     },
   ];
 

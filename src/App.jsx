@@ -171,6 +171,8 @@ import SalesExecutivePainterRegistration from "./pages/salesExecutive/SalesExecu
 import SalesExecutiveComplaint from "./pages/salesExecutive/SalesExecutiveComplaint";
 import ProductCatalogue from "./pages/salesExecutive/ProductCatalogue";
 import TargetManagement from "./pages/salesExecutive/TargetManagement";
+import SalesExecutiveReports from "./pages/salesExecutive/Reports";
+import DownloadCentre from "./pages/salesExecutive/DownloadCentre";
 
 
 
@@ -355,6 +357,8 @@ const App = () => {
         <Route path="/sales-executive/complaint-management" element={<SalesExecutiveLayout><SalesExecutiveComplaint /></SalesExecutiveLayout>} />
         <Route path="/sales-executive/product-catalogue" element={<SalesExecutiveLayout><ProductCatalogue /></SalesExecutiveLayout>} />
         <Route path="/sales-executive/target-management" element={<SalesExecutiveLayout><TargetManagement /></SalesExecutiveLayout>} />
+        <Route path="/sales-executive/reports" element={<SalesExecutiveLayout><SalesExecutiveReports /></SalesExecutiveLayout>} />
+        <Route path="/sales-executive/download-centre" element={<SalesExecutiveLayout><DownloadCentre /></SalesExecutiveLayout>}/>
 
 
 
