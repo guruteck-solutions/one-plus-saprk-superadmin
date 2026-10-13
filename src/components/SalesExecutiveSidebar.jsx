@@ -1,3 +1,4 @@
+
 import React from "react";
 import { NavLink } from "react-router-dom";
 import {
@@ -16,6 +17,8 @@ import {
   Target,
   BarChart,
   Download,
+  Activity,
+  CalendarDays,
 } from "lucide-react";
 import "../css/salesExecutive/SalesExecutiveSidebar.css";
 
@@ -96,6 +99,21 @@ const SalesExecutiveSidebar = ({
       path: "/sales-executive/download-centre",
       icon: Download,
     },
+    {
+      label: "Analytics Dashboard",
+      path: "/sales-executive/analytics-dashboard",
+      icon: Activity,
+    },
+    {
+      label: "Follow Up Management",
+      path: "/sales-executive/follow-up-management",
+      icon: CalendarDays,
+    },
+    {
+      label: "Profile Management",
+      path: "/sales-executive/profile-management",
+      icon: Users,
+    },
   ];
 
   return (
@@ -108,8 +126,9 @@ const SalesExecutiveSidebar = ({
       )}
 
       <aside
-        className={`sales-executive-sidebar ${isOpen ? "sales-executive-sidebar-open" : ""
-          }`}
+        className={`sales-executive-sidebar ${
+          isOpen ? "sales-executive-sidebar-open" : ""
+        }`}
       >
         <div className="sales-executive-sidebar-header">
           <h2>Sales Executive</h2>
@@ -118,6 +137,7 @@ const SalesExecutiveSidebar = ({
             type="button"
             className="sales-executive-sidebar-close"
             onClick={onClose}
+            aria-label="Close sidebar"
           >
             <X size={20} />
           </button>
@@ -131,10 +151,14 @@ const SalesExecutiveSidebar = ({
               <NavLink
                 key={item.path}
                 to={item.path}
-                className={`sales-executive-sidebar-item ${activeMenu === item.label
-                  ? "sales-executive-sidebar-item-active"
-                  : ""
-                  }`}
+                end={item.path === "/sales-executive/dashboard"}
+                className={({ isActive }) =>
+                  `sales-executive-sidebar-item ${
+                    isActive
+                      ? "sales-executive-sidebar-item-active"
+                      : ""
+                  }`
+                }
                 onClick={onMenuClick}
               >
                 <Icon size={20} />

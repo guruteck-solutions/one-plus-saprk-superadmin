@@ -173,6 +173,9 @@ import ProductCatalogue from "./pages/salesExecutive/ProductCatalogue";
 import TargetManagement from "./pages/salesExecutive/TargetManagement";
 import SalesExecutiveReports from "./pages/salesExecutive/Reports";
 import DownloadCentre from "./pages/salesExecutive/DownloadCentre";
+import AnalyticsDashboard from "./pages/salesExecutive/AnalyticsDashboard";
+import SalesFollowUpManagement from "./pages/salesExecutive/FollowUpManagement";
+import SalesProfileManagement from "./pages/salesExecutive/SalesProfileManagement";
 
 
 
@@ -359,6 +362,9 @@ const App = () => {
         <Route path="/sales-executive/target-management" element={<SalesExecutiveLayout><TargetManagement /></SalesExecutiveLayout>} />
         <Route path="/sales-executive/reports" element={<SalesExecutiveLayout><SalesExecutiveReports /></SalesExecutiveLayout>} />
         <Route path="/sales-executive/download-centre" element={<SalesExecutiveLayout><DownloadCentre /></SalesExecutiveLayout>}/>
+        <Route path="/sales-executive/analytics-dashboard" element={<SalesExecutiveLayout><AnalyticsDashboard /></SalesExecutiveLayout>} />
+        <Route path="/sales-executive/follow-up-management" element={<SalesExecutiveLayout><SalesFollowUpManagement /></SalesExecutiveLayout>} />
+        <Route path="/sales-executive/profile-management" element={<SalesExecutiveLayout><SalesProfileManagement /></SalesExecutiveLayout>} />
 
 
 
