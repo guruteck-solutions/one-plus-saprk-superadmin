@@ -336,7 +336,6 @@ const FollowUpManagement = () => {
         <div className="followup-page">
             <div className="followup-header">
                 <div>
-                    <span className="followup-eyebrow">CUSTOMER RELATIONSHIP</span>
                     <h1>Follow-up Management</h1>
                     <p>
                         Schedule customer interactions and keep track of pending follow-ups.

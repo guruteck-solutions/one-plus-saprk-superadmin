@@ -79,7 +79,7 @@ const SalesExecutiveNavbar = ({ onMenuClick }) => {
       </button>
 
       <div className="sales-executive-navbar-title">
-        OnePlus Spark Paints
+        Sales Executive
       </div>
 
       <div className="sales-executive-navbar-actions">

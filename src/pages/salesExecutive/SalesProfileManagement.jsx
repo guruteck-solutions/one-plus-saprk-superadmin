@@ -300,7 +300,6 @@ const SalesProfileManagement = () => {
         <div className="sales-profile-page">
             <div className="sales-profile-header">
                 <div>
-                    <span className="sales-profile-eyebrow">ACCOUNT SETTINGS</span>
                     <h1>Profile Management</h1>
                     <p>View and manage your personal and professional information.</p>
                 </div>
@@ -367,7 +366,7 @@ const SalesProfileManagement = () => {
                         <small>
                             {selectedImage
                                 ? `${selectedImage.name} selected`
-                                : "Choose a JPG, PNG or WEBP image up to 5 MB."}
+                                : ""}
                         </small>
                     </div>
 

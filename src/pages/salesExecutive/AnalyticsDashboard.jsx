@@ -319,7 +319,6 @@ const AnalyticsDashboard = () => {
         <div className="analytics-dashboard">
             <div className="ad-header">
                 <div className="ad-header-content">
-                    <span className="ad-eyebrow">SALES EXECUTIVE</span>
                     <h1>Analytics Dashboard</h1>
                     <p>Monitor sales, visits, registrations and business performance.</p>
                 </div>

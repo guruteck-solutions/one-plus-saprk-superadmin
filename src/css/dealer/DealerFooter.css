@@ -1,86 +1,131 @@
-.dealer-footer{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  width:100%;
-  height:70px;
-  background: black;
-  border-top:1px solid black;
-  box-shadow:0 -2px 10px rgba(15,23,42,.08);
-  z-index:1100;
+
+/* Dealer Footer - Hidden by default on desktop */
+
+.dealer-footer {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 70px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: #000000;
+  border-top: 1px solid #222222;
+  box-shadow: 0 -2px 10px rgba(15, 23, 42, 0.08);
+  z-index: 1100;
 }
 
-.dealer-footer-menu{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:40px;
-  width:100%;
-  height:100%;
-  background: black;
+.dealer-footer-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  height: 100%;
+  background: #000000;
 }
 
 .dealer-footer-item {
-    border: 0;
-    background: transparent;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    min-width: 80px;
-    padding: 9px 14px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 500;
-    border-radius: 8px;
-    transition: .2s
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 80px;
+  padding: 9px 14px;
+  color: #ffffff;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .dealer-footer-item:hover {
-    background: #f3f4f6;
-    color: #e8751a
+  color: #e8751a;
+  background: #252525;
 }
 
 .dealer-footer-item svg {
-    stroke-width: 2
+  stroke-width: 2;
 }
 
 .dealer-footer-item.active {
-    color: #d8660f;
-    background: #eff
+  color: #f07824;
+  background: #2b2119;
 }
 
 .dealer-footer-item.active svg {
-    stroke-width: 2.5
+  stroke-width: 2.5;
 }
 
-@media(max-width:768px) {
-    .dealer-footer {
-        position: fixed;
-        padding-top: 6px;
-        left: 0;
-        right: 0
-    }
+/* Tablet, iPad and mobile only */
+@media (max-width: 1024px) {
+  .dealer-footer {
+    display: block;
+    height: calc(70px + env(safe-area-inset-bottom, 0px));
+    padding: 6px 0 env(safe-area-inset-bottom, 0px);
+  }
 
-    .dealer-footer-menu {
-        height: 64px;
-        min-height: 64px;
-        justify-content: space-around;
-        gap: 0
-    }
+  .dealer-footer-menu {
+    height: 100%;
+    justify-content: space-around;
+    gap: 0;
+  }
 
-    .dealer-footer-item {
-        flex: 1;
-        min-width: 0;
-        padding: 6px 5px;
-        font-size: 11px;
-        border-radius: 0
-    }
+  .dealer-footer-item {
+    flex: 1;
+    min-width: 0;
+    min-height: 54px;
+    padding: 6px 4px;
+    font-size: 11px;
+    border-radius: 0;
+  }
 
-    .dealer-footer-item:hover {
-        background: transparent
-    }
+  .dealer-footer-item:hover {
+    background: transparent;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 380px) {
+  .dealer-footer {
+    height: calc(64px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .dealer-footer-item {
+    gap: 4px;
+    padding: 5px 2px;
+    font-size: 10px;
+  }
+
+  .dealer-footer-item svg {
+    width: 19px;
+    height: 19px;
+  }
+}
+/* Hide footer on desktop and laptop */
+.dealer-footer {
+  display: none !important;
+}
+
+/* Show footer only on tablet and mobile */
+@media screen and (max-width: 1024px) {
+  .dealer-footer {
+    display: block !important;
+  }
+}/* Desktop and tablet: hide footer */
+.dealer-footer {
+  display: none !important;
+}
+
+/* Mobile only: show footer */
+@media screen and (max-width: 767px) {
+  .dealer-footer {
+    display: block !important;
+  }
 }
