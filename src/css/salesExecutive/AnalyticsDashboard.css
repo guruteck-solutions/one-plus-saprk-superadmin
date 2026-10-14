@@ -1,0 +1,711 @@
+
+/* ==========================================
+   ANALYTICS DASHBOARD
+========================================== */
+
+.analytics-dashboard {
+  --ad-primary: #f97316;
+  --ad-primary-dark: #ea580c;
+  --ad-text: #1f2937;
+  --ad-muted: #6b7280;
+  --ad-border: #e5e7eb;
+  --ad-background: #f8fafc;
+
+  width: 100%;
+  min-width: 0;
+  padding: 24px;
+  color: var(--ad-text);
+  background: var(--ad-background);
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.analytics-dashboard *,
+.analytics-dashboard *::before,
+.analytics-dashboard *::after {
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.ad-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.ad-header-content {
+  min-width: 0;
+}
+
+.ad-eyebrow {
+  display: inline-block;
+  margin-bottom: 7px;
+  color: var(--ad-primary-dark);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+.ad-header h1 {
+  margin: 0;
+  color: #111827;
+  font-size: 28px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.ad-header-content > p {
+  margin: 8px 0 0;
+  color: var(--ad-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ad-date-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 10px 14px;
+  color: #9a3412;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.ad-date-badge svg {
+  flex-shrink: 0;
+  color: var(--ad-primary-dark);
+}
+
+/* ==========================================
+   SECTIONS
+========================================== */
+
+.ad-section {
+  min-width: 0;
+  margin-bottom: 28px;
+}
+
+.ad-section:last-child {
+  margin-bottom: 0;
+}
+
+.ad-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 17px;
+}
+
+.ad-section-heading h2 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 18px;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.ad-section-heading p {
+  margin: 5px 0 0;
+  color: var(--ad-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   SHARED METRIC GRID
+========================================== */
+
+.ad-metric-grid {
+  display: grid;
+  min-width: 0;
+  gap: 16px;
+}
+
+/* ==========================================
+   SALES OVERVIEW
+========================================== */
+
+.ad-sales-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.ad-metric-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 183px;
+  padding: 19px;
+  background: #ffffff;
+  border: 1px solid var(--ad-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.025);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.ad-metric-card:hover {
+  border-color: #fdba74;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+  transform: translateY(-2px);
+}
+
+.ad-metric-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.ad-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  color: var(--ad-primary-dark);
+  background: #fff0e2;
+  border: 1px solid #ffedd5;
+  border-radius: 10px;
+}
+
+.ad-muted-icon {
+  flex-shrink: 0;
+  color: #9ca3af;
+}
+
+.ad-metric-title {
+  margin: 0 0 8px;
+  color: var(--ad-muted);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.ad-metric-value {
+  margin: 0 0 8px;
+  color: #111827;
+  font-size: clamp(23px, 2vw, 29px);
+  font-weight: 750;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.ad-metric-subtitle {
+  margin-top: auto;
+  color: #9ca3af;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* ==========================================
+   FIELD ACTIVITY & LEADS
+========================================== */
+
+.ad-activity-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ad-activity-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 0;
+  min-height: 127px;
+  padding: 17px;
+  background: #ffffff;
+  border: 1px solid var(--ad-border);
+  border-radius: 11px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ad-activity-card:hover {
+  border-color: #fdba74;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.ad-activity-card > .ad-icon-box {
+  width: 41px;
+  height: 41px;
+}
+
+.ad-activity-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  flex: 1;
+}
+
+.ad-activity-info p {
+  margin: 0 0 8px;
+  color: #4b5563;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.ad-activity-info strong {
+  margin-bottom: 5px;
+  color: #111827;
+  font-size: 23px;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.ad-activity-info span {
+  color: #9ca3af;
+  font-size: 10px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   COLLECTIONS & FOLLOW-UPS
+========================================== */
+
+.ad-finance-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ad-finance-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  min-width: 0;
+  min-height: 142px;
+  padding: 19px;
+  background: #ffffff;
+  border: 1px solid var(--ad-border);
+  border-radius: 11px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ad-finance-card:hover {
+  border-color: #fdba74;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.ad-finance-card > .ad-icon-box {
+  width: 43px;
+  height: 43px;
+}
+
+.ad-finance-card > div:last-child {
+  min-width: 0;
+  flex: 1;
+}
+
+.ad-finance-card p {
+  margin: 0 0 9px;
+  color: #4b5563;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.ad-finance-card h3 {
+  margin: 0 0 7px;
+  color: #111827;
+  font-size: 24px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.ad-finance-card span {
+  color: #9ca3af;
+  font-size: 11px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* ==========================================
+   BUSINESS PERFORMANCE
+========================================== */
+
+.ad-insights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 17px;
+  min-width: 0;
+}
+
+.ad-insight-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 300px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid var(--ad-border);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.025);
+}
+
+.ad-insight-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #f0f1f3;
+}
+
+.ad-insight-heading > .ad-icon-box {
+  width: 43px;
+  height: 43px;
+}
+
+.ad-insight-heading > div:last-child {
+  min-width: 0;
+}
+
+.ad-insight-heading h3 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.ad-insight-heading p {
+  margin: 5px 0 0;
+  color: var(--ad-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.ad-placeholder {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 190px;
+  padding: 25px 15px;
+  text-align: center;
+  background: #fcfcfd;
+  border-radius: 9px;
+  margin-top: 17px;
+}
+
+.ad-placeholder > svg {
+  margin-bottom: 13px;
+  color: #fdba74;
+}
+
+.ad-placeholder strong {
+  margin-bottom: 7px;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.ad-placeholder span {
+  max-width: 280px;
+  color: #9ca3af;
+  font-size: 11px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+/* Best-selling product card spans full row on desktop */
+
+.ad-insight-card.ad-best-selling {
+  grid-column: 1 / -1;
+  min-height: 260px;
+}
+
+/* ==========================================
+   LARGE TABLET / SMALL LAPTOP
+========================================== */
+
+@media (max-width: 1200px) {
+  .analytics-dashboard {
+    padding: 20px;
+  }
+
+  .ad-sales-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ad-activity-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ad-finance-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ad-finance-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .ad-insight-card.ad-best-selling {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width: 768px) {
+  .analytics-dashboard {
+    padding: 16px;
+  }
+
+  .ad-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 25px;
+  }
+
+  .ad-header h1 {
+    font-size: 24px;
+  }
+
+  .ad-header-content > p {
+    font-size: 12px;
+  }
+
+  .ad-date-badge {
+    min-height: 38px;
+    padding: 9px 12px;
+  }
+
+  .ad-section {
+    margin-bottom: 24px;
+  }
+
+  .ad-section-heading {
+    margin-bottom: 14px;
+  }
+
+  .ad-section-heading h2 {
+    font-size: 16px;
+  }
+
+  .ad-metric-grid {
+    gap: 12px;
+  }
+
+  .ad-metric-card {
+    min-height: 165px;
+    padding: 16px;
+  }
+
+  .ad-metric-top {
+    margin-bottom: 14px;
+  }
+
+  .ad-metric-value {
+    font-size: 25px;
+  }
+
+  .ad-activity-card {
+    min-height: 120px;
+    padding: 14px;
+    gap: 11px;
+  }
+
+  .ad-finance-card {
+    min-height: 130px;
+    padding: 15px;
+    gap: 11px;
+  }
+
+  .ad-finance-card h3 {
+    font-size: 22px;
+  }
+
+  .ad-insights-grid {
+    gap: 12px;
+  }
+
+  .ad-insight-card {
+    min-height: 275px;
+    padding: 15px;
+  }
+
+  .ad-insight-heading {
+    gap: 10px;
+  }
+
+  .ad-insight-heading h3 {
+    font-size: 13px;
+  }
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 480px) {
+  .analytics-dashboard {
+    padding: 12px;
+  }
+
+  .ad-header {
+    margin-bottom: 22px;
+  }
+
+  .ad-header h1 {
+    font-size: 22px;
+  }
+
+  .ad-eyebrow {
+    font-size: 10px;
+  }
+
+  .ad-header-content > p {
+    font-size: 11px;
+  }
+
+  .ad-date-badge {
+    font-size: 11px;
+  }
+
+  .ad-section {
+    margin-bottom: 22px;
+  }
+
+  .ad-section-heading h2 {
+    font-size: 15px;
+  }
+
+  .ad-section-heading p {
+    font-size: 11px;
+  }
+
+  .ad-metric-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 11px;
+  }
+
+  .ad-metric-card {
+    min-height: 0;
+    padding: 15px;
+  }
+
+  .ad-metric-top {
+    margin-bottom: 12px;
+  }
+
+  .ad-icon-box {
+    width: 39px;
+    height: 39px;
+  }
+
+  .ad-metric-title {
+    font-size: 12px;
+  }
+
+  .ad-metric-value {
+    font-size: 24px;
+  }
+
+  .ad-activity-card {
+    min-height: 105px;
+    padding: 14px;
+  }
+
+  .ad-activity-info p {
+    font-size: 12px;
+  }
+
+  .ad-activity-info strong {
+    font-size: 21px;
+  }
+
+  .ad-finance-card,
+  .ad-finance-card:last-child {
+    grid-column: auto;
+    min-height: 115px;
+    padding: 14px;
+  }
+
+  .ad-finance-card p {
+    font-size: 12px;
+  }
+
+  .ad-finance-card h3 {
+    font-size: 22px;
+  }
+
+  .ad-insights-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .ad-insight-card,
+  .ad-insight-card.ad-best-selling {
+    grid-column: auto;
+    min-height: 260px;
+    padding: 14px;
+  }
+
+  .ad-insight-heading {
+    padding-bottom: 14px;
+  }
+
+  .ad-insight-heading > .ad-icon-box {
+    width: 39px;
+    height: 39px;
+  }
+
+  .ad-insight-heading h3 {
+    font-size: 13px;
+  }
+
+  .ad-insight-heading p {
+    font-size: 10px;
+  }
+
+  .ad-placeholder {
+    min-height: 175px;
+    padding: 20px 12px;
+  }
+
+  .ad-placeholder strong {
+    font-size: 12px;
+  }
+
+  .ad-placeholder span {
+    font-size: 10px;
+  }
+}
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .analytics-dashboard *,
+  .analytics-dashboard *::before,
+  .analytics-dashboard *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

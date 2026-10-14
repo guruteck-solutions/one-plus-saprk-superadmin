@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import "../../css/painter/PainterLoyaltyDashboard.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const PainterLoyaltyDashboard = () => {
   const navigate = useNavigate();
@@ -109,7 +109,7 @@ const PainterLoyaltyDashboard = () => {
           </h2>
 
           {loyalty?.nextTier &&
-            loyalty.nextTier !== "-" ? (
+          loyalty.nextTier !== "-" ? (
             <div className="painter-tier-progress-text">
               {achievementPercentage}% toward{" "}
               <strong>{loyalty.nextTier}</strong>
@@ -167,10 +167,11 @@ const PainterLoyaltyDashboard = () => {
 
               return (
                 <div
-                  className={`painter-tier-item ${isCurrent
+                  className={`painter-tier-item ${
+                    isCurrent
                       ? "painter-tier-item-active"
                       : ""
-                    }`}
+                  }`}
                   key={tierName}
                 >
 

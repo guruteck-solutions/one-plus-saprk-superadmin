@@ -1,107 +1,579 @@
 .sales-executive-sidebar {
+  --se-orange: #ff6500;
+  --se-orange-dark: #ff7b00;
+  --se-orange-light: #fff3e8;
+  --se-text: #d5dce4;
+  --se-muted: #bfc8d2;
+  --se-border: rgba(255, 255, 255, 0.08);
+  --se-white: #ffffff;
+  --se-bg: #071522;
+
   position: fixed;
-  top: 70px;
+  top: 72px;
+  bottom: 0;
   left: 0;
-  width: 260px;
-  height: calc(100vh - 70px);
-  background: #ffffff;
-  border-right: 1px solid #e5e7eb;
-  z-index: 999;
-  overflow-y: auto;
-  transition: transform 0.3s ease;
+  z-index: 800;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 210px;
+  max-width: 100%;
+  height: calc(100vh - 72px);
+  height: calc(100dvh - 72px);
+  min-height: 0;
+
+  padding: 0 10px 12px;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  color: var(--se-white);
+  background: var(--se-bg);
+  border-right: 1px solid var(--se-border);
+
+  font-family: inherit;
+
+  transition:
+    width 0.2s ease,
+    padding 0.2s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
+.sales-executive-sidebar,
+.sales-executive-sidebar *,
+.sales-executive-sidebar *::before,
+.sales-executive-sidebar *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   SIDEBAR HEADER
+========================================= */
+
 .sales-executive-sidebar-header {
-  height: 64px;
-  padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #e5e7eb;
+  flex: 0 0 auto;
+  gap: 8px;
+
+  min-width: 0;
+  min-height: 76px;
+  padding: 14px 5px;
+
+  background: transparent;
+  border-bottom: 1px solid var(--se-border);
 }
 
-.sales-executive-sidebar-header h2 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 600;
-  color: #1f2937;
+/* =========================================
+   LOGO
+========================================= */
+
+.sales-executive-sidebar-logo {
+  display: block;
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  line-height: 1.2;
 }
+
+.sales-executive-sidebar-logo span {
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.sales-executive-sidebar-logo strong {
+  color: #ff6b00;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.sales-executive-sidebar-logo small {
+  display: block;
+  margin-top: 3px;
+
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 4px;
+}
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
 
 .sales-executive-sidebar-close {
   display: none;
-  border: none;
-  background: transparent;
-  color: #374151;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+
+  width: 34px;
+  height: 34px;
+  padding: 0;
+
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+
   cursor: pointer;
+  transition: background 0.2s ease;
 }
+
+.sales-executive-sidebar-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.sales-executive-sidebar-close svg {
+  width: 19px;
+  height: 19px;
+}
+
+/* =========================================
+   SIDEBAR MENU
+========================================= */
 
 .sales-executive-sidebar-menu {
-  padding: 16px 12px;
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
-  gap: 4px;
+  align-items: stretch;
+  gap: 3px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 12px 0;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
 }
+
+.sales-executive-sidebar-menu::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sales-executive-sidebar-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sales-executive-sidebar-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* =========================================
+   MENU ITEMS
+========================================= */
 
 .sales-executive-sidebar-item {
-  width: 100%;
-  min-height: 44px;
-  padding: 0 14px;
+  position: relative;
+
   display: flex;
   align-items: center;
-  gap: 12px;
-  border: none;
-  border-radius: 8px;
+  flex: 0 0 auto;
+  gap: 11px;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 38px;
+  margin: 0;
+  padding: 8px 10px;
+
+  color: #d5dce4;
   background: transparent;
-  color: #4b5563;
-  text-decoration: none;
-  font-size: 14px;
+  border: 0;
+  border-radius: 8px;
+
+  font-family: inherit;
+  font-size: 11px;
   font-weight: 500;
-  cursor: pointer;
+  line-height: 1.4;
   text-align: left;
-  transition: all 0.2s ease;
+  text-decoration: none;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.sales-executive-sidebar-item:hover {
-  background: #f3f4f6;
-  color: #111827;
+.sales-executive-sidebar-item svg {
+  display: block;
+  flex: 0 0 auto;
+
+  width: 19px;
+  height: 19px;
+
+  color: inherit;
+  stroke-width: 1.9;
 }
 
-.sales-executive-sidebar-item-active {
-  background: #eff6ff;
-  color: #2563eb;
+.sales-executive-sidebar-item span {
+  display: block;
+  flex: 1 1 auto;
+  min-width: 0;
+
+  overflow: hidden;
+  color: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
+/* =========================================
+   HOVER
+========================================= */
+
+.sales-executive-sidebar-menu
+.sales-executive-sidebar-item:not(
+  .sales-executive-sidebar-item-active
+):not(
+  .sales-executive-sidebar-logout
+):hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================================
+   ACTIVE ROUTE
+========================================= */
+
+.sales-executive-sidebar-item.sales-executive-sidebar-item-active {
+  color: #ffffff;
+  background: linear-gradient(90deg, #ff6500, #ff7b00);
+  border: 0;
+
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(255, 105, 0, 0.22);
+}
+
+.sales-executive-sidebar-item.sales-executive-sidebar-item-active svg,
+.sales-executive-sidebar-item.sales-executive-sidebar-item-active span {
+  color: #ffffff;
+}
+
+.sales-executive-sidebar-item.sales-executive-sidebar-item-active svg {
+  stroke-width: 2;
+}
+
+.sales-executive-sidebar-item.sales-executive-sidebar-item-active:hover {
+  color: #ffffff;
+  background: linear-gradient(90deg, #ff6500, #ff7b00);
+}
+
+/* =========================================
+   KEYBOARD FOCUS
+========================================= */
+
+.sales-executive-sidebar-item:focus-visible,
+.sales-executive-sidebar-close:focus-visible {
+  outline: 2px solid #ff7b00;
+  outline-offset: 2px;
+}
+
+/* =========================================
+   LOGOUT
+========================================= */
 
 .sales-executive-sidebar-logout {
-  margin-top: 12px;
+  margin-top: 6px;
+  color: #ffaaa3;
+  background: transparent;
+  border: 0;
 }
+
+.sales-executive-sidebar-logout svg {
+  color: inherit;
+}
+
+.sales-executive-sidebar-logout:hover {
+  color: #ffffff;
+  background: rgba(255, 70, 70, 0.13);
+}
+
+/* =========================================
+   BOTTOM SUPPORT SECTION
+========================================= */
+
+.sales-executive-sidebar-bottom {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 3px;
+
+  margin-top: auto;
+  padding-top: 12px;
+
+  border-top: 1px solid var(--se-border);
+}
+
+.sales-executive-sidebar-support {
+  padding: 0 4px;
+  color: #d5dce4;
+  overflow-wrap: anywhere;
+}
+
+.sales-executive-sidebar-support strong {
+  display: block;
+  margin-bottom: 6px;
+
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.sales-executive-sidebar-support p {
+  margin: 0 0 6px;
+
+  color: #d5dce4;
+  font-size: 10px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.sales-executive-sidebar-support span {
+  display: block;
+
+  color: #d5dce4;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.sales-executive-sidebar-version {
+  flex-shrink: 0;
+  margin-top: 8px;
+
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 9px;
+  text-align: center;
+}
+
+/* =========================================
+   OVERLAY
+========================================= */
 
 .sales-executive-sidebar-overlay {
   display: none;
 }
 
+/* =========================================
+   TABLET
+========================================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sales-executive-sidebar {
+    width: 190px;
+  }
+
+  .sales-executive-sidebar-header {
+    padding-right: 4px;
+    padding-left: 4px;
+  }
+
+  .sales-executive-sidebar-logo span,
+  .sales-executive-sidebar-logo strong {
+    font-size: 19px;
+  }
+
+  .sales-executive-sidebar-menu {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .sales-executive-sidebar-item {
+    gap: 9px;
+    padding-right: 8px;
+    padding-left: 8px;
+    font-size: 10px;
+  }
+}
+
+/* =========================================
+   MOBILE DRAWER
+========================================= */
+
 @media (max-width: 768px) {
   .sales-executive-sidebar {
     top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1200;
+
+    width: min(300px, 84vw);
+    max-width: 100%;
     height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+
+    padding: 14px 10px;
+
     transform: translateX(-100%);
-    z-index: 1100;
+    visibility: hidden;
+    pointer-events: none;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+
+    transition:
+      transform 0.25s ease,
+      visibility 0.25s ease,
+      box-shadow 0.25s ease;
   }
 
-  .sales-executive-sidebar-open {
+  .sales-executive-sidebar.sales-executive-sidebar-open {
     transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.28);
+  }
+
+  .sales-executive-sidebar-header {
+    min-height: 62px;
+    padding: 8px 5px 14px;
+    border-bottom: 0;
+  }
+
+  .sales-executive-sidebar-logo span,
+  .sales-executive-sidebar-logo strong {
+    font-size: 20px;
   }
 
   .sales-executive-sidebar-close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-flex;
+  }
+
+  .sales-executive-sidebar-menu {
+    gap: 4px;
+    padding: 8px 0 calc(14px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .sales-executive-sidebar-item {
+    min-height: 42px;
+    padding: 10px 12px;
+    gap: 11px;
+    font-size: 12px;
+  }
+
+  .sales-executive-sidebar-item svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .sales-executive-sidebar-bottom {
+    padding-top: 10px;
   }
 
   .sales-executive-sidebar-overlay {
-    display: block;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.35);
-    z-index: 1099;
+    z-index: 1190;
+
+    display: block;
+
+    background: rgba(0, 0, 0, 0.42);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+  .sales-executive-sidebar {
+    width: 86vw;
+    padding: 12px 9px;
+  }
+
+  .sales-executive-sidebar-header {
+    padding-right: 3px;
+    padding-left: 3px;
+  }
+
+  .sales-executive-sidebar-menu {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .sales-executive-sidebar-item {
+    min-height: 40px;
+    gap: 10px;
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+}
+
+/* =========================================
+   SHORT HEIGHT SCREENS
+========================================= */
+
+@media (max-height: 520px) {
+  .sales-executive-sidebar-header {
+    min-height: 52px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .sales-executive-sidebar-menu {
+    padding-top: 8px;
+    padding-bottom: 10px;
+  }
+
+  .sales-executive-sidebar-item {
+    min-height: 36px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  .sales-executive-sidebar-bottom {
+    padding-top: 8px;
+  }
+}
+
+/* =========================================
+   TOUCH DEVICES
+========================================= */
+
+@media (hover: none) {
+  .sales-executive-sidebar-menu
+  .sales-executive-sidebar-item:not(
+    .sales-executive-sidebar-item-active
+  ):not(
+    .sales-executive-sidebar-logout
+  ):hover {
+    color: #d5dce4;
+    background: transparent;
+  }
+
+  .sales-executive-sidebar-item.sales-executive-sidebar-item-active:hover {
+    color: #ffffff;
+    background: linear-gradient(90deg, #ff6500, #ff7b00);
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .sales-executive-sidebar,
+  .sales-executive-sidebar * {
+    transition: none !important;
+    animation: none !important;
   }
 }

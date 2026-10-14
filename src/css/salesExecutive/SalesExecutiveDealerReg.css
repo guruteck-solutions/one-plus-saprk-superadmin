@@ -1,0 +1,1352 @@
+
+/* =========================================
+   Sales Executive - Dealer Registration
+   Theme: Orange + White
+   Responsive: Desktop, Tablet, Mobile
+========================================= */
+
+.dealer-registration-page {
+  --dealer-primary: #f47721;
+  --dealer-primary-dark: #df6415;
+  --dealer-primary-light: #fff1e6;
+  --dealer-bg: #f7f8fa;
+  --dealer-card: #ffffff;
+  --dealer-text: #253247;
+  --dealer-muted: #718096;
+  --dealer-border: #e6eaf0;
+  --dealer-shadow: 0 4px 18px rgba(30, 41, 59, 0.06);
+
+  width: 100%;
+  min-width: 0;
+  padding: 24px;
+  color: var(--dealer-text);
+  background: var(--dealer-bg);
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.dealer-registration-page *,
+.dealer-registration-page *::before,
+.dealer-registration-page *::after {
+  box-sizing: border-box;
+}
+
+/* .dealer-registration-page button,
+.dealer-registration-page input,
+.dealer-registration-page select,
+.dealer-registration-page textarea {
+  font: inherit;
+} */
+
+/* =========================================
+   Page Header
+========================================= */
+
+.dealer-registration-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.dealer-registration-header h1 {
+  margin: 0 0 7px;
+  color: var(--dealer-text);
+  font-size: 27px;
+  font-weight: 750;
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+.dealer-registration-header p {
+  margin: 0;
+  color: var(--dealer-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.dealer-registration-primary-btn,
+.dealer-registration-secondary-btn,
+.dealer-registration-refresh-btn,
+.dealer-registration-action-btn,
+.dealer-registration-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.dealer-registration-primary-btn {
+  min-height: 43px;
+  padding: 11px 18px;
+  border: 1px solid var(--dealer-primary);
+  border-radius: 9px;
+  background: var(--dealer-primary);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 650;
+  box-shadow: 0 3px 8px rgba(244, 119, 33, 0.15);
+}
+
+.dealer-registration-primary-btn:hover:not(:disabled) {
+  background: var(--dealer-primary-dark);
+  border-color: var(--dealer-primary-dark);
+  box-shadow: 0 5px 12px rgba(244, 119, 33, 0.22);
+  transform: translateY(-1px);
+}
+
+.dealer-registration-primary-btn:disabled,
+.dealer-registration-secondary-btn:disabled,
+.dealer-registration-close-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.dealer-registration-secondary-btn {
+  min-height: 40px;
+  padding: 9px 15px;
+  border: 1px solid var(--dealer-border);
+  border-radius: 8px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.dealer-registration-secondary-btn:hover:not(:disabled) {
+  border-color: var(--dealer-primary);
+  background: var(--dealer-primary-light);
+  color: var(--dealer-primary-dark);
+}
+
+/* =========================================
+   Statistics Cards
+========================================= */
+
+.dealer-registration-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dealer-registration-stat-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  min-height: 112px;
+  padding: 20px;
+  border: 1px solid var(--dealer-border);
+  border-radius: 12px;
+  background: var(--dealer-card);
+  box-shadow: var(--dealer-shadow);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.dealer-registration-stat-card:hover {
+  border-color: #ffd0ad;
+  box-shadow: 0 7px 22px rgba(30, 41, 59, 0.08);
+  transform: translateY(-2px);
+}
+
+.dealer-registration-stat-card > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.dealer-registration-stat-card span {
+  color: var(--dealer-muted);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.dealer-registration-stat-card strong {
+  color: var(--dealer-text);
+  font-size: 28px;
+  font-weight: 750;
+  line-height: 1.1;
+}
+
+.dealer-registration-stat-card > svg {
+  flex-shrink: 0;
+  padding: 11px;
+  box-sizing: content-box;
+  border-radius: 10px;
+  background: var(--dealer-primary-light);
+  color: var(--dealer-primary);
+}
+
+/* =========================================
+   Registration History Card
+========================================= */
+
+.dealer-registration-list-card {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--dealer-border);
+  border-radius: 13px;
+  background: var(--dealer-card);
+  box-shadow: var(--dealer-shadow);
+}
+
+.dealer-registration-list-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.dealer-registration-list-heading h2 {
+  margin: 0 0 6px;
+  color: var(--dealer-text);
+  font-size: 19px;
+  font-weight: 720;
+}
+
+.dealer-registration-list-heading p {
+  margin: 0;
+  color: var(--dealer-muted);
+  font-size: 12px;
+}
+
+.dealer-registration-refresh-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--dealer-border);
+  border-radius: 9px;
+  background: #ffffff;
+  color: #64748b;
+}
+
+.dealer-registration-refresh-btn:hover:not(:disabled) {
+  border-color: var(--dealer-primary);
+  background: var(--dealer-primary-light);
+  color: var(--dealer-primary);
+}
+
+.dealer-registration-refresh-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.dealer-registration-refresh-btn:disabled svg {
+  animation: dealer-registration-spin 1s linear infinite;
+}
+
+@keyframes dealer-registration-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   Search and Filters
+========================================= */
+
+.dealer-registration-filters {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 210px;
+  gap: 13px;
+  margin-bottom: 20px;
+}
+
+.dealer-registration-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 13px;
+  border: 1px solid var(--dealer-border);
+  border-radius: 9px;
+  background: #ffffff;
+  color: #94a3b8;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.dealer-registration-search:focus-within {
+  border-color: var(--dealer-primary);
+  box-shadow: 0 0 0 3px rgba(244, 119, 33, 0.1);
+}
+
+.dealer-registration-search svg {
+  flex-shrink: 0;
+}
+
+.dealer-registration-search input {
+  width: 100%;
+  min-width: 0;
+  height: 42px;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--dealer-text);
+  font-size: 13px;
+}
+
+.dealer-registration-search input::placeholder {
+  color: #9aa5b5;
+}
+
+.dealer-registration-filters > select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--dealer-border);
+  border-radius: 9px;
+  outline: none;
+  background: #ffffff;
+  color: var(--dealer-text);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.dealer-registration-filters > select:focus {
+  border-color: var(--dealer-primary);
+  box-shadow: 0 0 0 3px rgba(244, 119, 33, 0.1);
+}
+
+/* =========================================
+   Desktop Table
+========================================= */
+
+.dealer-registration-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--dealer-border);
+  border-radius: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #d5dce5 #f7f8fa;
+}
+
+.dealer-registration-table {
+  width: 100%;
+  min-width: 780px;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+}
+
+.dealer-registration-table thead {
+  background: #fff5ed;
+}
+
+.dealer-registration-table th {
+  padding: 14px 15px;
+  border-bottom: 1px solid #f1d9c8;
+  color: #7a4b2c;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.35px;
+  white-space: nowrap;
+}
+
+.dealer-registration-table td {
+  padding: 15px;
+  border-bottom: 1px solid #edf0f4;
+  color: #475569;
+  font-size: 12px;
+  line-height: 1.6;
+  vertical-align: middle;
+}
+
+.dealer-registration-table tbody tr {
+  transition: background-color 0.18s ease;
+}
+
+.dealer-registration-table tbody tr:hover {
+  background: #fffaf6;
+}
+
+.dealer-registration-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.dealer-registration-name-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 100px;
+  max-width: 200px;
+}
+
+.dealer-registration-name-cell strong {
+  overflow-wrap: anywhere;
+  color: var(--dealer-text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dealer-registration-name-cell span {
+  overflow-wrap: anywhere;
+  color: var(--dealer-muted);
+  font-size: 11px;
+}
+
+/* =========================================
+   Status Badges
+========================================= */
+
+.dealer-registration-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  padding: 5px 9px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1.4;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.dealer-registration-status-pending {
+  border-color: #f4d89b;
+  background: #fff7df;
+  color: #946200;
+}
+
+.dealer-registration-status-kyc-verified {
+  border-color: #b9dcff;
+  background: #edf6ff;
+  color: #1765a3;
+}
+
+.dealer-registration-status-approved {
+  border-color: #b8e6cb;
+  background: #eaf9ef;
+  color: #187644;
+}
+
+.dealer-registration-status-rejected {
+  border-color: #f4c3c3;
+  background: #fff0f0;
+  color: #bd3030;
+}
+
+.dealer-registration-status-correction-required {
+  border-color: #f4c6a6;
+  background: #fff1e8;
+  color: #b45309;
+}
+
+/* =========================================
+   Table Action Button
+========================================= */
+
+.dealer-registration-action-btn {
+  width: 35px;
+  height: 35px;
+  border: 1px solid #ffd7bb;
+  border-radius: 8px;
+  background: var(--dealer-primary-light);
+  color: var(--dealer-primary-dark);
+}
+
+.dealer-registration-action-btn:hover {
+  border-color: var(--dealer-primary);
+  background: var(--dealer-primary);
+  color: #ffffff;
+}
+
+/* =========================================
+   Loading and Empty States
+========================================= */
+
+.dealer-registration-message,
+.dealer-registration-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 230px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.dealer-registration-message {
+  color: var(--dealer-muted);
+  font-size: 14px;
+}
+
+.dealer-registration-empty > svg {
+  padding: 13px;
+  box-sizing: content-box;
+  border-radius: 14px;
+  background: var(--dealer-primary-light);
+  color: var(--dealer-primary);
+}
+
+.dealer-registration-empty h3 {
+  margin: 0;
+  color: var(--dealer-text);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.dealer-registration-empty p {
+  max-width: 400px;
+  margin: 0 0 7px;
+  color: var(--dealer-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* =========================================
+   Mobile Registration Cards
+========================================= */
+
+.dealer-registration-mobile-list {
+  display: none;
+}
+
+.dealer-registration-mobile-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  padding: 17px;
+  border: 1px solid var(--dealer-border);
+  border-radius: 11px;
+  background: #ffffff;
+  box-shadow: 0 2px 9px rgba(30, 41, 59, 0.04);
+}
+
+.dealer-registration-mobile-card > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  padding-right: 5px;
+}
+
+.dealer-registration-mobile-card > div:first-child strong {
+  color: var(--dealer-text);
+  font-size: 15px;
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.dealer-registration-mobile-card > div:first-child span {
+  color: var(--dealer-muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.dealer-registration-mobile-card > .dealer-registration-status {
+  align-self: flex-start;
+}
+
+.dealer-registration-mobile-info {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid #edf0f4;
+}
+
+.dealer-registration-mobile-info span {
+  min-width: 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.dealer-registration-mobile-card > .dealer-registration-secondary-btn {
+  align-self: flex-start;
+}
+
+/* =========================================
+   Modal Overlay
+========================================= */
+
+.dealer-registration-modal-overlay {
+  position: fixed;
+  z-index: 1200;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  background: rgba(15, 23, 42, 0.56);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.dealer-registration-modal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 900px;
+  max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.25);
+  animation: dealer-registration-modal-in 0.2s ease-out;
+}
+
+@keyframes dealer-registration-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================================
+   Modal Header
+========================================= */
+
+.dealer-registration-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 21px 24px;
+  border-bottom: 1px solid var(--dealer-border);
+  background: #ffffff;
+}
+
+.dealer-registration-modal-header > div {
+  min-width: 0;
+}
+
+.dealer-registration-modal-header h2 {
+  margin: 0 0 6px;
+  color: var(--dealer-text);
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.dealer-registration-modal-header p {
+  margin: 0;
+  color: var(--dealer-muted);
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.dealer-registration-close-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--dealer-border);
+  border-radius: 9px;
+  background: #ffffff;
+  color: #64748b;
+}
+
+.dealer-registration-close-btn:hover:not(:disabled) {
+  border-color: #ffc7a2;
+  background: var(--dealer-primary-light);
+  color: var(--dealer-primary-dark);
+}
+
+/* =========================================
+   Form Body and Sections
+========================================= */
+
+.dealer-registration-modal form {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.dealer-registration-form-body {
+  flex: 1;
+  min-height: 0;
+  padding: 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #d5dce5 #f8fafc;
+}
+
+.dealer-registration-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 17px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f2e4da;
+}
+
+.dealer-registration-section-title:not(:first-child) {
+  margin-top: 27px;
+}
+
+.dealer-registration-section-title > svg {
+  flex-shrink: 0;
+  color: var(--dealer-primary);
+}
+
+.dealer-registration-section-title h3 {
+  margin: 0;
+  color: var(--dealer-text);
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+/* =========================================
+   Form Fields
+========================================= */
+
+.dealer-registration-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.dealer-registration-form-grid > label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.dealer-registration-form-grid > .dealer-registration-field-full {
+  grid-column: 1 / -1;
+}
+
+.dealer-registration-form-grid input,
+.dealer-registration-form-grid select,
+.dealer-registration-form-grid textarea {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  min-height: 43px;
+  padding: 11px 12px;
+  border: 1px solid #dfe5ec;
+  border-radius: 8px;
+  outline: none;
+  background: #ffffff;
+  color: var(--dealer-text);
+  font-size: 13px;
+  font-weight: 400;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.dealer-registration-form-grid textarea {
+  min-height: 75px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.dealer-registration-form-grid input::placeholder,
+.dealer-registration-form-grid textarea::placeholder {
+  color: #9aa5b5;
+  opacity: 1;
+}
+
+.dealer-registration-form-grid input:focus,
+.dealer-registration-form-grid select:focus,
+.dealer-registration-form-grid textarea:focus {
+  border-color: var(--dealer-primary);
+  box-shadow: 0 0 0 3px rgba(244, 119, 33, 0.1);
+}
+
+.dealer-registration-form-grid input:disabled,
+.dealer-registration-form-grid select:disabled,
+.dealer-registration-form-grid textarea:disabled {
+  background: #f4f6f8;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.dealer-registration-form-grid select {
+  cursor: pointer;
+}
+
+/* =========================================
+   KYC Document Uploads
+========================================= */
+
+.dealer-registration-documents {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.dealer-registration-document-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  padding: 15px;
+  border: 1px dashed #e7c4ab;
+  border-radius: 10px;
+  background: #fffbf8;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.dealer-registration-document-field:hover {
+  border-color: var(--dealer-primary);
+  background: #fff6ef;
+}
+
+.dealer-registration-document-field > span {
+  color: #475569;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.dealer-registration-document-field input[type="file"] {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid #e4e7ec;
+  border-radius: 7px;
+  background: #ffffff;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.dealer-registration-document-field input[type="file"]::file-selector-button {
+  margin-right: 8px;
+  padding: 7px 9px;
+  border: none;
+  border-radius: 5px;
+  background: var(--dealer-primary-light);
+  color: var(--dealer-primary-dark);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dealer-registration-document-field input[type="file"]::file-selector-button:hover {
+  background: #ffe1cd;
+}
+
+.dealer-registration-document-field small {
+  display: block;
+  color: #187644;
+  font-size: 11px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   Modal Footer
+========================================= */
+
+.dealer-registration-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--dealer-border);
+  background: #ffffff;
+}
+
+.dealer-registration-form-footer .dealer-registration-primary-btn,
+.dealer-registration-form-footer .dealer-registration-secondary-btn {
+  min-width: 115px;
+}
+
+/* =========================================
+   Registration Details Modal
+========================================= */
+
+.dealer-registration-details {
+  flex: 1;
+  min-height: 0;
+  padding: 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #d5dce5 #f8fafc;
+}
+
+.dealer-registration-details > .dealer-registration-status {
+  margin-bottom: 18px;
+}
+
+.dealer-registration-details h3 {
+  margin: 22px 0 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f2e4da;
+  color: var(--dealer-text);
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.dealer-registration-details h3:first-of-type {
+  margin-top: 0;
+}
+
+.dealer-registration-details p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f2f5;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.dealer-registration-details p strong {
+  flex-shrink: 0;
+  color: #334155;
+  font-weight: 700;
+}
+
+.dealer-registration-details a {
+  color: var(--dealer-primary-dark);
+  font-weight: 650;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.dealer-registration-details a:hover {
+  color: #b94d08;
+  text-decoration: underline;
+}
+
+.dealer-registration-details + .dealer-registration-form-footer {
+  flex-shrink: 0;
+}
+
+/* =========================================
+   Keyboard Accessibility
+========================================= */
+
+.dealer-registration-page button:focus-visible,
+.dealer-registration-modal button:focus-visible {
+  outline: 3px solid rgba(244, 119, 33, 0.35);
+  outline-offset: 2px;
+}
+
+/* =========================================
+   Tablet Responsive
+========================================= */
+
+@media (max-width: 1100px) {
+  .dealer-registration-page {
+    padding: 20px;
+  }
+
+  .dealer-registration-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dealer-registration-stat-card {
+    min-height: 100px;
+  }
+
+  .dealer-registration-list-card {
+    padding: 18px;
+  }
+
+  .dealer-registration-modal {
+    max-width: 780px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dealer-registration-page {
+    padding: 16px;
+  }
+
+  .dealer-registration-header {
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .dealer-registration-header h1 {
+    font-size: 23px;
+  }
+
+  .dealer-registration-header p {
+    font-size: 12px;
+  }
+
+  .dealer-registration-header > .dealer-registration-primary-btn {
+    min-height: 40px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .dealer-registration-stats {
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .dealer-registration-stat-card {
+    min-height: 92px;
+    padding: 15px;
+  }
+
+  .dealer-registration-stat-card strong {
+    font-size: 24px;
+  }
+
+  .dealer-registration-stat-card > svg {
+    padding: 9px;
+  }
+
+  .dealer-registration-list-card {
+    padding: 16px;
+  }
+
+  .dealer-registration-filters {
+    grid-template-columns: minmax(0, 1fr) 175px;
+    gap: 10px;
+  }
+
+  .dealer-registration-modal-overlay {
+    align-items: center;
+    padding: 16px;
+  }
+
+  .dealer-registration-modal {
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    border-radius: 12px;
+  }
+
+  .dealer-registration-modal-header {
+    padding: 17px 18px;
+  }
+
+  .dealer-registration-modal-header h2 {
+    font-size: 18px;
+  }
+
+  .dealer-registration-form-body,
+  .dealer-registration-details {
+    padding: 18px;
+  }
+
+  .dealer-registration-form-footer {
+    padding: 14px 18px;
+  }
+}
+
+/* =========================================
+   Mobile Responsive
+========================================= */
+
+@media (max-width: 600px) {
+  .dealer-registration-page {
+    padding: 13px;
+  }
+
+  .dealer-registration-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .dealer-registration-header h1 {
+    font-size: 22px;
+  }
+
+  .dealer-registration-header > .dealer-registration-primary-btn {
+    align-self: flex-start;
+  }
+
+  .dealer-registration-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .dealer-registration-stat-card {
+    min-height: 91px;
+    padding: 13px;
+    border-radius: 10px;
+  }
+
+  .dealer-registration-stat-card > div {
+    gap: 7px;
+  }
+
+  .dealer-registration-stat-card span {
+    font-size: 10px;
+  }
+
+  .dealer-registration-stat-card strong {
+    font-size: 23px;
+  }
+
+  .dealer-registration-stat-card > svg {
+    padding: 7px;
+  }
+
+  .dealer-registration-list-card {
+    padding: 13px;
+    border-radius: 11px;
+  }
+
+  .dealer-registration-list-heading {
+    margin-bottom: 15px;
+  }
+
+  .dealer-registration-list-heading h2 {
+    font-size: 16px;
+  }
+
+  .dealer-registration-list-heading p {
+    font-size: 11px;
+  }
+
+  .dealer-registration-refresh-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .dealer-registration-filters {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .dealer-registration-search,
+  .dealer-registration-filters > select {
+    min-height: 42px;
+  }
+
+  .dealer-registration-search input {
+    height: 40px;
+    font-size: 12px;
+  }
+
+  .dealer-registration-table-wrap {
+    display: none;
+  }
+
+  .dealer-registration-mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .dealer-registration-mobile-card {
+    padding: 14px;
+  }
+
+  .dealer-registration-modal-overlay {
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .dealer-registration-modal {
+    max-height: calc(100vh - 20px);
+    max-height: calc(100dvh - 20px);
+    border-radius: 11px;
+  }
+
+  .dealer-registration-modal-header {
+    padding: 15px;
+  }
+
+  .dealer-registration-modal-header h2 {
+    font-size: 16px;
+  }
+
+  .dealer-registration-modal-header p {
+    font-size: 11px;
+  }
+
+  .dealer-registration-close-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .dealer-registration-form-body,
+  .dealer-registration-details {
+    padding: 15px;
+  }
+
+  .dealer-registration-section-title {
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .dealer-registration-section-title:not(:first-child) {
+    margin-top: 23px;
+  }
+
+  .dealer-registration-section-title h3 {
+    font-size: 14px;
+  }
+
+  .dealer-registration-form-grid,
+  .dealer-registration-documents {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .dealer-registration-form-grid > .dealer-registration-field-full {
+    grid-column: auto;
+  }
+
+  .dealer-registration-form-grid > label {
+    font-size: 12px;
+  }
+
+  .dealer-registration-form-grid input,
+  .dealer-registration-form-grid select,
+  .dealer-registration-form-grid textarea {
+    min-height: 42px;
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .dealer-registration-document-field {
+    padding: 12px;
+  }
+
+  .dealer-registration-form-footer {
+    gap: 8px;
+    padding: 12px 15px;
+  }
+
+  .dealer-registration-form-footer .dealer-registration-primary-btn,
+  .dealer-registration-form-footer .dealer-registration-secondary-btn {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 11px;
+    font-size: 12px;
+  }
+
+  .dealer-registration-details h3 {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  .dealer-registration-details p {
+    font-size: 12px;
+  }
+}
+
+/* =========================================
+   Small Mobile Devices
+========================================= */
+
+@media (max-width: 380px) {
+  .dealer-registration-page {
+    padding: 10px;
+  }
+
+  .dealer-registration-header h1 {
+    font-size: 20px;
+  }
+
+  .dealer-registration-stats {
+    gap: 8px;
+  }
+
+  .dealer-registration-stat-card {
+    gap: 7px;
+    padding: 10px;
+  }
+
+  .dealer-registration-stat-card span {
+    font-size: 9px;
+  }
+
+  .dealer-registration-stat-card strong {
+    font-size: 21px;
+  }
+
+  .dealer-registration-stat-card > svg {
+    padding: 6px;
+  }
+
+  .dealer-registration-list-card {
+    padding: 10px;
+  }
+
+  .dealer-registration-modal-overlay {
+    padding: 7px;
+  }
+
+  .dealer-registration-modal {
+    max-height: calc(100vh - 14px);
+    max-height: calc(100dvh - 14px);
+  }
+
+  .dealer-registration-modal-header {
+    padding: 12px;
+  }
+
+  .dealer-registration-form-body,
+  .dealer-registration-details {
+    padding: 12px;
+  }
+
+  .dealer-registration-form-footer {
+    padding: 10px 12px;
+  }
+}
+
+/* =========================================
+   Reduced Motion
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .dealer-registration-page *,
+  .dealer-registration-page *::before,
+  .dealer-registration-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

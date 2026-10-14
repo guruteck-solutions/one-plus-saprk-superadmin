@@ -5,7 +5,7 @@ import { Gift, ArrowRight, LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 import "../../css/painter/PainterOffersListing.css";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const PainterOffersListing = () => {
   const navigate = useNavigate();
@@ -137,13 +137,13 @@ const PainterOffersListing = () => {
                   <span>
                     {offer.startDate
                       ? new Date(offer.startDate).toLocaleDateString(
-                        "en-GB",
-                        {
-                          day: "2-digit",
-                          month: "short",
-                          year: "numeric",
-                        }
-                      )
+                          "en-GB",
+                          {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                          }
+                        )
                       : "-"}
                   </span>
 
@@ -152,13 +152,13 @@ const PainterOffersListing = () => {
                   <span>
                     {offer.endDate
                       ? new Date(offer.endDate).toLocaleDateString(
-                        "en-GB",
-                        {
-                          day: "2-digit",
-                          month: "short",
-                          year: "numeric",
-                        }
-                      )
+                          "en-GB",
+                          {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                          }
+                        )
                       : "-"}
                   </span>
                 </div>

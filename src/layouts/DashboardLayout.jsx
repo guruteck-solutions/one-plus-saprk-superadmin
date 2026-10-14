@@ -1,6 +1,8 @@
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 
+import "../css/superadmin/DashboardLayout.css";
+
 const DashboardLayout = ({ children }) => {
   return (
     <div className="dashboard">

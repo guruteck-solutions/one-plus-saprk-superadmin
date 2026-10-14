@@ -100,7 +100,7 @@ const OTPVerification = () => {
       setError("");
 
       const response = await axios.post(
-        "https://one-plus-saprk-backend.onrender.com/api/auth/forgot-password/verify-otp",
+        "http://localhost:5000/api/auth/forgot-password/verify-otp",
         {
           identifier,
           otp: otpValue,
@@ -135,7 +135,7 @@ const OTPVerification = () => {
       setError("");
 
       await axios.post(
-        "https://one-plus-saprk-backend.onrender.com/api/auth/forgot-password/send-otp",
+        "http://localhost:5000/api/auth/forgot-password/send-otp",
         {
           identifier,
         }

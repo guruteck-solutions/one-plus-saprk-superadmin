@@ -7,7 +7,7 @@ import {
 import { toast } from "sonner";
 import "../../css/painter/PainterProductVerification.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const PainterProductVerification = () => {
   const [verification, setVerification] = useState(null);

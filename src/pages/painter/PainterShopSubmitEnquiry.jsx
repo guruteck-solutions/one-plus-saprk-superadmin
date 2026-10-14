@@ -40,7 +40,7 @@ const PainterShopSubmitEnquiry = () => {
                 const token = localStorage.getItem("token");
 
                 const response = await axios.get(
-                    "https://one-plus-saprk-backend.onrender.com/api/painter/dealers",
+                    "http://localhost:5000/api/painter/dealers",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -91,7 +91,7 @@ const PainterShopSubmitEnquiry = () => {
             }));
 
             const response = await axios.post(
-                "https://one-plus-saprk-backend.onrender.com/api/painter/shop-enquiries",
+                "http://localhost:5000/api/painter/shop-enquiries",
                 {
                     products,
                     preferredDealer: dealer,
@@ -155,10 +155,11 @@ const PainterShopSubmitEnquiry = () => {
 
                         <input
                             type="text"
-                            value={`${cartItems.length} ${cartItems.length === 1
+                            value={`${cartItems.length} ${
+                                cartItems.length === 1
                                     ? "product"
                                     : "products"
-                                }`}
+                            }`}
                             readOnly
                         />
 

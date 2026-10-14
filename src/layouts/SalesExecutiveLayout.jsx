@@ -1,7 +1,9 @@
+
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import SalesExecutiveNavbar from "../components/SalesExecutiveNavbar.jsx";
 import SalesExecutiveSidebar from "../components/SalesExecutiveSidebar.jsx";
+import SalesExecutiveFooter from "../components/SalesExecutiveFooter.jsx";
 import "../css/salesExecutive/SalesExecutiveLayout.css";
 
 const SalesExecutiveLayout = ({ children }) => {
@@ -13,7 +15,6 @@ const SalesExecutiveLayout = ({ children }) => {
 
   const getActiveMenu = () => {
     if (location.pathname === "/sales-executive/dashboard") return "Dashboard";
-
     return "Dashboard";
   };
 
@@ -33,6 +34,8 @@ const SalesExecutiveLayout = ({ children }) => {
       <main className="sales-executive-layout-content">
         {children}
       </main>
+
+      <SalesExecutiveFooter />
     </div>
   );
 };

@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import "../../css/dealer/DealerDownloadCentre.css";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const DOCUMENT_CATEGORIES = [
   { value: "BROCHURE", label: "Product Brochure" },
@@ -126,10 +126,10 @@ const DealerDownloadCentre = () => {
 
       const searchMatch = search
         ? document.documentName?.toLowerCase().includes(search) ||
-        document.description?.toLowerCase().includes(search) ||
-        getCategoryLabel(document.category)
-          .toLowerCase()
-          .includes(search)
+          document.description?.toLowerCase().includes(search) ||
+          getCategoryLabel(document.category)
+            .toLowerCase()
+            .includes(search)
         : true;
 
       return (
@@ -253,8 +253,9 @@ const DealerDownloadCentre = () => {
             <button
               type="button"
               key={category.value}
-              className={`dealer-category-card ${selectedCategory === category.value ? "active" : ""
-                }`}
+              className={`dealer-category-card ${
+                selectedCategory === category.value ? "active" : ""
+              }`}
               onClick={() => handleCategoryClick(category.value)}
             >
               <div className="dealer-category-icon">
@@ -437,7 +438,7 @@ const DealerDownloadCentre = () => {
                 <strong>
                   {formatDate(
                     selectedDocument.publishedAt ||
-                    selectedDocument.createdAt
+                      selectedDocument.createdAt
                   )}
                 </strong>
               </div>

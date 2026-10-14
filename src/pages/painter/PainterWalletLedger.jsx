@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import "../../css/painter/PainterWalletLedger.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const PainterWalletLedger = () => {
   const [summary, setSummary] = useState({
@@ -149,8 +149,8 @@ const PainterWalletLedger = () => {
                             item.points > 0
                               ? "painter-wallet-ledger-positive"
                               : item.points < 0
-                                ? "painter-wallet-ledger-negative"
-                                : ""
+                              ? "painter-wallet-ledger-negative"
+                              : ""
                           }
                         >
                           {item.points > 0
@@ -163,15 +163,15 @@ const PainterWalletLedger = () => {
                             item.cash > 0
                               ? "painter-wallet-ledger-positive"
                               : item.cash < 0
-                                ? "painter-wallet-ledger-negative"
-                                : ""
+                              ? "painter-wallet-ledger-negative"
+                              : ""
                           }
                         >
                           {item.cash > 0
                             ? `+₹${item.cash}`
                             : item.cash < 0
-                              ? `-₹${Math.abs(item.cash)}`
-                              : "-"}
+                            ? `-₹${Math.abs(item.cash)}`
+                            : "-"}
                         </td>
 
                         <td>{item.balance ?? 0}</td>

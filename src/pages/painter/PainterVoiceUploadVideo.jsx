@@ -73,7 +73,7 @@ const PainterVoiceUploadVideo = () => {
             formData.append("video", video);
 
             const response = await fetch(
-                "https://one-plus-saprk-backend.onrender.com/api/painter/voice-video",
+                "http://localhost:5000/api/painter/voice-video",
                 {
                     method: "POST",
                     headers: {
@@ -134,8 +134,9 @@ const PainterVoiceUploadVideo = () => {
                     <h2>Upload Video</h2>
 
                     <div
-                        className={`painter-voice-video-dropzone ${dragActive ? "drag-active" : ""
-                            }`}
+                        className={`painter-voice-video-dropzone ${
+                            dragActive ? "drag-active" : ""
+                        }`}
                         onDragOver={(e) => {
                             e.preventDefault();
                             setDragActive(true);

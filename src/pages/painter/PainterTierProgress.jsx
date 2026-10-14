@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 import "../../css/painter/PainterTierProgress.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const PainterTierProgress = () => {
   const [progress, setProgress] = useState(null);

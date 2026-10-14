@@ -17,7 +17,7 @@ const PainterShopEnquiryHistory = () => {
                 const token = localStorage.getItem("token");
 
                 const response = await axios.get(
-                    "https://one-plus-saprk-backend.onrender.com/api/painter/shop-enquiries",
+                    "http://localhost:5000/api/painter/shop-enquiries",
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

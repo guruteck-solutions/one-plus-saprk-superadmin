@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import "../../css/superadmin/Directory.css";
 
-const API_URL = "https://one-plus-saprk-backend.onrender.com/api/contacts";
+const API_URL = "http://localhost:5000/api/contacts";
 
 const Directory = () => {
   const [contacts, setContacts] = useState([]);

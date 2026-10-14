@@ -94,7 +94,7 @@ const OrderManagement = () => {
             setLoading(true);
             const token = localStorage.getItem("token");
 
-            const response = await axios.get("https://one-plus-saprk-backend.onrender.com/api/orders", {
+            const response = await axios.get("http://localhost:5000/api/orders", {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -114,7 +114,7 @@ const OrderManagement = () => {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await axios.get("https://one-plus-saprk-backend.onrender.com/api/users", {
+            const response = await axios.get("http://localhost:5000/api/users", {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -148,7 +148,7 @@ const OrderManagement = () => {
         try {
             const token = localStorage.getItem("token");
 
-            const response = await axios.get("https://one-plus-saprk-backend.onrender.com/api/products", {
+            const response = await axios.get("http://localhost:5000/api/products", {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -255,7 +255,7 @@ const OrderManagement = () => {
         try {
             const token = localStorage.getItem("token");
 
-            await axios.delete(`https://one-plus-saprk-backend.onrender.com/api/orders/${id}`, {
+            await axios.delete(`http://localhost:5000/api/orders/${id}`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -334,7 +334,7 @@ const OrderManagement = () => {
                 paymentStatus: orderForm.paymentStatus,
             };
 
-            await axios.post("https://one-plus-saprk-backend.onrender.com/api/orders", payload, {
+            await axios.post("http://localhost:5000/api/orders", payload, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 
@@ -432,7 +432,7 @@ const OrderManagement = () => {
                 paymentStatus: editOrderForm.paymentStatus,
             };
 
-            await axios.put(`https://one-plus-saprk-backend.onrender.com/api/orders/${editOrderId}`, payload, {
+            await axios.put(`http://localhost:5000/api/orders/${editOrderId}`, payload, {
                 headers: { Authorization: `Bearer ${token}` },
             });
 

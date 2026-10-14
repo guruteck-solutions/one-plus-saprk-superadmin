@@ -109,7 +109,7 @@ const PainterVoiceUploadImages = () => {
             });
 
             const response = await fetch(
-                "https://one-plus-saprk-backend.onrender.com/api/painter/voice-images",
+                "http://localhost:5000/api/painter/voice-images",
                 {
                     method: "POST",
                     headers: {
@@ -172,8 +172,9 @@ const PainterVoiceUploadImages = () => {
                     <h2>Upload Images</h2>
 
                     <div
-                        className={`painter-voice-images-dropzone ${dragActive ? "drag-active" : ""
-                            }`}
+                        className={`painter-voice-images-dropzone ${
+                            dragActive ? "drag-active" : ""
+                        }`}
                         onDragOver={(e) => {
                             e.preventDefault();
                             setDragActive(true);

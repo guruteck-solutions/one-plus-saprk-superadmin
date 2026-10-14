@@ -27,7 +27,7 @@ import {
 import "../../css/superadmin/loyaltyTierManagement.css";
 
 
-const API_URL = "https://one-plus-saprk-backend.onrender.com/api/loyalty-tiers";
+const API_URL = "http://localhost:5000/api/loyalty-tiers";
 
 const initialForm = {
     tierName: "",

@@ -66,7 +66,7 @@ const Dashboard = () => {
       }
 
       const res = await axios.get(
-        "https://one-plus-saprk-backend.onrender.com/api/users/stats",
+        "http://localhost:5000/api/users/stats",
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -26,9 +26,9 @@ import {
     ChevronLeft,
     ChevronRight,
 } from "lucide-react";
-import "../../css/superadmin/voiceOfPainter.css";
+import "../../css/superadmin/VoiceOfPainter.css";
 
-const API_BASE = "https://one-plus-saprk-backend.onrender.com/api/feedback";
+const API_BASE = "http://localhost:5000/api/feedback";
 
 const emptyForm = {
     title: "",

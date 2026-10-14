@@ -180,7 +180,7 @@ const AddUser = () => {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        `https://one-plus-saprk-backend.onrender.com/api/users/${id}`,
+        `http://localhost:5000/api/users/${id}`,
         {
           method: "GET",
           headers: {
@@ -270,7 +270,7 @@ const AddUser = () => {
         setProfilePreview(
           user.profilePicture.startsWith("http")
             ? user.profilePicture
-            : `https://one-plus-saprk-backend.onrender.com${user.profilePicture}`
+            : `http://localhost:5000${user.profilePicture}`
         );
       }
 
@@ -590,8 +590,8 @@ const AddUser = () => {
       // ==========================================
 
       const url = isEditMode
-        ? `https://one-plus-saprk-backend.onrender.com/api/users/${id}`
-        : "https://one-plus-saprk-backend.onrender.com/api/users";
+        ? `http://localhost:5000/api/users/${id}`
+        : "http://localhost:5000/api/users";
 
       const method = isEditMode
         ? "PUT"

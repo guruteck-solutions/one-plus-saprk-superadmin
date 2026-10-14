@@ -13,7 +13,7 @@ const PainterFollowUpNotes = () => {
   const [submitting, setSubmitting] = useState(false);
 
   const API_BASE_URL =
-    import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
+    import.meta.env.VITE_API_URL || "http://localhost:5000";
 
   const fetchLeads = async () => {
     try {

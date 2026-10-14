@@ -12,7 +12,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "../../css/dealer/DealerOrderDetails.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
-const SERVER_URL = API_BASE_URL || "https://one-plus-saprk-backend.onrender.com";
+const SERVER_URL = API_BASE_URL || "http://localhost:5000";
 
 const DealerOrderDetails = () => {
   const { id } = useParams();
@@ -391,8 +391,9 @@ const DealerOrderDetails = () => {
 
                   return (
                     <div
-                      className={`dealer-order-tracking-step ${isCompleted ? "completed" : ""
-                        }`}
+                      className={`dealer-order-tracking-step ${
+                        isCompleted ? "completed" : ""
+                      }`}
                       key={step}
                     >
                       <div className="dealer-order-tracking-icon">

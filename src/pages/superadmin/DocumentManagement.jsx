@@ -34,7 +34,7 @@ import {
 } from "lucide-react";
 import "../../css/superadmin/DocumentManagement.css";
 
-const API_URL = "https://one-plus-saprk-backend.onrender.com/api/documents";
+const API_URL = "http://localhost:5000/api/documents";
 
 const CATEGORY_OPTIONS = [
     {

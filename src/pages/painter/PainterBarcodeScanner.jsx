@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import "../../css/painter/PainterBarcodeScanner.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const PainterBarcodeScanner = () => {
   const navigate = useNavigate();

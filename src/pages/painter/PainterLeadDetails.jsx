@@ -22,7 +22,7 @@ const PainterLeadDetails = () => {
       setLoading(true);
 
       const API_BASE_URL =
-        import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
+        import.meta.env.VITE_API_URL || "http://localhost:5000";
 
       const token = localStorage.getItem("token");
 
@@ -63,7 +63,7 @@ const PainterLeadDetails = () => {
 
     try {
       const API_BASE_URL =
-        import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
+        import.meta.env.VITE_API_URL || "http://localhost:5000";
 
       const token = localStorage.getItem("token");
 

@@ -16,16 +16,12 @@ const Navbar = () => {
 
       {/* ================= LEFT ================= */}
       <div className="navbar-left">
-
-        {/* Hamburger */}
-        <button className="navbar-menu-btn">
-          <Menu size={20} />
-        </button>
-
         {/* Search */}
         <div className="navbar-search">
 
-          <Search size={17} />
+          
+
+          {/* <Search size={17} /> */}
 
           <input
             type="text"
@@ -35,6 +31,8 @@ const Navbar = () => {
           <span className="search-shortcut">
             Ctrl + K
           </span>
+
+          
 
         </div>
 
@@ -48,6 +46,8 @@ const Navbar = () => {
         <button className="navbar-icon-btn add-btn">
           <Plus size={20} />
         </button>
+
+        
 
 
         {/* Notification */}
@@ -81,9 +81,9 @@ const Navbar = () => {
 
 
         {/* Apps */}
-        <button className="navbar-icon-btn">
+        {/* <button className="navbar-icon-btn">
           <Grid3X3 size={19} />
-        </button>
+        </button> */}
 
 
         {/* Profile */}

@@ -12,7 +12,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import "../../css/painter/PainterVoiceDashboard.css";
 
-const API_BASE = "https://one-plus-saprk-backend.onrender.com";
+const API_BASE = "http://localhost:5000";
 
 const PainterVoiceDashboard = () => {
     const navigate = useNavigate();

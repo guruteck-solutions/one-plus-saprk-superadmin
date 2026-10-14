@@ -114,7 +114,7 @@ const PainterSubmitFeedback = () => {
             });
 
             const response = await fetch(
-                "https://one-plus-saprk-backend.onrender.com/api/painter/feedback",
+                "http://localhost:5000/api/painter/feedback",
                 {
                     method: "POST",
                     headers: {
@@ -167,14 +167,16 @@ const PainterSubmitFeedback = () => {
 
         if (imageCount > 0) {
             parts.push(
-                `${imageCount} image${imageCount > 1 ? "s" : ""
+                `${imageCount} image${
+                    imageCount > 1 ? "s" : ""
                 }`
             );
         }
 
         if (videoCount > 0) {
             parts.push(
-                `${videoCount} video${videoCount > 1 ? "s" : ""
+                `${videoCount} video${
+                    videoCount > 1 ? "s" : ""
                 }`
             );
         }

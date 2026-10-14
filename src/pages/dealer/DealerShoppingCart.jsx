@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../../css/dealer/DealerShoppingCart.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
-const SERVER_URL = API_BASE_URL || "https://one-plus-saprk-backend.onrender.com";
+const SERVER_URL = API_BASE_URL || "http://localhost:5000";
 
 const DealerShoppingCart = () => {
   const navigate = useNavigate();
