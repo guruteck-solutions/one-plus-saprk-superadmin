@@ -1,3 +1,8 @@
+
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +11,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #ffffff;
+  background: #f4f6fa;
 }
 
 button,
@@ -14,34 +19,43 @@ input {
   font-family: inherit;
 }
 
+/* =========================================
+   TOP NAVBAR
+========================================= */
+
 .top-navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
   width: 100%;
   height: 67px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
+  min-height: 67px;
   padding: 0 20px;
 
-  background: #ffffff;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 
+  background: #fff;
   border-bottom: 1px solid #e8ebef;
 }
 
+/* LEFT SIDE */
+
 .navbar-left {
   display: flex;
+  flex: 1 1 auto;
   align-items: center;
-
-  gap: 25px;
+  gap: 20px;
+  min-width: 0;
+  overflow: hidden;
 }
 
-
-
-
 .navbar-menu-btn {
+  flex: 0 0 34px;
   width: 34px;
   height: 34px;
 
@@ -50,311 +64,271 @@ input {
   justify-content: center;
 
   border: none;
-  background: transparent;
-
-  color: #344054;
-
   border-radius: 7px;
-
+  background: transparent;
+  color: #344054;
   cursor: pointer;
-
-  transition: 0.2s ease;
+  transition: background 0.2s ease;
 }
 
 .navbar-menu-btn:hover {
   background: #f4f6f8;
 }
 
+/* SEARCH */
 
 .navbar-search {
-  width: 320px;
-  height: 38px;
-
   display: flex;
+  flex: 0 1 320px;
   align-items: center;
-
   gap: 9px;
 
+  width: 320px;
+  max-width: 100%;
+  min-width: 0;
+  height: 38px;
   padding: 0 12px;
 
-  background: #f9fafb;
-
   border: 1px solid #e1e6eb;
-
   border-radius: 7px;
-
+  background: #f9fafb;
   color: #667085;
 }
 
 .navbar-search input {
-  flex: 1;
-
+  flex: 1 1 auto;
+  width: 100%;
   min-width: 0;
+  height: 100%;
 
   border: none;
   outline: none;
-
   background: transparent;
-
   color: #344054;
-
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .navbar-search input::placeholder {
   color: #667085;
 }
 
-/* Search shortcut */
-
 .search-shortcut {
+  flex: 0 0 auto;
   color: #667085;
-
   font-size: 10px;
-
   white-space: nowrap;
 }
 
-
-/*      ===
-   RIGHT SIDE
-     === */
+/* RIGHT SIDE */
 
 .navbar-right {
   display: flex;
+  flex: 0 0 auto;
+  flex-flow: row nowrap;
   align-items: center;
-
+  justify-content: flex-end;
   gap: 8px;
+  min-width: 0;
 }
 
-
-/*      ===
-   COMMON ICON BUTTON
-     === */
+/* ICON BUTTONS */
 
 .navbar-icon-btn {
   position: relative;
-
+  flex: 0 0 36px;
   width: 36px;
   height: 36px;
+  padding: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   border: none;
-
-  background: transparent;
-
-  color: #101828;
-
   border-radius: 50%;
-
+  background: transparent;
+  color: #101828;
   cursor: pointer;
-
-  transition: 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .navbar-icon-btn:hover {
   background: #f3f5f7;
 }
 
+/* ADD BUTTON */
 
-/*      ===
-   ORANGE PLUS BUTTON
-     === */
-
-.add-btn {
+.navbar-icon-btn.add-btn {
+  flex-basis: 31px;
   width: 31px;
   height: 31px;
+  margin-right: 4px;
 
-  margin-right: 8px;
-
+  border-radius: 50%;
   background: #ff6b00;
-
-  color: #ffffff;
-
+  color: #fff;
   box-shadow: 0 3px 8px rgba(255, 107, 0, 0.25);
 }
 
-.add-btn:hover {
+.navbar-icon-btn.add-btn:hover {
   background: #ed6100;
 }
 
+.navbar-icon-btn.add-btn:active {
+  background: #c94e00;
+}
 
-/*      ===
-   NOTIFICATION
-     === */
+/* NOTIFICATION */
 
 .notification-btn {
   margin-right: 2px;
 }
 
-/* Notification number */
-
 .notification-count {
   position: absolute;
-
   top: -1px;
   right: -1px;
 
   min-width: 16px;
   height: 16px;
+  padding: 0 4px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  padding: 0 4px;
-
-  background: #e51d2a;
-
-  color: #ffffff;
-
-  border: 2px solid #ffffff;
-
+  border: 2px solid #fff;
   border-radius: 20px;
-
+  background: #e51d2a;
+  color: #fff;
   font-size: 9px;
   font-weight: 700;
 }
 
-
-/*      ===
-   PROFILE
-     === */
+/* PROFILE */
 
 .navbar-profile {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
-
   gap: 8px;
 
-  margin-left: 8px;
-
-  padding-left: 5px;
-
+  margin-left: 5px;
+  padding-left: 3px;
   cursor: pointer;
 }
 
-
-/*      ===
-   PROFILE IMAGE
-     === */
-
 .navbar-profile-image {
-  width: 35px;
-  height: 35px;
-
   display: flex;
+  flex: 0 0 35px;
   align-items: center;
   justify-content: center;
 
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+
   border-radius: 50%;
-
   background: #eef2f5;
-
   color: #344054;
-
   font-size: 12px;
   font-weight: 700;
-
-  overflow: hidden;
 }
-
-
-/*      ===
-   PROFILE TEXT
-     === */
 
 .navbar-profile-info {
   display: flex;
   flex-direction: column;
-
   gap: 2px;
+  min-width: 0;
 }
 
 .navbar-profile-info strong {
   color: #101828;
-
   font-size: 12px;
   font-weight: 600;
-
   white-space: nowrap;
 }
 
 .navbar-profile-info span {
   color: #667085;
-
   font-size: 11px;
-
   white-space: nowrap;
 }
 
-
-/*      ===
-   PROFILE ARROW
-     === */
-
 .profile-arrow {
+  flex: 0 0 auto;
   margin-left: 3px;
-
   color: #344054;
 }
 
-
-/*      ===
+/* =========================================
    TABLET
-     === */
+========================================= */
 
-@media (max-width: 1100px) {
+@media screen and (max-width: 1100px) {
+  .top-navbar {
+    padding: 0 14px;
+    gap: 10px;
+  }
+
+  .navbar-left {
+    gap: 12px;
+  }
 
   .navbar-search {
-    width: 260px;
+    flex-basis: 250px;
   }
 
   .navbar-right {
     gap: 4px;
   }
 
-  .navbar-profile-info {
+  .navbar-profile-info,
+  .profile-arrow {
     display: none;
   }
 
   .navbar-profile {
-    margin-left: 4px;
+    margin-left: 3px;
   }
-
 }
 
-
-/*      ===
+/* =========================================
    MOBILE
-     === */
+========================================= */
 
-@media (max-width: 700px) {
-
+@media screen and (max-width: 700px) {
   .top-navbar {
-    height: 62px;
+    height: 58px;
+    min-height: 58px;
+    padding: 0 9px;
+    gap: 6px;
 
-    padding: 0 10px;
+    flex-wrap: nowrap;
+    overflow: hidden;
   }
 
   .navbar-left {
-    gap: 8px;
+    flex: 1 1 auto;
+    gap: 5px;
+    overflow: hidden;
   }
 
-  /* Search becomes icon */
+  .navbar-right {
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    gap: 2px;
+  }
 
   .navbar-search {
+    flex: 0 1 36px;
     width: 36px;
-
+    min-width: 32px;
+    height: 36px;
     padding: 0;
-
     justify-content: center;
 
-    border: none;
-
+    border-color: transparent;
     background: transparent;
   }
 
@@ -363,51 +337,78 @@ input {
     display: none;
   }
 
-  /* Hide some icons on mobile (uses :nth-of-type so it only
-     counts .navbar-icon-btn siblings, not every child of
-     .navbar-right — the old :nth-child version could
-     mis-target elements if a non-icon-btn child was added) */
-
-  .navbar-right .navbar-icon-btn:nth-of-type(4),
-  .navbar-right .navbar-icon-btn:nth-of-type(5),
-  .navbar-right .navbar-icon-btn:nth-of-type(6) {
+  /* Hide checklist, calendar and theme icons */
+  .navbar-right > .navbar-icon-btn:nth-of-type(3),
+  .navbar-right > .navbar-icon-btn:nth-of-type(4),
+  .navbar-right > .navbar-icon-btn:nth-of-type(5) {
     display: none;
   }
 
-  .navbar-right {
-    gap: 2px;
+  .navbar-icon-btn {
+    flex-basis: 32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .navbar-icon-btn.add-btn {
+    flex-basis: 30px;
+    width: 30px;
+    height: 30px;
+    margin-right: 1px;
   }
 
   .navbar-profile {
+    flex: 0 0 auto;
     margin-left: 2px;
     padding-left: 0;
   }
 
+  .navbar-profile-image {
+    flex-basis: 32px;
+    width: 32px;
+    height: 32px;
+    font-size: 11px;
+  }
+
+  .navbar-profile-info,
   .profile-arrow {
     display: none;
   }
-
 }
 
+/* =========================================
+   SMALL MOBILE
+========================================= */
 
-/*      ===
-   VERY SMALL MOBILE
-     === */
+@media screen and (max-width: 450px) {
+  .top-navbar {
+    padding: 0 7px;
+    gap: 3px;
+  }
 
-@media (max-width: 450px) {
+  .navbar-left {
+    gap: 2px;
+  }
 
-  .notification-btn,
-  .navbar-right .navbar-icon-btn:nth-of-type(3) {
+  .navbar-right {
+    gap: 1px;
+  }
+
+  /* Hide notification and checklist on very small screens */
+  .navbar-right > .notification-btn,
+  .navbar-right > .navbar-icon-btn:nth-of-type(3) {
     display: none;
   }
 
-}
+  .navbar-icon-btn {
+    flex-basis: 30px;
+    width: 30px;
+    height: 30px;
+  }
 
-/* Global Font Size Increase */
-body {
-  font-size: 30px !important;
-}
-
-body * {
-  font-size: inherit;
+  .navbar-profile-image {
+    flex-basis: 30px;
+    width: 30px;
+    height: 30px;
+  }
 }

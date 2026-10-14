@@ -1,0 +1,74 @@
+
+/* =========================================
+   DASHBOARD LAYOUT
+========================================= */
+
+.dashboard {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #f4f6fa;
+}
+
+.dashboard-main {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.dashboard-main > .top-navbar {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.dashboard-content {
+  flex: 1 0 auto;
+  width: 100%;
+  min-width: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media screen and (max-width: 1024px) {
+  .dashboard-content {
+    padding: 16px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media screen and (max-width: 700px) {
+  .dashboard {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .dashboard-main {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .dashboard-content {
+    padding: 12px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media screen and (max-width: 380px) {
+  .dashboard-content {
+    padding: 8px;
+  }
+}
