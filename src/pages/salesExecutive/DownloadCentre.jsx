@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import "../../css/salesExecutive/DownloadCentre.css";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://one-plus-saprk-backend.onrender.com";
 
 
 const CATEGORIES = [
@@ -155,7 +155,7 @@ const DownloadCentre = () => {
         <div className="download-centre-page">
             <div className="dc-page-header">
                 <div>
-                    
+
                     <h1>Download Centre</h1>
                     <p>
                         Access product documents, price lists and marketing resources.

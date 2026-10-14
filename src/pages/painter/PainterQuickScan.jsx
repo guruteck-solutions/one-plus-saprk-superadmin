@@ -25,7 +25,7 @@ const PainterQuickScan = () => {
   const processingScanRef = useRef(false);
 
   const API_URL =
-    import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com/api";
 
   // ==========================================
   // SUBMIT SCAN TO BACKEND
@@ -75,7 +75,7 @@ const PainterQuickScan = () => {
       } else if (data.scanStatus === "INVALID") {
         toast.error(
           data.message ||
-            "Invalid barcode. Product could not be verified."
+          "Invalid barcode. Product could not be verified."
         );
       } else {
         toast.error(
@@ -304,7 +304,7 @@ const PainterQuickScan = () => {
       if (scannerRef.current) {
         scannerRef.current
           .stop()
-          .catch(() => {})
+          .catch(() => { })
           .finally(() => {
             scannerRef.current = null;
             scannerRunningRef.current = false;
@@ -349,11 +349,10 @@ const PainterQuickScan = () => {
         ========================================== */}
 
         <div
-          className={`painter-scan-frame ${
-            cameraActive
+          className={`painter-scan-frame ${cameraActive
               ? "camera-active"
               : ""
-          }`}
+            }`}
         >
           {!cameraActive && (
             <div className="painter-scan-placeholder">
@@ -391,11 +390,10 @@ const PainterQuickScan = () => {
 
         <button
           type="button"
-          className={`painter-open-camera-btn ${
-            cameraActive
+          className={`painter-open-camera-btn ${cameraActive
               ? "camera-open"
               : ""
-          }`}
+            }`}
           onClick={handleCameraToggle}
           disabled={
             cameraLoading || loading

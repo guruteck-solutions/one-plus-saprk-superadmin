@@ -26,7 +26,7 @@ import {
 
 import "../../css/superadmin/inventoryManagement.css";
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "https://one-plus-saprk-backend.onrender.com/api";
 
 const EMPTY_STATS = {
     totalInventoryValue: 0,

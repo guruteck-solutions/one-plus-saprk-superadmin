@@ -59,7 +59,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                "http://localhost:5000/api/users",
+                "https://one-plus-saprk-backend.onrender.com/api/users",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -252,7 +252,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                `http://localhost:5000/api/users/${userId}`,
+                `https://one-plus-saprk-backend.onrender.com/api/users/${userId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -322,8 +322,8 @@ const UserManagement = () => {
 
             const endpoint =
                 registrationType === "DEALER"
-                    ? `http://localhost:5000/api/superadmin/dealer-registrations/${user._id}/review`
-                    : `http://localhost:5000/api/superadmin/painter-registrations/${user._id}/review`;
+                    ? `https://one-plus-saprk-backend.onrender.com/api/superadmin/dealer-registrations/${user._id}/review`
+                    : `https://one-plus-saprk-backend.onrender.com/api/superadmin/painter-registrations/${user._id}/review`;
 
             const response = await axios.patch(
                 endpoint,
@@ -341,7 +341,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const updatedUserResponse = await axios.get(
-                    `http://localhost:5000/api/users/${user._id}`,
+                    `https://one-plus-saprk-backend.onrender.com/api/users/${user._id}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -394,7 +394,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.delete(
-                `http://localhost:5000/api/users/${userId}`,
+                `https://one-plus-saprk-backend.onrender.com/api/users/${userId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -445,7 +445,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                `http://localhost:5000/api/users/${userId}/kyc/approve`,
+                `https://one-plus-saprk-backend.onrender.com/api/users/${userId}/kyc/approve`,
                 {},
                 {
                     headers: {
@@ -460,7 +460,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const userResponse = await axios.get(
-                    `http://localhost:5000/api/users/${userId}`,
+                    `https://one-plus-saprk-backend.onrender.com/api/users/${userId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -515,7 +515,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                `http://localhost:5000/api/users/${userId}/kyc/reject`,
+                `https://one-plus-saprk-backend.onrender.com/api/users/${userId}/kyc/reject`,
                 {
                     remarks: remarks.trim(),
                 },
@@ -532,7 +532,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const userResponse = await axios.get(
-                    `http://localhost:5000/api/users/${userId}`,
+                    `https://one-plus-saprk-backend.onrender.com/api/users/${userId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -589,7 +589,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                `http://localhost:5000/api/users/${userId}/kyc/correction`,
+                `https://one-plus-saprk-backend.onrender.com/api/users/${userId}/kyc/correction`,
                 {
                     remarks: remarks.trim(),
                 },
@@ -608,7 +608,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const userResponse = await axios.get(
-                    `http://localhost:5000/api/users/${userId}`,
+                    `https://one-plus-saprk-backend.onrender.com/api/users/${userId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -1047,7 +1047,7 @@ const UserManagement = () => {
                                                 <div className="table-user-avatar">
                                                     {user.profilePicture ? (
                                                         <img
-                                                            src={`http://localhost:5000${user.profilePicture}`}
+                                                            src={`https://one-plus-saprk-backend.onrender.com${user.profilePicture}`}
                                                             alt={user.name}
                                                         />
                                                     ) : (
@@ -1360,7 +1360,7 @@ const UserManagement = () => {
                                         {selectedUser.profilePicture ? (
 
                                             <img
-                                                src={`http://localhost:5000${selectedUser.profilePicture}`}
+                                                src={`https://one-plus-saprk-backend.onrender.com${selectedUser.profilePicture}`}
                                                 alt={selectedUser.name}
                                             />
 
@@ -1747,7 +1747,7 @@ const UserManagement = () => {
                                                     <label>{label}</label>
                                                     {filePath ? (
                                                         <a
-                                                            href={`http://localhost:5000/${String(filePath).replace(/^\/+/, "")}`}
+                                                            href={`https://one-plus-saprk-backend.onrender.com/${String(filePath).replace(/^\/+/, "")}`}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                         >

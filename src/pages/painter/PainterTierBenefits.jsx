@@ -3,7 +3,7 @@ import { Check } from "lucide-react";
 import { toast } from "sonner";
 import "../../css/painter/PainterTierBenefits.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_URL = import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
 
 const benefitLabels = {
   higherRewardPoints: "Higher Reward Points",
@@ -94,11 +94,10 @@ const PainterTierBenefits = () => {
               key={item.benefit}
             >
               <div
-                className={`painter-tier-benefit-icon ${
-                  item.available
+                className={`painter-tier-benefit-icon ${item.available
                     ? "available"
                     : "unavailable"
-                }`}
+                  }`}
               >
                 {item.available && <Check size={17} />}
               </div>
@@ -111,9 +110,8 @@ const PainterTierBenefits = () => {
 
                 <p>
                   {item.available
-                    ? `Available at ${
-                        item.availableFromTier || "-"
-                      } & above`
+                    ? `Available at ${item.availableFromTier || "-"
+                    } & above`
                     : "Not currently available"}
                 </p>
               </div>

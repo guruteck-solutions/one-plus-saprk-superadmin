@@ -13,7 +13,7 @@ import {
 import "../../css/salesExecutive/SalesExecutiveAttendance.css";
 
 // const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://one-plus-saprk-backend.onrender.com";
 
 const SalesExecutiveAttendance = () => {
   const [todayAttendance, setTodayAttendance] = useState(null);
@@ -257,8 +257,8 @@ const SalesExecutiveAttendance = () => {
 
       alert(
         error.response?.data?.message ||
-          error.message ||
-          "Failed to check-in."
+        error.message ||
+        "Failed to check-in."
       );
     } finally {
       setLoading(false);
@@ -305,8 +305,8 @@ const SalesExecutiveAttendance = () => {
 
       alert(
         error.response?.data?.message ||
-          error.message ||
-          "Failed to check-out."
+        error.message ||
+        "Failed to check-out."
       );
     } finally {
       setLoading(false);
@@ -407,7 +407,7 @@ const SalesExecutiveAttendance = () => {
                 <span>Check-In Location</span>
                 <strong>
                   {todayAttendance?.checkIn?.latitude &&
-                  todayAttendance?.checkIn?.longitude
+                    todayAttendance?.checkIn?.longitude
                     ? `${todayAttendance.checkIn.latitude}, ${todayAttendance.checkIn.longitude}`
                     : "-"}
                 </strong>
@@ -591,11 +591,10 @@ const SalesExecutiveAttendance = () => {
                     <strong>{formatDate(attendance.date)}</strong>
 
                     <span
-                      className={`attendance-status ${
-                        attendance.status === "CHECKED_OUT"
+                      className={`attendance-status ${attendance.status === "CHECKED_OUT"
                           ? "checked-out"
                           : "checked-in"
-                      }`}
+                        }`}
                     >
                       {attendance.status === "CHECKED_OUT"
                         ? "Checked Out"
@@ -628,7 +627,7 @@ const SalesExecutiveAttendance = () => {
 
                     <span>
                       {attendance.checkIn?.latitude &&
-                      attendance.checkIn?.longitude
+                        attendance.checkIn?.longitude
                         ? `${attendance.checkIn.latitude}, ${attendance.checkIn.longitude}`
                         : "-"}
                     </span>

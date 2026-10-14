@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import "../../css/salesExecutive/SalesExecutiveDealerReg.css";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://one-plus-saprk-backend.onrender.com";
 const API_URL = `${API_BASE_URL}/api/sales-executive/dealer-registrations`;
 
 const INITIAL_FORM = {
@@ -65,10 +65,10 @@ const getAuthHeaders = () => ({
 const formatDate = (date) =>
   date
     ? new Date(date).toLocaleDateString("en-IN", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      })
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    })
     : "—";
 
 const formatStatus = (status) =>
