@@ -3,7 +3,7 @@ import { Eye, Mail, Phone, UserRound } from "lucide-react";
 import "../../css/dealer/DealerPainterEnquiries.css";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000";
+  import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
 
 const DealerPainterEnquiries = () => {
   const [enquiries, setEnquiries] = useState([]);

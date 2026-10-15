@@ -5,10 +5,10 @@ import "../../css/painter/PainterDownloadDocumentPreview.css";
 import { toast } from "sonner";
 
 const DOCUMENT_API =
-    "http://localhost:5000/api/painter/documents/categories";
+    "https://one-plus-saprk-backend.onrender.com/api/painter/documents/categories";
 
 const DOWNLOAD_API =
-    "http://localhost:5000/api/documents";
+    "https://one-plus-saprk-backend.onrender.com/api/documents";
 
 const PainterDownloadDocumentPreview = () => {
     const [document, setDocument] = useState(null);

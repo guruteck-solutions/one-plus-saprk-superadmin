@@ -23,7 +23,7 @@ const PainterShopEnquiryDetails = () => {
                 const token = localStorage.getItem("token");
 
                 const response = await axios.get(
-                    `http://localhost:5000/api/painter/shop-enquiries/${id}`,
+                    `https://one-plus-saprk-backend.onrender.com/api/painter/shop-enquiries/${id}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

@@ -12,7 +12,7 @@ const PainterSubmissionHistory = () => {
             const token = localStorage.getItem("token");
 
             const response = await fetch(
-                "http://localhost:5000/api/painter/voice-history",
+                "https://one-plus-saprk-backend.onrender.com/api/painter/voice-history",
                 {
                     method: "GET",
                     headers: {

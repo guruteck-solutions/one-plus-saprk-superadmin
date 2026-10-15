@@ -3,7 +3,7 @@ import { CalendarDays, Download, Eye, FileText, RefreshCw, ArrowRight, } from "l
 import "../../css/dealer/DealerSchemes.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || "";
-const SERVER_URL = API_BASE_URL || "http://localhost:5000";
+const SERVER_URL = API_BASE_URL || "https://one-plus-saprk-backend.onrender.com";
 
 const getFileUrl = (filePath) => {
     if (!filePath) return "";

@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../css/painter/PainterShopProductListing.css";
 
-const PRODUCT_API = "http://localhost:5000/api/painter/products";
-const SERVER_URL = "http://localhost:5000";
+const PRODUCT_API = "https://one-plus-saprk-backend.onrender.com/api/painter/products";
+const SERVER_URL = "https://one-plus-saprk-backend.onrender.com";
 
 const PainterShopProductListing = () => {
     const navigate = useNavigate();

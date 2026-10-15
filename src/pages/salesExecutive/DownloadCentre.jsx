@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import "../../css/salesExecutive/DownloadCentre.css";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://one-plus-saprk-backend.onrender.com";
 
 
 const CATEGORIES = [

@@ -17,8 +17,8 @@ const PainterQuickShop = () => {
     const [message, setMessage] = useState("");
     const [enquiryLoading, setEnquiryLoading] = useState(false);
 
-    const API_URL = "http://localhost:5000/api";
-    const SERVER_URL = "http://localhost:5000";
+    const API_URL = "https://one-plus-saprk-backend.onrender.com/api";
+    const SERVER_URL = "https://one-plus-saprk-backend.onrender.com";
 
     useEffect(() => {
         fetchProducts();

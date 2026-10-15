@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import "../../css/salesExecutive/SalesExecutiveBeatPlan.css";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://one-plus-saprk-backend.onrender.com";
 
 const SalesExecutiveBeatPlan = () => {
   const [visits, setVisits] = useState([]);

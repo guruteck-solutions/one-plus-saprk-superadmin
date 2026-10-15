@@ -73,7 +73,7 @@ const PainterVoiceUploadVideo = () => {
             formData.append("video", video);
 
             const response = await fetch(
-                "http://localhost:5000/api/painter/voice-video",
+                "https://one-plus-saprk-backend.onrender.com/api/painter/voice-video",
                 {
                     method: "POST",
                     headers: {
