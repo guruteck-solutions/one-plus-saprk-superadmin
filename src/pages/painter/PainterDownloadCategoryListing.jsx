@@ -14,7 +14,7 @@ import { toast } from "sonner";
 
 import "../../css/painter/PainterDownloadCategoryListing.css";
 
-const API_URL = "http://localhost:5000/api/painter/documents/categories";
+const API_URL = "https://one-plus-saprk-backend.onrender.com/api/painter/documents/categories";
 
 const CATEGORY_ICONS = {
     BROCHURE: BookOpen,
@@ -85,7 +85,7 @@ const PainterDownloadCategoryListing = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                `http://localhost:5000/api/documents/${document._id}/download`,
+                `https://one-plus-saprk-backend.onrender.com/api/documents/${document._id}/download`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,

@@ -18,7 +18,7 @@ import autoTable from "jspdf-autotable";
 import * as XLSX from "xlsx";
 import "../../css/salesExecutive/Reports.css";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://one-plus-saprk-backend.onrender.com";
 
 const getToken = () =>
     localStorage.getItem("token") ||

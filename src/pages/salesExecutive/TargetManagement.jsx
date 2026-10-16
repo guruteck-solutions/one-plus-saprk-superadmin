@@ -20,7 +20,7 @@ import {
 
 import "../../css/salesExecutive/TargetManagement.css";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://one-plus-saprk-backend.onrender.com";
 
 const getToken = () =>
     localStorage.getItem("token") ||

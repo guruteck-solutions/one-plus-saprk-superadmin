@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../../css/painter/PainterShopDashboard.css";
 
-const PRODUCT_API = "http://localhost:5000/api/painter/products";
+const PRODUCT_API = "https://one-plus-saprk-backend.onrender.com/api/painter/products";
 
 const PainterShopDashboard = () => {
     const navigate = useNavigate();

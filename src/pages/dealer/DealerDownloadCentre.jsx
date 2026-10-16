@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import "../../css/dealer/DealerDownloadCentre.css";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
 
 const DOCUMENT_CATEGORIES = [
   { value: "BROCHURE", label: "Product Brochure" },

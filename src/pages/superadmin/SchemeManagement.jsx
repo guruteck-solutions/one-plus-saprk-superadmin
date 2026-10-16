@@ -29,8 +29,8 @@ import {
 
 import "../../css/superadmin/schemeManagement.css";
 
-const API_URL = "http://localhost:5000/api/schemes";
-const SERVER_URL = "http://localhost:5000";
+const API_URL = "https://one-plus-saprk-backend.onrender.com/api/schemes";
+const SERVER_URL = "https://one-plus-saprk-backend.onrender.com";
 
 const getFileUrl = (filePath) => {
   if (!filePath) return "";

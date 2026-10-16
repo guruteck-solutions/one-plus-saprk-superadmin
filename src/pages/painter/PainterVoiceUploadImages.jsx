@@ -109,7 +109,7 @@ const PainterVoiceUploadImages = () => {
             });
 
             const response = await fetch(
-                "http://localhost:5000/api/painter/voice-images",
+                "https://one-plus-saprk-backend.onrender.com/api/painter/voice-images",
                 {
                     method: "POST",
                     headers: {

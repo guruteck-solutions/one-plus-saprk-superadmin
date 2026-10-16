@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../css/painter/PainterDownloadProductImages.css";
 
-const PRODUCT_API = "http://localhost:5000/api/painter/products";
-const SERVER_URL = "http://localhost:5000";
+const PRODUCT_API = "https://one-plus-saprk-backend.onrender.com/api/painter/products";
+const SERVER_URL = "https://one-plus-saprk-backend.onrender.com";
 
 const PainterDownloadProductImages = () => {
     const [products, setProducts] = useState([]);

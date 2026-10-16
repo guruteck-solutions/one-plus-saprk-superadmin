@@ -114,7 +114,7 @@ const PainterSubmitFeedback = () => {
             });
 
             const response = await fetch(
-                "http://localhost:5000/api/painter/feedback",
+                "https://one-plus-saprk-backend.onrender.com/api/painter/feedback",
                 {
                     method: "POST",
                     headers: {

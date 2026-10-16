@@ -25,7 +25,7 @@ const PainterQuickScan = () => {
   const processingScanRef = useRef(false);
 
   const API_URL =
-    import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+    import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com/api";
 
   // ==========================================
   // SUBMIT SCAN TO BACKEND

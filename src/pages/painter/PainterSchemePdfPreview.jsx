@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import "../../css/painter/PainterSchemePdfPreview.css";
 
 const API_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000";
+  import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
 
 const PainterSchemePdfPreview = () => {
   const navigate = useNavigate();
