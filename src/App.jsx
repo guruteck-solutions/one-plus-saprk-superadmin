@@ -376,5 +376,3 @@ const App = () => {
 };
 
 export default App;
-
-// import "../../css/salesExecutive/ProductCatalogue.css";
