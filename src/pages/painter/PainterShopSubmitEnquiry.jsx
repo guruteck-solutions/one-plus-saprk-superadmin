@@ -155,10 +155,11 @@ const PainterShopSubmitEnquiry = () => {
 
                         <input
                             type="text"
-                            value={`${cartItems.length} ${cartItems.length === 1
+                            value={`${cartItems.length} ${
+                                cartItems.length === 1
                                     ? "product"
                                     : "products"
-                                }`}
+                            }`}
                             readOnly
                         />
 

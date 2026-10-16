@@ -115,9 +115,9 @@ const DealerPainterEnquiries = () => {
         prev.map((item) =>
           item._id === selectedEnquiry._id
             ? {
-              ...item,
-              status: newStatus,
-            }
+                ...item,
+                status: newStatus,
+              }
             : item
         )
       );
@@ -129,7 +129,7 @@ const DealerPainterEnquiries = () => {
 
       alert(
         error.message ||
-        "Failed to update enquiry status"
+          "Failed to update enquiry status"
       );
     } finally {
       setUpdatingStatus(false);

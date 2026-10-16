@@ -137,13 +137,13 @@ const PainterOffersListing = () => {
                   <span>
                     {offer.startDate
                       ? new Date(offer.startDate).toLocaleDateString(
-                        "en-GB",
-                        {
-                          day: "2-digit",
-                          month: "short",
-                          year: "numeric",
-                        }
-                      )
+                          "en-GB",
+                          {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                          }
+                        )
                       : "-"}
                   </span>
 
@@ -152,13 +152,13 @@ const PainterOffersListing = () => {
                   <span>
                     {offer.endDate
                       ? new Date(offer.endDate).toLocaleDateString(
-                        "en-GB",
-                        {
-                          day: "2-digit",
-                          month: "short",
-                          year: "numeric",
-                        }
-                      )
+                          "en-GB",
+                          {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                          }
+                        )
                       : "-"}
                   </span>
                 </div>

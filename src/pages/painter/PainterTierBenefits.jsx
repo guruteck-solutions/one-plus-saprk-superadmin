@@ -94,10 +94,11 @@ const PainterTierBenefits = () => {
               key={item.benefit}
             >
               <div
-                className={`painter-tier-benefit-icon ${item.available
+                className={`painter-tier-benefit-icon ${
+                  item.available
                     ? "available"
                     : "unavailable"
-                  }`}
+                }`}
               >
                 {item.available && <Check size={17} />}
               </div>
@@ -110,8 +111,9 @@ const PainterTierBenefits = () => {
 
                 <p>
                   {item.available
-                    ? `Available at ${item.availableFromTier || "-"
-                    } & above`
+                    ? `Available at ${
+                        item.availableFromTier || "-"
+                      } & above`
                     : "Not currently available"}
                 </p>
               </div>

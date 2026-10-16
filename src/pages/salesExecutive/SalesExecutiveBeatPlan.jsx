@@ -354,14 +354,15 @@ const SalesExecutiveBeatPlan = () => {
               <div className="sales-executive-beat-plan-info">
                 <div className="sales-executive-beat-plan-top">
                   <span
-                    className={`sales-executive-beat-plan-type ${visit.visitType === "PAINTER" ? "painter" : "dealer"
-                      }`}
+                    className={`sales-executive-beat-plan-type ${
+                      visit.visitType === "PAINTER" ? "painter" : "dealer"
+                    }`}
                   >
                     {visit.visitType === "PAINTER"
                       ? "Painter"
                       : visit.visitType === "RETAILER"
-                        ? "Retailer"
-                        : "Dealer"}
+                      ? "Retailer"
+                      : "Dealer"}
                   </span>
 
                   <span
@@ -454,8 +455,8 @@ const SalesExecutiveBeatPlan = () => {
                   {selectedVisit.visitType === "PAINTER"
                     ? "Painter"
                     : selectedVisit.visitType === "RETAILER"
-                      ? "Retailer"
-                      : "Dealer"}
+                    ? "Retailer"
+                    : "Dealer"}
                 </strong>
               </div>
 
@@ -494,13 +495,13 @@ const SalesExecutiveBeatPlan = () => {
                 <strong>
                   {selectedVisit.visitDate
                     ? new Date(selectedVisit.visitDate).toLocaleDateString(
-                      "en-IN",
-                      {
-                        day: "2-digit",
-                        month: "short",
-                        year: "numeric",
-                      }
-                    )
+                        "en-IN",
+                        {
+                          day: "2-digit",
+                          month: "short",
+                          year: "numeric",
+                        }
+                      )
                     : "-"}
                 </strong>
               </div>
@@ -636,7 +637,7 @@ const SalesExecutiveBeatPlan = () => {
                       <h4>GPS Capture</h4>
                       <p>
                         {visitForm.latitude !== null &&
-                          visitForm.longitude !== null
+                        visitForm.longitude !== null
                           ? `${visitForm.latitude}, ${visitForm.longitude}`
                           : "Location not captured"}
                       </p>

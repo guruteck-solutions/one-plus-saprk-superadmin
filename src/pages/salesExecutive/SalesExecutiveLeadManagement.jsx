@@ -263,10 +263,10 @@ const SalesExecutiveLeadManagement = () => {
   const formatDate = (date) =>
     date
       ? new Date(date).toLocaleDateString("en-IN", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      })
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        })
       : "—";
 
   const getStatusClass = (status) =>

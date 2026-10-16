@@ -126,10 +126,10 @@ const DealerDownloadCentre = () => {
 
       const searchMatch = search
         ? document.documentName?.toLowerCase().includes(search) ||
-        document.description?.toLowerCase().includes(search) ||
-        getCategoryLabel(document.category)
-          .toLowerCase()
-          .includes(search)
+          document.description?.toLowerCase().includes(search) ||
+          getCategoryLabel(document.category)
+            .toLowerCase()
+            .includes(search)
         : true;
 
       return (
@@ -253,8 +253,9 @@ const DealerDownloadCentre = () => {
             <button
               type="button"
               key={category.value}
-              className={`dealer-category-card ${selectedCategory === category.value ? "active" : ""
-                }`}
+              className={`dealer-category-card ${
+                selectedCategory === category.value ? "active" : ""
+              }`}
               onClick={() => handleCategoryClick(category.value)}
             >
               <div className="dealer-category-icon">
@@ -437,7 +438,7 @@ const DealerDownloadCentre = () => {
                 <strong>
                   {formatDate(
                     selectedDocument.publishedAt ||
-                    selectedDocument.createdAt
+                      selectedDocument.createdAt
                   )}
                 </strong>
               </div>

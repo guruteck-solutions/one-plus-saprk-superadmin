@@ -23,7 +23,7 @@ import {
     ChevronLeft,
 } from "lucide-react";
 
-import "../../css/superadmin/manufacturingManagement.css";
+import "../../css/superadmin/ManufacturingManagement.css";
 
 const API_BASE_URL = "https://one-plus-saprk-backend.onrender.com/api/manufacturing";
 
@@ -3647,15 +3647,15 @@ const ManufacturingBatchManagement = () => {
                                     </div>
                                 </div>
                                 <div className="view-mb-footer">
-                                    <button
-                                        type="button"
-                                        className="view-mb-close-bottom"
-                                        onClick={() =>
-                                            setShowViewModal(false)
-                                        }
-                                    >
-                                        Close
-                                    </button>
+                                <button
+                                    type="button"
+                                    className="view-mb-close-bottom"
+                                    onClick={() =>
+                                        setShowViewModal(false)
+                                    }
+                                >
+                                    Close
+                                </button>
                                 </div>
 
                             </div>

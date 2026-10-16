@@ -159,7 +159,7 @@ const PainterSubmissionHistory = () => {
 
                                         <td>
                                             {item.reward !== null &&
-                                                item.reward !== undefined
+                                            item.reward !== undefined
                                                 ? item.reward
                                                 : "—"}
                                         </td>

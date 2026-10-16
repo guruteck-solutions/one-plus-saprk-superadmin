@@ -157,8 +157,8 @@ const PainterShopProductListing = () => {
                         return (
                             <div
                                 className={`painter-shop-product-card ${selected
-                                    ? "painter-shop-product-card-selected"
-                                    : ""
+                                        ? "painter-shop-product-card-selected"
+                                        : ""
                                     }`}
                                 key={product._id}
                             >
@@ -204,8 +204,8 @@ const PainterShopProductListing = () => {
                                         <button
                                             type="button"
                                             className={`painter-shop-add-btn ${selected
-                                                ? "painter-shop-add-btn-selected"
-                                                : ""
+                                                    ? "painter-shop-add-btn-selected"
+                                                    : ""
                                                 }`}
                                             onClick={() =>
                                                 handleAdd(product)

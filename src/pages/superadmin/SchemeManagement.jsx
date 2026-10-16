@@ -607,17 +607,17 @@ const SchemeManagement = () => {
           prev.map((item) =>
             item._id === selectedScheme._id
               ? {
-                ...item,
-                schemeName: formData.schemeName,
-                description: formData.description,
-                schemeType: formData.schemeType,
-                applicableTo: formData.applicableTo,
-                startDate: formData.startDate,
-                endDate: formData.endDate,
-                termsAndConditions: formData.termsAndConditions,
-                banner: formData.existingBanner || item.banner,
-                pdf: formData.existingPdf || item.pdf,
-              }
+                  ...item,
+                  schemeName: formData.schemeName,
+                  description: formData.description,
+                  schemeType: formData.schemeType,
+                  applicableTo: formData.applicableTo,
+                  startDate: formData.startDate,
+                  endDate: formData.endDate,
+                  termsAndConditions: formData.termsAndConditions,
+                  banner: formData.existingBanner || item.banner,
+                  pdf: formData.existingPdf || item.pdf,
+                }
               : item
           )
         );

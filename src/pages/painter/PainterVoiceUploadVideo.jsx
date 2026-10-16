@@ -134,8 +134,9 @@ const PainterVoiceUploadVideo = () => {
                     <h2>Upload Video</h2>
 
                     <div
-                        className={`painter-voice-video-dropzone ${dragActive ? "drag-active" : ""
-                            }`}
+                        className={`painter-voice-video-dropzone ${
+                            dragActive ? "drag-active" : ""
+                        }`}
                         onDragOver={(e) => {
                             e.preventDefault();
                             setDragActive(true);

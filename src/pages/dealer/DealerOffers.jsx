@@ -111,29 +111,29 @@ const DealerOffers = () => {
     return (
         <div className="dealer-offers-page">
             <div className="dealer-offers-header">
-                <div>
-                    <h1>Offers</h1>
-                    <p>Explore active offers available for you.</p>
-                </div>
+  <div>
+    <h1>Offers</h1>
+    <p>Explore active offers available for you.</p>
+  </div>
 
-                <div className="dealer-offers-header-actions">
-                    <button
-                        className="dealer-offers-back-btn"
-                        onClick={() => window.location.href = "/dealer/schemes"}
-                    >
-                        <ArrowLeft size={17} />
-                        Back
-                    </button>
+  <div className="dealer-offers-header-actions">
+    <button
+      className="dealer-offers-back-btn"
+      onClick={() => window.location.href = "/dealer/schemes"}
+    >
+      <ArrowLeft size={17} />
+      Back
+    </button>
 
-                    <button
-                        className="dealer-offers-refresh-btn"
-                        onClick={fetchOffers}
-                    >
-                        <RefreshCw size={17} />
-                        Refresh
-                    </button>
-                </div>
-            </div>
+    <button
+      className="dealer-offers-refresh-btn"
+      onClick={fetchOffers}
+    >
+      <RefreshCw size={17} />
+      Refresh
+    </button>
+  </div>
+</div>
 
             {error && (
                 <div className="dealer-offers-error">

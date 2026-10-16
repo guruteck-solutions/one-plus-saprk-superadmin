@@ -163,10 +163,11 @@ const PainterShopDashboard = () => {
                                         key={month}
                                     >
                                         <div
-                                            className={`painter-shop-chart-bar ${index === 5
+                                            className={`painter-shop-chart-bar ${
+                                                index === 5
                                                     ? "current"
                                                     : ""
-                                                }`}
+                                            }`}
                                             style={{
                                                 height: `${heights[index]}px`,
                                             }}

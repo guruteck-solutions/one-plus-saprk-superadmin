@@ -109,7 +109,7 @@ const PainterLoyaltyDashboard = () => {
           </h2>
 
           {loyalty?.nextTier &&
-            loyalty.nextTier !== "-" ? (
+          loyalty.nextTier !== "-" ? (
             <div className="painter-tier-progress-text">
               {achievementPercentage}% toward{" "}
               <strong>{loyalty.nextTier}</strong>
@@ -167,10 +167,11 @@ const PainterLoyaltyDashboard = () => {
 
               return (
                 <div
-                  className={`painter-tier-item ${isCurrent
+                  className={`painter-tier-item ${
+                    isCurrent
                       ? "painter-tier-item-active"
                       : ""
-                    }`}
+                  }`}
                   key={tierName}
                 >
 

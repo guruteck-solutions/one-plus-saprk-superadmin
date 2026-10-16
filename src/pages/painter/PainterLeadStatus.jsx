@@ -232,8 +232,9 @@ const PainterLeadStatus = () => {
                 return (
                   <React.Fragment key={status}>
                     <div
-                      className={`painter-lead-status-step ${completed ? "completed" : "pending"
-                        }`}
+                      className={`painter-lead-status-step ${
+                        completed ? "completed" : "pending"
+                      }`}
                     >
                       <div className="painter-lead-status-dot"></div>
 
@@ -248,12 +249,13 @@ const PainterLeadStatus = () => {
 
                     {index < timelineStatuses.length - 1 && (
                       <div
-                        className={`painter-lead-status-line ${isCompletedStatus(
-                          timelineStatuses[index + 1]
-                        )
+                        className={`painter-lead-status-line ${
+                          isCompletedStatus(
+                            timelineStatuses[index + 1]
+                          )
                             ? "completed"
                             : ""
-                          }`}
+                        }`}
                       ></div>
                     )}
                   </React.Fragment>

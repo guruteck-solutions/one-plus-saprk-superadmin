@@ -156,12 +156,12 @@ export default function SalesExecutiveComplaint() {
       const list = Array.isArray(data)
         ? data
         : data.painters ||
-        data.painterProfiles ||
-        data.dealers ||
-        data.products ||
-        data.users ||
-        data.data ||
-        [];
+          data.painterProfiles ||
+          data.dealers ||
+          data.products ||
+          data.users ||
+          data.data ||
+          [];
 
       const filteredList =
         type === "DEALER"

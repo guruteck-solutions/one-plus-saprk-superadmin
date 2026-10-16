@@ -391,8 +391,9 @@ const DealerOrderDetails = () => {
 
                   return (
                     <div
-                      className={`dealer-order-tracking-step ${isCompleted ? "completed" : ""
-                        }`}
+                      className={`dealer-order-tracking-step ${
+                        isCompleted ? "completed" : ""
+                      }`}
                       key={step}
                     >
                       <div className="dealer-order-tracking-icon">

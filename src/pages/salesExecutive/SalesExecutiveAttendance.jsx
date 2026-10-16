@@ -257,8 +257,8 @@ const SalesExecutiveAttendance = () => {
 
       alert(
         error.response?.data?.message ||
-        error.message ||
-        "Failed to check-in."
+          error.message ||
+          "Failed to check-in."
       );
     } finally {
       setLoading(false);
@@ -305,8 +305,8 @@ const SalesExecutiveAttendance = () => {
 
       alert(
         error.response?.data?.message ||
-        error.message ||
-        "Failed to check-out."
+          error.message ||
+          "Failed to check-out."
       );
     } finally {
       setLoading(false);
@@ -407,7 +407,7 @@ const SalesExecutiveAttendance = () => {
                 <span>Check-In Location</span>
                 <strong>
                   {todayAttendance?.checkIn?.latitude &&
-                    todayAttendance?.checkIn?.longitude
+                  todayAttendance?.checkIn?.longitude
                     ? `${todayAttendance.checkIn.latitude}, ${todayAttendance.checkIn.longitude}`
                     : "-"}
                 </strong>
@@ -591,10 +591,11 @@ const SalesExecutiveAttendance = () => {
                     <strong>{formatDate(attendance.date)}</strong>
 
                     <span
-                      className={`attendance-status ${attendance.status === "CHECKED_OUT"
+                      className={`attendance-status ${
+                        attendance.status === "CHECKED_OUT"
                           ? "checked-out"
                           : "checked-in"
-                        }`}
+                      }`}
                     >
                       {attendance.status === "CHECKED_OUT"
                         ? "Checked Out"
@@ -627,7 +628,7 @@ const SalesExecutiveAttendance = () => {
 
                     <span>
                       {attendance.checkIn?.latitude &&
-                        attendance.checkIn?.longitude
+                      attendance.checkIn?.longitude
                         ? `${attendance.checkIn.latitude}, ${attendance.checkIn.longitude}`
                         : "-"}
                     </span>

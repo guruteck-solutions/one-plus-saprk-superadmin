@@ -149,8 +149,8 @@ const PainterWalletLedger = () => {
                             item.points > 0
                               ? "painter-wallet-ledger-positive"
                               : item.points < 0
-                                ? "painter-wallet-ledger-negative"
-                                : ""
+                              ? "painter-wallet-ledger-negative"
+                              : ""
                           }
                         >
                           {item.points > 0
@@ -163,15 +163,15 @@ const PainterWalletLedger = () => {
                             item.cash > 0
                               ? "painter-wallet-ledger-positive"
                               : item.cash < 0
-                                ? "painter-wallet-ledger-negative"
-                                : ""
+                              ? "painter-wallet-ledger-negative"
+                              : ""
                           }
                         >
                           {item.cash > 0
                             ? `+₹${item.cash}`
                             : item.cash < 0
-                              ? `-₹${Math.abs(item.cash)}`
-                              : "-"}
+                            ? `-₹${Math.abs(item.cash)}`
+                            : "-"}
                         </td>
 
                         <td>{item.balance ?? 0}</td>

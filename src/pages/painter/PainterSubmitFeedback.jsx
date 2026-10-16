@@ -167,14 +167,16 @@ const PainterSubmitFeedback = () => {
 
         if (imageCount > 0) {
             parts.push(
-                `${imageCount} image${imageCount > 1 ? "s" : ""
+                `${imageCount} image${
+                    imageCount > 1 ? "s" : ""
                 }`
             );
         }
 
         if (videoCount > 0) {
             parts.push(
-                `${videoCount} video${videoCount > 1 ? "s" : ""
+                `${videoCount} video${
+                    videoCount > 1 ? "s" : ""
                 }`
             );
         }
