@@ -187,7 +187,7 @@ const Login = () => {
           <div className="login-logo">
             <span>Oneplus</span>
             <strong>Spark</strong>
-            <small>PAINTSsssssssssssssssssss</small>
+            <small>PAINTS</small>
           </div>
 
           <h2>Welcome Back!</h2>
