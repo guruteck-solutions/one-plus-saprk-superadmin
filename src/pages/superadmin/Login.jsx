@@ -107,7 +107,7 @@ const Login = () => {
         <div className="brand-logo">
           <span>Oneplus</span>
           <strong>Spark</strong>
-          <small>PAINTS</small>
+          <small>PAINTSsssssssss</small>
         </div>
 
         <div className="welcome-content">
