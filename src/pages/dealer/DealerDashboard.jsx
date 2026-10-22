@@ -239,7 +239,7 @@ const DealerDashboard = () => {
     <div className="dealer-dashboard">
       <div className="dealer-dashboard-header">
         <div>
-          <h1>Dashboard</h1>
+          <h1>Dashboardsss</h1>
           <p>Welcome to your Dealer Dashboard</p>
         </div>
       </div>

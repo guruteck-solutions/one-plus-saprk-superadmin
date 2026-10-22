@@ -172,6 +172,19 @@ const UserManagement = () => {
     // INITIALS
     // ==========================================
 
+    const getProfileImageUrl = (imagePath) => {
+    if (!imagePath) return "";
+
+    if (
+        imagePath.startsWith("http://") ||
+        imagePath.startsWith("https://")
+    ) {
+        return imagePath;
+    }
+
+    return `https://one-plus-saprk-backend.onrender.com/${imagePath.replace(/^\/+/, "")}`;
+};
+
     const getInitials = (name = "") => {
         return name
             .split(" ")
@@ -1047,7 +1060,7 @@ const UserManagement = () => {
                                                 <div className="table-user-avatar">
                                                     {user.profilePicture ? (
                                                         <img
-                                                            src={`https://one-plus-saprk-backend.onrender.com${user.profilePicture}`}
+                                                            src={getProfileImageUrl(user.profilePicture)}
                                                             alt={user.name}
                                                         />
                                                     ) : (
@@ -1360,7 +1373,7 @@ const UserManagement = () => {
                                         {selectedUser.profilePicture ? (
 
                                             <img
-                                                src={`https://one-plus-saprk-backend.onrender.com${selectedUser.profilePicture}`}
+                                                src={getProfileImageUrl(selectedUser.profilePicture)}
                                                 alt={selectedUser.name}
                                             />
 
