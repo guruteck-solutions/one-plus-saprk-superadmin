@@ -412,3 +412,19 @@ input {
     height: 30px;
   }
 }
+
+.calendar-wrapper {
+  position: relative;
+}
+
+.calendar-input {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  z-index: 1000;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}

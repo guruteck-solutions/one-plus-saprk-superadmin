@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Menu,
   Search,
@@ -10,19 +11,19 @@ import {
   ChevronDown,
 } from "lucide-react";
 
+
+
+
 const Navbar = () => {
+  const [showCalendar, setShowCalendar] = useState(false);
+const [selectedDate, setSelectedDate] = useState("");
   return (
     <header className="top-navbar">
 
       {/* ================= LEFT ================= */}
       <div className="navbar-left">
         {/* Search */}
-        <div className="navbar-search">
-
-          
-
-          {/* <Search size={17} /> */}
-
+        {/* <div className="navbar-search">
           <input
             type="text"
             placeholder="Search anything..."
@@ -31,10 +32,7 @@ const Navbar = () => {
           <span className="search-shortcut">
             Ctrl + K
           </span>
-
-          
-
-        </div>
+        </div> */}
 
       </div>
 
@@ -55,29 +53,50 @@ const Navbar = () => {
 
           <Bell size={19} />
 
-          <span className="notification-count">
+          {/* <span className="notification-count">
             12
-          </span>
+          </span> */}
 
         </button>
 
 
         {/* Task / Checklist */}
-        <button className="navbar-icon-btn">
+        {/* <button className="navbar-icon-btn">
           <ClipboardCheck size={19} />
-        </button>
+        </button> */}
 
 
         {/* Calendar */}
-        <button className="navbar-icon-btn">
-          <CalendarDays size={19} />
-        </button>
+        
+<div className="calendar-wrapper">
+  <button
+    className="navbar-icon-btn"
+    onClick={() => setShowCalendar(!showCalendar)}
+    type="button"
+  >
+    <CalendarDays size={19} />
+  </button>
+
+  {showCalendar && (
+    <input
+      type="date"
+      className="calendar-input"
+      value={selectedDate}
+      onChange={(e) => {
+        setSelectedDate(e.target.value);
+        setShowCalendar(false);
+      }}
+      autoFocus
+    />
+  )}
+</div>
+
 
 
         {/* Dark Mode */}
-        <button className="navbar-icon-btn">
+        {/* <button className="navbar-icon-btn">
           <Moon size={19} />
-        </button>
+        </button> */}
 
 
         {/* Apps */}
@@ -105,10 +124,10 @@ const Navbar = () => {
 
           </div>
 
-          <ChevronDown
+          {/* <ChevronDown
             size={15}
             className="profile-arrow"
-          />
+          /> */}
 
         </div>
 
