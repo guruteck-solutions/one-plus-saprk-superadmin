@@ -1,1 +1,1 @@
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://one-plus-saprk-backend.onrender.com';
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://reality-crm-wmos.onrender.com';

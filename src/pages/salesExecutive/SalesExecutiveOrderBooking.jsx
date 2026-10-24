@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { Search, Package, RefreshCw } from "lucide-react";
 import "../../css/salesExecutive/SalesExecutiveOrderBooking.css";
 
-const API_BASE_URL = "https://one-plus-saprk-backend.onrender.com";
+const API_BASE_URL = "https://reality-crm-wmos.onrender.com";
 
 const getAuthConfig = () => {
     const token = localStorage.getItem("token") || localStorage.getItem("authToken");

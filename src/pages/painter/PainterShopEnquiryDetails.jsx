@@ -23,7 +23,7 @@ const PainterShopEnquiryDetails = () => {
                 const token = localStorage.getItem("token");
 
                 const response = await axios.get(
-                    `https://one-plus-saprk-backend.onrender.com/api/painter/shop-enquiries/${id}`,
+                    `https://reality-crm-wmos.onrender.com/api/painter/shop-enquiries/${id}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,

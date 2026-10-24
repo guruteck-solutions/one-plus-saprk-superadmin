@@ -114,7 +114,7 @@ const PainterSubmitFeedback = () => {
             });
 
             const response = await fetch(
-                "https://one-plus-saprk-backend.onrender.com/api/painter/feedback",
+                "https://reality-crm-wmos.onrender.com/api/painter/feedback",
                 {
                     method: "POST",
                     headers: {

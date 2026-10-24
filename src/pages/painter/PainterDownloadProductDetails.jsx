@@ -5,10 +5,10 @@ import { Download, FileText } from "lucide-react";
 import "../../css/painter/PainterDownloadProductDetails.css";
 import { toast } from "sonner";
 
-const PRODUCT_API = "https://one-plus-saprk-backend.onrender.com/api/painter/products";
-const DOCUMENT_API = "https://one-plus-saprk-backend.onrender.com/api/painter/documents/categories";
-const DOWNLOAD_API = "https://one-plus-saprk-backend.onrender.com/api/documents";
-const SERVER_URL = "https://one-plus-saprk-backend.onrender.com";
+const PRODUCT_API = "https://reality-crm-wmos.onrender.com/api/painter/products";
+const DOCUMENT_API = "https://reality-crm-wmos.onrender.com/api/painter/documents/categories";
+const DOWNLOAD_API = "https://reality-crm-wmos.onrender.com/api/documents";
+const SERVER_URL = "https://reality-crm-wmos.onrender.com";
 
 const DOCUMENT_TYPES = [
     {

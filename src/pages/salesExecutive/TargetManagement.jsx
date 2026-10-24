@@ -20,7 +20,7 @@ import {
 
 import "../../css/salesExecutive/TargetManagement.css";
 
-const API_BASE_URL = "https://one-plus-saprk-backend.onrender.com";
+const API_BASE_URL = "https://reality-crm-wmos.onrender.com";
 
 const getToken = () =>
     localStorage.getItem("token") ||

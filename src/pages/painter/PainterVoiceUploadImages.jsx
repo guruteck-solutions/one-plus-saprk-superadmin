@@ -109,7 +109,7 @@ const PainterVoiceUploadImages = () => {
             });
 
             const response = await fetch(
-                "https://one-plus-saprk-backend.onrender.com/api/painter/voice-images",
+                "https://reality-crm-wmos.onrender.com/api/painter/voice-images",
                 {
                     method: "POST",
                     headers: {

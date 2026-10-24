@@ -72,8 +72,8 @@ const ProductManagement = () => {
     const [editProductImage, setEditProductImage] = useState(null);
     const [editProductImagePreview, setEditProductImagePreview] = useState(null);
 
-    const API_URL = "https://one-plus-saprk-backend.onrender.com/api/products";
-    const SERVER_URL = "https://one-plus-saprk-backend.onrender.com";
+    const API_URL = "https://reality-crm-wmos.onrender.com/api/products";
+    const SERVER_URL = "https://reality-crm-wmos.onrender.com";
 
     //     =
     // FETCH PRODUCTS

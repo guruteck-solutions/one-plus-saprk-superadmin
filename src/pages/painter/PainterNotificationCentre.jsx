@@ -3,7 +3,7 @@ import { Bell, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import "../../css/painter/PainterNotifications.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
+const API_URL = import.meta.env.VITE_API_URL || "https://reality-crm-wmos.onrender.com";
 
 const PainterNotifications = () => {
   const [notifications, setNotifications] = useState([]);

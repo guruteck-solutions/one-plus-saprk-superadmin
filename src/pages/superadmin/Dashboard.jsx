@@ -66,7 +66,7 @@ const Dashboard = () => {
       }
 
       const res = await axios.get(
-        "https://one-plus-saprk-backend.onrender.com/api/users/stats",
+        "https://reality-crm-wmos.onrender.com/api/users/stats",
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -13,7 +13,7 @@ const PainterFollowUpNotes = () => {
   const [submitting, setSubmitting] = useState(false);
 
   const API_BASE_URL =
-    import.meta.env.VITE_API_URL || "https://one-plus-saprk-backend.onrender.com";
+    import.meta.env.VITE_API_URL || "https://reality-crm-wmos.onrender.com";
 
   const fetchLeads = async () => {
     try {

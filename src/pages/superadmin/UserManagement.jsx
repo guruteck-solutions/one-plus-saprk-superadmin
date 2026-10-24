@@ -59,7 +59,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                "https://one-plus-saprk-backend.onrender.com/api/users",
+                "https://reality-crm-wmos.onrender.com/api/users",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -182,7 +182,7 @@ const UserManagement = () => {
         return imagePath;
     }
 
-    return `https://one-plus-saprk-backend.onrender.com/${imagePath.replace(/^\/+/, "")}`;
+    return `https://reality-crm-wmos.onrender.com/${imagePath.replace(/^\/+/, "")}`;
 };
 
     const getInitials = (name = "") => {
@@ -265,7 +265,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                `https://one-plus-saprk-backend.onrender.com/api/users/${userId}`,
+                `https://reality-crm-wmos.onrender.com/api/users/${userId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -335,8 +335,8 @@ const UserManagement = () => {
 
             const endpoint =
                 registrationType === "DEALER"
-                    ? `https://one-plus-saprk-backend.onrender.com/api/superadmin/dealer-registrations/${user._id}/review`
-                    : `https://one-plus-saprk-backend.onrender.com/api/superadmin/painter-registrations/${user._id}/review`;
+                    ? `https://reality-crm-wmos.onrender.com/api/superadmin/dealer-registrations/${user._id}/review`
+                    : `https://reality-crm-wmos.onrender.com/api/superadmin/painter-registrations/${user._id}/review`;
 
             const response = await axios.patch(
                 endpoint,
@@ -354,7 +354,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const updatedUserResponse = await axios.get(
-                    `https://one-plus-saprk-backend.onrender.com/api/users/${user._id}`,
+                    `https://reality-crm-wmos.onrender.com/api/users/${user._id}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -407,7 +407,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.delete(
-                `https://one-plus-saprk-backend.onrender.com/api/users/${userId}`,
+                `https://reality-crm-wmos.onrender.com/api/users/${userId}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -458,7 +458,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                `https://one-plus-saprk-backend.onrender.com/api/users/${userId}/kyc/approve`,
+                `https://reality-crm-wmos.onrender.com/api/users/${userId}/kyc/approve`,
                 {},
                 {
                     headers: {
@@ -473,7 +473,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const userResponse = await axios.get(
-                    `https://one-plus-saprk-backend.onrender.com/api/users/${userId}`,
+                    `https://reality-crm-wmos.onrender.com/api/users/${userId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -528,7 +528,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                `https://one-plus-saprk-backend.onrender.com/api/users/${userId}/kyc/reject`,
+                `https://reality-crm-wmos.onrender.com/api/users/${userId}/kyc/reject`,
                 {
                     remarks: remarks.trim(),
                 },
@@ -545,7 +545,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const userResponse = await axios.get(
-                    `https://one-plus-saprk-backend.onrender.com/api/users/${userId}`,
+                    `https://reality-crm-wmos.onrender.com/api/users/${userId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -602,7 +602,7 @@ const UserManagement = () => {
             const token = localStorage.getItem("token");
 
             const response = await axios.put(
-                `https://one-plus-saprk-backend.onrender.com/api/users/${userId}/kyc/correction`,
+                `https://reality-crm-wmos.onrender.com/api/users/${userId}/kyc/correction`,
                 {
                     remarks: remarks.trim(),
                 },
@@ -621,7 +621,7 @@ const UserManagement = () => {
                 await fetchUsers();
 
                 const userResponse = await axios.get(
-                    `https://one-plus-saprk-backend.onrender.com/api/users/${userId}`,
+                    `https://reality-crm-wmos.onrender.com/api/users/${userId}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`,
@@ -1760,7 +1760,7 @@ const UserManagement = () => {
                                                     <label>{label}</label>
                                                     {filePath ? (
                                                         <a
-                                                            href={`https://one-plus-saprk-backend.onrender.com/${String(filePath).replace(/^\/+/, "")}`}
+                                                            href={`https://reality-crm-wmos.onrender.com/${String(filePath).replace(/^\/+/, "")}`}
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                         >
