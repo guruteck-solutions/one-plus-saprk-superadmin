@@ -27,19 +27,29 @@ const SalesExecutiveOrderBooking = () => {
     const [remarks, setRemarks] = useState("");
     const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
+    const [leads, setLeads] = useState([]);
+    const [lead, setLead] = useState("");
 
     const loadData = async () => {
         setLoading(true);
         try {
             const config = getAuthConfig();
-            const [dealerRes, productRes] = await Promise.all([
+            const [dealerRes, productRes, leadRes] = await Promise.all([
                 axios.get(`${API_BASE_URL}/api/users`, config),
                 axios.get(`${API_BASE_URL}/api/sales-executive/orders/products`, config),
+                axios.get(`${API_BASE_URL}/api/sales-executive/leads`, config),
             ]);
-            setDealers(getList(dealerRes.data).filter((user) =>
-                String(user.role || user.userRole || user.userType || "").toUpperCase().includes("DEALER")
-            ));
+
+            setDealers(
+                getList(dealerRes.data).filter((user) =>
+                    String(user.role || user.userRole || user.userType || "")
+                        .toUpperCase()
+                        .includes("DEALER")
+                )
+            );
+
             setProducts(getList(productRes.data));
+            setLeads(leadRes.data.leads || []);
         } catch (error) {
             toast.error(error.response?.data?.message || "Unable to load order booking data");
         } finally {
@@ -109,36 +119,68 @@ const SalesExecutiveOrderBooking = () => {
     const totalDiscount = cart.reduce((sum, item) => sum + item.discount, 0);
     const totalAmount = subtotal - totalDiscount;
 
+
     const submitOrder = async (status) => {
-        if (!dealer) return toast.error("Please select a dealer");
-        if (!cart.length) return toast.error("Please add at least one product");
-        const token = localStorage.getItem("token") || localStorage.getItem("authToken");
-        if (!token) return toast.error("Login token not found. Please log in again.");
+        if (!lead) {
+            return toast.error("Please select a lead");
+        }
+
+        if (!dealer) {
+            return toast.error("Please select a dealer");
+        }
+
+        if (!cart.length) {
+            return toast.error("Please add at least one product");
+        }
+
+        const token =
+            localStorage.getItem("token") ||
+            localStorage.getItem("authToken");
+
+        if (!token) {
+            return toast.error("Login token not found. Please log in again.");
+        }
 
         setSubmitting(true);
-        try {
-            await axios.post(`${API_BASE_URL}/api/sales-executive/orders`, {
-                dealer,
-                items: cart.map((item) => ({
-                    product: item.product,
-                    quantity: item.quantity,
-                    unit: item.unit,
-                    discount: item.discount,
-                })),
-                remarks,
-                status,
-            }, getAuthConfig());
 
-            toast.success(status === "Draft" ? "Order saved as draft" : "Order submitted successfully");
+        try {
+            await axios.post(
+                `${API_BASE_URL}/api/sales-executive/orders`,
+                {
+                    lead,
+                    dealer,
+                    items: cart.map((item) => ({
+                        product: item.product,
+                        quantity: item.quantity,
+                        unit: item.unit,
+                        discount: item.discount,
+                    })),
+                    remarks,
+                    status,
+                },
+                getAuthConfig()
+            );
+
+            toast.success(
+                status === "Draft"
+                    ? "Order saved as draft"
+                    : "Order submitted successfully"
+            );
+
             setCart([]);
+            setLead("");
             setDealer("");
             setRemarks("");
         } catch (error) {
-            toast.error(error.response?.data?.message || "Failed to create order");
+            toast.error(
+                error.response?.data?.message ||
+                "Failed to create order"
+            );
         } finally {
             setSubmitting(false);
         }
     };
+
 
     const formatCurrency = (amount) =>
         `₹${Number(amount || 0).toLocaleString("en-IN", { maximumFractionDigits: 2 })}`;
@@ -199,6 +241,30 @@ const SalesExecutiveOrderBooking = () => {
                         <div><h2>Order Details</h2><p>Choose dealer and review items.</p></div>
                         <span className="se-order-count">{cart.length} items</span>
                     </div>
+
+
+                    <label className="se-order-label" htmlFor="se-lead">
+                        Select Lead
+                    </label>
+
+                    <select
+                        id="se-lead"
+                        value={lead}
+                        onChange={(event) => setLead(event.target.value)}
+                    >
+                        <option value="">Choose a lead</option>
+
+                        {leads.map((item) => (
+                            <option key={item._id} value={item._id}>
+                                {item.customerName} - {item.businessType}
+                            </option>
+                        ))}
+                    </select>
+
+                    {leads.length === 0 && !loading && (
+                        <p className="se-order-hint">No leads found.</p>
+                    )}
+
 
                     <label className="se-order-label" htmlFor="se-dealer">Select Dealer</label>
                     <select id="se-dealer" value={dealer} onChange={(event) => setDealer(event.target.value)}>

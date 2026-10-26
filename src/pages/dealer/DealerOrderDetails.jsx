@@ -11,8 +11,10 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import "../../css/dealer/DealerOrderDetails.css";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "";
-const SERVER_URL = API_BASE_URL || "https://reality-crm-wmos.onrender.com";
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "https://reality-crm-wmos.onrender.com";
+
+const SERVER_URL = API_BASE_URL;
 
 const DealerOrderDetails = () => {
   const { id } = useParams();

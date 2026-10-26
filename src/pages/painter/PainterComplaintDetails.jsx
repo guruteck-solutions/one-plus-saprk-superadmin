@@ -4,7 +4,9 @@ import { MessageSquare, X, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 import "../../css/painter/PainterComplaintDetails.css";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "";
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://reality-crm-wmos.onrender.com";
 
 const PainterComplaintDetails = () => {
   const location = useLocation();

@@ -190,7 +190,6 @@ const Sidebar = () => {
           >
             <UsersRound size={19} />
             <span>User Management</span>
-            <ChevronRight className="menu-arrow" size={16} style={{ marginLeft: "auto" }} />
           </NavLink>
 
 
@@ -203,7 +202,6 @@ const Sidebar = () => {
           >
             <Package size={19} />
             <span>Product Management</span>
-            <ChevronRight className="menu-arrow" size={16} style={{ marginLeft: "auto" }} />
           </NavLink>
 
 
@@ -216,1218 +214,271 @@ const Sidebar = () => {
             <span>Price Management</span>
           </NavLink>
 
+          <NavLink
+            to="/daily-cash-report"
+            className="dashboard-nav-item"
+          >
+            <Store size={19} />
+            <span>Store Management</span>
+          </NavLink>
 
-          {/* Shop Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setStoreOpen(!storeOpen)}
-            >
-              <Store size={19} />
-
-              <span>Store Management</span>
-
-              {storeOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
+          <NavLink
+            to="/order-management"
+            className="dashboard-nav-item"
+          >
+            <ShoppingCart size={19} />
+            <span>Order Management</span>
+          </NavLink>
 
 
-            {/* Daily Reports */}
+          {/* Lead Management */}
+          <NavLink
+            to="/leads"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <ClipboardList size={19} />
+            <span>Lead Management</span>
+          </NavLink>
 
-            {storeOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/daily-cash-report"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""
-                    }`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Daily Reports</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-
-          {/* Order Management */}
-          {/* ================= ORDER MANAGEMENT ================= */}
-
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setOrderOpen(!orderOpen)}
-            >
-              <ShoppingCart size={19} />
-
-              <span>Order Management</span>
-
-              {orderOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-
-            {/* Order List */}
-
-            {orderOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/order-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""
-                    }`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Order List</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-          {/* ================= LEAD MANAGEMENT ================= */}
-
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setLeadOpen(!leadOpen)}
-            >
-              <ClipboardList size={19} />
-
-              <span>Lead Management</span>
-
-              {leadOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-
-            {/* Lead List */}
-
-            {leadOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/leads"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Lead List</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
 
           {/* QR Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setQrOpen(!qrOpen)}
-            >
-              <QrCode size={19} />
-
-              <span>QR Management</span>
-
-              {qrOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
+          <NavLink
+            to="/qr-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <QrCode size={19} />
+            <span>QR Management</span>
+          </NavLink>
 
 
-            {/* QR Code List */}
-
-            {qrOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/qr-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>QR Codes List</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-
-          {/* Reward Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setRewardOpen(!rewardOpen)}
-            >
-              <Gift size={19} />
-
-              <span>Rewards Management</span>
-
-              {rewardOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Reward Dashboard */}
-            {rewardOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/reward-dashboard"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Reward Dashboard</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
+          {/* Rewards Management */}
+          <NavLink
+            to="/reward-dashboard"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Gift size={19} />
+            <span>Rewards Management</span>
+          </NavLink>
 
           {/* Scheme Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setSchemeOpen(!schemeOpen)}
-            >
-              <Gift size={19} />
-
-              <span>Scheme Management</span>
-
-              {schemeOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Scheme List */}
-            {schemeOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/scheme-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>All Schemes</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-
+          <NavLink
+            to="/scheme-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Gift size={19} />
+            <span>Scheme Management</span>
+          </NavLink>
           {/* Finance Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setFinanceOpen(!financeOpen)}
-            >
-              <Wallet size={19} />
-
-              <span>Finance Management</span>
-
-              {financeOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Finance Dashboard */}
-            {financeOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/finance-dashboard"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Finance Dashboard</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-
-          {/* Reports Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setReportsOpen(!reportsOpen)}
-            >
-              <FileBarChart size={19} />
-
-              <span>Reports Management</span>
-
-              {reportsOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Reports */}
-            {reportsOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/reports"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>All Reports</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-
-          {/* Manufacturing Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() =>
-                setManufacturingOpen(!manufacturingOpen)
-              }
-            >
-              <Factory size={19} />
-
-              <span>Manufacturing</span>
-
-              {manufacturingOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Manufacturing - Batch Management */}
-            {manufacturingOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/manufacturing-batch-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""
-                    }`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Batch Management</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-
-          {/* Inventory Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() =>
-                setInventoryOpen(!inventoryOpen)
-              }
-            >
-              <Boxes size={19} />
-
-              <span>Inventory Management</span>
-
-              {inventoryOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {inventoryOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/inventory-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""
-                    }`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Inventory Overview</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-          {/* Dispatch Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setDispatchOpen(!dispatchOpen)}
-            >
-              <Truck size={19} />
-
-              <span>Dispatch Management</span>
-
-              {dispatchOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Dispatch Dashboard */}
-            {dispatchOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/dispatch-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Overview</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-
-          {/* Inbound Material Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setInboundOpen(!inboundOpen)}
-            >
-              <PackageCheck size={19} />
-
-              <span>Inbound Material Management</span>
-
-              {inboundOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Inbound Dashboard */}
-            {inboundOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/inbound-material-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Overview</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-          {/* Employee HR Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setHrOpen(!hrOpen)}
-            >
-              <Users size={19} />
-
-              <span>Employee HR Management</span>
-
-              {hrOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* HR Submenu */}
-            {hrOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/employee-hr-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <LayoutDashboard size={16} />
-                  <span>Overview</span>
-                </NavLink>
-              </div>
-            )}
-
-          </div>
-
-          {/* Commission Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setCommissionOpen(!commissionOpen)}
-            >
-              <WalletCards size={19} />
-
-              <span>Commission Management</span>
-
-              {commissionOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Commission Dashboard */}
-            {commissionOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/commission-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Overview</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-          {/* Downloads & Documents */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setDocumentsOpen(!documentsOpen)}
-            >
-              <FileText size={19} />
-
-              <span>Downloads & Documents</span>
-
-              {documentsOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Documents Management */}
-
-            {documentsOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/document-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Documents Management</span>
-                </NavLink>
-
-              </div>
-            )}
-          </div>
-
-          {/* Birthday Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setBirthdayOpen(!birthdayOpen)}
-            >
-              <Cake size={19} />
-
-              <span>Birthday Management</span>
-
-              {birthdayOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Birthday Dashboard */}
-            {birthdayOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/birthday-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Overview</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-          {/* Feedback Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setFeedbackOpen(!feedbackOpen)}
-            >
-              <MessageSquare size={19} />
-
-              <span>Feedback Management</span>
-
-              {feedbackOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {feedbackOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/feedback-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-                  <span>Feedback Management</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-          {/* follow up management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setFollowUpOpen(!followUpOpen)}
-            >
-              <Users size={19} />
-
-              <span>Follow-up Management</span>
-
-              {followUpOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {followUpOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/follow-up-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-                  <span>Follow-up Management</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-          {/* Bank Payment Sheet */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setBankPaymentOpen(!bankPaymentOpen)}
-            >
-              <Wallet size={19} />
-
-              <span>Bank Payment Sheet</span>
-
-              {bankPaymentOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Bank Payment Sheet */}
-            {bankPaymentOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/bank-payment-sheet"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileSpreadsheet size={16} />
-
-                  <span>Generate Sheet</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-          {/* Approval Workflow */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setApprovalOpen(!approvalOpen)}
-            >
-              <FileCheck size={19} />
-
-              <span>Approval Workflow</span>
-
-              {approvalOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Approval Workflow Submenu */}
-            {approvalOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/approval-workflow"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Approval Workflow</span>
-                </NavLink>
-
-              </div>
-            )}
-          </div>
-
-          {/* Contact / Directory */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setContactOpen(!contactOpen)}
-            >
-              <Users size={19} />
-
-              <span>Directory</span>
-
-              {contactOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Directory */}
-            {contactOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/directory"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <Contact size={16} />
-
-                  <span>Directory</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-          {/* Social Media Activities */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setSocialMediaOpen(!socialMediaOpen)}
-            >
-              <Share2 size={19} />
-
-              <span>Marketing</span>
-
-              {socialMediaOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Social Media Activities */}
-            {socialMediaOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/social-media-activities"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <Share2 size={16} />
-
-                  <span>Social Media Activities</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-          {/* Loyalty Tier Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setLoyaltyTierOpen(!loyaltyTierOpen)}
-            >
-              <Award size={19} />
-
-              <span>Loyalty Tier Management</span>
-
-              {loyaltyTierOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Loyalty Tier Management */}
-            {loyaltyTierOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/loyalty-tier-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Loyalty Tier Management</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-          {/* Sales Visit Planning */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setSalesVisitOpen(!salesVisitOpen)}
-            >
-              <Map size={19} />
-
-              <span>Sales Visit Planning</span>
-
-              {salesVisitOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Sales Visit Dashboard */}
-            {salesVisitOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/sales-visit-planning"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>Sales Visit Planning</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
-
-          {/* Notification & Subscription Management */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setNotificationOpen(!notificationOpen)}
-            >
-              <Bell size={19} />
-
-              <span>Notification & Subscription</span>
-
-              {notificationOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* Notification & Subscription Dashboard */}
-            {notificationOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/notification-management"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-                  <span>Notification Management</span>
-                </NavLink>
-              </div>
-            )}
-
-          </div>
-
-          {/* System Settings */}
-          <div className="store-management-menu">
-
-            <div
-              className="dashboard-nav-item"
-              onClick={() => setSystemSettingsOpen(!systemSettingsOpen)}
-            >
-              <Settings size={19} />
-
-              <span>System Settings</span>
-
-              {systemSettingsOpen ? (
-                <ChevronDown
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              ) : (
-                <ChevronRight
-                  className="menu-arrow"
-                  size={16}
-                  style={{ marginLeft: "auto" }}
-                />
-              )}
-            </div>
-
-            {/* General Settings */}
-            {systemSettingsOpen && (
-              <div className="store-submenu">
-
-                <NavLink
-                  to="/system-settings"
-                  className={({ isActive }) =>
-                    `store-submenu-item ${isActive ? "active" : ""}`
-                  }
-                >
-                  <FileText size={16} />
-
-                  <span>General Settings</span>
-                </NavLink>
-
-              </div>
-            )}
-
-          </div>
+          <NavLink
+            to="/finance-dashboard"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Wallet size={19} />
+            <span>Finance Management</span>
+          </NavLink>
+
+          <NavLink
+            to="/reports"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <FileBarChart size={19} />
+            <span>Reports Management</span>
+          </NavLink>
+
+          <NavLink
+            to="/manufacturing-batch-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Factory size={19} />
+            <span>Manufacturing</span>
+          </NavLink>
+
+          <NavLink
+            to="/inventory-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Boxes size={19} />
+            <span>Inventory Management</span>
+          </NavLink>
+
+
+          <NavLink
+            to="/dispatch-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Truck size={19} />
+            <span>Dispatch Management</span>
+          </NavLink>
+
+          <NavLink
+            to="/inbound-material-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <PackageCheck size={19} />
+            <span>Inbound Material Management</span>
+          </NavLink>
+
+          <NavLink
+            to="/employee-hr-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Users size={19} />
+            <span>Employee HR Management</span>
+          </NavLink>
+
+          <NavLink
+            to="/commission-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <WalletCards size={19} />
+            <span>Commission Management</span>
+          </NavLink>
+
+          <NavLink
+            to="/document-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <FileText size={19} />
+            <span>Downloads & Documents</span>
+          </NavLink>
+
+          <NavLink
+            to="/birthday-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Cake size={19} />
+            <span>Birthday Management</span>
+          </NavLink>
+
+          <NavLink
+            to="/feedback-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <MessageSquare size={19} />
+            <span>Feedback Management</span>
+          </NavLink>
+
+          <NavLink
+            to="/follow-up-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Users size={19} />
+            <span>Follow-up Management</span>
+          </NavLink>
+
+
+          <NavLink
+            to="/bank-payment-sheet"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Wallet size={19} />
+            <span>Bank Payment Sheet</span>
+          </NavLink>
+
+          <NavLink
+            to="/approval-workflow"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <FileCheck size={19} />
+            <span>Approval Workflow</span>
+          </NavLink>
+
+          <NavLink
+            to="/directory"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Users size={19} />
+            <span>Directory</span>
+          </NavLink>
+
+
+          <NavLink
+            to="/social-media-activities"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Share2 size={19} />
+            <span>Marketing</span>
+          </NavLink>
+
+          <NavLink
+            to="/loyalty-tier-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Award size={19} />
+            <span>Loyalty Tier Management</span>
+          </NavLink>
+
+          <NavLink
+            to="/sales-visit-planning"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Map size={19} />
+            <span>Sales Visit Planning</span>
+          </NavLink>
+
+          <NavLink
+            to="/notification-management"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Bell size={19} />
+            <span>Notification & Subscription</span>
+          </NavLink>
+
+          <NavLink
+            to="/system-settings"
+            className={({ isActive }) =>
+              `dashboard-nav-item ${isActive ? "active" : ""}`
+            }
+          >
+            <Settings size={19} />
+            <span>System Settings</span>
+          </NavLink>
 
         </nav>
 

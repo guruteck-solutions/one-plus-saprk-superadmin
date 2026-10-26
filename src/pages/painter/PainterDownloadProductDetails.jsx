@@ -4,11 +4,13 @@ import axios from "axios";
 import { Download, FileText } from "lucide-react";
 import "../../css/painter/PainterDownloadProductDetails.css";
 import { toast } from "sonner";
+import { API_BASE_URL } from "../../config/api";
 
-const PRODUCT_API = "https://reality-crm-wmos.onrender.com/api/painter/products";
-const DOCUMENT_API = "https://reality-crm-wmos.onrender.com/api/painter/documents/categories";
-const DOWNLOAD_API = "https://reality-crm-wmos.onrender.com/api/documents";
-const SERVER_URL = "https://reality-crm-wmos.onrender.com";
+const PRODUCT_API = `${API_BASE_URL}/api/painter/products`;
+const DOCUMENT_API = `${API_BASE_URL}/api/painter/documents/categories`;
+const DOWNLOAD_API = `${API_BASE_URL}/api/documents`;
+const SERVER_URL = API_BASE_URL;
+
 
 const DOCUMENT_TYPES = [
     {

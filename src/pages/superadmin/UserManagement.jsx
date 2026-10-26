@@ -44,6 +44,23 @@ const UserManagement = () => {
 
     const [selectedUsers, setSelectedUsers] = useState([]);
 
+
+    const departmentOptions = [
+        "Administration",
+        "Management",
+        "Sales",
+        "Finance",
+        "Store",
+        "Inventory",
+        "Dealer Management",
+        "Painter Management",
+        "Support",
+        "HR",
+        "Manufacturing",
+        "Dispatch Management"
+    ];
+
+
     // ==========================================
     // FETCH USERS
     // ==========================================
@@ -105,7 +122,7 @@ const UserManagement = () => {
 
         const matchesDepartment =
             department === "All Departments" ||
-            getDepartment(user.role) === department;
+            (user.department || getDepartment(user.role)) === department;
 
         return (
             matchesSearch &&
@@ -173,17 +190,17 @@ const UserManagement = () => {
     // ==========================================
 
     const getProfileImageUrl = (imagePath) => {
-    if (!imagePath) return "";
+        if (!imagePath) return "";
 
-    if (
-        imagePath.startsWith("http://") ||
-        imagePath.startsWith("https://")
-    ) {
-        return imagePath;
-    }
+        if (
+            imagePath.startsWith("http://") ||
+            imagePath.startsWith("https://")
+        ) {
+            return imagePath;
+        }
 
-    return `https://reality-crm-wmos.onrender.com/${imagePath.replace(/^\/+/, "")}`;
-};
+        return `https://reality-crm-wmos.onrender.com/${imagePath.replace(/^\/+/, "")}`;
+    };
 
     const getInitials = (name = "") => {
         return name
@@ -868,51 +885,26 @@ const UserManagement = () => {
 
                     {/* DEPARTMENT */}
 
-                    <div className="users-filter">
 
+                    <div className="users-filter">
                         <label>Department</label>
 
                         <select
                             value={department}
-                            onChange={(e) =>
-                                setDepartment(e.target.value)
-                            }
+                            onChange={(e) => setDepartment(e.target.value)}
                         >
-                            <option>
+                            <option value="All Departments">
                                 All Departments
                             </option>
 
-                            <option>
-                                Administration
-                            </option>
-
-                            <option>
-                                Management
-                            </option>
-
-                            <option>
-                                Sales
-                            </option>
-
-                            <option>
-                                Finance
-                            </option>
-
-                            <option>
-                                Store
-                            </option>
-
-                            <option>
-                                Dealer Management
-                            </option>
-
-                            <option>
-                                Painter Management
-                            </option>
-
+                            {departmentOptions.map((item) => (
+                                <option key={item} value={item}>
+                                    {item}
+                                </option>
+                            ))}
                         </select>
-
                     </div>
+
 
                     {/* STATUS */}
 
@@ -1106,9 +1098,7 @@ const UserManagement = () => {
                                         <td>
 
                                             <span className="table-text">
-                                                {getDepartment(
-                                                    user.role
-                                                )}
+                                                {user.department || getDepartment(user.role)}
                                             </span>
 
                                         </td>

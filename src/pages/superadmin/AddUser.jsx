@@ -33,6 +33,7 @@ const AddUser = () => {
 
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [reportingUsers, setReportingUsers] = useState([]);
 
   const [showPassword, setShowPassword] =
     useState(false);
@@ -135,6 +136,7 @@ const AddUser = () => {
     "Support",
     "HR",
     "Manufacturing",
+    "Dispatch Management",
   ];
 
   const countryOptions = [
@@ -366,6 +368,48 @@ const AddUser = () => {
     }));
   };
 
+
+  const fetchReportingUsers = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(
+        "https://reality-crm-wmos.onrender.com/api/users",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to load reporting users");
+      }
+
+      const seniorRoles = [
+        "SUPER_ADMIN",
+        "DIRECTOR",
+        "MANAGER",
+      ];
+
+      setReportingUsers(
+        (data.users || []).filter(
+          (user) =>
+            seniorRoles.includes(user.role) &&
+            user.status === "ACTIVE" &&
+            user._id !== id
+        )
+      );
+    } catch (error) {
+      console.error("Reporting users fetch error:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchReportingUsers();
+  }, [id]);
   // ==========================================
   // SAVE / UPDATE USER
   // ==========================================
@@ -1367,33 +1411,29 @@ const AddUser = () => {
                 {/* REPORTING */}
 
                 <div className="add-user-field full">
-
-                  <label>
-                    Reporting To
-                  </label>
+                  <label>Reporting To</label>
 
                   <div className="select-wrapper">
-
                     <select
                       name="reportingTo"
-                      value={
-                        formData.reportingTo
-                      }
+                      value={formData.reportingTo}
                       onChange={handleChange}
                     >
-
                       <option value="">
                         Select reporting manager
                       </option>
 
+                      {reportingUsers.map((user) => (
+                        <option key={user._id} value={user._id}>
+                          {user.name} (
+                          {user.role.replaceAll("_", " ")}
+                          )
+                        </option>
+                      ))}
                     </select>
 
-                    <ChevronDown
-                      size={18}
-                    />
-
+                    <ChevronDown size={18} />
                   </div>
-
                 </div>
 
                 {/* DEPARTMENT */}

@@ -24,6 +24,9 @@ const INITIAL_FORM = {
   contactDetails: "",
   businessType: "",
   address: "",
+  city: "",
+  state: "",
+  pinCode: "",
   productInterest: "",
   estimatedBusiness: "",
   source: "",
@@ -55,10 +58,37 @@ const SalesExecutiveLeadManagement = () => {
   const [form, setForm] = useState(INITIAL_FORM);
   const [saving, setSaving] = useState(false);
 
+  const [products, setProducts] = useState([]);
+  const [productsLoading, setProductsLoading] = useState(false);
+
   const requestHeaders = () => ({
     "Content-Type": "application/json",
     ...(getToken() ? { Authorization: `Bearer ${getToken()}` } : {}),
   });
+
+  const PRODUCT_API_URL = `${API_BASE_URL}/api/products`;
+
+  const fetchProducts = async () => {
+    setProductsLoading(true);
+
+    try {
+      const response = await fetch(PRODUCT_API_URL, {
+        headers: requestHeaders(),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Unable to load products");
+      }
+
+      setProducts(data.products || []);
+    } catch (error) {
+      toast.error(error.message || "Failed to load products");
+    } finally {
+      setProductsLoading(false);
+    }
+  };
 
   const fetchLeads = async () => {
     setLoading(true);
@@ -83,6 +113,8 @@ const SalesExecutiveLeadManagement = () => {
 
   useEffect(() => {
     fetchLeads();
+    fetchProducts();
+
   }, []);
 
   const handleFormChange = (event) => {
@@ -108,6 +140,9 @@ const SalesExecutiveLeadManagement = () => {
       source: lead.source || "",
       remarks: lead.remarks || "",
       status: lead.status || "New",
+      city: lead.city || "",
+      state: lead.state || "",
+      pinCode: lead.pinCode || "",
     });
     setShowDetails(false);
     setShowForm(true);
@@ -263,10 +298,10 @@ const SalesExecutiveLeadManagement = () => {
   const formatDate = (date) =>
     date
       ? new Date(date).toLocaleDateString("en-IN", {
-          day: "2-digit",
-          month: "short",
-          year: "numeric",
-        })
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      })
       : "—";
 
   const getStatusClass = (status) =>
@@ -612,26 +647,42 @@ const SalesExecutiveLeadManagement = () => {
 
                 <label className="se-lead-field">
                   Business Type *
-                  <input
+                  <select
                     name="businessType"
                     value={form.businessType}
                     onChange={handleFormChange}
-                    placeholder="e.g. Retailer, Dealer"
                     required
-                    maxLength={100}
-                  />
+                  >
+                    <option value="">Select Business Type</option>
+                    <option value="Dealer">Dealer</option>
+                    <option value="Painter">Painter</option>
+                    <option value="Channel Partner">Channel Partner</option>
+                    <option value="End User">End User</option>
+                  </select>
                 </label>
 
                 <label className="se-lead-field">
                   Product Interest *
-                  <input
+                  <select
                     name="productInterest"
                     value={form.productInterest}
                     onChange={handleFormChange}
-                    placeholder="Enter product"
                     required
-                    maxLength={150}
-                  />
+                    disabled={productsLoading}
+                  >
+                    <option value="">
+                      {productsLoading ? "Loading products..." : "Select Product"}
+                    </option>
+
+                    {products.map((product) => (
+                      <option
+                        key={product._id}
+                        value={product.productName}
+                      >
+                        {product.productName}
+                      </option>
+                    ))}
+                  </select>
                 </label>
 
                 <label className="se-lead-field se-lead-field-full">
@@ -640,10 +691,42 @@ const SalesExecutiveLeadManagement = () => {
                     name="address"
                     value={form.address}
                     onChange={handleFormChange}
-                    placeholder="Enter complete address"
+                    placeholder="Enter street, building or area"
                     rows={2}
                     required
                     maxLength={500}
+                  />
+                </label>
+
+                <label className="se-lead-field">
+                  City
+                  <input
+                    name="city"
+                    value={form.city}
+                    onChange={handleFormChange}
+                    placeholder="Enter city"
+                  />
+                </label>
+
+                <label className="se-lead-field">
+                  State
+                  <input
+                    name="state"
+                    value={form.state}
+                    onChange={handleFormChange}
+                    placeholder="Enter state"
+                  />
+                </label>
+
+                <label className="se-lead-field">
+                  Pin Code
+                  <input
+                    name="pinCode"
+                    value={form.pinCode}
+                    onChange={handleFormChange}
+                    placeholder="Enter pin code"
+                    inputMode="numeric"
+                    maxLength={6}
                   />
                 </label>
 
